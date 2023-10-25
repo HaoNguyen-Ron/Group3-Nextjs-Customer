@@ -8,7 +8,7 @@ export default function Header() {
     return (
         <>
             <header>
-                <div className="container">
+                <div className="container-fluid">
                     <div className=' mx-5 row d-flex justify-content-center align-items-center align-self-center bg-primary'>
                         <div className='col col-lg-2'>
                             <Logo />

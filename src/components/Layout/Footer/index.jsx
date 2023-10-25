@@ -7,7 +7,7 @@ function Footer() {
         <div className="container">
           <div className="row">
             <div className="col col-12 col-md-6 col-lg-3">
-              <h3 className={styles.footer_title}><span className="color-3nime">3NIME </span> Figure</h3>
+              <h3 className={styles.footer_title}><span className={styles.color_3nime}>3NIME </span> Figure</h3>
               <p>
                 <span className={styles.color_3nime}>3NIME </span>Figure shop tại Đà Nẵng chuyên bán các sản phẩm mô hình
                 figure anime chính hãng Nhật Bản như gameprize, nendoroid, mô

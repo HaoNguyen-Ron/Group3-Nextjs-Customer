@@ -54,7 +54,7 @@ const LoginForm = () => {
           />
         </div>
 
-        <button type='submit' onClick={validation.handleSubmit} style={{ maxWidth: '200px' }} className='mx-auto my-3'>Click to submit</button>
+        <button onClick={validation.handleSubmit} style={{ maxWidth: '200px' }} className='mx-auto my-3'>Click to submit</button>
       </div>
     </div>
   );
