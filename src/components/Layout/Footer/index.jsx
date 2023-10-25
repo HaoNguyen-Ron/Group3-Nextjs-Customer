@@ -1,15 +1,15 @@
-import "./footer.css";
+import styles from './footer.module.css'
 
 function Footer() {
   return (
     <footer className="d-grid">
-      <div className="d-none d-md-flex d-lg-flex justify-content-center align-item-center footer_bg ">
+      <div className={`d-none d-md-flex d-lg-flex justify-content-center align-item-center ${styles.footer_bg}`}>
         <div className="container">
           <div className="row">
             <div className="col col-12 col-md-6 col-lg-3">
-              <h3 className="footer_title"><span className="color-3nime">3NIME </span> Figure</h3>
+              <h3 className={styles.footer_title}><span className="color-3nime">3NIME </span> Figure</h3>
               <p>
-                <span className="color-3nime">3NIME </span>Figure shop tại Đà Nẵng chuyên bán các sản phẩm mô hình
+                <span className={styles.color_3nime}>3NIME </span>Figure shop tại Đà Nẵng chuyên bán các sản phẩm mô hình
                 figure anime chính hãng Nhật Bản như gameprize, nendoroid, mô
                 hình scale..
               </p>
@@ -40,7 +40,7 @@ function Footer() {
               <h3>Chăm sóc khách hàng</h3>
               <div className="d-flex align-items-center gap-2">
                 <div>
-                  <i class="phone-bigsize fa-solid fa-phone"></i>
+                  <i className="phone-bigsize fa-solid fa-phone"></i>
                 </div>
                 <div>
                   <div>0965 587 662</div>
@@ -49,8 +49,8 @@ function Footer() {
               </div>
               <h3>Follow Japan Figure</h3>
 
-              <div className="logo_icon d-flex">
-                <a href="javascript:;"><i class="fa-solid fa-location-pin"/></a>
+              <div className={`${styles.logo_icon} d-flex`}>
+                <a href="javascript:;"><i className="fa-solid fa-location-pin"/></a>
                 <a href="javascript:;"><i className="fa-brands fa-twitter" /></a>
                 <a href="javascript:;"><i className="fa-brands fa-pinterest" /></a>
                 <a href="javascript:;"><i className="fa-brands fa-google-plus-g" /></a>
@@ -61,7 +61,7 @@ function Footer() {
         </div>
       </div>
 
-      <div className="footer_bg_under">
+      <div className={styles.footer_bg_under}>
         <div className="container d-flex justify-content-center align-item-center">
           Copyright © 2023 Japan Figure. Powered by Haravan
         </div>
