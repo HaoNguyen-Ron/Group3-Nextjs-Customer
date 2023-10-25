@@ -3,6 +3,7 @@ import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import InputGroup from './InputGroup';
 import SelectGroup from './SelectGroup';
+import InputAddress from './InputAddress';
 
 const RegisterForm = () => {
     const validation = useFormik({
@@ -116,7 +117,7 @@ const RegisterForm = () => {
 
                 <div className="d-flex justify-content-around row">
                     <div className='col col-lg-4'>
-                        <InputGroup
+                        <InputAddress
                             label="Thành phố / Tỉnh"
                             name="city"
                             validation={validation}
@@ -125,7 +126,7 @@ const RegisterForm = () => {
                     </div>
 
                     <div className='col col-lg-4'>
-                        <InputGroup
+                        <InputAddress
                             label="Quận / Huyện"
                             name="district"
                             validation={validation}
@@ -134,7 +135,7 @@ const RegisterForm = () => {
                     </div>
 
                     <div className='col col-lg-4'>
-                        <InputGroup
+                        <InputAddress
                             label="Phường / Xã"
                             name="ward"
                             validation={validation}
