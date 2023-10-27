@@ -1,17 +1,16 @@
-import React, { useMemo } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 
-import axiosClient from '@/libraries/axiosClient'
+import axios from 'axios';
 
 export default function InputAddress({
     label,
     name,
     validation,
-    country
 }) {
 
-    console.log('««««« country »»»»»', country);
+    const [country, setCountry] = useState({});
 
     const [open, setOpen] = React.useState(false);
 
@@ -31,55 +30,62 @@ export default function InputAddress({
         setOpen(true);
     };
 
+    async function getCountry() {
+        try {
+            const response = await axios.get('https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json');
+            const newCountry = {}
+            
+            response.data.forEach((item, index) => {
+                newCountry[`key ${index}`] = item
+            })
+            setCountry(newCountry)
+            
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
+    useEffect(() => {
+        getCountry()
+    }, [])
+    //     fetch('https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json')
+    //         .then(res => {
+    //             return res.json()
+    //         })
+    //         .then(data => {
+    //             setCountry(data)
+
+    //         })
+    // }, [])
 
     return (
         <div className="mb-3" style={{ display: 'flex', flexDirection: 'column' }}>
-            {
-                country.map((item) => (
-                    <FormControl fullWidth>
-                        <InputLabel id="demo-simple-select-label">{label}</InputLabel>
-                        <Select
-                            defaultValue=""
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select outlined-error-helper-text"
-                            value={validation.values[name]}
-                            label={label}
-                            variant="outlined"
-                            name={name}
-                            open={open}
-                            onBlur={validation.onBlur}
-                            onChange={validation.handleChange}
-                            className={` ${isValid ? '' : 'is-invalid'}`}
-                            onClose={handleClose}
-                            onOpen={handleOpen}
-                        >
-                            <MenuItem value={0}>Nam</MenuItem>
-                            <MenuItem value={1}>Nữ</MenuItem>
-                            <MenuItem value={2}>Bí mật</MenuItem>
-                        </Select>
-                    </FormControl>
-                ))}
+            <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">{label}</InputLabel>
+                <Select
+                    defaultValue=""
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select outlined-error-helper-text"
+                    value={validation.values[name]}
+                    label={label}
+                    variant="outlined"
+                    name={name}
+                    open={open}
+                    onBlur={validation.onBlur}
+                    onChange={validation.handleChange}
+                    className={` ${isValid ? '' : 'is-invalid'}`}
+                    onClose={handleClose}
+                    onOpen={handleOpen}
+                >
+                    {
+                        // country && <MenuItem key={country.Id} value={country.Id}>{country.Name}</MenuItem>
+                        country.map((item) => {
+                            <MenuItem key={item.Id} value={item.Id}>{item.Name}</MenuItem>
+                        })
+                    }
+
+                </Select>
+            </FormControl>
         </div>
     )
-}
-
-// getServerSideProps - Server-Side Rendering
-export async function getServerSideProps() {
-    try {
-        const response = await axiosClient.get('/');
-        console.log('««««« response »»»»»', response);
-
-        return {
-            props: {
-                products: response.data.payload,
-            },
-
-            // revalidate: 24 * 60 * 60,
-        };
-    } catch (error) {
-        return {
-            notFound: true,
-        };
-    }
 }
