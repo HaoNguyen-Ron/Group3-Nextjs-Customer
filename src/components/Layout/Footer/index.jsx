@@ -1,17 +1,21 @@
-import styles from './footer.module.css'
+import styles from "./footer.module.css";
 
 function Footer() {
   return (
     <footer className="d-grid">
-      <div className={`d-none d-md-flex d-lg-flex justify-content-center align-item-center ${styles.footer_bg}`}>
+      <div
+        className={`d-none d-md-flex d-lg-flex justify-content-center align-item-center ${styles.footer_bg}`}
+      >
         <div className="container">
           <div className="row">
             <div className="col col-12 col-md-6 col-lg-3">
-              <h3 className={styles.footer_title}><span className={styles.color_3nime}>3NIME </span> Figure</h3>
+              <h3 className={styles.footer_title}>
+                <span className={styles.color_3nime}>3NIME </span> Figure
+              </h3>
               <p>
-                <span className={styles.color_3nime}>3NIME </span>Figure shop tại Đà Nẵng chuyên bán các sản phẩm mô hình
-                figure anime chính hãng Nhật Bản như gameprize, nendoroid, mô
-                hình scale..
+                <span className={styles.color_3nime}>3NIME </span>Figure shop
+                tại Đà Nẵng chuyên bán các sản phẩm mô hình figure anime chính
+                hãng Nhật Bản như gameprize, nendoroid, mô hình scale..
               </p>
             </div>
             <div className="col col-12 col-md-6 col-lg-3">
@@ -19,8 +23,8 @@ function Footer() {
                 <bold>Địa chỉ:</bold> Hòa xuân, Cẩm Lệ, Đà Nẵng
               </p>
               <p>
-                <span className="color-3nime">3NIME </span> Figure chưa có không gian trưng bày, bạn vui lòng hẹn
-                trước khi đến
+                <span className={styles.color_3nime}>3NIME </span> Figure chưa
+                có không gian trưng bày, bạn vui lòng hẹn trước khi đến
               </p>
               <p>Điện thoại: +84 985655221</p>
               <p>Email: support@japanfigure.vn</p>
@@ -50,11 +54,21 @@ function Footer() {
               <h3>Follow Japan Figure</h3>
 
               <div className={`${styles.logo_icon} d-flex`}>
-                <a href="javascript:;"><i className="fa-solid fa-location-pin"/></a>
-                <a href="javascript:;"><i className="fa-brands fa-twitter" /></a>
-                <a href="javascript:;"><i className="fa-brands fa-pinterest" /></a>
-                <a href="javascript:;"><i className="fa-brands fa-google-plus-g" /></a>
-                <a href="javascript:;"><i className="fa-brands fa-square-instagram" /></a>
+                <a href="javascript:;">
+                  <i className="fa-solid fa-location-pin" />
+                </a>
+                <a href="javascript:;">
+                  <i className="fa-brands fa-twitter" />
+                </a>
+                <a href="javascript:;">
+                  <i className="fa-brands fa-pinterest" />
+                </a>
+                <a href="javascript:;">
+                  <i className="fa-brands fa-google-plus-g" />
+                </a>
+                <a href="javascript:;">
+                  <i className="fa-brands fa-square-instagram" />
+                </a>
               </div>
             </div>
           </div>

@@ -2,6 +2,7 @@ import React from 'react'
 import Logo from './Logo'
 import SearchBar from './Searchbar'
 import LoginPart from '../../LoginPart'
+import Nav from './Nav'
 
 
 export default function Header() {
@@ -22,6 +23,7 @@ export default function Header() {
                             <LoginPart />
                         </div>
                     </div>
+                    <Nav />
                 </div>
             </header>
         </>
