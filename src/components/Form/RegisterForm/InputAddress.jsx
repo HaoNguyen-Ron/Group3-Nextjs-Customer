@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useState } from 'react'
 
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 
-import axios from 'axios';
 
 export default function InputAddress({
     label,
@@ -30,34 +29,32 @@ export default function InputAddress({
         setOpen(true);
     };
 
-    async function getCountry() {
-        try {
-            const response = await axios.get('https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json');
-            const newCountry = {}
+    // async function getCountry() {
+    //     try {
+    //         const response = await axios.get('https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json');
+    //         const newCountry = {}
             
-            response.data.forEach((item, index) => {
-                newCountry[`key ${index}`] = item
-            })
-            setCountry(newCountry)
+    //         response.data.forEach((item, index) => {
+    //             newCountry[`key ${index}`] = item
+    //         })
+    //         setCountry(newCountry)
             
-        } catch (error) {
-            console.error(error);
-        }
-    }
-
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+    // }
+    
     useEffect(() => {
-        getCountry()
+        fetch('https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json')
+        .then(res => {
+            return res.json()
+        })
+        .then(data => {
+            setCountry(data)
+
+        })
     }, [])
-    //     fetch('https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json')
-    //         .then(res => {
-    //             return res.json()
-    //         })
-    //         .then(data => {
-    //             setCountry(data)
-
-    //         })
-    // }, [])
-
+  
     return (
         <div className="mb-3" style={{ display: 'flex', flexDirection: 'column' }}>
             <FormControl fullWidth>
@@ -79,9 +76,9 @@ export default function InputAddress({
                 >
                     {
                         // country && <MenuItem key={country.Id} value={country.Id}>{country.Name}</MenuItem>
-                        country.map((item) => {
-                            <MenuItem key={item.Id} value={item.Id}>{item.Name}</MenuItem>
-                        })
+                        // country.map((item) => {
+                        //     <MenuItem key={item.Id} value={item.Id}>{item.Name}</MenuItem>
+                        // })
                     }
 
                 </Select>

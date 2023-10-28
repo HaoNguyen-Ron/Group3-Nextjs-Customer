@@ -4,6 +4,7 @@ import { useFormik } from 'formik';
 import InputGroup from './InputGroup';
 import SelectGroup from './SelectGroup';
 import InputAddress from './InputAddress';
+import DateGroup from './DateGroup';
 
 const RegisterForm = () => {
     const validation = useFormik({
@@ -39,11 +40,11 @@ const RegisterForm = () => {
 
             gender: Yup
                 .string(),
-                // .required('Vui lòng chọn giới tính nha!'),
+            // .required('Vui lòng chọn giới tính nha!'),
 
             birtday: Yup
-                .date(),
-                // .required('Ngày tháng năm sinh bắt buộc nhập nha!'),
+                .date()
+                .required('Ngày tháng năm sinh bắt buộc nhập nha!'),
 
             street: Yup
                 .string()
@@ -103,7 +104,12 @@ const RegisterForm = () => {
                     </div>
 
                     <div className='col col-lg-5'>
-
+                        {/* <DateGroup
+                            label='Ngày sinh'
+                            name="birtday"
+                            validation={validation}
+                            classes="valid"
+                        /> */}
                     </div>
                 </div>
 
