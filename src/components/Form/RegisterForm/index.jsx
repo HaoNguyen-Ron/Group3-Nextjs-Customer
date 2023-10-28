@@ -130,24 +130,6 @@ const RegisterForm = () => {
                             classes="valid"
                         />
                     </div>
-
-                    <div className='col col-lg-4'>
-                        <InputAddress
-                            label="Quận / Huyện"
-                            name="district"
-                            validation={validation}
-                            classes="valid"
-                        />
-                    </div>
-
-                    <div className='col col-lg-4'>
-                        <InputAddress
-                            label="Phường / Xã"
-                            name="ward"
-                            validation={validation}
-                            classes="valid"
-                        />
-                    </div>
                 </div>
 
                 <InputGroup
