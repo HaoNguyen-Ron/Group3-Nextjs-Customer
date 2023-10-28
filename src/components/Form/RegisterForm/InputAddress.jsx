@@ -10,16 +10,17 @@ export default function InputAddress({
 
     const [cityList, setCityList] = useState();
 
-    const [currentCityId, setCurrentCityId] = useState()
-    const [currentDistrictId, setCurrentDistrictId] = useState()
+    const [currentCityName, setCurrentCityName] = useState()
+    const [currentDistrictName, setCurrentDistrictName] = useState([])
     const [currentWardId, setCurrentWardId] = useState()
 
-    // const getCurrentDistrictList = () => {
-    //     const currentCity = cityList.find((city) => city.Id === currentCityId)
+    const getCurrentDistrictList = () => {
+        const  currentCity = cityList.find((city) => city.Name === currentCityName)
 
-    //     return currentCity && currentCity.Distrists.find((district) => district.Id === currentDistrictId) || []
-    // }
-
+        console.log('««««« currentCity »»»»»', currentCity);
+        return currentCity && setCurrentDistrictName(currentCity.Distrists)
+    }
+    
     // const getCurrentWardList = () => {
     //     const currentDistrict = getCurrentDistrictList()
 
@@ -48,9 +49,17 @@ export default function InputAddress({
     //         console.error(error);
     //     }
     // }
-    const onChangeCity = (value) => {
-        validation.setFieldValue('city', value.$d)
+    const onChangeCity = (e) => {
+        validation.setFieldValue('city', e.target.value)
+        setCurrentCityName(e.target.value)
     }
+
+    // const onChangeDistrict = (e) => {
+    //     console.log('««««« e.target »»»»»', e.target);
+    //     setCurrentDistrictName(e.target.getCurrentDistrictList)
+    // }
+
+    
 
     useEffect(() => {
         fetch('https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json')
@@ -61,25 +70,24 @@ export default function InputAddress({
                 setCityList(data)
             })
     }, [])
-    console.log('««««« cityList »»»»»', cityList);
+
 
     return (
         <div className="mb-3" style={{ display: 'flex', flexDirection: 'column' }}>
             <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label">Thành phố / Tỉnh</InputLabel>
                 <Select
-                    defaultValue=""
+                    defaultValue=''
                     labelId="demo-simple-select-label"
                     id="demo-simple-select outlined-error-helper-text"
-                    value={validation.values[name]}
                     label='Thành phố / Tỉnh'
                     variant="outlined"
                     name='city'
-                    onChange={(e) => setCurrentCityId(e.target.value)}
+                    onChange={onChangeCity}
                 >
                     {
                         cityList && cityList.map((city) =>
-                            <MenuItem key={city.Id} value={city.Id}>{city.Name}</MenuItem>
+                            <MenuItem key={city.Id} value={city.Name}>{city.Name}</MenuItem>
                         )
                     }
 
@@ -92,14 +100,13 @@ export default function InputAddress({
                     defaultValue=""
                     labelId="demo-simple-select-label"
                     id="demo-simple-select outlined-error-helper-text"
-                    value={validation.values[name]}
-                    label='Thành phố / Tỉnh'
+                    label='Quận / Huyện'
                     variant="outlined"
-                    // onChange={(e) => setCurrentDistrictId(e.target.getCurrentDistrict())}
+                    // onChange={onChangeDistrict}
                 >
                     {
-                        // getCurrentDistrictList().map((district) =>
-                        //     <MenuItem key={district.Id} value={district.Id}>{district.Name}</MenuItem>)
+                        // getCurrentDistrictList() && getCurrentDistrictList().map((district) =>
+                        //     <MenuItem key={district.Id} value={district.Name}>{district.Name}</MenuItem>) 
                     }
 
                 </Select>
@@ -114,7 +121,7 @@ export default function InputAddress({
                     value={validation.values[name]}
                     label='Quận / Huyện'
                     variant="outlined"
-                    // onChange={(e) => setCurrentWardId(e.target.setCurrentWard())}
+                // onChange={(e) => setCurrentWardId(e.target.setCurrentWard())}
 
                 >
                     {
