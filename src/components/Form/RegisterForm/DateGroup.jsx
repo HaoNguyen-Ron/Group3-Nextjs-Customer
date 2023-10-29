@@ -1,19 +1,16 @@
 import React, { useMemo } from 'react'
 
-import { DemoContainer } from '@mui/x-date-pickers/internals';
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
-import styles from './dateGroup.module.css'
 
 export default function DateGroup({
     name,
     validation,
     label
 }) {
-
-    const [value, setValue] = useState(dayjs(''));
 
     const isValid = useMemo(() => {
         if (validation.errors[name] && validation.touched[name]) {
@@ -30,12 +27,13 @@ export default function DateGroup({
     return (
         <>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DemoContainer components={'DatePicker'}>
+                <DemoContainer components={['DatePicker', 'DatePicker']}>
                     <DatePicker
-                        label="Controlled picker"
-                        value={value}
-                        onChange={onChangeDoB}
-                    />
+                        label={label}
+                        variant="outlined"
+                        name={name}
+                        className={` ${isValid ? '' : 'is-invalid'} date-picker`}
+                        onChange={onChangeDoB} />
                 </DemoContainer>
             </LocalizationProvider>
 

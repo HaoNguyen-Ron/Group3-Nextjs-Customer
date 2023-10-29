@@ -34,20 +34,6 @@ export default function InputAddress({
     //     return true;
     // }, [name, validation.errors, validation.touched]);
 
-    // async function getCountry() {
-    //     try {
-    //         const response = await axios.get('https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json');
-    //         const newCountry = {}
-
-    //         response.data.forEach((item, index) => {
-    //             newCountry[`key ${index}`] = item
-    //         })
-    //         setCountry(newCountry)
-
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // }
     const onChangeCity = (e) => {
         validation.setFieldValue('city', e.target.value)
         setCurrentCityId(e.target.value)
@@ -78,61 +64,68 @@ export default function InputAddress({
 
 
     return (
-        <div className="mb-3" style={{ display: 'flex', flexDirection: 'column' }}>
-            <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">Thành phố / Tỉnh</InputLabel>
-                <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select outlined-error-helper-text"
-                    label='Thành phố / Tỉnh'
-                    variant="outlined"
-                    name='city'
-                    onChange={onChangeCity}
-                >
-                    {
-                        cityList && cityList.map((city) =>
-                            <MenuItem key={city.Id} value={city.Id}>{city.Name}</MenuItem>
-                        )
-                    }
+        <div className="mb-3 d-flex row" >
+            <div className="col">
+                <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Thành phố / Tỉnh</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select outlined-error-helper-text"
+                        label='Thành phố / Tỉnh'
+                        variant="outlined"
+                        name='city'
+                        onChange={onChangeCity}
+                    >
+                        {
+                            cityList && cityList.map((city) =>
+                                <MenuItem key={city.Id} value={city.Id}>{city.Name}</MenuItem>
+                            )
+                        }
 
-                </Select>
-            </FormControl>
+                    </Select>
+                </FormControl>
+            </div>
 
-            <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">Quận / Huyện</InputLabel>
-                <Select
-                    defaultValue=""
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select outlined-error-helper-text"
-                    label='Quận / Huyện'
-                    variant="outlined"
-                    onChange={onChangeDistrict}
-                >
-                    {
-                        getCurrentDistrictList() && getCurrentDistrictList().map((district) =>
-                            <MenuItem key={district.Id} value={district.Id}>{district.Name}</MenuItem>)
-                    }
+            <div className="col">
+                <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Quận / Huyện</InputLabel>
+                    <Select
+                        defaultValue=""
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select outlined-error-helper-text"
+                        label='Quận / Huyện'
+                        variant="outlined"
+                        onChange={onChangeDistrict}
+                    >
+                        {
+                            getCurrentDistrictList() && getCurrentDistrictList().map((district) =>
+                                <MenuItem key={district.Id} value={district.Id}>{district.Name}</MenuItem>)
+                        }
 
-                </Select>
-            </FormControl>
+                    </Select>
+                </FormControl>
+            </div>
 
-            <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">Phường / Xã</InputLabel>
-                <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select outlined-error-helper-text"
-                    label='Quận / Huyện'
-                    variant="outlined"
-                    onChange={onChangeWard}
+            <div className="col">
+                <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Phường / Xã</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select outlined-error-helper-text"
+                        label='Quận / Huyện'
+                        variant="outlined"
+                        onChange={onChangeWard}
 
-                >
-                    {
-                        getCurrentWardList().map((ward) =>
-                            <MenuItem key={ward.Id} value={ward.Id}>{ward.Name}</MenuItem>)
-                    }
+                    >
+                        {
+                            getCurrentWardList().map((ward) =>
+                                <MenuItem key={ward.Id} value={ward.Id}>{ward.Name}</MenuItem>)
+                        }
 
-                </Select>
-            </FormControl>
+                    </Select>
+                </FormControl>
+            </div>
+
         </div >
     )
 }

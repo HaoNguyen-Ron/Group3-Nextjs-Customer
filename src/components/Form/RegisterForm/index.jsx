@@ -5,7 +5,6 @@ import InputGroup from './InputGroup';
 import SelectGroup from './SelectGroup';
 import InputAddress from './InputAddress';
 import DateGroup from './DateGroup';
-import InputAddress2 from './InputAddress2';
 
 const RegisterForm = () => {
     const validation = useFormik({
@@ -105,12 +104,12 @@ const RegisterForm = () => {
                     </div>
 
                     <div className='col col-lg-5'>
-                        {/* <DateGroup
+                        <DateGroup
                             label='Ngày sinh'
                             name="birtday"
                             validation={validation}
                             classes="valid"
-                        /> */}
+                        />
                     </div>
                 </div>
 
@@ -122,15 +121,11 @@ const RegisterForm = () => {
                     classes="valid"
                 />
 
-                <div className="d-flex justify-content-around row">
-                    <div className='col col-lg-4'>
+                <div>
                         <InputAddress
-                            label="Thành phố / Tỉnh"
-                            name="city"
                             validation={validation}
                             classes="valid"
                         />
-                    </div>
                 </div>
 
                 <InputGroup
