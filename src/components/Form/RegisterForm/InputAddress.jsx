@@ -8,24 +8,23 @@ export default function InputAddress({
     validation,
 }) {
 
-    const [cityList, setCityList] = useState();
+    const [cityList, setCityList] = useState([]);
 
-    const [currentCityName, setCurrentCityName] = useState()
-    const [currentDistrictName, setCurrentDistrictName] = useState([])
+    const [currentCityId, setCurrentCityId] = useState()
+    const [currentDistrictId, setCurrentDistrictId] = useState()
     const [currentWardId, setCurrentWardId] = useState()
 
     const getCurrentDistrictList = () => {
-        const  currentCity = cityList.find((city) => city.Name === currentCityName)
+        const currentCity = cityList.find((city) => city.Id === currentCityId)
 
-        console.log('««««« currentCity »»»»»', currentCity);
-        return currentCity && setCurrentDistrictName(currentCity.Distrists)
+        return currentCity && currentCity.Districts || []
+
     }
-    
-    // const getCurrentWardList = () => {
-    //     const currentDistrict = getCurrentDistrictList()
+    const getCurrentWardList = () => {
+        const currentDistrict = getCurrentDistrictList().find((d) => d.Id === currentDistrictId)
 
-    //     return currentDistrict && currentDistrict.Wards.find((ward) => ward.Name === currentWardId) || []
-    // }
+        return currentDistrict && currentDistrict.Wards || []
+    }
 
     // const isValid = useMemo(() => {
     //     if (validation.errors[name] && validation.touched[name]) {
@@ -51,15 +50,21 @@ export default function InputAddress({
     // }
     const onChangeCity = (e) => {
         validation.setFieldValue('city', e.target.value)
-        setCurrentCityName(e.target.value)
+        setCurrentCityId(e.target.value)
     }
 
-    // const onChangeDistrict = (e) => {
-    //     console.log('««««« e.target »»»»»', e.target);
-    //     setCurrentDistrictName(e.target.getCurrentDistrictList)
-    // }
+    const onChangeDistrict = (e) => {
+        validation.setFieldValue('district', e.target.value)
+        setCurrentDistrictId(e.target.value)
 
-    
+    }
+
+    const onChangeWard = (e) => {
+        validation.setFieldValue('ward', e.target.value)
+        setCurrentWardId(e.target.value)
+
+    }
+
 
     useEffect(() => {
         fetch('https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json')
@@ -77,7 +82,6 @@ export default function InputAddress({
             <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label">Thành phố / Tỉnh</InputLabel>
                 <Select
-                    defaultValue=''
                     labelId="demo-simple-select-label"
                     id="demo-simple-select outlined-error-helper-text"
                     label='Thành phố / Tỉnh'
@@ -87,7 +91,7 @@ export default function InputAddress({
                 >
                     {
                         cityList && cityList.map((city) =>
-                            <MenuItem key={city.Id} value={city.Name}>{city.Name}</MenuItem>
+                            <MenuItem key={city.Id} value={city.Id}>{city.Name}</MenuItem>
                         )
                     }
 
@@ -102,11 +106,11 @@ export default function InputAddress({
                     id="demo-simple-select outlined-error-helper-text"
                     label='Quận / Huyện'
                     variant="outlined"
-                    // onChange={onChangeDistrict}
+                    onChange={onChangeDistrict}
                 >
                     {
-                        // getCurrentDistrictList() && getCurrentDistrictList().map((district) =>
-                        //     <MenuItem key={district.Id} value={district.Name}>{district.Name}</MenuItem>) 
+                        getCurrentDistrictList() && getCurrentDistrictList().map((district) =>
+                            <MenuItem key={district.Id} value={district.Id}>{district.Name}</MenuItem>)
                     }
 
                 </Select>
@@ -115,18 +119,16 @@ export default function InputAddress({
             <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label">Phường / Xã</InputLabel>
                 <Select
-                    defaultValue=""
                     labelId="demo-simple-select-label"
                     id="demo-simple-select outlined-error-helper-text"
-                    value={validation.values[name]}
                     label='Quận / Huyện'
                     variant="outlined"
-                // onChange={(e) => setCurrentWardId(e.target.setCurrentWard())}
+                    onChange={onChangeWard}
 
                 >
                     {
-                        // getCurrentWardList().map((ward) =>
-                        //     <MenuItem key={ward.Id} value={ward.Id}>{ward.Name}</MenuItem>)
+                        getCurrentWardList().map((ward) =>
+                            <MenuItem key={ward.Id} value={ward.Id}>{ward.Name}</MenuItem>)
                     }
 
                 </Select>

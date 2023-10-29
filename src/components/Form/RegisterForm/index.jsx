@@ -5,6 +5,7 @@ import InputGroup from './InputGroup';
 import SelectGroup from './SelectGroup';
 import InputAddress from './InputAddress';
 import DateGroup from './DateGroup';
+import InputAddress2 from './InputAddress2';
 
 const RegisterForm = () => {
     const validation = useFormik({
