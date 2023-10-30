@@ -42,8 +42,8 @@ const RegisterForm = () => {
             // .required('Vui lòng chọn giới tính nha!'),
 
             birtday: Yup
-                .date()
-                .required('Ngày tháng năm sinh bắt buộc nhập nha!'),
+                .date(),
+                // .required('Ngày tháng năm sinh bắt buộc nhập nha!'),
 
             street: Yup
                 .string()
@@ -72,7 +72,7 @@ const RegisterForm = () => {
             <h1>Đăng ký</h1>
             <div className="d-flex flex-column" >
                 <div className="d-flex justify-content-around row">
-                    <div className='col col-lg-8'>
+                    <div className='col col-lg-8 '>
                         <InputGroup
                             label="Tên"
                             name="fullname"
