@@ -30,7 +30,7 @@ const LoginForm = () => {
 
   return (
     <div className='px-5 w-50 mx-auto my-5'>
-      <h1>Đăng nhập</h1>
+      <h1 className='text-primary mb-4'>Đăng nhập</h1>
       <div className="d-flex flex-column" >
         <div className='mb-4'>
           <InputGroup
@@ -54,7 +54,7 @@ const LoginForm = () => {
           />
         </div>
 
-        <button onClick={validation.handleSubmit} style={{ maxWidth: '200px' }} className='mx-auto my-3'>Click to submit</button>
+        <button type='submit' onClick={validation.handleSubmit} className='mx-auto my-3 btn btn-primary btn-lg w-50'>Đăng nhập</button>
       </div>
     </div>
   );

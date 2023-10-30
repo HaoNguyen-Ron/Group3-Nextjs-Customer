@@ -43,7 +43,7 @@ const RegisterForm = () => {
 
             birtday: Yup
                 .date(),
-                // .required('Ngày tháng năm sinh bắt buộc nhập nha!'),
+            // .required('Ngày tháng năm sinh bắt buộc nhập nha!'),
 
             street: Yup
                 .string()
@@ -69,10 +69,10 @@ const RegisterForm = () => {
 
     return (
         <div className='px-5 w-50 mx-auto my-5'>
-            <h1>Đăng ký</h1>
+            <h1 className='text-primary mb-4'>Đăng ký</h1>
             <div className="d-flex flex-column" >
                 <div className="d-flex justify-content-around row">
-                    <div className='col col-lg-8 '>
+                    <div className='col col-lg-8 mb-4'>
                         <InputGroup
                             label="Tên"
                             name="fullname"
@@ -92,7 +92,7 @@ const RegisterForm = () => {
                     </div>
                 </div>
 
-                <div className="d-flex justify-content-around row">
+                <div className="d-flex justify-content-around row mb-4">
                     <div className='col col-lg-7'>
                         <InputGroup
                             label="Số điện thoại"
@@ -113,44 +113,51 @@ const RegisterForm = () => {
                     </div>
                 </div>
 
-                <InputGroup
-                    label="Email"
-                    name="email"
-                    type='email'
-                    validation={validation}
-                    classes="valid"
-                />
+                <div className='mb-4'>
+                    <InputGroup
+                        label="Email"
+                        name="email"
+                        type='email'
+                        validation={validation}
+                        classes="valid"
+                    />
+                </div>
 
-                <div>
+                <div className='mb-4'>
                     <InputAddress
                         validation={validation}
                         classes="valid"
                     />
                 </div>
 
-                <InputGroup
-                    label="Địa chỉ "
-                    type="text"
-                    name="street"
-                    validation={validation}
-                />
+                <div className='mb-4'>
+                    <InputGroup
+                        label="Địa chỉ "
+                        type="text"
+                        name="street"
+                        validation={validation}
+                    />
+                </div>
 
-                <InputGroup
-                    label="Mật khẩu"
-                    type="password"
-                    name="password"
-                    validation={validation}
-                />
+                <div className='mb-4'>
+                    <InputGroup
+                        label="Mật khẩu"
+                        type="password"
+                        name="password"
+                        validation={validation}
+                    />
+                </div>
 
-                <InputGroup
-                    label="Xác nhận lại mật khẩu"
-                    type="password"
-                    name="confirmPassword"
-                    validation={validation}
-                />
+                <div >
+                    <InputGroup
+                        label="Xác nhận lại mật khẩu"
+                        type="password"
+                        name="confirmPassword"
+                        validation={validation}
+                    />
+                </div>
 
-
-                <button type='submit' onClick={validation.handleSubmit} style={{ maxWidth: '200px' }} className='mx-auto my-3'>Click to submit</button>
+                <button type='submit' onClick={validation.handleSubmit} className='mx-auto my-3 btn btn-primary btn-lg w-50'>Đăng ký</button>
             </div>
         </div>
     );
