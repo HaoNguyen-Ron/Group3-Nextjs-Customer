@@ -44,7 +44,7 @@ function Footer() {
               <h3>Chăm sóc khách hàng</h3>
               <div className="d-flex align-items-center gap-2">
                 <div>
-                  <i className="phone-bigsize fa-solid fa-phone"></i>
+                  <i className={`fa-solid fa-phone ${styles.phone_bigsize}`}></i>
                 </div>
                 <div>
                   <div>0965 587 662</div>

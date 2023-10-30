@@ -104,12 +104,12 @@ const RegisterForm = () => {
                     </div>
 
                     <div className='col col-lg-5'>
-                        <DateGroup
+                        {/* <DateGroup
                             label='Ngày sinh'
                             name="birtday"
                             validation={validation}
                             classes="valid"
-                        />
+                        /> */}
                     </div>
                 </div>
 
