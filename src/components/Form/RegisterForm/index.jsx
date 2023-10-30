@@ -103,12 +103,13 @@ const RegisterForm = () => {
                     </div>
 
                     <div className='col col-lg-5'>
-                        {/* <DateGroup
-                            label='Ngày sinh'
+                        <InputGroup
+                            label="Ngày sinh"
                             name="birtday"
+                            placeholder='DD/MM/YYYY'
                             validation={validation}
                             classes="valid"
-                        /> */}
+                        />
                     </div>
                 </div>
 
