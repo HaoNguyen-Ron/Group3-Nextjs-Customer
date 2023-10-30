@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 import InputGroup from './InputGroup';
 import SelectGroup from './SelectGroup';
 import InputAddress from './InputAddress';
-import DateGroup from './DateGroup';
+import DateGroup from './DateGroup2';
 
 const RegisterForm = () => {
     const validation = useFormik({
@@ -122,10 +122,10 @@ const RegisterForm = () => {
                 />
 
                 <div>
-                        <InputAddress
-                            validation={validation}
-                            classes="valid"
-                        />
+                    <InputAddress
+                        validation={validation}
+                        classes="valid"
+                    />
                 </div>
 
                 <InputGroup
