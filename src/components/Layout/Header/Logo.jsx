@@ -1,10 +1,11 @@
+import Image from 'next/image';
 import React from 'react';
 
 
 export default function Logo() {
   return (
     <div>
-        <h1>My LOGO</h1>
+        <Image src='/android-chrome-192x192.png' width={150} height={120}/>
     </div>
   )
 }
