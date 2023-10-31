@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 
 const TAB = {
-  HISTORY: 1,
+  Home: 1,
   APPROACH: 2,
   CULTURE: 3,
   METHOD: 4,
 };
 
 function index(props) {
+  const [activeTab, setActiveTab] = useState(TAB.Home);
 
-  const [activeTab, setActiveTab] = useState(TAB.HISTORY);
-
-  
   const onClickTab = (value) => {
     setActiveTab(value);
   };
@@ -39,84 +37,28 @@ function index(props) {
             id="navbarSupportedContent"
           >
             <ul className="navigation-menu navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item nav-home">
-                <a className="nav-link" aria-current="page" href="#">
-                  Home
-                </a>
-              </li>
-              <li className="nav-item nav-sub active-colors">
-                <a
-                  className="nav-link"
-                  href="#"
-                  id="navbarDropdown"
-                  role="button"
-                  aria-expanded="false"
-                >
-                  prodc
-                </a>
-                <ul className="nav-sub" aria-labelledby="navbarDropdown">
-                  <li>
-                    <a className="" href="#">
-                      Action
-                    </a>
-                  </li>
-                  <li>
-                    <a className="" href="#">
-                      Another action
-                    </a>
-                  </li>
-
-                  <li>
-                    <a className="" href="#">
-                      Something else here
-                    </a>
-                  </li>
-                </ul>
-              </li>
-
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  women
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Kids
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  brand
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link accessories" href="#">
-                  accessories
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  pages
-                </a>
-              </li>
               <TabLi
-                title="HISTORY"
-                value={TAB.HISTORY}
+                title="Home"
+                value={TAB.Home}
                 activeTab={activeTab}
                 onClick={onClickTab}
-               />
-               <TabLi
+              />
+              <TabLi
                 title="APPROACH"
                 value={TAB.APPROACH}
                 activeTab={activeTab}
                 onClick={onClickTab}
-               />
-               <TabLi
+                submenutab="0"
+                titlemenu1="abc"
+                titlemenu2="assc"
+                titlemenu3="ac"
+              />
+              <TabLi
                 title="CULTURE"
                 value={TAB.CULTURE}
                 activeTab={activeTab}
                 onClick={onClickTab}
-               />
+              />
             </ul>
           </div>
         </div>
@@ -137,10 +79,7 @@ function index(props) {
             }
           }
 
-          .active-colors {
-            color: rgb(221, 51, 193) !important;
-            border-color: rgb(221, 51, 193) !important;
-          }
+          
           .navigation-menu {
             vertical-align: top;
             background: #0000;
@@ -163,9 +102,12 @@ function index(props) {
               position: relative;
             }
           }
+          .active-colors {
+            color: rgb(221, 51, 193) !important;
+          }
           .navigation-menu > li {
             float: left;
-            border-bottom: 6px #aaac solid;
+            border-bottom: 1px #fff solid;
             margin-right: 1px;
             & > a {
               margin-bottom: 1px;
@@ -339,16 +281,40 @@ function index(props) {
 
 export default index;
 
-const TabLi = ({ title, value, activeTab, onClick }) => {
-  
+const TabLi = ({ title, value, activeTab,submenutab, onClick,titlemenu1,titlemenu2,titlemenu3,titlemenu4 }) => {
   return (
     <>
-      <li onClick={() => onClick(value)} className={`nav-item nav-home ${
-            value === activeTab ? "active-colors" : ""
-          }`}>
-        <a className="nav-link" aria-current="page" href="#">
+      <li
+        onClick={() => onClick(value)}
+        className={`nav-item nav-home ${
+          value === activeTab ? "active-colors" : ""
+        }`}
+      >
+        <a
+          className={`nav-link ${
+          value === activeTab ? "active-colors" : ""
+        }`}
+          aria-current="page"
+          href="#"
+          id="navbarDropdown"
+          role="button"
+        >
           {title}
         </a>
+        {submenutab && 
+        <ul className="nav-sub" aria-labelledby="navbarDropdown">
+          <li>
+            <a className="" href="#">{titlemenu1}</a>
+          </li>
+          <li>
+            <a className="" href="#">{titlemenu2}</a>
+          </li>
+
+          <li>
+            <a className="" href="#">{titlemenu3}</a>
+          </li>
+        </ul>
+        }
       </li>
       <style jsx>
         {`
@@ -365,10 +331,7 @@ const TabLi = ({ title, value, activeTab, onClick }) => {
             }
           }
 
-          .active-colors {
-            color: rgb(221, 51, 193) !important;
-            border-color: rgb(221, 51, 193) !important;
-          }
+          
           .navigation-menu {
             vertical-align: top;
             background: #0000;
@@ -391,9 +354,12 @@ const TabLi = ({ title, value, activeTab, onClick }) => {
               position: relative;
             }
           }
+          .active-colors {
+            color: rgb(221, 51, 193) !important;
+          }
           .navigation-menu > li {
             float: left;
-            border-bottom: 6px #aaac solid;
+            border-bottom: 1px #fff solid;
             margin-right: 1px;
             & > a {
               margin-bottom: 1px;
