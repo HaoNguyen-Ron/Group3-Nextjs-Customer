@@ -34,7 +34,7 @@ function InputGroup({
             />
 
             {!isValid && (
-                 <div className="invalid-feedback" style={{ color: '#ee2d7a' }}>
+                 <div style={{ color: '#ee2d7a' }}>
                     {validation.errors[name]}
                 </div>
             )}

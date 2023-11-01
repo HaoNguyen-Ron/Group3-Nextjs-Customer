@@ -49,6 +49,18 @@ const RegisterForm = () => {
                 .date(),
             // .required('Ngày tháng năm sinh bắt buộc nhập nha!'),
 
+            city: Yup
+                .string()
+                .required('Thành phố / Tỉnh bắt buộc nhập nha!'),
+
+            district: Yup
+                .string()
+                .required('Quận / Huyện bắt buộc nhập nha!'),
+
+            ward: Yup
+                .string()
+                .required('Phường / Xã bắt buộc nhập nha!'),
+
             street: Yup
                 .string()
                 .required('Địa chỉ bắt buộc nhập nha!'),
@@ -91,7 +103,6 @@ const RegisterForm = () => {
                             name="gender"
                             validation={validation}
                             onChange={validation.handleChange}
-
                         />
                     </div>
                 </div>
@@ -169,7 +180,7 @@ const RegisterForm = () => {
                         style={
                             hover
                                 ? { backgroundColor: "#fc629f" }
-                                : { backgroundColor: "#ee2d7a" }} ee2d7a
+                                : { backgroundColor: "#ee2d7a" }}
                     >
                         Đăng nhập
                     </button>

@@ -1,7 +1,6 @@
 import Layout from '@/components/Layout';
 import '@/styles/globals.css'
 import { ThemeProvider, createTheme } from '@mui/material';
-import { pink } from '@mui/material/colors';
 import Head from 'next/head';
 import Script from 'next/script';
 
