@@ -1095,6 +1095,7 @@ function Cart(props) {
 
       <div className=" container wrapper">
         <div className={x["layout-content"]}>
+          <b className={x["lg"]}></b>
           <div className={x["layout-content__main"]}>
             <div className={x["cards-container"]}>
               <div className="row">
@@ -2104,8 +2105,16 @@ function Cart(props) {
           </div>
         </div>
       </div>
-    
-    
+      
+      <div className={x["title"]}>
+        <div className={x["groupbanner-hover"]}>
+          <img
+            className=" ls-is-cached lazyloaded"
+            src="//theme.hstatic.net/1000160337/1000885200/14/home_bannerfull.jpg?v=316"
+            alt=""
+          />
+        </div>
+      </div>
 
       <style jsx>
         {`
