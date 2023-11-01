@@ -1,3 +1,7 @@
+:root{
+  --main-color: #EE2D7A;
+}
+
 footer {
   width: 100%;
 }
@@ -26,3 +30,6 @@ footer a:hover {
   color: #fc0000;
 }
 
+a {
+  text-decoration: none;
+}

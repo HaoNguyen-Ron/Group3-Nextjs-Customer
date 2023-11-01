@@ -1,4 +1,5 @@
 
+import Services from '@/components/services'
 import { Inter } from 'next/font/google'
 
 
@@ -8,6 +9,8 @@ export default function Home() {
   return (
     <>
       <h1>hello</h1>
+
+      <Services />
     </>
   )
 }

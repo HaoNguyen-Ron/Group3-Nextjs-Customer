@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import styles from './searchbar.module.css'
 
 export default function SearchBar() {
   const [hover, setHover] = useState(false)
@@ -7,7 +8,7 @@ export default function SearchBar() {
   return (
     <div className='my-auto'>
       <div className="input-group" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-        <input type="text" className="form-control" placeholder="Tìm kiếm sản phẩm ở đây nè !..." aria-label="Recipient's username" aria-describedby="button-addon2" style={{ minWidth: "600px" }} />
+        <input type="text" className={`form-control ${styles.searchbar}`} placeholder="Tìm kiếm sản phẩm ở đây nè !..." aria-label="Recipient's username" aria-describedby="button-addon2" />
 
         <button
           className="btn btn-outline-secondary"
