@@ -41,12 +41,7 @@ const LoginForm = () => {
             label="Email"
             name="email"
             validation={validation}
-<<<<<<< HEAD
             placeholder='Nhập email ở đây'
-          // classNamees="invalid"
-          // classNamees={isValidEmail() ? "valid" : "invalid"}
-=======
->>>>>>> 0a682a06c39ae207b6caa8e7b8657988e369bf70
           />
         </div>
 
@@ -67,7 +62,7 @@ const LoginForm = () => {
             style={
               hover
                 ? { backgroundColor: "#fc629f" }
-                : { backgroundColor: "#ee2d7a" }} ee2d7a
+                : { backgroundColor: "#ee2d7a" }}
           >
             Đăng nhập
           </button>
