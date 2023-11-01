@@ -14,7 +14,7 @@ function Services(props) {
           }}
         />
         <ServicesItem
-          icon={<i class="fa-regular fa-credit-card"></i>}
+          icon={<i className="fa-regular fa-credit-card"></i>}
           info={{
             name: "Thanh toán đơn giản",
             desc: "Chuyển khoản hoặc COD",
@@ -22,7 +22,7 @@ function Services(props) {
           }}
         />
         <ServicesItem
-          icon={<i class="fa-solid fa-rocket"></i>}
+          icon={<i className="fa-solid fa-rocket"></i>}
           info={{
             name: "Giao hàng nhanh chóng",
             desc: "Miễn phí với đơn hàng>1000K",

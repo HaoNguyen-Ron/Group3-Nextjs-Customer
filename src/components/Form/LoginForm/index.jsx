@@ -24,7 +24,7 @@ const LoginForm = () => {
       password: Yup.string()
         .min(6, 'Mật khẩu ít nhất 6 kí tự')
         .max(12, 'Mật khẩu chỉ tối đa 12 kí tự')
-        .required('Mật khẩu băt buộc phải có nhé!'),
+        .required('Vui lòng điền mật khẩu'),
     }),
 
     onSubmit: (values) => {
