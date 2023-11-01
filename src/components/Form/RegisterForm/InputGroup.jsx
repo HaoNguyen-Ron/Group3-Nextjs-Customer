@@ -29,8 +29,12 @@ function InputGroup({
                 value={validation.values[name]}
                 onChange={validation.handleChange}
                 onBlur={validation.handleBlur}
+<<<<<<< HEAD
+                className={` ${isValid ? '' : 'is-invalid'}`}
+=======
                 className={` ${isValid ? '' : 'is-invalid'}` }
                 color='primary'
+>>>>>>> 0a682a06c39ae207b6caa8e7b8657988e369bf70
             />
 
             {!isValid && (

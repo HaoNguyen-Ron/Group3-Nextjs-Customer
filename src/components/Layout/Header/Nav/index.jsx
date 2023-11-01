@@ -281,19 +281,17 @@ function index(props) {
 
 export default index;
 
-const TabLi = ({ title, value, activeTab,submenutab, onClick,titlemenu1,titlemenu2,titlemenu3,titlemenu4 }) => {
+const TabLi = ({ title, value, activeTab, submenutab, onClick, titlemenu1, titlemenu2, titlemenu3, titlemenu4 }) => {
   return (
     <>
       <li
         onClick={() => onClick(value)}
-        className={`nav-item nav-home ${
-          value === activeTab ? "active-colors" : ""
-        }`}
+        className={`nav-item nav-home ${value === activeTab ? "active-colors" : ""
+          }`}
       >
         <a
-          className={`nav-link ${
-          value === activeTab ? "active-colors" : ""
-        }`}
+          className={`nav-link ${value === activeTab ? "active-colors" : ""
+            }`}
           aria-current="page"
           href="#"
           id="navbarDropdown"
@@ -301,19 +299,19 @@ const TabLi = ({ title, value, activeTab,submenutab, onClick,titlemenu1,titlemen
         >
           {title}
         </a>
-        {submenutab && 
-        <ul className="nav-sub" aria-labelledby="navbarDropdown">
-          <li>
-            <a className="" href="#">{titlemenu1}</a>
-          </li>
-          <li>
-            <a className="" href="#">{titlemenu2}</a>
-          </li>
+        {submenutab &&
+          <ul className="nav-sub" aria-labelledby="navbarDropdown">
+            <li>
+              <a className="" href="#">{titlemenu1}</a>
+            </li>
+            <li>
+              <a className="" href="#">{titlemenu2}</a>
+            </li>
 
-          <li>
-            <a className="" href="#">{titlemenu3}</a>
-          </li>
-        </ul>
+            <li>
+              <a className="" href="#">{titlemenu3}</a>
+            </li>
+          </ul>
         }
       </li>
       <style jsx>

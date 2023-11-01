@@ -113,7 +113,7 @@ const RegisterForm = () => {
                             label="Số điện thoại"
                             name="phoneNumber"
                             validation={validation}
-                            classes="valid"
+                            classNamees="valid"
                         />
                     </div>
 
@@ -123,7 +123,7 @@ const RegisterForm = () => {
                             name="birtday"
                             placeholder='DD/MM/YYYY'
                             validation={validation}
-                            classes="valid"
+                            classNamees="valid"
                         />
                     </div>
                 </div>
@@ -134,14 +134,14 @@ const RegisterForm = () => {
                         name="email"
                         type='email'
                         validation={validation}
-                        classes="valid"
+                        classNamees="valid"
                     />
                 </div>
 
                 <div className='mb-4'>
                     <InputAddress
                         validation={validation}
-                        classes="valid"
+                        classNamees="valid"
                     />
                 </div>
 
