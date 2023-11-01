@@ -25,7 +25,6 @@ footer a {
 footer a:hover {
   color: #fc0000;
 }
-<<<<<<< HEAD
 /* Cart */
 
 img {
@@ -86,16 +85,10 @@ h1 {
   color: #5c7cfa;
 }
 a {
+  text-decoration: none;
+  color: rgb(221, 51, 193) ;
   z-index: -1;
 }
-=======
-
 Link{
   text-decoration: none;
 }
-
-a{
-  text-decoration: none;
-  color: rgb(221, 51, 193) ;
-}
->>>>>>> b2ee99f92da389c7528886e2e6a896d0b105dbea
