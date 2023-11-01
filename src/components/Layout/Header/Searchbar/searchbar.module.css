@@ -1,0 +1,10 @@
+.searchbar{
+    min-width: 500px !important;
+}
+
+@media only screen and (max-width: 769px) {
+    .searchbar{
+        min-width: 0px !important;
+    }
+  }
+
