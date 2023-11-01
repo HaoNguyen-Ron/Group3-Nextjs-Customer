@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import InputGroup from './InputGroup';
@@ -6,6 +6,10 @@ import SelectGroup from './SelectGroup';
 import InputAddress from './InputAddress';
 
 const RegisterForm = () => {
+    const [hover, setHover] = useState(false)
+    const onMouseEnter = () => setHover(true);
+    const onMouseLeave = () => setHover(false);
+
     const validation = useFormik({
         initialValues: {
             fullname: '',
@@ -69,7 +73,7 @@ const RegisterForm = () => {
 
     return (
         <div className='px-5 w-50 mx-auto my-5'>
-            <h1 className='text-primary mb-4'>Đăng ký</h1>
+            <h1 className='mb-4' style={{ color: '#EE2D7A' }}>Đăng ký</h1>
             <div className="d-flex flex-column" >
                 <div className="d-flex justify-content-around row">
                     <div className='col col-lg-8 mb-4'>
@@ -157,7 +161,19 @@ const RegisterForm = () => {
                     />
                 </div>
 
-                <button type='submit' onClick={validation.handleSubmit} className='mx-auto my-3 btn btn-primary btn-lg w-50'>Đăng ký</button>
+                <div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className='mx-auto my-3'>
+                    <button
+                        type='submit'
+                        onClick={validation.handleSubmit}
+                        className='btn-lg border border-0 text-white px-5'
+                        style={
+                            hover
+                                ? { backgroundColor: "#fc629f" }
+                                : { backgroundColor: "#ee2d7a" }} ee2d7a
+                    >
+                        Đăng nhập
+                    </button>
+                </div>
             </div>
         </div>
     );

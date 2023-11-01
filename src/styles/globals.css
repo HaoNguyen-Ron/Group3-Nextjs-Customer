@@ -25,3 +25,12 @@ footer a {
 footer a:hover {
   color: #fc0000;
 }
+
+Link{
+  text-decoration: none;
+}
+
+a{
+  text-decoration: none;
+  color: rgb(221, 51, 193) ;
+}

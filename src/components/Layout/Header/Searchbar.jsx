@@ -13,7 +13,7 @@ export default function SearchBar() {
           className="btn btn-outline-secondary"
           type="button"
           id="button-addon2"
-          style={hover ? { backgroundColor: "#ee2d7a" } : { backgroundColor: "#fe60e8" }}>
+          style={hover ? { backgroundColor: "#ee2d7a" } : { backgroundColor: "#ee4c8d" }}>
 
           <i className="fa-solid fa-magnifying-glass" style={{ color: '#ffffff' }}></i>
         </button>
