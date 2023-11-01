@@ -2118,6 +2118,35 @@ function Cart(props) {
 
       <style jsx>
         {`
+
+          
+
+img {
+  max-width: 100%;
+  vertical-align: middle;
+  border: 0;
+  overflow-clip-margin: content-box;
+  overflow: clip;
+}
+
+
+a {
+  color: linear-gradient(
+    to right,
+    #f6d365 0%,
+    #fda085 51%,
+    #f6d365 100%
+  );
+  text-decoration: none;
+  outline: none;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: transparent;
+}
+
+
           .product-loop .proloop-detail h3 a {
             overflow: hidden;
             -webkit-line-clamp: 1;
