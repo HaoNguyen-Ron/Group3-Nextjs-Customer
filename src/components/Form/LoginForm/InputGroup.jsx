@@ -26,37 +26,15 @@ function InputGroup({
                     value={validation.values[name]}
                     onChange={validation.handleChange}
                     onBlur={validation.handleBlur}
-                    className={` ${isValid ? '' : 'is-invalid'} ${classes.field}`}
+                    className={` ${isValid ? '' : 'is-invalid'}`}
                     color='primary'
                 />
-
-<<<<<<< HEAD
-            <TextField fullWidth
-                label={label}
-                variant="outlined"
-                type={type}
-                placeholder={placeholder}
-                name={name}
-                value={validation.values[name]}
-                onChange={validation.handleChange}
-                onBlur={validation.handleBlur}
-                className={` ${isValid ? '' : 'is-invalid'}`}
-            />
-
-            {!isValid && (
-                <div className="invalid-feedback">
-                    {validation.errors[name]}
-                </div>
-            )}
-        </div>
-=======
                 {!isValid && (
-                    <div className="invalid-feedback" style={{ color: '#ee2d7a' }}>
+                    <div style={{ color: '#ee2d7a' }}>
                         {validation.errors[name]}
                     </div>
                 )}
             </div>
->>>>>>> 0a682a06c39ae207b6caa8e7b8657988e369bf70
     );
 }
 

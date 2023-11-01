@@ -28,7 +28,7 @@ const RegisterForm = () => {
             email: Yup
                 .string()
                 .email('Email không hợp lệ')
-                .required('Vui lòng điền email'),
+                .required('Vui lòng điền email nhé!'),
 
             phoneNumber: Yup
                 .string()
