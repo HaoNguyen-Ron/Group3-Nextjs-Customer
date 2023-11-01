@@ -38,8 +38,8 @@ const LoginForm = () => {
             name="email"
             validation={validation}
             placeholder='Nhập email ở đây'
-          // classes="invalid"
-          // classes={isValidEmail() ? "valid" : "invalid"}
+          // classNamees="invalid"
+          // classNamees={isValidEmail() ? "valid" : "invalid"}
           />
         </div>
 
