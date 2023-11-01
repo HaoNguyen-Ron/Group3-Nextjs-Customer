@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react'
 
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { FormControl, FormHelperText, InputLabel, MenuItem, Select } from '@mui/material';
 
 
 export default function InputAddress({
@@ -21,18 +21,34 @@ export default function InputAddress({
 
     }
     const getCurrentWardList = () => {
-        const currentDistrict = getCurrentDistrictList().find((d) => d.Id === currentDistrictId)
+        const currentDistrict = getCurrentDistrictList().find((district) => district.Id === currentDistrictId)
 
         return currentDistrict && currentDistrict.Wards || []
     }
 
-    // const isValid = useMemo(() => {
-    //     if (validation.errors[name] && validation.touched[name]) {
-    //         return false;
-    //     }
+    const isValidCity = useMemo(() => {
+        if (validation.errors.city && validation.touched.city) {
+            return false;
+        }
 
-    //     return true;
-    // }, [name, validation.errors, validation.touched]);
+        return true;
+    }, [validation.errors, validation.touched]);
+
+    const isValidDistrict = useMemo(() => {
+        if (validation.errors.district && validation.touched.district) {
+            return false;
+        }
+
+        return true;
+    }, [validation.errors, validation.touched]);
+
+    const isValidWard = useMemo(() => {
+        if (validation.errors.ward && validation.touched.ward) {
+            return false;
+        }
+
+        return true;
+    }, [validation.errors, validation.touched]);
 
     const onChangeCity = (e) => {
         validation.setFieldValue('city', e.target.value)
@@ -69,20 +85,30 @@ export default function InputAddress({
                 <FormControl fullWidth>
                     <InputLabel id="demo-simple-select-label">Thành phố / Tỉnh</InputLabel>
                     <Select
+                        defaultValue=''
                         labelId="demo-simple-select-label"
                         id="demo-simple-select outlined-error-helper-text"
                         label='Thành phố / Tỉnh'
                         variant="outlined"
                         name='city'
+                        onBlur={validation.handleBlur}
                         onChange={onChangeCity}
+                        error={
+                            Boolean(validation.touched.city && validation.errors.city)
+                        }
                     >
                         {
                             cityList && cityList.map((city) =>
                                 <MenuItem key={city.Id} value={city.Id}>{city.Name}</MenuItem>
                             )
                         }
-
                     </Select>
+
+                    {!isValidCity && (
+                        <div style={{ color: '#ee2d7a' }}>
+                            {validation.errors.city}
+                        </div>
+                    )}
                 </FormControl>
             </div>
 
@@ -96,13 +122,21 @@ export default function InputAddress({
                         label='Quận / Huyện'
                         variant="outlined"
                         onChange={onChangeDistrict}
+                        error={
+                            Boolean(validation.touched.district && validation.errors.district)
+                        }
                     >
                         {
                             getCurrentDistrictList() && getCurrentDistrictList().map((district) =>
                                 <MenuItem key={district.Id} value={district.Id}>{district.Name}</MenuItem>)
                         }
-
                     </Select>
+
+                        {!isValidDistrict && (
+                            <div style={{ color: '#ee2d7a' }}>
+                                {validation.errors.district}
+                            </div>
+                        )}
                 </FormControl>
             </div>
 
@@ -115,14 +149,21 @@ export default function InputAddress({
                         label='Quận / Huyện'
                         variant="outlined"
                         onChange={onChangeWard}
-
+                        error={
+                            Boolean(validation.touched.ward && validation.errors.ward)
+                        }
                     >
                         {
                             getCurrentWardList().map((ward) =>
                                 <MenuItem key={ward.Id} value={ward.Id}>{ward.Name}</MenuItem>)
                         }
-
                     </Select>
+                    
+                        {!isValidWard && (
+                            <div style={{ color: '#ee2d7a' }}>
+                                {validation.errors.ward}
+                            </div>
+                        )}
                 </FormControl>
             </div>
 

@@ -1,5 +1,5 @@
 import x from "@/components/Cart/Cart.module.css";
-import y from "@/components/Cart/Cartpage.module.css";
+
 function Cart(props) {
   return (
     <div>

@@ -1,7 +1,16 @@
 import Layout from '@/components/Layout';
 import '@/styles/globals.css'
+import { ThemeProvider, createTheme } from '@mui/material';
 import Head from 'next/head';
 import Script from 'next/script';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#EE2D7A'
+    },
+  }
+})
 
 export default function App({ Component, pageProps }) {
   return (
@@ -15,10 +24,12 @@ export default function App({ Component, pageProps }) {
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossOrigin="anonymous"
       />
+      <ThemeProvider theme={theme}>
+        <Layout >
+          <Component {...pageProps} />
+        </Layout>
 
-      <Layout >
-        <Component {...pageProps} />
-      </Layout>
+      </ThemeProvider>
     </>
   );
 }

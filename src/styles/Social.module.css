@@ -1,0 +1,7 @@
+.social {
+    color: brown;
+}
+
+.social:hover {
+    color: black;
+}

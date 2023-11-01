@@ -30,10 +30,11 @@ function InputGroup({
                 onChange={validation.handleChange}
                 onBlur={validation.handleBlur}
                 className={` ${isValid ? '' : 'is-invalid'}` }
+                color='primary'
             />
 
             {!isValid && (
-                <div className="invalid-feedback">
+                 <div style={{ color: '#ee2d7a' }}>
                     {validation.errors[name]}
                 </div>
             )}

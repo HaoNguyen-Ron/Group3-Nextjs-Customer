@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import InputGroup from './InputGroup';
@@ -6,6 +6,10 @@ import SelectGroup from './SelectGroup';
 import InputAddress from './InputAddress';
 
 const RegisterForm = () => {
+    const [hover, setHover] = useState(false)
+    const onMouseEnter = () => setHover(true);
+    const onMouseLeave = () => setHover(false);
+
     const validation = useFormik({
         initialValues: {
             fullname: '',
@@ -24,7 +28,7 @@ const RegisterForm = () => {
             email: Yup
                 .string()
                 .email('Email không hợp lệ')
-                .required('Vui lòng điền email'),
+                .required('Vui lòng điền email nhé!'),
 
             phoneNumber: Yup
                 .string()
@@ -44,6 +48,18 @@ const RegisterForm = () => {
             birtday: Yup
                 .date(),
             // .required('Ngày tháng năm sinh bắt buộc nhập nha!'),
+
+            city: Yup
+                .string()
+                .required('Thành phố / Tỉnh bắt buộc nhập nha!'),
+
+            district: Yup
+                .string()
+                .required('Quận / Huyện bắt buộc nhập nha!'),
+
+            ward: Yup
+                .string()
+                .required('Phường / Xã bắt buộc nhập nha!'),
 
             street: Yup
                 .string()
@@ -69,7 +85,7 @@ const RegisterForm = () => {
 
     return (
         <div className='px-5 w-50 mx-auto my-5'>
-            <h1 className='text-primary mb-4'>Đăng ký</h1>
+            <h1 className='mb-4' style={{ color: '#EE2D7A' }}>Đăng ký</h1>
             <div className="d-flex flex-column" >
                 <div className="d-flex justify-content-around row">
                     <div className='col col-lg-8 mb-4'>
@@ -87,7 +103,6 @@ const RegisterForm = () => {
                             name="gender"
                             validation={validation}
                             onChange={validation.handleChange}
-
                         />
                     </div>
                 </div>
@@ -98,7 +113,7 @@ const RegisterForm = () => {
                             label="Số điện thoại"
                             name="phoneNumber"
                             validation={validation}
-                            classes="valid"
+                            classNamees="valid"
                         />
                     </div>
 
@@ -108,7 +123,7 @@ const RegisterForm = () => {
                             name="birtday"
                             placeholder='DD/MM/YYYY'
                             validation={validation}
-                            classes="valid"
+                            classNamees="valid"
                         />
                     </div>
                 </div>
@@ -119,14 +134,14 @@ const RegisterForm = () => {
                         name="email"
                         type='email'
                         validation={validation}
-                        classes="valid"
+                        classNamees="valid"
                     />
                 </div>
 
                 <div className='mb-4'>
                     <InputAddress
                         validation={validation}
-                        classes="valid"
+                        classNamees="valid"
                     />
                 </div>
 
@@ -157,7 +172,19 @@ const RegisterForm = () => {
                     />
                 </div>
 
-                <button type='submit' onClick={validation.handleSubmit} className='mx-auto my-3 btn btn-primary btn-lg w-50'>Đăng ký</button>
+                <div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className='mx-auto my-3'>
+                    <button
+                        type='submit'
+                        onClick={validation.handleSubmit}
+                        className='btn-lg border border-0 text-white px-5'
+                        style={
+                            hover
+                                ? { backgroundColor: "#fc629f" }
+                                : { backgroundColor: "#ee2d7a" }}
+                    >
+                        Đăng nhập
+                    </button>
+                </div>
             </div>
         </div>
     );
