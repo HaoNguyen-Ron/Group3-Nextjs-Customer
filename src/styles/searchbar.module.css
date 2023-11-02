@@ -2,6 +2,12 @@
     min-width: 500px !important;
 }
 
+@media only screen and (max-width: 1024px) {
+    .searchbar {
+        min-width: 350px !important;
+    }
+}
+
 @media only screen and (max-width: 769px) {
     .searchbar {
         min-width: 400px !important;
