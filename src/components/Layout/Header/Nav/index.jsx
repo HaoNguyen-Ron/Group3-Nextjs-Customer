@@ -281,17 +281,19 @@ function index(props) {
 
 export default index;
 
-const TabLi = ({ title, value, activeTab, submenutab, onClick, titlemenu1, titlemenu2, titlemenu3, titlemenu4 }) => {
+const TabLi = ({ title, value, activeTab,submenutab, onClick,titlemenu1,titlemenu2,titlemenu3,titlemenu4,titlemenu5,titlemenu6 }) => {
   return (
     <>
       <li
         onClick={() => onClick(value)}
-        className={`nav-item nav-home ${value === activeTab ? "active-colors" : ""
-          }`}
+        className={`nav-item nav-home ${
+          value === activeTab ? "active-colors" : ""
+        }`}
       >
         <a
-          className={`nav-link ${value === activeTab ? "active-colors" : ""
-            }`}
+          className={`nav-link ${
+          value === activeTab ? "active-colors" : ""
+        }`}
           aria-current="page"
           href="#"
           id="navbarDropdown"
@@ -299,19 +301,32 @@ const TabLi = ({ title, value, activeTab, submenutab, onClick, titlemenu1, title
         >
           {title}
         </a>
-        {submenutab &&
-          <ul className="nav-sub" aria-labelledby="navbarDropdown">
-            <li>
-              <a className="" href="#">{titlemenu1}</a>
-            </li>
-            <li>
-              <a className="" href="#">{titlemenu2}</a>
-            </li>
+        {submenutab && 
+        <ul className="nav-sub" aria-labelledby="navbarDropdown">
+          {titlemenu1 &&<li>
+            <a className="" href="#">{titlemenu1}</a>
+          </li>}
 
-            <li>
-              <a className="" href="#">{titlemenu3}</a>
-            </li>
-          </ul>
+          {titlemenu2 &&<li>
+            <a className="" href="#">{titlemenu2}</a>
+          </li>}
+
+          {titlemenu3 &&<li>
+            <a className="" href="#">{titlemenu3}</a>
+          </li>}
+
+          {titlemenu4 &&<li>
+            <a className="" href="#">{titlemenu4}</a>
+          </li>}
+
+          {titlemenu5 &&<li>
+            <a className="" href="#">{titlemenu5}</a>
+          </li>}
+
+          {titlemenu6 &&<li>
+            <a className="" href="#">{titlemenu6}</a>
+          </li>}
+        </ul>
         }
       </li>
       <style jsx>
