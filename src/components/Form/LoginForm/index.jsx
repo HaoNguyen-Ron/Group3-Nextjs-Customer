@@ -38,7 +38,7 @@ const LoginForm = () => {
   });
 
   return (
-    <div className='px-5 w-50 mx-auto my-5 '>
+    <div className={`px-5 mx-auto my-5 ${styles.formContainer} `}>
       <h1 className='mb-4' style={{ color: '#EE2D7A' }}>Đăng nhập</h1>
 
       <div className="d-flex flex-column" >
@@ -64,7 +64,7 @@ const LoginForm = () => {
           <button
             type='submit'
             onClick={validation.handleSubmit}
-            className='btn-lg border border-0 text-white px-5'
+            className='btn btn-lg border border-0 text-white px-5'
             style={
               hover
                 ? { backgroundColor: "#fc629f" }
@@ -82,6 +82,7 @@ const LoginForm = () => {
             <em className={styles.form__item} >Bấm vào đây để lập tài khoản nè !</em>
           </Link>
         </div>
+
         <div className="ResetPassLink">
           <p>Quên mật khẩu ?</p>
           <Link href='/register'>

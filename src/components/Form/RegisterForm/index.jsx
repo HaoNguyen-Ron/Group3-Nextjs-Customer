@@ -89,12 +89,12 @@ const RegisterForm = () => {
     });
 
     return (
-        <div className='px-5 w-50 mx-auto my-5'>
+        <div className={`px-5 mx-auto my-5 ${styles.formContainer}`}>
             <h1 className='mb-4' style={{ color: '#EE2D7A' }}>Đăng ký</h1>
 
             <div className="d-flex flex-column" >
                 <div className="d-flex justify-content-around row">
-                    <div className='col col-lg-8 mb-4'>
+                    <div className='col-7 col-lg-8 mb-4'>
                         <InputGroup
                             label="Tên"
                             name="fullname"
@@ -103,7 +103,7 @@ const RegisterForm = () => {
                         />
                     </div>
 
-                    <div className='col col-lg-4'>
+                    <div className='col-5 col-lg-4'>
                         <SelectGroup
                             label="Giới tính"
                             name="gender"
@@ -182,7 +182,7 @@ const RegisterForm = () => {
                     <button
                         type='submit'
                         onClick={validation.handleSubmit}
-                        className='btn-lg border border-0 text-white px-5'
+                        className='btn btn-lg border border-0 text-white px-5'
                         style={
                             hover
                                 ? { backgroundColor: "#fc629f" }
