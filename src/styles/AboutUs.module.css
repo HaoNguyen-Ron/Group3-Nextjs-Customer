@@ -1,0 +1,33 @@
+.about-head {
+    background: #f5f5f5;
+}
+
+.about-head-ul {}
+
+.about-head-li {}
+
+.about-head-a {}
+
+.about-head-span {
+    color: black;
+}
+
+.about-head-span:hover {
+    color: crimson;
+}
+
+.imageAbout {
+    position: relative;
+    max-width: 100%;
+    width: 100%;
+    min-height: 342px;
+    overflow: hidden;
+}
+
+.imageAbout1 {
+    position: relative;
+    min-height: 342px;
+    max-width: 600px;
+    display: flex;
+    margin: 0 auto;
+}
