@@ -1,128 +1,33 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import soci from "@/styles/Social.module.css";
 import Image from "next/image";
 
 function Social(props) {
-  // useEffect(() => {
-  //   const btnBackToTop = document.querySelector(".btnBackToTop");
-  //   const social = document.querySelector(".social");
-  //   const addthisContact = document.querySelector(".addthisContact");
+  const [isActive, setIsActive] = useState(false);
 
-  //   const handleScroll = () => {
-  //     const scrollY = window.scrollY;
-  //     if (scrollY > 50) {
-  //       social && social.classList.add("visible");
-  //       btnBackToTop && btnBackToTop.classList.add("active");
-  //       addthisContact && addthisContact.classList.add("active");
-  //     } else {
-  //       social && social.classList.remove("visible");
-  //       btnBackToTop && btnBackToTop.classList.remove("active");
-  //       addthisContact && addthisContact.classList.remove("active");
-  //     }
-  //   };
+  const handleScroll = () => {
+    const scrollY = window.scrollY;
+    setIsActive(scrollY > 50);
+  };
 
-  //   document.addEventListener("scroll", handleScroll);
-
-  //   btnBackToTop &&
-  //     (btnBackToTop.onclick = () => {
-  //       window.scrollTo({
-  //         top: 0,
-  //         behavior: "smooth",
-  //       });
-  //     });
-
-  // useEffect(() => {
-  //   const btnBackToTop = document.querySelector(".btnBackToTop");
-  //   const social = document.querySelector(".social");
-  //   const addthisContact = document.querySelector(".addthisContact");
-
-  //   const handleScroll = () => {
-  //     setTimeout(() => {
-  //       const scrollY = window.scrollY;
-  //       console.log("Scroll Y:", scrollY);
-
-  //       // Kiểm tra xem các phần tử đã được tìm thấy chưa trước khi thao tác
-  //       if (social && btnBackToTop && addthisContact) {
-  //         if (scrollY > 50) {
-  //           social.classList.add("visible");
-  //           btnBackToTop.classList.add("active");
-  //           addthisContact.classList.add("active");
-  //         } else {
-  //           social.classList.remove("visible");
-  //           btnBackToTop.classList.remove("active");
-  //           addthisContact.classList.remove("active");
-  //         }
-  //       }
-  //     }, 0);
-  //   };
-
-  //   const handleBtnBackToTopClick = () => {
-  //     window.scrollTo({
-  //       top: 0,
-  //       behavior: "smooth",
-  //     });
-  //   };
-
-  //   if (btnBackToTop) {
-  //     btnBackToTop.addEventListener("click", handleBtnBackToTopClick);
-  //   }
-
-  //   document.addEventListener("scroll", handleScroll);
-
-  //   return () => {
-  //     document.removeEventListener("scroll", handleScroll);
-  //     if (btnBackToTop) {
-  //       btnBackToTop.removeEventListener("click", handleBtnBackToTopClick);
-  //     }
-  //   };
-  // }, []);
+  const handleBtnBackToTopClick = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+    setIsActive(false);
+  };
 
   useEffect(() => {
-    const btnBackToTop = document.querySelector(".btnBackToTop");
-    const social = document.querySelector(".social");
-    const addthisContact = document.querySelector(".addthisContact");
-
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      console.log("Scroll Y:", scrollY);
-      // Kiểm tra xem các phần tử đã được tìm thấy chưa trước khi thao tác
-      if (social && btnBackToTop && addthisContact) {
-        if (scrollY > 50) {
-          social.classList.add("visible", "active");
-          btnBackToTop.classList.add("active");
-          addthisContact.classList.add("active");
-        } else {
-          social.classList.remove("visible", "active");
-          btnBackToTop.classList.remove("active");
-          addthisContact.classList.remove("active");
-        }
-      }
-    };
-
-    const handleBtnBackToTopClick = () => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    };
-
-    if (btnBackToTop) {
-      btnBackToTop.addEventListener("click", handleBtnBackToTopClick);
-    }
-
     document.addEventListener("scroll", handleScroll);
 
     return () => {
       document.removeEventListener("scroll", handleScroll);
-      if (btnBackToTop) {
-        btnBackToTop.removeEventListener("click", handleBtnBackToTopClick);
-      }
     };
   }, []);
-
   return (
     <>
-      <div className={soci["social"]}>
+      <div className={`${soci.social} ${isActive ? soci.visible : ""}`}>
         <a
           href="https://www.facebook.com"
           className={soci["social_a"]}
@@ -131,59 +36,75 @@ function Social(props) {
           <Image
             src="/assets/images/fb.png"
             alt="facebook"
-            width={50}
-            height={50}
+            width={35}
+            height={35}
           />
           Fanpage
         </a>
 
-        <a href="#" className={soci["social_a"]} target="_blank">
+        <a
+          href="https://www.messenger.com/"
+          className={soci["social_a"]}
+          target="_blank"
+        >
           <Image
             src="/assets/images/mess.png"
             alt="Messenger"
-            width={50}
-            height={50}
+            width={35}
+            height={35}
           />
           Messenger
         </a>
 
-        <a href="#" className={soci["social_a"]} target="_blank">
+        <a
+          href="https://www.instagram.com/"
+          className={soci["social_a"]}
+          target="_blank"
+        >
           <Image
             src="/assets/images/inta.png"
             alt="Instagram"
-            width={50}
-            height={50}
+            width={35}
+            height={35}
           />
           Instagram
         </a>
 
-        <a href="#" className={soci["social_a"]} target="_blank">
+        <a
+          href="https://id.zalo.me/"
+          className={soci["social_a"]}
+          target="_blank"
+        >
           <Image
             src="/assets/images/zalo.png"
             alt="Zalo"
-            width={50}
-            height={50}
+            width={35}
+            height={35}
           />
           Zalo
         </a>
 
-        <a href="#" className={soci["social_a"]} target="_blank">
+        <a
+          href="https://web.telegram.org/"
+          className={soci["social_a"]}
+          target="_blank"
+        >
           <Image
             src="/assets/images/telegram.png"
             alt="Telegram"
-            width={50}
-            height={50}
+            width={35}
+            height={35}
           />
           Telegram
         </a>
       </div>
 
-      <div className={soci["addthisContact"]}>
+      <div className={`${soci.addthisContact} ${isActive ? soci.active : ""}`}>
         <ul className={soci["addThis_ul"]}>
           <li className={soci["addThis_li"]}>
             <a
               className={soci["addThis_a"]}
-              href="#a"
+              href="javascript:;"
               rel="nofollow"
               aria-label="phone"
             >
@@ -197,7 +118,7 @@ function Social(props) {
             <a
               className={soci["addThis_a"]}
               data-toggle="modal"
-              href="#q"
+              href="javascript:;"
               aria-label="email"
             >
               <span className={soci["addThis_title"]}>Liên hệ qua mail</span>
@@ -207,8 +128,14 @@ function Social(props) {
         </ul>
       </div>
 
-      <div className={soci["btnBackToTop"]}>
-        <i class="fa-solid fa-arrow-up" style={{ color: "#fff" }}></i>
+      <div
+        className={`${soci.btnBackToTop} ${isActive ? soci.active : ""}`}
+        onClick={handleBtnBackToTopClick}
+      >
+        <i
+          className="fa-solid fa-arrow-up"
+          style={{ color: "#fff", marginTop: "12px" }}
+        ></i>
       </div>
     </>
   );

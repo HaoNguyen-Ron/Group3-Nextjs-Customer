@@ -10,24 +10,36 @@ function Services(props) {
           info={{
             name: "Sản phẩm chính hãng",
             desc: "Nhập khẩu trực tiếp từ Nhật Bản",
-            link_url: "Xem chi tiết",
           }}
+          link_url={
+            <a className={dv["txt-link"]} href="/aboutUs">
+              Xem chi tiết
+            </a>
+          }
         />
         <ServicesItem
           icon={<i className="fa-regular fa-credit-card"></i>}
           info={{
             name: "Thanh toán đơn giản",
             desc: "Chuyển khoản hoặc COD",
-            link_url: "Xem chi tiết",
           }}
+          link_url={
+            <a className={dv["txt-link"]} href="javascript:;">
+              Xem chi tiết
+            </a>
+          }
         />
         <ServicesItem
           icon={<i className="fa-solid fa-rocket"></i>}
           info={{
             name: "Giao hàng nhanh chóng",
             desc: "Miễn phí với đơn hàng>1000K",
-            link_url: "Xem chi tiết",
           }}
+          link_url={
+            <a className={dv["txt-link"]} href="javascript:;">
+              Xem chi tiết
+            </a>
+          }
         />
       </div>
     </div>
@@ -36,8 +48,8 @@ function Services(props) {
 
 export default Services;
 
-const ServicesItem = ({ info, icon, onClick }) => {
-  const { name, desc, link_url } = info;
+const ServicesItem = ({ info, icon, link_url, onClick }) => {
+  const { name, desc } = info;
 
   return (
     <>
@@ -46,8 +58,8 @@ const ServicesItem = ({ info, icon, onClick }) => {
         <div className="services-name">
           <h4>{name}</h4>
           <p className="txt-desc">{desc}</p>
-          <a className={dv["txt-link"]}>{link_url}</a>
         </div>
+        <div>{link_url}</div>
       </div>
     </>
   );

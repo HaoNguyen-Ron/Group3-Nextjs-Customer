@@ -1,0 +1,10 @@
+.form {
+    position: relative;
+}
+.form__item{
+    margin-bottom: 3px;
+    color: var(--main-color);
+}
+.form__item:hover{
+    color: var(--hover-color);
+}

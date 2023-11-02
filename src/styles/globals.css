@@ -1,5 +1,6 @@
-:root{
+:root {
   --main-color: #EE2D7A;
+  --hover-color: #f8b2ce;
 }
 
 footer {
@@ -12,24 +13,28 @@ footer h3 {
   font-size: 20px;
   padding-bottom: 10px;
 }
-footer li{
+
+footer li {
   /* list-style: none; */
   padding: 5px 0;
 }
 
-footer li:hover{
+footer li:hover {
   /* list-style: none; */
   padding: 5px 0;
   color: #fc0000;
 }
+
 footer a {
   color: #fff;
   text-decoration: none
 }
+
 footer a:hover {
   color: #fc0000;
 }
 
 a {
   text-decoration: none;
+  color: black;
 }

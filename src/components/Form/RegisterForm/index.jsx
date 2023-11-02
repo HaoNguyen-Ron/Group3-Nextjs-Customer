@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
+import Link from 'next/link';
+
 import InputGroup from './InputGroup';
 import SelectGroup from './SelectGroup';
 import InputAddress from './InputAddress';
+
+import styles from '@/styles/form.module.css'
+
 
 const RegisterForm = () => {
     const [hover, setHover] = useState(false)
@@ -86,6 +91,7 @@ const RegisterForm = () => {
     return (
         <div className='px-5 w-50 mx-auto my-5'>
             <h1 className='mb-4' style={{ color: '#EE2D7A' }}>Đăng ký</h1>
+
             <div className="d-flex flex-column" >
                 <div className="d-flex justify-content-around row">
                     <div className='col col-lg-8 mb-4'>
@@ -185,6 +191,13 @@ const RegisterForm = () => {
                         Đăng nhập
                     </button>
                 </div>
+            </div>
+
+            <div className='mt-3'>
+                <p>Bạn đã có mật khẩu ?</p>
+                <Link href='/login'>
+                    <em className={styles.form__item} >Bấm vào đây để đăng nhập nào !</em>
+                </Link>
             </div>
         </div>
     );
