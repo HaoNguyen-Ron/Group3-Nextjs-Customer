@@ -9,6 +9,6 @@
     }
 
     .media_tablet{
-        display: block;
+        display: inline-block;
     }
   }

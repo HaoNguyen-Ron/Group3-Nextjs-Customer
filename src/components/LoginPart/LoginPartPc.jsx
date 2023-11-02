@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import React from 'react'
-import styles from './loginPart.module.css'
+import styles from '@/styles/loginPart.module.css'
 
-export default function LoginPart() {
+export default function LoginPartPc() {
     return (
         <>
             <div className={styles.media_pc}>
@@ -17,14 +17,6 @@ export default function LoginPart() {
                             <h5 >Login</h5>
                         </Link>
                     </div>
-                </div>
-            </div>
-
-            <div className={styles.media_tablet}>
-                <div className='d-flex' >
-                    <Link href='/login'>
-                        <i className="fa-regular fa-user fs-4 my-auto me-2" style={{ color: 'var(--main-color)' }}></i>
-                    </Link>
                 </div>
             </div>
         </>
