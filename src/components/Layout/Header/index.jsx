@@ -23,7 +23,7 @@ export default function Header() {
                             <LoginPartTablet />
                         </div>
 
-                        <div className='col-xs-12 col-sm-12 col-md-8 col-lg-8 d-flex justify-content-center align-items-center'>
+                        <div className='col-xs-12 col-sm-12 col-md-7 col-lg-8 d-flex justify-content-center align-items-center'>
                             <SearchBar />
                         </div>
 

@@ -8,14 +8,21 @@
     }
 }
 
-@media only screen and (max-width: 769px) {
+@media only screen and (max-width: 768px) {
     .searchbar {
-        min-width: 400px !important;
+        min-width: 300px !important;
     }
 }
 
 @media only screen and (max-width: 426px) {
     .searchbar {
         min-width: 210px !important;
+    }
+}
+
+@media only screen and (max-width: 363px) {
+    .searchbar_btn {
+        display: block;
+        min-width: 300px !important;
     }
 }

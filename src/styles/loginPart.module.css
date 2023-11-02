@@ -3,13 +3,13 @@
 }
 
 
-@media only screen and (max-width: 769px) {
+@media only screen and (max-width: 767px) {
     .media_pc {
         display: none;
     }
 
     .media_tablet {
-        display: block;
+        display: inline-block;
     }
 }
 
