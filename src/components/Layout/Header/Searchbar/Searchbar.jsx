@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import styles from './searchbar.module.css'
+import styles from '@/styles/searchbar.module.css'
 
 export default function SearchBar() {
   const [hover, setHover] = useState(false)
