@@ -8,3 +8,7 @@
 .form__item:hover{
     color: var(--hover-color);
 }
+
+.formContainer{
+    max-width: 700px;
+}

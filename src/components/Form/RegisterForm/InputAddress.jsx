@@ -80,8 +80,8 @@ export default function InputAddress({
 
 
     return (
-        <div className="mb-3 d-flex row" >
-            <div className="col">
+        <div className="mb-3 g-2 d-flex row" >
+            <div className="col-12">
                 <FormControl fullWidth>
                     <InputLabel id="demo-simple-select-label">Thành phố / Tỉnh</InputLabel>
                     <Select
@@ -112,7 +112,7 @@ export default function InputAddress({
                 </FormControl>
             </div>
 
-            <div className="col">
+            <div className="col-6">
                 <FormControl fullWidth>
                     <InputLabel id="demo-simple-select-label">Quận / Huyện</InputLabel>
                     <Select
@@ -140,7 +140,7 @@ export default function InputAddress({
                 </FormControl>
             </div>
 
-            <div className="col">
+            <div className="col-6">
                 <FormControl fullWidth>
                     <InputLabel id="demo-simple-select-label">Phường / Xã</InputLabel>
                     <Select
