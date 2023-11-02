@@ -37,7 +37,7 @@ export default function LoginPartTablet() {
           horizontal: 'left',
         }}
         transformOrigin={{
-          vertical: 'left',
+          vertical: 'top',
           horizontal: 'center',
         }}
       >
