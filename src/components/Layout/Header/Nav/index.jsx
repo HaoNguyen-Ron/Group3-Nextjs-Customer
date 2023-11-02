@@ -2,9 +2,13 @@ import React, { useState } from "react";
 
 const TAB = {
   Home: 1,
-  APPROACH: 2,
-  CULTURE: 3,
-  METHOD: 4,
+  Introduce: 2,
+  Instruct: 3,
+  Product: 4,
+  Review: 5,
+  Endow: 6,
+  Connect: 7,
+  Contact: 8,
 };
 
 function index(props) {
@@ -18,11 +22,11 @@ function index(props) {
     <>
       <nav className="navbar navbar-expand-lg mx-5">
         <div className="container-fluid">
-          <a className="navbar-brand d-lg-none" href="#">
-            Home
+          <a className="navbar-brand d-lg-none active-colors" href="#">
+            Trang Chủ
           </a>
-          <button
-            className="navbar-toggler"
+          <button 
+            className="navbar-toggler active-colors"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
@@ -30,22 +34,42 @@ function index(props) {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span className="navbar-toggler-icon" />
+            <span className="fa-solid fa-bars" />
           </button>
           <div
-            className="collapse navbar-collapse nav_bar"
+            className="collapse navbar-collapse"
             id="navbarSupportedContent"
           >
             <ul className="navigation-menu navbar-nav me-auto mb-2 mb-lg-0">
               <TabLi
-                title="Home"
+                title="Trang Chủ"
                 value={TAB.Home}
                 activeTab={activeTab}
                 onClick={onClickTab}
+                classDNone="d-none d-lg-block"
               />
+
               <TabLi
-                title="APPROACH"
-                value={TAB.APPROACH}
+                title="Giới Thiệu"
+                value={TAB.Introduce}
+                activeTab={activeTab}
+                onClick={onClickTab}
+              />
+
+              <TabLi
+                title="Hướng Dẫn"
+                value={TAB.Instruct}
+                activeTab={activeTab}
+                onClick={onClickTab}
+                submenutab="0"
+                titlemenu1="abc"
+                titlemenu2="assc"
+                titlemenu3="ac"
+              />     
+
+              <TabLi
+                title="Sản Phẩm"
+                value={TAB.Product}
                 activeTab={activeTab}
                 onClick={onClickTab}
                 submenutab="0"
@@ -53,11 +77,41 @@ function index(props) {
                 titlemenu2="assc"
                 titlemenu3="ac"
               />
+
               <TabLi
-                title="CULTURE"
-                value={TAB.CULTURE}
+                title="Review"
+                value={TAB.Review}
                 activeTab={activeTab}
                 onClick={onClickTab}
+              />
+
+              <TabLi
+                title="Ưu Đãi"
+                value={TAB.Endow}
+                activeTab={activeTab}
+                onClick={onClickTab}
+              />
+
+              <TabLi
+                title="Kết Nối"
+                value={TAB.Connect}
+                activeTab={activeTab}
+                onClick={onClickTab}
+                submenutab="0"
+                titlemenu1="abc"
+                titlemenu2="assc"
+                titlemenu3="ac"
+              />
+
+              <TabLi
+                title="Liên Hệ"
+                value={TAB.Contact}
+                activeTab={activeTab}
+                onClick={onClickTab}
+                submenutab="0"
+                titlemenu1="abc"
+                titlemenu2="assc"
+                titlemenu3="ac"
               />
             </ul>
           </div>
@@ -104,6 +158,7 @@ function index(props) {
           }
           .active-colors {
             color: rgb(221, 51, 193) !important;
+            font-weight: bold;
           }
           .navigation-menu > li {
             float: left;
@@ -281,12 +336,12 @@ function index(props) {
 
 export default index;
 
-const TabLi = ({ title, value, activeTab,submenutab, onClick,titlemenu1,titlemenu2,titlemenu3,titlemenu4,titlemenu5,titlemenu6 }) => {
+const TabLi = ({classDNone, title, value, activeTab,submenutab, onClick,titlemenu1,titlemenu2,titlemenu3,titlemenu4,titlemenu5,titlemenu6 }) => {
   return (
     <>
       <li
         onClick={() => onClick(value)}
-        className={`nav-item nav-home ${
+        className={`${classDNone} nav-item ${
           value === activeTab ? "active-colors" : ""
         }`}
       >
@@ -369,6 +424,7 @@ const TabLi = ({ title, value, activeTab,submenutab, onClick,titlemenu1,titlemen
           }
           .active-colors {
             color: rgb(221, 51, 193) !important;
+            font-weight: bold;
           }
           .navigation-menu > li {
             float: left;
