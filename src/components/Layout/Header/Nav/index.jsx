@@ -22,9 +22,6 @@ function index(props) {
     <>
       <nav className="navbar navbar-expand-lg mx-5">
         <div className="container-fluid">
-          <a className="navbar-brand d-lg-none active-colors" href="#">
-            Trang Chủ
-          </a>
           <button 
             className="navbar-toggler active-colors"
             type="button"
@@ -46,7 +43,6 @@ function index(props) {
                 value={TAB.Home}
                 activeTab={activeTab}
                 onClick={onClickTab}
-                classDNone="d-none d-lg-block"
               />
 
               <TabLi
@@ -358,7 +354,8 @@ const TabLi = ({classDNone, title, value, activeTab,submenutab, onClick,titlemen
         </a>
         {submenutab && 
         <ul className="nav-sub" aria-labelledby="navbarDropdown">
-          {titlemenu1 &&<li>
+          {titlemenu1 &&
+          <li>
             <a className="" href="#">{titlemenu1}</a>
           </li>}
 
