@@ -1,5 +1,6 @@
 :root{
   --main-color: #EE2D7A;
+  --hover-color: #f8b2ce;
 }
 
 footer {
@@ -33,3 +34,7 @@ footer a:hover {
 a {
   text-decoration: none;
 }
+
+/* p{
+  margin-bottom: 0px !important;
+} */

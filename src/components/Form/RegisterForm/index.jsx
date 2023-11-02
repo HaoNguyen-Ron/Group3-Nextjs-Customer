@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
+import Link from 'next/link';
+
 import InputGroup from './InputGroup';
 import SelectGroup from './SelectGroup';
 import InputAddress from './InputAddress';
-import Link from 'next/link';
+
+import styles from '@/styles/form.module.css'
+
 
 const RegisterForm = () => {
     const [hover, setHover] = useState(false)
@@ -191,7 +195,9 @@ const RegisterForm = () => {
 
             <div className='mt-3'>
                 <p>Bạn đã có mật khẩu ?</p>
-                <Link href='/login'><em style={{ color: "var(--main-color)" }}>Bấm vào đây để đăng nhập nào !</em></Link>
+                <Link href='/login'>
+                    <em className={styles.form__item} >Bấm vào đây để đăng nhập nào !</em>
+                </Link>
             </div>
         </div>
     );

@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
-import InputGroup from './InputGroup';
 import Link from 'next/link';
+
+import InputGroup from './InputGroup';
+
+import styles from '@/styles/form.module.css'
+
 
 
 const LoginForm = () => {
@@ -74,11 +78,15 @@ const LoginForm = () => {
       <div className='d-flex justify-content-between mt-3'>
         <div className="registerLink">
           <p>Bạn là người lần đầu đến ?</p>
-          <Link href='/register'><em style={{ color: "var(--main-color)" }}>Bấm vào đây để lập tài khoản nè !</em></Link>
+          <Link href='/register'>
+            <em className={styles.form__item} >Bấm vào đây để lập tài khoản nè !</em>
+          </Link>
         </div>
         <div className="ResetPassLink">
           <p>Quên mật khẩu ?</p>
-          <Link href='/register'><em style={{ color: "var(--main-color)" }}>Tìm lại mật khẩu</em></Link>
+          <Link href='/register'>
+            <em className={styles.form__item} >Tìm lại mật khẩu</em>
+          </Link>
         </div>
       </div>
     </div>
