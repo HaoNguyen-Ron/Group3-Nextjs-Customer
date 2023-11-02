@@ -5,8 +5,8 @@ import Nav from './Nav'
 
 import styles from '@/styles/header.module.css'
 
-import LoginPartTablet from '@/components/LoginPart/LoginPartTablet'
 import LoginPartPc from '@/components/LoginPart/LoginPartPc'
+import LoginPartTablet from '@/components/LoginPart/LoginPartTablet'
 
 
 export default function Header() {

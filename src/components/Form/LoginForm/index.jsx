@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import InputGroup from './InputGroup';
+import Link from 'next/link';
 
 
 const LoginForm = () => {
@@ -35,6 +36,7 @@ const LoginForm = () => {
   return (
     <div className='px-5 w-50 mx-auto my-5 '>
       <h1 className='mb-4' style={{ color: '#EE2D7A' }}>Đăng nhập</h1>
+
       <div className="d-flex flex-column" >
         <div className='mb-4'>
           <InputGroup
@@ -66,6 +68,17 @@ const LoginForm = () => {
           >
             Đăng nhập
           </button>
+        </div>
+      </div>
+
+      <div className='d-flex justify-content-between mt-3'>
+        <div className="registerLink">
+          <p>Bạn là người lần đầu đến ?</p>
+          <Link href='/register'><em style={{ color: "var(--main-color)" }}>Bấm vào đây để lập tài khoản nè !</em></Link>
+        </div>
+        <div className="ResetPassLink">
+          <p>Quên mật khẩu ?</p>
+          <Link href='/register'><em style={{ color: "var(--main-color)" }}>Tìm lại mật khẩu</em></Link>
         </div>
       </div>
     </div>
