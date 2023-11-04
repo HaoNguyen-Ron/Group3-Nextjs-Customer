@@ -1,6 +1,7 @@
 :root {
   --main-color: #EE2D7A;
   --hover-color: #f8b2ce;
+  --second-color: linear-gradient( to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100% );
 }
 
 footer {
@@ -36,5 +37,9 @@ footer a:hover {
 
 a {
   text-decoration: none;
-  color: black;
+  color: var()
+}
+
+Link{
+  color: var(--main-color);
 }
