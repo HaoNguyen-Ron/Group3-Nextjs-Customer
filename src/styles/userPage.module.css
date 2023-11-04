@@ -1,0 +1,35 @@
+.user__title{
+    color: var(--main-color);
+}
+.user__item{
+    color: var(--main-color);
+    min-width: 200px;
+}
+
+.user__item:hover{
+    color: var(--hover-color);
+}
+
+.user__item:focus{
+    background-color: #d3d3d3;
+}
+
+.user__nav__item::before{
+    content: '- ';
+
+}
+
+.user__description{
+    min-width: 100px;
+}
+
+.user__btn{
+    min-width: 200px;
+    background-color: var(--main-color);
+    color: white;
+}
+
+.user__btn:hover{
+    background-color: var(--hover-color);
+}
+
