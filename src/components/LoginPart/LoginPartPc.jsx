@@ -11,14 +11,14 @@ export default function LoginPartPc() {
                     <div className='d-flex flex-column ms-2'>
                         <div className={styles.loginPart}>
                             <Link href='/register'>
-                                <p className={styles.loginPart__item}> Register</p>
+                                <p className={styles.loginPart__item}>Đăng kí</p>
                             </Link>
                         </div>
                         
                         <div className={styles.loginPart}>
                             <div>
                                 <Link href='/login'>
-                                    <h5 className={styles.loginPart__item}>Login</h5>
+                                    <h5 className={styles.loginPart__item}>Đăng nhập</h5>
                                 </Link>
                             </div>
                         </div>

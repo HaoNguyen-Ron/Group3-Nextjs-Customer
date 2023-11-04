@@ -41,8 +41,8 @@ export default function LoginPartTablet() {
           horizontal: 'center',
         }}
       >
-        <MenuItem onClick={handleClose}>Login</MenuItem>
-        <MenuItem onClick={handleClose}>Register</MenuItem>
+        <MenuItem onClick={handleClose}>Đăng kí</MenuItem>
+        <MenuItem onClick={handleClose}>Đăng nhập</MenuItem>
       </Menu>
     </div>
   );
