@@ -27,7 +27,7 @@ function Card(props) {
                                         <img
                                           className="img-loop lazyloaded"
                                           src="//product.hstatic.net/1000160337/product/pop_up_parade_cyberpunk_edgerunners_rebecca__6__2a75d440d7ab4e39a5138dbae0e37104_medium.jpg"
-                                          alt=" POP UP PARADE Cyberpunk: Edgerunners Rebecca "
+                                          alt=""
                                         />
                                       </picture>
                                     </div>
@@ -35,22 +35,18 @@ function Card(props) {
                                       <picture>
                                         <img
                                           className="img-loop lazyloaded"
-                                          alt=" POP UP PARADE Cyberpunk: Edgerunners Rebecca "
+                                          alt=""
                                           src="//product.hstatic.net/1000160337/product/pop_up_parade_cyberpunk_edgerunners_rebecca__7__65ec904c7d16429f9cb86f8a153892cf_medium.jpg"
                                         />
                                       </picture>
                                     </div>
                                   </div>
                                 </div>
-                                <a
-                                  href="/products/pop-up-parade-cyberpunk-edgerunners-rebecca"
-                                  className="proloop-link   quickview-product "
-                                />
                               </div>
                               <div className="proloop-detail">
                                 <h3>
                                   <a
-                                    href="/products/pop-up-parade-cyberpunk-edgerunners-rebecca"
+                                    href=""
                                     className=" quickview-product "
                                   >
                                     POP UP PARADE Cyberpunk: Edgerunners Rebecca
@@ -66,9 +62,7 @@ function Card(props) {
                                     <button
                                       type="submit"
                                       className="button btn-proloop-cart add-to-cart "
-                                      onclick="HRT.All.addCartProdItem('1114785212')"
-                                      title="Thêm vào giỏ"
-                                      fdprocessedid="r1vab"
+                                     
                                     >
                                       <span className="btnico">
                                         <svg
@@ -87,9 +81,7 @@ function Card(props) {
                                     <button
                                       type="submit"
                                       className="button btn-proloop-checkout"
-                                      onclick="HRT.All.buyNowProdItem('1114785212')"
-                                      title="Mua ngay"
-                                      fdprocessedid="fknfa"
+                                    
                                     >
                                       <span className="btnico">
                                         <svg

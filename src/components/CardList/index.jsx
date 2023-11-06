@@ -1,10 +1,14 @@
 import x from "@/components/CardList/Card.module.css";
 import Card from "./Card";
-import Banners from "../Banner";
+import Banner from "../Banner/Banner";
+
 function CardList(props) {
   return (
     <div>
-      <Banners/>
+   <div className="container d-flex justify-content-space-between">
+         <Banner/>
+         <Banner/>
+      </div>
 
       <div className={x["section"]}>
         <div className={x["section-heading"]}>
@@ -71,9 +75,9 @@ function CardList(props) {
       <div className={x["section"]}>
         <div className={x["section-heading"]}>
           <h2 className={x["hTitle"]}>
-            <a href="collections/scale-figure">Sản Phẩm Order</a>
+            <a href="collections/scale-figure">Sản Phẩm Có Sẵn</a>
           </h2>
-          <p>Những sản phẩm đã hoặc sắp phát hành & cần đặt trước</p>
+          <p>Sản phẩm đang có sẵn, bạn có thể mua ngay</p>
         </div>
       </div>
 
@@ -142,12 +146,13 @@ function CardList(props) {
       <div className={x["section"]}>
         <div className={x["section-heading"]}>
           <h2 className={x["hTitle"]}>
-            <a href="">Sản Phẩm Order</a>
+            <a href="">Sản Phẩm Có Sẵn</a>
           </h2>
-          <p>Những sản phẩm đã hoặc sắp phát hành & cần đặt trước</p>
+          <p>Sản phẩm đang có sẵn, bạn có thể mua ngay</p>
         </div>
       </div>
-
+      
+    
       <style jsx>
         {`
 img {

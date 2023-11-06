@@ -53,19 +53,19 @@ export default function InputAddress({
     const onChangeCity = (e) => {
         validation.setFieldValue('city', e.target.value)
         setCurrentCityId(e.target.value)
-    }
+    };
 
     const onChangeDistrict = (e) => {
         validation.setFieldValue('district', e.target.value)
         setCurrentDistrictId(e.target.value)
 
-    }
+    };
 
     const onChangeWard = (e) => {
         validation.setFieldValue('ward', e.target.value)
         setCurrentWardId(e.target.value)
 
-    }
+    };
 
 
     useEffect(() => {
@@ -76,12 +76,12 @@ export default function InputAddress({
             .then(data => {
                 setCityList(data)
             })
-    }, [])
+    }, []);
 
 
     return (
-        <div className="mb-3 d-flex row" >
-            <div className="col">
+        <div className="mb-3 g-5 d-flex row" >
+            <div className="col-12 col-md-12">
                 <FormControl fullWidth>
                     <InputLabel id="demo-simple-select-label">Thành phố / Tỉnh</InputLabel>
                     <Select
@@ -112,7 +112,7 @@ export default function InputAddress({
                 </FormControl>
             </div>
 
-            <div className="col">
+            <div className="col-12 col-md-6">
                 <FormControl fullWidth>
                     <InputLabel id="demo-simple-select-label">Quận / Huyện</InputLabel>
                     <Select
@@ -140,7 +140,7 @@ export default function InputAddress({
                 </FormControl>
             </div>
 
-            <div className="col">
+            <div className="col-12 col-md-6">
                 <FormControl fullWidth>
                     <InputLabel id="demo-simple-select-label">Phường / Xã</InputLabel>
                     <Select

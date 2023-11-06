@@ -1,0 +1,10 @@
+.box_mes {
+
+    min-width: 175px;
+    min-height: 50px;
+    margin: 10px 0px;
+}
+.title_chat {
+    color: red;
+    font-weight: 500;  
+}

@@ -17,17 +17,17 @@
 }
 
 .imageAbout {
-    position: relative;
-    max-width: 100%;
-    width: 100%;
+    position  : relative;
+    min-width : 100%;
+    width     : 100%;
     min-height: 342px;
-    overflow: hidden;
+    overflow  : hidden;
 }
 
 .imageAbout1 {
-    position: relative;
+    position  : relative;
     min-height: 342px;
-    max-width: 600px;
-    display: flex;
-    margin: 0 auto;
+    min-width : 400px;
+    display   : flex;
+    margin    : 0 auto;
 }

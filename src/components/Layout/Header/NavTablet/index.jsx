@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 const TAB = {
   Home: 1,
   Introduce: 2,
@@ -10,7 +11,7 @@ const TAB = {
   Contact: 8,
 };
 
-function index(props) {
+function NavTablet(props) {
   const [activeTab, setActiveTab] = useState(TAB.Home);
 
   const onClickTab = (value) => {
@@ -19,24 +20,34 @@ function index(props) {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg mx-5">
-        <div className="container-fluid">
-          <button 
-            className="navbar-toggler active-colors"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="fa-solid fa-bars" />
-          </button>
-          <div
-            className="collapse navbar-collapse"
-            id="navbarSupportedContent"
-          >
-            <ul className="navigation-menu navbar-nav me-auto mb-2 mb-lg-0">
+  <a
+    className="btn active-colors"
+    data-bs-toggle="offcanvas"
+    href="#offcanvasExample"
+    role="button"
+    aria-controls="offcanvasExample"
+  >
+    <span className="active-colors fa-solid fa-bars" />
+  </a>
+  <div
+    className="offcanvas offcanvas-start"
+    tabIndex={-1}
+    id="offcanvasExample"
+    aria-labelledby="offcanvasExampleLabel"
+  >
+    <div className="offcanvas-header">
+      <h5 className=" ffcanvas-title" id="offcanvasExampleLabel">
+         
+      </h5>
+      <button
+        type="button"
+        className="btn-close text-reset"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      />
+    </div>
+    <div className="offcanvas-body">
+    <ul className="navigation-menu navbar-nav me-auto mb-2 mb-lg-0">
               <TabLi
                 title="Trang Chủ"
                 value={TAB.Home}
@@ -109,12 +120,14 @@ function index(props) {
                 titlemenu3="ac"
               />
             </ul>
-          </div>
-        </div>
-      </nav>
-      
-      <style jsx>
+    </div>
+  </div>
+  <style jsx>
         {`
+
+        .offcanvas, .offcanvas-lg, .offcanvas-md, .offcanvas-sm, .offcanvas-xl, .offcanvas-xxl{
+          --bs-offcanvas-width: 300px;
+        }
           /* Navbar */
           nav {
             display: flex;
@@ -127,8 +140,7 @@ function index(props) {
               list-style: none;
             }
           }
-
-          
+    
           .navigation-menu {
             vertical-align: top;
             background: #0000;
@@ -325,11 +337,12 @@ function index(props) {
           }
         `}
       </style>
-    </>
+</>
+
   );
 }
 
-export default index;
+export default NavTablet;
 
 const TabLi = ({classDNone, title, value, activeTab,submenutab, onClick,titlemenu1,titlemenu2,titlemenu3,titlemenu4,titlemenu5,titlemenu6 }) => {
   return (
@@ -382,6 +395,10 @@ const TabLi = ({classDNone, title, value, activeTab,submenutab, onClick,titlemen
       </li>
       <style jsx>
         {`
+
+        .offcanvas, .offcanvas-lg, .offcanvas-md, .offcanvas-sm, .offcanvas-xl, .offcanvas-xxl{
+          --bs-offcanvas-width: 300px;
+        }
           /* Navbar */
           nav {
             display: flex;
@@ -394,8 +411,7 @@ const TabLi = ({classDNone, title, value, activeTab,submenutab, onClick,titlemen
               list-style: none;
             }
           }
-
-          
+    
           .navigation-menu {
             vertical-align: top;
             background: #0000;
