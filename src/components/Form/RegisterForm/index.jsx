@@ -8,6 +8,7 @@ import SelectGroup from './SelectGroup';
 import InputAddress from './InputAddress';
 
 import styles from '@/styles/form.module.css'
+import { axiosClient } from '@/libraries/axiosClient';
 
 
 const RegisterForm = () => {
@@ -17,7 +18,7 @@ const RegisterForm = () => {
 
     const validation = useFormik({
         initialValues: {
-            fullname: '',
+            fullName: '',
             phoneNumber: '',
             email: '',
             city: '',
@@ -40,7 +41,7 @@ const RegisterForm = () => {
                 .matches(/(84|0[3|5|7|8|9])+([0-9]{8})\b/g, 'Số điện thoại sai rồi')
                 .required('Số điện thoại cần để liên hệ nhé!'),
 
-            fullname: Yup
+            fullName: Yup
                 .string()
                 .min(2, 'Tên phải ít nhất 2 kí tự')
                 .max(50, 'Tên chỉ tối đa 100 kí tự')
@@ -74,6 +75,7 @@ const RegisterForm = () => {
                 .string()
                 .min(6, 'Mật khẩu ít nhất 6 kí tự')
                 .max(12, 'Mật khẩu chỉ tối đa 12 kí tự')
+                .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/gm, 'Mật khẩu bắt buộc phải có ít nhất 1 chữ cái in hoa và 1 chữ số')
                 .required('Mật khẩu băt buộc phải có nhé!'),
 
             confirmPassword: Yup
@@ -82,8 +84,16 @@ const RegisterForm = () => {
                 .required('Phải nhập lại mật khẩu nhé!'),
         }),
 
-        onSubmit: (values) => {
-            console.log('««««« values »»»»»', values);
+        onSubmit: async (value) => {
+            console.log('««««« value »»»»»', value);
+            try {
+                const res = await axiosClient.post('/customers',{
+                    ...value
+                })
+            } catch (error) {
+                console.log('««««« error »»»»»', error);
+            }
+
         },
 
     });
@@ -97,7 +107,7 @@ const RegisterForm = () => {
                     <div className='col-7 col-lg-8 mb-4'>
                         <InputGroup
                             label="Tên"
-                            name="fullname"
+                            name="fullName"
                             validation={validation}
                             onChange={validation.handleChange}
                         />
