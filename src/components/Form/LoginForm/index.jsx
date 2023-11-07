@@ -8,6 +8,7 @@ import InputGroup from './InputGroup';
 import styles from '@/styles/form.module.css'
 import { useRouter } from 'next/router';
 import { axiosClient } from '@/libraries/axiosClient';
+import { Box, Button, Modal, Typography } from '@mui/material';
 
 
 
@@ -15,6 +16,22 @@ const LoginForm = () => {
   const [hover, setHover] = useState(false)
   const onMouseEnter = () => setHover(true);
   const onMouseLeave = () => setHover(false);
+
+  const [open, setOpen] = React.useState(false);
+  const handleClose = () => setOpen(false);
+
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid var(--main-color)',
+    boxShadow: 24,
+    p: 4,
+    borderRadius: '16px'
+  };
 
   const redirect = useRouter();
 
@@ -39,10 +56,13 @@ const LoginForm = () => {
     onSubmit: async (values) => {
       console.log('««««« values »»»»»', values);
       try {
-        const res = await axiosClient.post('/auth/login', {
-          ...values
-        })
+        const res = await axiosClient.post('/auth/login', values);
+
+        if (res.status === 200) {
+          redirect.push('/')
+        }
       } catch (error) {
+        setOpen(true)
         console.log('««««« error »»»»»', error);
       }
     },
@@ -93,6 +113,30 @@ const LoginForm = () => {
             <em className={styles.form__item} >Bấm vào đây để lập tài khoản nè !</em>
           </Link>
         </div>
+
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <div className='d-flex flex-column'>
+              <Typography className={styles.form__item} id="modal-modal-title" variant="h6" component="h2">
+                Tình trạng đăng nhập
+              </Typography>
+              <hr />
+              <Typography id="modal-modal-description">
+                Mật khẩu hoặc email sai rồi, bạn vui lòng nhập lại !
+              </Typography>
+
+              <div className='mt-3'>
+                <button className={`btn ${styles.modal__btn}`} onClick={handleClose}>Quay lại</button>
+              </div>
+            </div>
+
+          </Box>
+        </Modal>
 
         <div className="ResetPassLink mt-4 mt-md-0">
           <p>Quên mật khẩu ?</p>
