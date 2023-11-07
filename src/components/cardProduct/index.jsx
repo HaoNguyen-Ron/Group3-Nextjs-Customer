@@ -2,15 +2,7 @@ import React, { useState } from "react";
 
 import Styles from "@/styles/cardProduct.module.css";
 
-export default function CardProduct() {
-  return (
-    <div className="box">
-      <Card title="Protocal infomation" price="75990" />
-    </div>
-  );
-}
-
-const Card = ({ title, price }) => {
+export default function CardProduct({ title, price, date, producer, size }) {
   const [count, setCount] = useState(1);
   const [showText, setShowText] = useState(false);
 
@@ -28,20 +20,22 @@ const Card = ({ title, price }) => {
   const handleChange = (e) => {
     setCount(Number(e.target.value));
   };
-
   return (
-    <>
-      <div className="d-flex">
-        <div className="caroshel col-lg-6">a</div>
-        <div className="info col-lg-6">
-          <h3>{title}</h3>
-          <p>
+    <div className="box">
+      <div className={`d-flex justify-content-around align-items-center ${Styles.card_Product} `}>
+        <div className="caroshel text-center col-lg-6">
+          <img
+            src="//product.hstatic.net/1000160337/product/nendoroid_my_hero_academia_katsuki_bakugo_u.a._school_uniform_ver__1__1c7f9849b2174b1e8ca4edcff9dc4537_master.jpg"
+            alt=" Nendoroid My Hero Academia Katsuki Bakugo: U.A. School Uniform Ver "
+          />
+        </div>
+        <div className={`${Styles.info_product} col-lg-6`}>
+          <h3 >{title}</h3>
+          <p >
             {price}
             <u>đ</u>
           </p>
-          <div
-            className={`d-flex justify-content-around align-items-center ${Styles.form_buy}`}
-          >
+          <div className={`d-flex justify-content-around align-items-center ${Styles.form_buy}`}>
             <div>
               <input
                 type="button"
@@ -161,17 +155,34 @@ const Card = ({ title, price }) => {
               </li>
             </ul>
           </div>
-          <div>
-            <p className={`${Styles.Infomation_product}`} 
-              onClick={() => setShowText(!showText)}>Thông tin sản phẩm
-              {showText ? "Hide Text" : "Show Text"}
+          <div className="col-4">
+            <p
+              className={`${Styles.Infomation_product}`}
+              onClick={() => setShowText(!showText)}
+            >
+              Thông tin sản phẩm
             </p>
             {showText && (
-              <p>Đây là đoạn văn bản mà bạn muốn hiển thị hoặc ẩn đi.</p>
+              <div>
+                <p>
+                  Phát Hành: <span>{date} </span>
+                </p>
+                <p>
+                  Giá: <span> {price}</span>đ
+                </p>
+                <p>{title}</p>
+                <p>
+                  Hãng sản xuất: <span>{producer}</span>
+                </p>
+                <p>
+                  Kích thước: <span>{size}</span>cm
+                </p>
+              </div>
             )}
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
-};
+}
+

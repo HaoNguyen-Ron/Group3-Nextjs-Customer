@@ -1,3 +1,9 @@
+.card_Product {
+    padding: 20px 0;
+}
+.info_product {
+    min-height: 800px;
+}
 .box_mes {
 
     min-width: 175px;
