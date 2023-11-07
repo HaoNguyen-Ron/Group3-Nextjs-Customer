@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 
-import Link from "next/link";
-import Image from "next/image";
-
 import Styles from "@/styles/cardProduct.module.css";
 
 export default function CardProduct() {
@@ -15,6 +12,7 @@ export default function CardProduct() {
 
 const Card = ({ title, price }) => {
   const [count, setCount] = useState(1);
+  const [showText, setShowText] = useState(false);
 
   // Hàm tăng giá trị lên 1
   function increment() {
@@ -25,8 +23,7 @@ const Card = ({ title, price }) => {
   function decrement() {
     if (count > 1) {
       setCount(count - 1);
-    }
-    else setCount(count);
+    } else setCount(count);
   }
   const handleChange = (e) => {
     setCount(Number(e.target.value));
@@ -35,14 +32,16 @@ const Card = ({ title, price }) => {
   return (
     <>
       <div className="d-flex">
-        <div className="caroshel">a</div>
-        <div className="info">
+        <div className="caroshel col-lg-6">a</div>
+        <div className="info col-lg-6">
           <h3>{title}</h3>
           <p>
             {price}
             <u>đ</u>
           </p>
-          <div className="d-flex justify-content-around align-items-center">
+          <div
+            className={`d-flex justify-content-around align-items-center ${Styles.form_buy}`}
+          >
             <div>
               <input
                 type="button"
@@ -80,6 +79,96 @@ const Card = ({ title, price }) => {
                 <span className={`${Styles.title_chat}`}>Chat Ngay</span>
               </a>
             </div>
+            <button className={` ${Styles.btn_add_card}`}>
+              Thêm vào giỏ hàng
+            </button>
+          </div>
+          <div className={`${Styles.product_deliverl}`}>
+            <ul className={`${Styles.infoList_deliverly}`}>
+              <li
+                className={`d-flex align-items-center ${Styles.infoList_deliverly_item}`}
+              >
+                <span>
+                  <img
+                    className=" lazyloaded"
+                    data-src="//theme.hstatic.net/1000160337/1000885200/14/product_deliverly_1_ico.png?v=316"
+                    src="//theme.hstatic.net/1000160337/1000885200/14/product_deliverly_1_ico.png?v=316"
+                    alt="Sản phẩm chính hãng từ Nhật Bản."
+                  />
+                </span>
+                <div>
+                  <i className="fa fa-check" />
+                  <strong> Sản phẩm chính hãng từ Nhật Bản.</strong>
+                  <br />
+                  <i className="fa fa-check" />
+                  <strong> Trước khi bạn đặt mua:</strong> vui lòng check lại
+                  giá hiện tại với admin, vì khả năng giá đã thay đổi so với lần
+                  cập nhật gần nhất, hoặc hết hàng, hết suất order. Do giới hạn
+                  số lượng, figure Nhật sẽ hiếm dần theo thời gian, dẫn tới giá
+                  tăng.
+                </div>
+              </li>
+
+              <li
+                className={`d-flex align-items-center ${Styles.infoList_deliverly_item}`}
+              >
+                <span>
+                  <img
+                    className=" lazyloaded"
+                    data-src="//theme.hstatic.net/1000160337/1000885200/14/product_deliverly_2_ico.png?v=316"
+                    src="//theme.hstatic.net/1000160337/1000885200/14/product_deliverly_2_ico.png?v=316"
+                    alt="Với sản phẩm CÓ SẴN, bạn sẽ được giao ngay."
+                  />
+                </span>
+                <div>
+                  <i className="fa fa-check" />
+                  <span> Với sản phẩm</span>
+                  <strong> CÓ SẴN, bạn sẽ được giao ngay.</strong>
+                  <br />
+                  <i className="fa fa-check" />
+                  <span> Với sản phẩm</span>
+                  <strong> ĐẶT TRƯỚC, bạn cần cọc 50% giá trị sản phẩm.</strong>
+                  <span>
+                    {" "}
+                    Hàng về VN khoảng 2-3 tuần sau khi phát hành. Lịch phát hành
+                    dự kiến như thông tin chi tiết bên dưới.
+                  </span>
+                </div>
+              </li>
+
+              <li
+                className={`d-flex align-items-center ${Styles.infoList_deliverly_item}`}
+              >
+                <span>
+                  <img
+                    className=" lazyloaded"
+                    data-src="//theme.hstatic.net/1000160337/1000885200/14/product_deliverly_3_ico.png?v=316"
+                    src="//theme.hstatic.net/1000160337/1000885200/14/product_deliverly_3_ico.png?v=316"
+                    alt="Giao hàng tận nơi. Miễn phí ship với các đơn hàng >1000K .Vui lòng kiểm tra sản phẩm khi nhận bưu kiện"
+                  />
+                </span>
+                <div>
+                  <i className="fa fa-check" />
+                  <span> Giao hàng tận nơi.</span>
+                  <br />
+                  <i className="fa fa-check" />
+                  <span> Miễn phí ship với các đơn hàng {">"} 1000K </span>
+                  <br />
+                  <i className="fa fa-check" />
+                  <span> Giao hàng tận nơi.</span>
+                  <br />
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <p className={`${Styles.Infomation_product}`} 
+              onClick={() => setShowText(!showText)}>Thông tin sản phẩm
+              {showText ? "Hide Text" : "Show Text"}
+            </p>
+            {showText && (
+              <p>Đây là đoạn văn bản mà bạn muốn hiển thị hoặc ẩn đi.</p>
+            )}
           </div>
         </div>
       </div>

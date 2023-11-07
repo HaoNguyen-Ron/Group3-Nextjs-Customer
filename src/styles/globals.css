@@ -3,7 +3,11 @@
   --hover-color: #f8b2ce;
   --second-color: linear-gradient( to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100% );
 }
-
+ul,li{
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
 footer {
   width: 100%;
 }
