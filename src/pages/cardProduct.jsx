@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function login() {
   return (
-    <div className='container'>
+    <div>
         <CardProduct
             title="Nendoroid My Hero Academia Katsuki Bakugo: U.A. School Uniform Ver"
             price="75990"

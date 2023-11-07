@@ -1,12 +1,29 @@
 .card_Product {
     padding: 20px 0;
+    width: 80%;
+    box-sizing: border-box;
+}
+.caroshel {
+    width: 100%;
 }
 .info_product {
     min-height: 800px;
 }
-.box_mes {
+.input_quantity {
+    max-width: 50px;
+    text-align: center;
+}
 
-    min-width: 175px;
+.input_color {
+    color: #ee2d7a;
+    background-color: #d4d1d2;
+}
+.input_color:hover {
+    color: #fff;
+    background-color: #ee2d7a;
+}
+.box_mes {
+    min-width: 150px;
     min-height: 50px;
     margin: 10px 0px;
 }
@@ -20,7 +37,7 @@
 .btn_add_card {
     display: inline-block;
     min-height: 50px;
-    min-width: 200px;
+    min-width: 150px;
     color: #fff;
     background-color: #ee2d7a;
     border: 1px solid #ee2d7a;
