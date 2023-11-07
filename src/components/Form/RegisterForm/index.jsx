@@ -27,7 +27,7 @@ const RegisterForm = () => {
             street: '',
             password: '',
             confirmPassword: '',
-            gender: ''
+            gender: '',
         },
 
         validationSchema: Yup.object({
@@ -52,7 +52,7 @@ const RegisterForm = () => {
             // .required('Vui lòng chọn giới tính nha!'),
 
             birtday: Yup
-                .date(),
+                .date('Ngày sinh theo định dạng YYYY/MM/DD nha!'),
             // .required('Ngày tháng năm sinh bắt buộc nhập nha!'),
 
             city: Yup
@@ -87,7 +87,7 @@ const RegisterForm = () => {
         onSubmit: async (value) => {
             console.log('««««« value »»»»»', value);
             try {
-                const res = await axiosClient.post('/customers',{
+                const res = await axiosClient.post('/customers/',{
                     ...value
                 })
             } catch (error) {
@@ -137,10 +137,11 @@ const RegisterForm = () => {
                         <InputGroup
                             label="Ngày sinh"
                             name="birtday"
-                            placeholder='DD/MM/YYYY'
+                            placeholder='YYYY/MM/DD'
                             validation={validation}
                             classNamees="valid"
                         />
+                        {/* <DateGroup /> */}
                     </div>
                 </div>
 

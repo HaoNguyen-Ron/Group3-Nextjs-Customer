@@ -10,18 +10,19 @@ export default function InputAddress({
 
     const [cityList, setCityList] = useState([]);
 
-    const [currentCityId, setCurrentCityId] = useState()
-    const [currentDistrictId, setCurrentDistrictId] = useState()
-    const [currentWardId, setCurrentWardId] = useState()
+    const [currentCityName, setCurrentCityName] = useState()
+    const [currentDistrictName, setCurrentDistrictName] = useState()
+    const [currentWardId, setCurrentWardName] = useState()
 
     const getCurrentDistrictList = () => {
-        const currentCity = cityList.find((city) => city.Id === currentCityId)
+        const currentCity = cityList.find((city) => city.Name === currentCityName)
 
         return currentCity && currentCity.Districts || []
 
     }
+
     const getCurrentWardList = () => {
-        const currentDistrict = getCurrentDistrictList().find((district) => district.Id === currentDistrictId)
+        const currentDistrict = getCurrentDistrictList().find((district) => district.Name === currentDistrictName)
 
         return currentDistrict && currentDistrict.Wards || []
     }
@@ -52,18 +53,18 @@ export default function InputAddress({
 
     const onChangeCity = (e) => {
         validation.setFieldValue('city', e.target.value)
-        setCurrentCityId(e.target.value)
+        setCurrentCityName(e.target.value)
     };
 
     const onChangeDistrict = (e) => {
         validation.setFieldValue('district', e.target.value)
-        setCurrentDistrictId(e.target.value)
+        setCurrentDistrictName(e.target.value)
 
     };
 
     const onChangeWard = (e) => {
         validation.setFieldValue('ward', e.target.value)
-        setCurrentWardId(e.target.value)
+        setCurrentWardName(e.target.value)
 
     };
 
@@ -99,7 +100,7 @@ export default function InputAddress({
                     >
                         {
                             cityList && cityList.map((city) =>
-                                <MenuItem key={city.Id} value={city.Id}>{city.Name}</MenuItem>
+                                <MenuItem key={city.Id} value={city.Name}>{city.Name}</MenuItem>
                             )
                         }
                     </Select>
@@ -128,7 +129,7 @@ export default function InputAddress({
                     >
                         {
                             getCurrentDistrictList() && getCurrentDistrictList().map((district) =>
-                                <MenuItem key={district.Id} value={district.Id}>{district.Name}</MenuItem>)
+                                <MenuItem key={district.Id} value={district.Name}>{district.Name}</MenuItem>)
                         }
                     </Select>
 
@@ -155,7 +156,7 @@ export default function InputAddress({
                     >
                         {
                             getCurrentWardList().map((ward) =>
-                                <MenuItem key={ward.Id} value={ward.Id}>{ward.Name}</MenuItem>)
+                                <MenuItem key={ward.Id} value={ward.Name}>{ward.Name}</MenuItem>)
                         }
                     </Select>
                     
