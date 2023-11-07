@@ -5,6 +5,26 @@
     padding-top: 50px;
 }
 
+.footer_banner {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+.gallery_item {
+    position: relative;
+}
+
+
+
+.groupbanner_hover{
+    max-width: 100%;
+}
+
+.lazyloaded {
+    max-width: 100%;
+}
+
+
+
 .color_3nime {
     color: #f3bb69;
 }

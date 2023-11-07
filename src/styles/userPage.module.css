@@ -4,6 +4,7 @@
 .user__item{
     color: var(--main-color);
     min-width: 200px;
+    text-align: left;
 }
 
 .user__item:hover{

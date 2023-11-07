@@ -1,10 +1,10 @@
-import Cart from '@/components/Cart';
+import Card from '@/components/CardList';
 import React from 'react';
 
 function CartPage(props) {
     return (
         <div>
-            <Cart />
+            <Card />
         </div>
     );
 }
