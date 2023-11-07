@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import Link from 'next/link';
@@ -6,6 +6,8 @@ import Link from 'next/link';
 import InputGroup from './InputGroup';
 
 import styles from '@/styles/form.module.css'
+import { useRouter } from 'next/router';
+import { axiosClient } from '@/libraries/axiosClient';
 
 
 
@@ -13,6 +15,8 @@ const LoginForm = () => {
   const [hover, setHover] = useState(false)
   const onMouseEnter = () => setHover(true);
   const onMouseLeave = () => setHover(false);
+
+  const redirect = useRouter();
 
   const validation = useFormik({
     initialValues: {
@@ -32,10 +36,35 @@ const LoginForm = () => {
         .required('Vui lòng điền mật khẩu'),
     }),
 
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       console.log('««««« values »»»»»', values);
+      try {
+        const res = await axiosClient.post('/auth/login', {
+          ...values
+        })
+        const { token, refreshToken } = res.data;
+
+        window.localStorage.setItem('TOKEN', token);
+        window.localStorage.setItem('REFRESH_TOKEN', refreshToken);
+
+        axiosClient.defaults.headers.Authorization = `Bearer ${token}`;
+
+        if (token) {
+          redirect.push('/')
+        }
+      } catch (error) {
+        console.log('««««« error »»»»»', error);
+      }
     },
   });
+
+  useEffect(() => {
+    const token = window.localStorage.getItem('TOKEN');
+
+    if (token) {
+      redirect.push('/')
+    } 
+  }, [redirect])
 
   return (
     <div className={`px-5 mx-auto my-5 ${styles.formContainer} `}>
