@@ -84,11 +84,11 @@ const RegisterForm = () => {
                 .required('Phải nhập lại mật khẩu nhé!'),
         }),
 
-        onSubmit: async (value) => {
+        onSubmit: async (values) => {
             console.log('««««« value »»»»»', value);
             try {
                 const res = await axiosClient.post('/customers/',{
-                    ...value
+                    ...values
                 })
             } catch (error) {
                 console.log('««««« error »»»»»', error);
