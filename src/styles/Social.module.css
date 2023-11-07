@@ -41,6 +41,7 @@
 .social.visible {
     display: block;
     opacity: 1;
+    z-index: 99;
 }
 
 .addthisContact {
@@ -58,6 +59,7 @@
 .addthisContact.active {
     display: block !important;
     opacity: 1 !important;
+    z-index: 99;
 }
 
 .addThis_ul {
@@ -158,5 +160,5 @@
     display         : block;
     opacity         : 1 !important;
     background-color: #e22b2b;
-
+    z-index         : 99;
 }
