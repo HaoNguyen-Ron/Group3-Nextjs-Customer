@@ -42,29 +42,11 @@ const LoginForm = () => {
         const res = await axiosClient.post('/auth/login', {
           ...values
         })
-        const { token, refreshToken } = res.data;
-
-        window.localStorage.setItem('TOKEN', token);
-        window.localStorage.setItem('REFRESH_TOKEN', refreshToken);
-
-        axiosClient.defaults.headers.Authorization = `Bearer ${token}`;
-
-        if (token) {
-          redirect.push('/')
-        }
       } catch (error) {
         console.log('««««« error »»»»»', error);
       }
     },
   });
-
-  useEffect(() => {
-    const token = window.localStorage.getItem('TOKEN');
-
-    if (token) {
-      redirect.push('/')
-    } 
-  }, [redirect])
 
   return (
     <div className={`px-5 mx-auto my-5 ${styles.formContainer} `}>
