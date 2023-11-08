@@ -811,9 +811,52 @@ function PaymentInstructions(props) {
             </div>
 
             <div
-              className={`col-md-3 col-sm-8 col-xs-12 ${pay["article-post-meta"]}`}
+              className={`col-md-3 col-sm-8 col-xs-12 mb-5 ${pay["article-post-meta"]}`}
             >
-              sidebar
+              <aside class={pay["side"]}>
+                <div className={`${pay["group-sidebox"]}`}>
+                  <div className={`${pay["sidebox-title"]}`}>
+                    <h3 className={`${pay["htitle"]}`}>
+                      Bài viêt mới nhất
+                      <span className="fa fa-angle-down" />
+                    </h3>
+                  </div>
+
+                  <div className={`${pay["sidebox-content"]}`}>
+                    <div className={`${pay[""]}`}>
+                      <BlogItem
+                        image="/assets/images/blog_1.jpg"
+                        title="Bật mí cách mình đang kiếm tiền hiện giờ"
+                        title2="Bật mí cách mình đang kiếm tiền hiện giờ"
+                        title3="Tin Tức"
+                        date=" - 17/02/2023"
+                      />
+
+                      <BlogItem
+                        image="/assets/images/blog_2.jpg"
+                        title="Cách sở hữu figure chính hãng mà không cần nỗ lực."
+                        title2="Cách sở hữu figure chính hãng mà không cần nỗ lực."
+                        title3="Tin Tức"
+                        date=" - 12/02/2022"
+                      />
+                      <BlogItem
+                        image="/assets/images/blog_3.jpg"
+                        title="Theo dõi lịch phát hành Japan Figure từ chính hãng"
+                        title2="Theo dõi lịch phát hành Japan Figure từ chính hãng"
+                        title3="Hưỡng Dẫn"
+                        date=" - 23/04/2022"
+                      />
+                      <BlogItem
+                        image="/assets/images/blog_4.jpg"
+                        title="GIỚI THIỆU FIGURE BLACK ROCK SHOOTER INEXHAUSTIBLE VER. 1/8"
+                        title2="GIỚI THIỆU FIGURE BLACK ROCK SHOOTER INEXHAUSTIBLE VER. 1/8"
+                        title3="Tin Tức"
+                        date=" - 23/04/2022"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </aside>
             </div>
           </div>
         </div>
@@ -824,3 +867,35 @@ function PaymentInstructions(props) {
 }
 
 export default PaymentInstructions;
+
+const BlogItem = ({ image, title, title2, title3, title4, date }) => {
+  return (
+    <>
+      <div className={`${pay["item-article"]} clearfix`}>
+        <div className="post-image">
+          <a href="/">
+            <img className={`${pay["lazyloaded"]}`} src={image} alt={title} />
+          </a>
+        </div>
+        <div className={`${pay["post-content"]} ms-2`}>
+          <h3 className={`${pay["fs14"]} mb-0`}>
+            <a href="/" className={pay["fs14_hover"]}>
+              {title2}
+            </a>
+          </h3>
+          <p className="mb-0">
+            <span>
+              <a href="/" className={pay["tag"]}>
+                {title3}
+              </a>
+            </span>
+            <span>
+              <a href="/">{title4}</a>
+            </span>
+            <span className="date">{date}</span>
+          </p>
+        </div>
+      </div>
+    </>
+  );
+};
