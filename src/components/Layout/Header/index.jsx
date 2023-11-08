@@ -20,82 +20,47 @@ export default function Header() {
 
     useEffect(() => {
         const token = localStorage.getItem("TOKEN");
-        
+
         if (token) {
             setIsLogged(true)
         }
-        
-    }, []);
 
-    return (
+    }, [isLogged]);
+
+    return (    
         <>
-            {
-                isLogged ? (
-                    <header>
-                        <div className="container-fluid">
-                            <div className={`d-flex justify-content-center align-items-center align-self-center row`}>
-                                <div className={`col-xs-12 col-2 col-md-1 col-lg-2 ${styles.media_tablet}`}>
-                                    <NavTablet />
-                                </div>
-
-                                <div className='col-xs-12 col-6 col-md-8 col-lg-2'>
-                                    <Logo />
-                                </div>
-
-                                <div className={`col-xs-12 col-4 col-md-2 col-lg-2 ${styles.media_tablet}`}>
-                                    <AuthLoginPartTablet />
-                                </div>
-
-                                <div className='col-xs-12 col-sm-12 col-md-12 col-lg-7 d-flex justify-content-center align-items-center'>
-                                    <SearchBar />
-                                </div>
-
-                                <div className={`col-sm-12 col-md-2 col-lg-3`}>
-                                    <AuthLoginPartPc />
-                                </div>
-
-                                <div className={`col-lg-12 d-none d-md-none d-lg-block `}>
-                                    <Nav />
-                                </div>
-                            </div>
-                            
-                            <CardCart />
+            <header>
+                <div className="container-fluid">
+                    <div className={`d-flex justify-content-center align-items-center align-self-center row`}>
+                        <div className={`col-xs-12 col-2 col-md-1 col-lg-2 ${styles.media_tablet}`}>
+                            <NavTablet />
                         </div>
-                    </header>
-                ) : (
-                    <header>
-                        <div className="container-fluid">
-                            <div className={`d-flex justify-content-center align-items-center align-self-center row`}>
-                                <div className={`col-xs-12 col-2 col-md-1 col-lg-2 ${styles.media_tablet}`}>
-                                    <NavTablet />
-                                </div>
 
-                                <div className='col-xs-12 col-6 col-md-8 col-lg-2'>
-                                    <Logo />
-                                </div>
-
-                                <div className={`col-xs-12 col-4 col-md-2 col-lg-2 ${styles.media_tablet}`}>
-                                    <LoginPartTablet />
-                                </div>
-
-                                <div className='col-xs-12 col-sm-12 col-md-12 col-lg-8 d-flex justify-content-center align-items-center'>
-                                    <SearchBar />
-                                </div>
-
-                                <div className={`col-sm-12 col-md-2 col-lg-2`}>
-                                    <LoginPartPc />
-                                </div>
-
-                                <div className={`col-lg-12 d-none d-md-none d-lg-block `}>
-                                    <Nav />
-                                </div>
-                            </div>
-
-                            <CardCart />
+                        <div className='col-xs-12 col-6 col-md-8 col-lg-2'>
+                            <Logo />
                         </div>
-                    </header>
-                )
-            }
+
+                        <div className={`col-xs-12 col-4 col-md-2 col-lg-2 ${styles.media_tablet}`}>
+                            {isLogged ? <AuthLoginPartTablet /> : <LoginPartTablet />}
+                        </div>
+
+                        <div className='col-xs-12 col-sm-12 col-md-12 col-lg-7 d-flex justify-content-center align-items-center'>
+                            <SearchBar />
+                        </div>
+
+                        <div className={`col-sm-12 col-md-2 col-lg-3`}>
+                            {isLogged ? <AuthLoginPartPc /> : <LoginPartPc />}
+                        </div>
+
+                        <div className={`col-lg-12 d-none d-md-none d-lg-block `}>
+                            <Nav />
+                        </div>
+                    </div>
+
+                    <CardCart />
+                </div>
+            </header>
+
         </>
     )
 }

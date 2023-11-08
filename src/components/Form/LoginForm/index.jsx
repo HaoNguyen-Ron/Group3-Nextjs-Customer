@@ -10,18 +10,14 @@ import { useRouter } from 'next/router';
 import { axiosClient } from '@/libraries/axiosClient';
 import { Box, Button, Modal, Typography } from '@mui/material';
 
-
-
 const LoginForm = () => {
   const [hover, setHover] = useState(false)
   const onMouseEnter = () => setHover(true);
   const onMouseLeave = () => setHover(false);
 
   const [open, setOpen] = useState(false);
-  const handleClose = () => setOpen(false);
-  const redirect = useRouter();
 
-  const [isLoading, setIsLoading] = useState(true);
+  const redirect = useRouter();
 
   const style = {
     position: 'absolute',
@@ -43,7 +39,6 @@ const LoginForm = () => {
       password: '',
     },
 
-
     validationSchema: Yup.object({
       email: Yup.string()
         .email('Email không hợp lệ')
@@ -60,19 +55,27 @@ const LoginForm = () => {
         const res = await axiosClient.post('/auth/login', values);
 
         if (res.status === 200) {
-          if (typeof window !== "undefined") {
-            localStorage.setItem("TOKEN",res.data.token)
-            localStorage.setItem("REFRESH-TOKEN",res.data.refreshToken)
-          }
-          
-          redirect.push('/')
+          localStorage.setItem("TOKEN", res.data.token)
+          localStorage.setItem("REFRESH-TOKEN", res.data.refreshToken)
+          redirect.reload()
         }
+
       } catch (error) {
         setOpen(true)
         console.log('««««« error »»»»»', error);
       }
     },
   });
+
+  useEffect(() => {
+    const token = window.localStorage.getItem("TOKEN")
+
+    if(token){
+      redirect.push('/')
+    }
+  },[redirect])
+
+  const handleClose = () => setOpen(false);
 
   return (
     <div className={`px-5 mx-auto my-5 ${styles.formContainer} `}>
@@ -97,6 +100,7 @@ const LoginForm = () => {
             placeholder='Nhập mật khẩu ở đây'
           />
         </div>
+        
         <div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className='mx-auto my-3'>
           <button
             type='submit'
