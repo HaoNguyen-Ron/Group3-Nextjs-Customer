@@ -1,20 +1,45 @@
 import React, { useState } from 'react';
-import * as Yup from 'yup';
-import { useFormik } from 'formik';
 import Link from 'next/link';
 
+import { Box, Button, Modal, Typography } from '@mui/material';
+import { axiosClient } from '@/libraries/axiosClient';
+import { useFormik } from 'formik';
+
+import InputAddress from './InputAddress';
 import InputGroup from './InputGroup';
 import SelectGroup from './SelectGroup';
-import InputAddress from './InputAddress';
 
+import * as Yup from 'yup';
 import styles from '@/styles/form.module.css'
-import { axiosClient } from '@/libraries/axiosClient';
+import { useRouter } from 'next/router';
 
 
 const RegisterForm = () => {
     const [hover, setHover] = useState(false)
     const onMouseEnter = () => setHover(true);
     const onMouseLeave = () => setHover(false);
+
+    const [openSuccess, setOpenSuccess] = useState(false);
+    const [openError, setOpenError] = useState(false);
+    const handleClose = () => {
+        setOpenError(false)
+        setOpenSuccess(false)
+    }
+
+    const redirect = useRouter()
+
+    const style = {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 400,
+        bgcolor: 'background.paper',
+        border: '2px solid var(--main-color)',
+        boxShadow: 24,
+        p: 4,
+        borderRadius: '16px'
+    };
 
     const validation = useFormik({
         initialValues: {
@@ -85,12 +110,17 @@ const RegisterForm = () => {
         }),
 
         onSubmit: async (values) => {
-            console.log('««««« value »»»»»', value);
             try {
-                const res = await axiosClient.post('/customers/',{
-                    ...values
-                })
+                const res = await axiosClient.post('/customers/', values)
+
+                if (res.status === 200) {
+                    setOpenSuccess(true)
+                    setTimeout(() => {
+                        redirect.push('/login')
+                    }, 5000);
+                }
             } catch (error) {
+                setOpenError(true)
                 console.log('««««« error »»»»»', error);
             }
 
@@ -199,10 +229,60 @@ const RegisterForm = () => {
                                 ? { backgroundColor: "#fc629f" }
                                 : { backgroundColor: "#ee2d7a" }}
                     >
-                        Đăng nhập
+                        Đăng ký
                     </button>
                 </div>
             </div>
+
+            <Modal
+                open={openSuccess}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box sx={style}>
+                    <div className='d-flex flex-column'>
+                        <Typography className={styles.form__item} id="modal-modal-title" variant="h6" component="h2">
+                            Tình trạng đăng ký
+                        </Typography>
+                        <hr />
+                        <Typography id="modal-modal-description">
+                            Bạn đã đăng ký thành công !
+                        </Typography>
+
+                        <div className='mt-4'>
+                            <button className={`btn ${styles.modal__btn}`} onClick={handleClose}>
+                                <Link className={styles.modal__link} href={'/login'}>Đến trang đăng nhập</Link>
+                            </button>
+                        </div>
+                    </div>
+
+                </Box>
+            </Modal>
+
+            <Modal
+                open={openError}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box sx={style}>
+                    <div className='d-flex flex-column'>
+                        <Typography className={styles.form__item} id="modal-modal-title" variant="h6" component="h2">
+                            Tình trạng đăng ký
+                        </Typography>
+                        <hr />
+                        <Typography id="modal-modal-description">
+                            Đã có tài khoản khác trùng với thông tin số điện thoại hay email đang sử dụng để đăng ký, bạn vui lòng chọn thông tin khác nha !
+                        </Typography>
+
+                        <div className='mt-3'>
+                            <button className={`btn ${styles.modal__btn}`} onClick={handleClose}>Quay lại</button>
+                        </div>
+                    </div>
+
+                </Box>
+            </Modal>
 
             <div className='mt-3'>
                 <p>Bạn đã có mật khẩu ?</p>

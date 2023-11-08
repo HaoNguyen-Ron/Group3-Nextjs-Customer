@@ -1,0 +1,18 @@
+.payment-head {}
+
+.article-post-meta {
+    font-size: 12px;
+}
+
+.payment-content-pc {}
+
+.imageAbout {
+    position  : relative;
+    min-height: 100vh;
+    width     : 550px;
+    overflow  : hidden;
+}
+
+.tag {
+    color: red;
+}

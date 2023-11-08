@@ -12,7 +12,7 @@ function Services(props) {
             desc: "Nhập khẩu trực tiếp từ Nhật Bản",
           }}
           link_url={
-            <a className={dv["txt-link"]} href="/aboutUs">
+            <a className={dv["txt-link"]} href="about-us">
               Xem chi tiết
             </a>
           }
@@ -24,7 +24,7 @@ function Services(props) {
             desc: "Chuyển khoản hoặc COD",
           }}
           link_url={
-            <a className={dv["txt-link"]} href="">
+            <a className={dv["txt-link"]} href="payment-instructions">
               Xem chi tiết
             </a>
           }
