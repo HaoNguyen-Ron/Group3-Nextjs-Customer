@@ -17,11 +17,12 @@ const LoginForm = () => {
   const onMouseEnter = () => setHover(true);
   const onMouseLeave = () => setHover(false);
 
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
-  
   const redirect = useRouter();
-  
+
+  const [isLoading, setIsLoading] = useState(true);
+
   const style = {
     position: 'absolute',
     top: '50%',
@@ -55,11 +56,15 @@ const LoginForm = () => {
     }),
 
     onSubmit: async (values) => {
-      console.log('««««« values »»»»»', values);
       try {
         const res = await axiosClient.post('/auth/login', values);
 
         if (res.status === 200) {
+          if (typeof window !== "undefined") {
+            localStorage.setItem("TOKEN",res.data.token)
+            localStorage.setItem("REFRESH-TOKEN",res.data.refreshToken)
+          }
+          
           redirect.push('/')
         }
       } catch (error) {

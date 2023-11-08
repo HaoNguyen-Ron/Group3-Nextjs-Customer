@@ -14,7 +14,7 @@ export default function LoginPartPc() {
                                 <p className={styles.loginPart__item}>Đăng kí</p>
                             </Link>
                         </div>
-                        
+
                         <div className={styles.loginPart}>
                             <div>
                                 <Link href='/login'>
