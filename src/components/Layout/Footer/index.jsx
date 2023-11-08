@@ -1,4 +1,5 @@
 import styles from "@/styles/footer.module.css";
+import Link from "next/link";
 
 function Footer() {
   return (
@@ -134,10 +135,10 @@ function Footer() {
               <h3>Hỗ trợ khách hàng</h3>
               <ul>
                 <li>
-                  <a href="javascript:;">Tìm kiếm</a>
+                  <Link href='/aboutUs'>Tìm kiếm</Link>
                 </li>
                 <li>
-                  <a href="javascript:;">Giới thiệu</a>
+                  <Link href="/">Giới thiệu</Link>
                 </li>
               </ul>
             </div>
@@ -157,21 +158,21 @@ function Footer() {
               <h3>Follow Japan Figure</h3>
 
               <div className={`${styles.logo_icon} d-flex`}>
-                <a href="javascript:;">
+                <Link href="">
                   <i className="fa-solid fa-location-pin" />
-                </a>
-                <a href="javascript:;">
+                </Link>
+                <Link href="">
                   <i className="fa-brands fa-twitter" />
-                </a>
-                <a href="javascript:;">
+                </Link>
+                <Link href="">
                   <i className="fa-brands fa-pinterest" />
-                </a>
-                <a href="javascript:;">
+                </Link>
+                <Link href="">
                   <i className="fa-brands fa-google-plus-g" />
-                </a>
-                <a href="javascript:;">
+                </Link>
+                <Link href="">
                   <i className="fa-brands fa-square-instagram" />
-                </a>
+                </Link>
               </div>
             </div>
           </div>

@@ -1,5 +1,6 @@
-import CardProduct from '@/components/cardProduct'
 import React from 'react'
+import CardProduct from '@/components/cardProduct'
+import Card from '@/components/CardList/Card'
 
 export default function login() {
   return (
@@ -11,6 +12,7 @@ export default function login() {
             producer="Kim Đồng"
             size="10"
         />
+        <h2 className="text-center">Sản phẩm liên quan</h2>
     </div>
   )
 }

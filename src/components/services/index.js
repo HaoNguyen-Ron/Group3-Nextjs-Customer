@@ -36,7 +36,7 @@ function Services(props) {
             desc: "Miễn phí với đơn hàng>1000K",
           }}
           link_url={
-            <a className={dv["txt-link"]} href="javascript:;">
+            <a className={dv["txt-link"]} href="">
               Xem chi tiết
             </a>
           }

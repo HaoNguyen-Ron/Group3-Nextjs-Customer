@@ -19,7 +19,9 @@ const LoginForm = () => {
 
   const [open, setOpen] = React.useState(false);
   const handleClose = () => setOpen(false);
-
+  
+  const redirect = useRouter();
+  
   const style = {
     position: 'absolute',
     top: '50%',
@@ -33,7 +35,6 @@ const LoginForm = () => {
     borderRadius: '16px'
   };
 
-  const redirect = useRouter();
 
   const validation = useFormik({
     initialValues: {
@@ -106,6 +107,30 @@ const LoginForm = () => {
         </div>
       </div>
 
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <div className='d-flex flex-column'>
+            <Typography className={styles.form__item} id="modal-modal-title" variant="h6" component="h2">
+              Tình trạng đăng nhập
+            </Typography>
+            <hr />
+            <Typography id="modal-modal-description">
+              Mật khẩu hoặc email sai rồi, bạn vui lòng nhập lại !
+            </Typography>
+
+            <div className='mt-3'>
+              <button className={`btn ${styles.modal__btn}`} onClick={handleClose}>Quay lại</button>
+            </div>
+          </div>
+
+        </Box>
+      </Modal>
+
       <div className='d-flex justify-content-between mt-3 flex-column flex-md-row'>
         <div className="registerLink">
           <p>Bạn là người lần đầu đến ?</p>
@@ -113,30 +138,6 @@ const LoginForm = () => {
             <em className={styles.form__item} >Bấm vào đây để lập tài khoản nè !</em>
           </Link>
         </div>
-
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box sx={style}>
-            <div className='d-flex flex-column'>
-              <Typography className={styles.form__item} id="modal-modal-title" variant="h6" component="h2">
-                Tình trạng đăng nhập
-              </Typography>
-              <hr />
-              <Typography id="modal-modal-description">
-                Mật khẩu hoặc email sai rồi, bạn vui lòng nhập lại !
-              </Typography>
-
-              <div className='mt-3'>
-                <button className={`btn ${styles.modal__btn}`} onClick={handleClose}>Quay lại</button>
-              </div>
-            </div>
-
-          </Box>
-        </Modal>
 
         <div className="ResetPassLink mt-4 mt-md-0">
           <p>Quên mật khẩu ?</p>
