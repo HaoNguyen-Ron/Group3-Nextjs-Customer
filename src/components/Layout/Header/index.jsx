@@ -4,10 +4,13 @@ import SearchBar from './Searchbar/Searchbar'
 import Nav from './Nav'
 import NavTablet from './NavTablet'
 
+import CardCart from './cardCart'
+
 import styles from '@/styles/header.module.css'
 
 import LoginPartPc from '@/components/LoginPart/LoginPartPc'
 import LoginPartTablet from '@/components/LoginPart/LoginPartTablet'
+
 
 
 
@@ -39,6 +42,7 @@ export default function Header() {
                             <Nav />
                         </div>
                     </div>
+                    <CardCart/>
                     
                 </div>
             </header>

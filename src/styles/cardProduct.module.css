@@ -1,7 +1,8 @@
+
 .card_Product {
     padding: 20px 0;
-    width: 80%;
     box-sizing: border-box;
+    border-bottom: 1px solid #d4d1d2;
 }
 .caroshel {
     width: 100%;
@@ -23,7 +24,6 @@
     background-color: #ee2d7a;
 }
 .box_mes {
-    min-width: 150px;
     min-height: 50px;
     margin: 10px 0px;
 }
@@ -86,10 +86,11 @@
     border-bottom: 1px solid #cecbcb;
 }
 
-.Infomation_product {
-    font-size: 24px;
+.infomation_product {
+    font-size: 20px;
     cursor: pointer;
+    min-width: 178px;
 }
-.Infomation_product:focus {
+.infomation_product:focus {
     font-weight: bold;
 }

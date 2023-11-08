@@ -21,22 +21,23 @@ export default function CardProduct({ title, price, date, producer, size }) {
     setCount(Number(e.target.value));
   };
   return (
-    <div className='container'>
-      <div className={`d-flex justify-content-around align-items-center ${Styles.card_Product} `}>
-        <div className={`text-center col-lg-4 ${Styles.caroshel}`}>
+    <div className={`container d-block `}>
+      <div className={`row justify-content-around  ${Styles.card_Product} `}>
+        <div className={`text-center col-12 col-md-12 col-lg-5 `}>
           <img
+            className={`${Styles.caroshel}`}
             src="//product.hstatic.net/1000160337/product/nendoroid_my_hero_academia_katsuki_bakugo_u.a._school_uniform_ver__1__1c7f9849b2174b1e8ca4edcff9dc4537_master.jpg"
             alt=" Nendoroid My Hero Academia Katsuki Bakugo: U.A. School Uniform Ver "
           />
         </div>
-        <div className={`${Styles.info_product} col-lg-8`}>
+        <div className={`${Styles.info_product} col-12 col-md-12 col-lg-7`}>
           <h3 >{title}</h3>
           <p >
             {price}
             <u>đ</u>
           </p>
-          <div className={`d-flex gx-1 justify-content-around align-items-center ${Styles.form_buy}`}>
-            <div className="col-lg-3 d-flex align-items-center">
+          <div className={`row justify-content-around align-items-center ${Styles.form_buy}`}>
+            <div className="col-5 col-md-3 col-lg-3 row align-items-center">
               <input
                 type="button"
                 value="-"
@@ -49,7 +50,7 @@ export default function CardProduct({ title, price, date, producer, size }) {
                 name="quantity"
                 value={count}
                 onChange={handleChange}
-                className={`col-4 form-control ${Styles.input_quantity}`}
+                className={`col-3 form-control ${Styles.input_quantity}`}
               />
               <input
                 type="button"
@@ -59,7 +60,7 @@ export default function CardProduct({ title, price, date, producer, size }) {
               />
             </div>
 
-            <div className={`col-lg-3 btn bg-body-secondary ${Styles.box_mes}`}>
+            <div className={`col-7 col-md-3 col-lg-3 btn bg-body-secondary ${Styles.box_mes}`}>
               <a
                 className="d-flex justify-content-around align-items-center"
                 href="https://www.messenger.com/login"
@@ -73,7 +74,7 @@ export default function CardProduct({ title, price, date, producer, size }) {
                 <span className={`${Styles.title_chat}`}>Chat Ngay</span>
               </a>
             </div>
-            <button className={`col-5 ${Styles.btn_add_card}`}>
+            <button className={`col-12 col-md-5 col-lg-5 ${Styles.btn_add_card}`}>
               Thêm vào giỏ hàng
             </button>
           </div>
@@ -157,7 +158,7 @@ export default function CardProduct({ title, price, date, producer, size }) {
           </div>
           <div className="col-4">
             <p
-              className={`${Styles.Infomation_product}`}
+              className={`${Styles.infomation_product}`}
               onClick={() => setShowText(!showText)}
             >
               Thông tin sản phẩm

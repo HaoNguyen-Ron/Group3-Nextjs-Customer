@@ -78,6 +78,56 @@ function CardList(props) {
         </div>
       </div>
 
+      <div className=" container wrapper">
+        <div className="d-flex row flex-row-reverse justify-content-around">
+          <div className="col-12 col-md-12 col-lg-4">
+            <div className={x["groupbanner-hover"]}>
+              <img
+                className="lazyloaded ls-is-cached  "
+                src="https://theme.hstatic.net/1000160337/1000885200/14/home_collection_1_banner.jpg?v=316"
+                alt=""
+              />
+            </div>
+          </div>
+
+          <div className="col-12 col-md-12 col-lg-8">
+              <div className="d-flex row">
+                <div className="col-6 col-md-4 col-lg-3">
+                  <Card />
+                </div>
+
+                <div className="col-6 col-md-4 col-lg-3">
+                  <Card />
+                </div>
+
+                <div className="col-6 col-md-4 col-lg-3">
+                  <Card />
+                </div>
+
+                <div className="col-6 col-md-4 col-lg-3">
+                  <Card />
+                </div>
+
+                <div className="col-6 col-md-4 col-lg-3">
+                  <Card />
+                </div>
+
+                <div className="col-6 col-md-4 col-lg-3">
+                  <Card />
+                </div>
+
+                <div className="col-6 col-md-4 col-lg-3">
+                  <Card />
+                </div>
+
+                <div className="col-6 col-md-4 col-lg-3">
+                  <Card />
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+
       <div className={x["title"]}>
         <div className={x["groupbanner-hover"]}>
           <img
