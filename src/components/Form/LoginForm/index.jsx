@@ -8,13 +8,9 @@ import InputGroup from './InputGroup';
 import styles from '@/styles/form.module.css'
 import { useRouter } from 'next/router';
 import { axiosClient } from '@/libraries/axiosClient';
-import { Box, Button, Modal, Typography } from '@mui/material';
+import { Box, Modal, Typography } from '@mui/material';
 
 const LoginForm = () => {
-  const [hover, setHover] = useState(false)
-  const onMouseEnter = () => setHover(true);
-  const onMouseLeave = () => setHover(false);
-
   const [open, setOpen] = useState(false);
 
   const redirect = useRouter();
@@ -101,15 +97,11 @@ const LoginForm = () => {
           />
         </div>
         
-        <div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className='mx-auto my-3'>
+        <div className='mx-auto my-3'>
           <button
             type='submit'
             onClick={validation.handleSubmit}
-            className='btn btn-lg border border-0 text-white px-5'
-            style={
-              hover
-                ? { backgroundColor: "#fc629f" }
-                : { backgroundColor: "#ee2d7a" }}
+            className={`btn btn-lg border border-0 text-white px-5 ${styles.modal__btn}`}
           >
             Đăng nhập
           </button>

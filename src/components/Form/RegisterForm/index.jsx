@@ -15,10 +15,6 @@ import { useRouter } from 'next/router';
 
 
 const RegisterForm = () => {
-    const [hover, setHover] = useState(false)
-    const onMouseEnter = () => setHover(true);
-    const onMouseLeave = () => setHover(false);
-
     const [openSuccess, setOpenSuccess] = useState(false);
     const [openError, setOpenError] = useState(false);
     const handleClose = () => {
@@ -219,15 +215,11 @@ const RegisterForm = () => {
                     />
                 </div>
 
-                <div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className='mx-auto my-3'>
+                <div className='mx-auto my-3'>
                     <button
                         type='submit'
                         onClick={validation.handleSubmit}
-                        className='btn btn-lg border border-0 text-white px-5'
-                        style={
-                            hover
-                                ? { backgroundColor: "#fc629f" }
-                                : { backgroundColor: "#ee2d7a" }}
+                        className={`btn btn-lg border border-0 text-white px-5 ${styles.modal__btn}`}
                     >
                         Đăng ký
                     </button>
