@@ -6,11 +6,18 @@ import UserHistory from '@/components/UserProfile/UserHistory'
 import UserPassword from '@/components/UserProfile/UserPassword'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import { axiosClient } from '@/libraries/axiosClient'
 
 export default function UserProfilePage() {
     const [getDetail, setGetDetail] = useState(true)
     const [getHistory, setGetHistory] = useState(false)
     const [getPassword, setGetPassword] = useState(false)
+
+    const [user, setUser] = useState({
+        userName: '',
+        userEmail: '',
+        userAddress: '',
+    })
 
     const [isLogged, setIsLogged] = useState(false)
 
@@ -34,11 +41,30 @@ export default function UserProfilePage() {
         setGetPassword(true)
     }
 
+    const getUserDetail = async () => {
+        try {
+            const res = await axiosClient.get('/auth/profile')
+            if (res.status === 200) {
+                const data = res.data.payload;
+                
+                setUser({
+                    userName : data.fullName,
+                    userEmail: data.email,
+                    userAddress: data.address
+                })
+            }
+
+        } catch (error) {
+            console.log('««««« error »»»»»', error);
+        }
+    }
 
     useEffect(() => {
         const token = window.localStorage.getItem("TOKEN");
         if (token) {
+            axiosClient.defaults.headers.Authorization = `Bearer ${token}`;
             setIsLogged(true)
+            getUserDetail()
         }
     }, []);
 
@@ -66,7 +92,11 @@ export default function UserProfilePage() {
                         </div>
 
                         <div className="user__content flex-3 border-start border-2 px-5">
-                            <UserDetail isShow={getDetail} />
+                            <UserDetail
+                                userName={user.userName}
+                                userEmail={user.userEmail}
+                                userAddress={user.userAddress}
+                                isShow={getDetail} />
 
                             <UserHistory isShow={getHistory} />
 

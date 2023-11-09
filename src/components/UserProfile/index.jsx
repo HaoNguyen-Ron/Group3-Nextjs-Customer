@@ -3,10 +3,10 @@ import UserDetail from './UserDetail'
 import UserHistory from './UserHistory'
 import UserPassword from './UserPassword'
 
-export default function UserProfile({isShow}) {
+export default function UserProfile({userName, userEmail , userAddress, isShow}) {
   return (
     <div>
-        <UserDetail  isShow={isShow} />
+        <UserDetail userName={userName} userAddress={userAddress} userEmail={userEmail}  isShow={isShow} />
 
         <UserHistory isShow={isShow} />
 

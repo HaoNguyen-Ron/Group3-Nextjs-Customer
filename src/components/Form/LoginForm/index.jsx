@@ -66,7 +66,7 @@ const LoginForm = () => {
   useEffect(() => {
     const token = window.localStorage.getItem("TOKEN")
 
-    if(token){
+    if(token || token && redirect.pathname ==='/login' ){
       redirect.push('/')
     }
   },[redirect])
