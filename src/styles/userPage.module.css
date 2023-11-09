@@ -1,36 +1,46 @@
-.user__title{
+.user__title {
     color: var(--main-color);
 }
-.user__item{
+
+.user__link {
+    color: white;
+}
+
+.user__item {
     color: var(--main-color);
     min-width: 200px;
     text-align: left;
 }
 
-.user__item:hover{
+.user__item:hover {
     color: var(--hover-color);
 }
 
-.user__item:focus{
+.user__item:focus {
     background-color: #d3d3d3;
 }
 
-.user__nav__item::before{
+.user__nav__item::before {
     content: '- ';
 
 }
 
-.user__description{
+.user__description {
     min-width: 100px;
 }
 
-.user__btn{
+.user__btn {
     min-width: 200px;
     background-color: var(--main-color);
     color: white;
 }
 
-.user__btn:hover{
+.user__btn:hover {
     background-color: var(--hover-color);
 }
 
+@media only screen and (max-width: 425px) {
+    .user__btn {
+        min-width: 100px;
+    }
+}

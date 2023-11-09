@@ -1,14 +1,22 @@
-import IndexPc from "./LoginPartPc";
-import IndexTablet from "./LoginPartTablet";
+import AuthLoginPartPc from "./AuthLoginPartPc";
+import AuthLoginPartTablet from "./AuthLoginPartTablet";
+import LoginPartPc from "./LoginPartPc";
+import LoginPartTablet from "./LoginPartTablet";
 
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function LoginPart() {
-    return (
-        <div>
-            <IndexPc />
 
-            <IndexTablet />
-        </div>
+    return (
+        <>
+            <AuthLoginPartPc />
+
+            <AuthLoginPartTablet />
+
+            <LoginPartPc />
+
+            <LoginPartTablet />
+
+        </>
     )
 }

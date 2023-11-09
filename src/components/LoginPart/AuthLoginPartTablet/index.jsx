@@ -6,15 +6,23 @@ import MenuItem from '@mui/material/MenuItem';
 import styles from '@/styles/loginPart.module.css'
 import Link from 'next/link';
 
-export default function LoginPartTablet() {
+export default function AuthLoginPartTablet() {
   const [openMenu, setOpenMenu] = React.useState(null);
   const open = Boolean(openMenu);
+
   const handleClick = (event) => {
     setOpenMenu(event.currentTarget);
   };
+
   const handleClose = () => {
     setOpenMenu(null);
   };
+
+  const handleLogout = () => {
+    if (typeof window !== "undefined") {
+      localStorage.clear()
+      }
+  }
 
   return (
     <div className={` ${styles.media_tablet} d-flex justify-content-end`}>
@@ -27,6 +35,7 @@ export default function LoginPartTablet() {
       >
         <i className="fa-regular fa-user fs-4 my-auto me-2"></i>
       </Button>
+      
       <Menu
         id="demo-positioned-menu"
         aria-labelledby="demo-positioned-button"
@@ -42,11 +51,16 @@ export default function LoginPartTablet() {
           horizontal: 'center',
         }}
       >
-        <MenuItem kíenuItem onClick={handleClose}>
-          <Link className={styles.loginPart__title} href={'/register'}>Đăng kí</Link>
-        </MenuItem>
         <MenuItem onClick={handleClose}>
-          <Link className={styles.loginPart__title} href={'/login'}>Đăng nhập</Link>
+          <Link className={styles.loginPart__title} href='/user_profile'>Giỏ hàng</Link>
+        </MenuItem>
+
+        <MenuItem onClick={handleClose}>
+          <Link className={styles.loginPart__title} href='/user_profile'>Tài khoản của bạn</Link>
+        </MenuItem>
+
+        <MenuItem onClick={handleClose}>
+          <button className={`btn ${styles.loginPart__btn}`} onClick={handleLogout}>Đăng xuất</button>
         </MenuItem>
       </Menu>
     </div>
