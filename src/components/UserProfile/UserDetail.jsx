@@ -6,7 +6,7 @@ export default function UserDetail({ userName, userEmail, userAddress, isShow = 
 
     return (
         <div className={isShow ? 'd-block' : 'd-none'}>
-            <h2 className='mb-4 mt-3'>Thông tin tài khoản</h2>
+            <h2 className='mb-4 mt-3'>Thông tin tài khoản:</h2>
 
             <div className="userDetail_container ms-3">
                 <div className='userDetail_item mb-3 d-flex '>

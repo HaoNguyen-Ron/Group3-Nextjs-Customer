@@ -6,21 +6,18 @@ export default function LoginPartPc() {
     return (
         <>
             <div className={styles.media_pc}>
-                <div className='d-flex'>
-                    <i className="fa-regular fa-user my-auto me-2" style={{ fontSize: '30px' }}></i>
-                    <div className='d-flex flex-column ms-2'>
-                        <div className={styles.loginPart}>
-                            <Link href='/register'>
-                                <p className={styles.loginPart__item}>Đăng kí</p>
-                            </Link>
-                        </div>
+                <div className='d-flex ms-2'>
+                    <div className={`${styles.loginPart} me-3`}>
+                        <Link href='/login'>
+                            <h5 className={styles.loginPart__item}>Đăng nhập</h5>
+                        </Link>
+                    </div>
 
-                        <div className={styles.loginPart}>
-                            <div>
-                                <Link href='/login'>
-                                    <h5 className={styles.loginPart__item}>Đăng nhập</h5>
-                                </Link>
-                            </div>
+                    <div className={styles.loginPart}>
+                        <div>
+                            <Link href='/register'>
+                                <h5 className={styles.loginPart__item}>Đăng Ký</h5>
+                            </Link>
                         </div>
                     </div>
                 </div>
