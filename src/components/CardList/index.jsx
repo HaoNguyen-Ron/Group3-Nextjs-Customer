@@ -5,9 +5,9 @@ import Banner from "../Banner/Banner";
 function CardList(props) {
   return (
     <div>
-   <div className="container d-flex justify-content-space-between">
-         <Banner/>
-         <Banner/>
+      <div className="container d-flex justify-content-space-between">
+        <Banner />
+        <Banner />
       </div>
 
       <div className={x["section"]}>
@@ -20,8 +20,8 @@ function CardList(props) {
       </div>
 
       <div className=" container wrapper">
-        <div className={x["layout-content"]}>
-          <div className={x["layout-content__sidebar"]}>
+        <div className="d-flex row justify-content-around">
+          <div className="col-12 col-md-12 col-lg-4">
             <div className={x["groupbanner-hover"]}>
               <img
                 className="lazyloaded ls-is-cached  "
@@ -30,46 +30,43 @@ function CardList(props) {
               />
             </div>
           </div>
-          <b className={x["lg"]}></b>
-          <div className={x["layout-content__main"]}>
-            <div className={x["cards-container"]}>
-              <div className="row">
-                <div className="col-lg-3">
-                  <Card/>
+
+          <div className="col-12 col-md-12 col-lg-8">
+              <div className="d-flex row">
+                <div className="col-6 col-md-4 col-lg-3">
+                  <Card />
                 </div>
 
-                <div className="col-lg-3">
-                   <Card/>
+                <div className="col-6 col-md-4 col-lg-3">
+                  <Card />
                 </div>
 
-                <div className="col-lg-3">
-                <Card/>
+                <div className="col-6 col-md-4 col-lg-3">
+                  <Card />
                 </div>
 
-                <div className="col-lg-3">
-                <Card/>
+                <div className="col-6 col-md-4 col-lg-3">
+                  <Card />
                 </div>
 
-                <div className="col-lg-3">
-                <Card/>
+                <div className="col-6 col-md-4 col-lg-3">
+                  <Card />
                 </div>
 
-                <div className="col-lg-3">
-                <Card/>
+                <div className="col-6 col-md-4 col-lg-3">
+                  <Card />
                 </div>
 
-                <div className="col-lg-3">
-                <Card/>
+                <div className="col-6 col-md-4 col-lg-3">
+                  <Card />
                 </div>
 
-                <div className="col-lg-3">
-                <Card/>
+                <div className="col-6 col-md-4 col-lg-3">
+                  <Card />
                 </div>
               </div>
-            </div>
           </div>
         </div>
-       
       </div>
 
       <div className={x["section"]}>
@@ -82,57 +79,55 @@ function CardList(props) {
       </div>
 
       <div className=" container wrapper">
-        <div className={x["layout-content"]}>
-          <div className={x["layout-content__main"]}>
-            <div className={x["cards-container"]}>
-              <div className="row">
-                <div className="col-lg-3">
-                  <Card/>
-                </div>
-
-                <div className="col-lg-3">
-                   <Card/>
-                </div>
-
-                <div className="col-lg-3">
-                <Card/>
-                </div>
-
-                <div className="col-lg-3">
-                <Card/>
-                </div>
-
-                <div className="col-lg-3">
-                <Card/>
-                </div>
-
-                <div className="col-lg-3">
-                <Card/>
-                </div>
-
-                <div className="col-lg-3">
-                <Card/>
-                </div>
-
-                <div className="col-lg-3">
-                <Card/>
-                </div>
-              </div>
-            </div>
-          </div>
-          <b className={x["mg"]}></b>
-          <div className={x["layout-content__sidebar"]}>
+        <div className="d-flex row flex-row-reverse justify-content-around">
+          <div className="col-12 col-md-12 col-lg-4">
             <div className={x["groupbanner-hover"]}>
               <img
-                className=" ls-is-cached lazyloaded"
+                className="lazyloaded ls-is-cached  "
                 src="https://theme.hstatic.net/1000160337/1000885200/14/home_collection_1_banner.jpg?v=316"
                 alt=""
               />
             </div>
           </div>
+
+          <div className="col-12 col-md-12 col-lg-8">
+              <div className="d-flex row">
+                <div className="col-6 col-md-4 col-lg-3">
+                  <Card />
+                </div>
+
+                <div className="col-6 col-md-4 col-lg-3">
+                  <Card />
+                </div>
+
+                <div className="col-6 col-md-4 col-lg-3">
+                  <Card />
+                </div>
+
+                <div className="col-6 col-md-4 col-lg-3">
+                  <Card />
+                </div>
+
+                <div className="col-6 col-md-4 col-lg-3">
+                  <Card />
+                </div>
+
+                <div className="col-6 col-md-4 col-lg-3">
+                  <Card />
+                </div>
+
+                <div className="col-6 col-md-4 col-lg-3">
+                  <Card />
+                </div>
+
+                <div className="col-6 col-md-4 col-lg-3">
+                  <Card />
+                </div>
+              </div>
+          </div>
         </div>
       </div>
-      
+
       <div className={x["title"]}>
         <div className={x["groupbanner-hover"]}>
           <img
@@ -143,18 +138,21 @@ function CardList(props) {
         </div>
       </div>
 
+<<<<<<< HEAD
      
       
     
+=======
+>>>>>>> 4216bd8480221df99d619da32c351b1359c4f7f0
       <style jsx>
         {`
-img {
-  max-width: 100%;
-  vertical-align: middle;
-  border: 0;
-  overflow-clip-margin: content-box;
-  overflow: clip;
-}
+          img {
+            max-width: 100%;
+            vertical-align: middle;
+            border: 0;
+            overflow-clip-margin: content-box;
+            overflow: clip;
+          }
         `}
       </style>
     </div>

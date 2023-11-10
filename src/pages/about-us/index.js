@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import Social from "@/components/social";
 import abo from "@/styles/AboutUs.module.css";
 import Image from "next/image";
 import Link from "next/link";
 
 function AboutUS(props) {
+  const [isNavVisible, setNavVisible] = useState(false);
+
+  const toggleNav = () => {
+    setNavVisible(!isNavVisible);
+  };
   return (
     <>
       <div>
@@ -32,12 +37,12 @@ function AboutUS(props) {
         </div>
         <div className="container">
           <div className="row">
-            <div className="col-md-9 col-sm-8 col-xs-12">
+            <div className="col-lg-9 col-sm-12 col-xs-12">
               <div className="my-4 text-muted">
                 <h1>Giới thiệu về Japan Figure</h1>
               </div>
               <div className="contentAboutusDetail">
-                <p className={`${abo.imageAbout} text-center`}>
+                <p className={`${abo["imageAbout"]} text-center`}>
                   <Image
                     src="/assets/images/banner-about.png"
                     alt="facebook"
@@ -410,7 +415,74 @@ function AboutUS(props) {
                 <p className="text-center">&nbsp;</p>
               </div>
             </div>
-            <div className="col-md-3 col-sm-4 col-xs-12">aaaaaaaaaaa</div>
+            <div className="col-lg-3 col-sm-12 col-xs-12">
+              <aside className="sidebar-page">
+                <div
+                  className={`${abo["sidebox"]} mt-4 mobile-dropdown`}
+                  onClick={toggleNav}
+                >
+                  <div className={`${abo["about-head-ul"]} py-2`}>
+                    <h4
+                      className={`${abo["about-head-ul"]}} d-flex align-items-center`}
+                    >
+                      Danh mục
+                      <span
+                        className={`fa fa-angle-${
+                          isNavVisible ? "up" : "down"
+                        } d-block d-lg-none position-absolute`}
+                        style={{
+                          fontSize: "18px",
+                          right: "0",
+                        }}
+                      />
+                    </h4>
+                  </div>
+                  <div
+                    className={`d-lg-block ${isNavVisible ? "block" : "none"}`}
+                  >
+                    <ul
+                      className={`${abo["about-head-ul"]} ${
+                        isNavVisible ? "d-none" : "d-lg-block"
+                      }`}
+                    >
+                      <li className={`${abo["about-head-li"]} border-top py-2`}>
+                        <Link
+                          href="/"
+                          title="Tìm kiếm"
+                          className={`${abo["about-head-a"]}`}
+                        >
+                          <span>Tìm kiếm</span>
+                        </Link>
+                      </li>
+                      <li
+                        className={`${abo["about-head-li"]} nav-item border-top py-2`}
+                      >
+                        <Link
+                          className={`${abo["about-head-a"]}`}
+                          href="/about-us"
+                          title="Giới thiệu"
+                        >
+                          <span>Giới thiệu</span>
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="group-sidebox-banner">
+                  <figure className="mb-0 mt-4">
+                    <a className={`${abo["about-head-a"]}`} href="#">
+                      <Image
+                        className="position-static"
+                        src="/assets/images/about_sibar.jpg"
+                        alt="about-side"
+                        layout="fill"
+                        objectFit="cover"
+                      />
+                    </a>
+                  </figure>
+                </div>
+              </aside>
+            </div>
           </div>
         </div>
       </div>

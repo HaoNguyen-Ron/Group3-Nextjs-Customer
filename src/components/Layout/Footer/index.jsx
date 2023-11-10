@@ -1,8 +1,110 @@
-import styles from "./footer.module.css";
+import styles from "@/styles/footer.module.css";
+import Link from "next/link";
 
 function Footer() {
   return (
-    <footer className="d-grid">
+    <footer className=" d-block">
+      <div className={` ${styles.footer_banner}`}>
+        <div className="d-flex">
+          <div className={`col-2 ${styles.gallery_item}`}>
+            <a
+              className={` ${styles.groupbanner_hover}`}
+              href="//www.instagram.com/japanfigure.vn/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img
+                className={` ${styles.lazyloaded}`}
+                data-src="//theme.hstatic.net/1000160337/1000885200/14/gallery_item_1_img.jpg?v=316"
+                src="//theme.hstatic.net/1000160337/1000885200/14/gallery_item_1_img.jpg?v=316"
+                alt="instagram"
+              />
+            </a>
+          </div>
+
+          <div className={`col-2 ${styles.gallery_item}`}>
+            <a
+              className={` ${styles.groupbanner_hover}`}
+              href="//www.instagram.com/japanfigure.vn/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img
+                className={` ${styles.lazyloaded}`}
+                data-src="//theme.hstatic.net/1000160337/1000885200/14/gallery_item_2_img.jpg?v=316"
+                src="//theme.hstatic.net/1000160337/1000885200/14/gallery_item_2_img.jpg?v=316"
+                alt="instagram"
+              />
+            </a>
+          </div>
+
+          <div className={`col-2 ${styles.gallery_item}`}>
+            <a
+              className={` ${styles.groupbanner_hover}`}
+              href="//www.instagram.com/japanfigure.vn/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img
+                className={` ${styles.lazyloaded}`}
+                data-src="//theme.hstatic.net/1000160337/1000885200/14/gallery_item_3_img.jpg?v=316"
+                src="//theme.hstatic.net/1000160337/1000885200/14/gallery_item_3_img.jpg?v=316"
+                alt="instagram"
+              />
+            </a>
+          </div>
+
+          <div className={`col-2 ${styles.gallery_item}`}>
+            <a
+              className={` ${styles.groupbanner_hover}`}
+              href="//www.instagram.com/japanfigure.vn/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img
+                className={` ${styles.lazyloaded}`}
+                data-src="//theme.hstatic.net/1000160337/1000885200/14/gallery_item_4_img.jpg?v=316"
+                src="//theme.hstatic.net/1000160337/1000885200/14/gallery_item_4_img.jpg?v=316"
+                alt="instagram"
+              />
+            </a>
+          </div>
+
+          <div className={`col-2 ${styles.gallery_item}`}>
+            <a
+              className={` ${styles.groupbanner_hover}`}
+              href="//www.instagram.com/japanfigure.vn/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img
+                className={` ${styles.lazyloaded}`}
+                data-src="//theme.hstatic.net/1000160337/1000885200/14/gallery_item_5_img.jpg?v=316"
+                src="//theme.hstatic.net/1000160337/1000885200/14/gallery_item_5_img.jpg?v=316"
+                alt="instagram"
+              />
+            </a>
+          </div>
+
+          <div className={`col-2 ${styles.gallery_item}`}>
+            <a
+              className={` ${styles.groupbanner_hover}`}
+              href="//www.instagram.com/japanfigure.vn/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img
+                className={` ${styles.lazyloaded}`}
+                data-src="//theme.hstatic.net/1000160337/1000885200/14/gallery_item_6_img.jpg?v=316"
+                src="//theme.hstatic.net/1000160337/1000885200/14/gallery_item_6_img.jpg?v=316"
+                alt="instagram"
+              />
+            </a>
+          </div>
+
+        </div>
+      </div>
+
       <div
         className={`d-none d-md-flex d-lg-flex justify-content-center align-item-center ${styles.footer_bg}`}
       >
@@ -33,10 +135,10 @@ function Footer() {
               <h3>Hỗ trợ khách hàng</h3>
               <ul>
                 <li>
-                  <a href="javascript:;">Tìm kiếm</a>
+                  <Link href='/aboutUs'>Tìm kiếm</Link>
                 </li>
                 <li>
-                  <a href="javascript:;">Giới thiệu</a>
+                  <Link href="/">Giới thiệu</Link>
                 </li>
               </ul>
             </div>
@@ -44,7 +146,9 @@ function Footer() {
               <h3>Chăm sóc khách hàng</h3>
               <div className="d-flex align-items-center gap-2">
                 <div>
-                  <i className={`fa-solid fa-phone ${styles.phone_bigsize}`}></i>
+                  <i
+                    className={`fa-solid fa-phone ${styles.phone_bigsize}`}
+                  ></i>
                 </div>
                 <div>
                   <div>0965 587 662</div>
@@ -54,21 +158,21 @@ function Footer() {
               <h3>Follow Japan Figure</h3>
 
               <div className={`${styles.logo_icon} d-flex`}>
-                <a href="javascript:;">
+                <Link href="">
                   <i className="fa-solid fa-location-pin" />
-                </a>
-                <a href="javascript:;">
+                </Link>
+                <Link href="">
                   <i className="fa-brands fa-twitter" />
-                </a>
-                <a href="javascript:;">
+                </Link>
+                <Link href="">
                   <i className="fa-brands fa-pinterest" />
-                </a>
-                <a href="javascript:;">
+                </Link>
+                <Link href="">
                   <i className="fa-brands fa-google-plus-g" />
-                </a>
-                <a href="javascript:;">
+                </Link>
+                <Link href="">
                   <i className="fa-brands fa-square-instagram" />
-                </a>
+                </Link>
               </div>
             </div>
           </div>

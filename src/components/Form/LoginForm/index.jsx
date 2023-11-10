@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import Link from 'next/link';
@@ -6,20 +6,34 @@ import Link from 'next/link';
 import InputGroup from './InputGroup';
 
 import styles from '@/styles/form.module.css'
-
-
+import { useRouter } from 'next/router';
+import { axiosClient } from '@/libraries/axiosClient';
+import { Box, Modal, Typography } from '@mui/material';
 
 const LoginForm = () => {
-  const [hover, setHover] = useState(false)
-  const onMouseEnter = () => setHover(true);
-  const onMouseLeave = () => setHover(false);
+  const [open, setOpen] = useState(false);
+
+  const redirect = useRouter();
+
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid var(--main-color)',
+    boxShadow: 24,
+    p: 4,
+    borderRadius: '16px'
+  };
+
 
   const validation = useFormik({
     initialValues: {
       email: '',
       password: '',
     },
-
 
     validationSchema: Yup.object({
       email: Yup.string()
@@ -32,10 +46,32 @@ const LoginForm = () => {
         .required('Vui lòng điền mật khẩu'),
     }),
 
-    onSubmit: (values) => {
-      console.log('««««« values »»»»»', values);
+    onSubmit: async (values) => {
+      try {
+        const res = await axiosClient.post('/auth/login', values);
+
+        if (res.status === 200) {
+          localStorage.setItem("TOKEN", res.data.token)
+          localStorage.setItem("REFRESH-TOKEN", res.data.refreshToken)
+          redirect.reload()
+        }
+
+      } catch (error) {
+        setOpen(true)
+        console.log('««««« error »»»»»', error);
+      }
     },
   });
+
+  useEffect(() => {
+    const token = window.localStorage.getItem("TOKEN")
+
+    if(token || token && redirect.pathname ==='/login' ){
+      redirect.push('/')
+    }
+  },[redirect])
+
+  const handleClose = () => setOpen(false);
 
   return (
     <div className={`px-5 mx-auto my-5 ${styles.formContainer} `}>
@@ -60,20 +96,41 @@ const LoginForm = () => {
             placeholder='Nhập mật khẩu ở đây'
           />
         </div>
-        <div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className='mx-auto my-3'>
+        
+        <div className='mx-auto my-3'>
           <button
             type='submit'
             onClick={validation.handleSubmit}
-            className='btn btn-lg border border-0 text-white px-5'
-            style={
-              hover
-                ? { backgroundColor: "#fc629f" }
-                : { backgroundColor: "#ee2d7a" }}
+            className={`btn btn-lg border border-0 text-white px-5 ${styles.modal__btn}`}
           >
             Đăng nhập
           </button>
         </div>
       </div>
+
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <div className='d-flex flex-column'>
+            <Typography className={styles.form__item} id="modal-modal-title" variant="h6" component="h2">
+              Tình trạng đăng nhập
+            </Typography>
+            <hr />
+            <Typography id="modal-modal-description">
+              Mật khẩu hoặc email sai rồi, bạn vui lòng nhập lại !
+            </Typography>
+
+            <div className='mt-3'>
+              <button className={`btn ${styles.modal__btn}`} onClick={handleClose}>Quay lại</button>
+            </div>
+          </div>
+
+        </Box>
+      </Modal>
 
       <div className='d-flex justify-content-between mt-3 flex-column flex-md-row'>
         <div className="registerLink">

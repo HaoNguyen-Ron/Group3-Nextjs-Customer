@@ -212,11 +212,7 @@ figure.snip1278.hover .add-to-cart {
 }
 
 /* Cards container */
-.cards-container {
-  display: flex;
-  flex-flow: row wrap;
-  width: calc(100% + 20px);
-}
+
 .card {
   flex: 1 1 0%;
   max-width: 100%;

@@ -104,7 +104,7 @@ function Social(props) {
           <li className={soci["addThis_li"]}>
             <a
               className={soci["addThis_a"]}
-              href="javascript:;"
+              href=""
               rel="nofollow"
               aria-label="phone"
             >
@@ -118,7 +118,7 @@ function Social(props) {
             <a
               className={soci["addThis_a"]}
               data-toggle="modal"
-              href="javascript:;"
+              href=""
               aria-label="email"
             >
               <span className={soci["addThis_title"]}>Liên hệ qua mail</span>
