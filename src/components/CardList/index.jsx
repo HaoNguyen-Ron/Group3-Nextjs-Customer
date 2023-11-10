@@ -143,14 +143,7 @@ function CardList(props) {
         </div>
       </div>
 
-      <div className={x["section"]}>
-        <div className={x["section-heading"]}>
-          <h2 className={x["hTitle"]}>
-            <a href="">Sản Phẩm Có Sẵn</a>
-          </h2>
-          <p>Sản phẩm đang có sẵn, bạn có thể mua ngay</p>
-        </div>
-      </div>
+     
       
     
       <style jsx>
