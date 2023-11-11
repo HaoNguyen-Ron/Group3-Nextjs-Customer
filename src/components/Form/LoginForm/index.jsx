@@ -8,20 +8,13 @@ import InputGroup from './InputGroup';
 import styles from '@/styles/form.module.css'
 import { useRouter } from 'next/router';
 import { axiosClient } from '@/libraries/axiosClient';
-import { Box, Button, Modal, Typography } from '@mui/material';
-
-
+import { Box, Modal, Typography } from '@mui/material';
 
 const LoginForm = () => {
-  const [hover, setHover] = useState(false)
-  const onMouseEnter = () => setHover(true);
-  const onMouseLeave = () => setHover(false);
+  const [open, setOpen] = useState(false);
 
-  const [open, setOpen] = React.useState(false);
-  const handleClose = () => setOpen(false);
-  
   const redirect = useRouter();
-  
+
   const style = {
     position: 'absolute',
     top: '50%',
@@ -42,7 +35,6 @@ const LoginForm = () => {
       password: '',
     },
 
-
     validationSchema: Yup.object({
       email: Yup.string()
         .email('Email không hợp lệ')
@@ -55,19 +47,31 @@ const LoginForm = () => {
     }),
 
     onSubmit: async (values) => {
-      console.log('««««« values »»»»»', values);
       try {
         const res = await axiosClient.post('/auth/login', values);
 
         if (res.status === 200) {
-          redirect.push('/')
+          localStorage.setItem("TOKEN", res.data.token)
+          localStorage.setItem("REFRESH-TOKEN", res.data.refreshToken)
+          redirect.reload()
         }
+
       } catch (error) {
         setOpen(true)
         console.log('««««« error »»»»»', error);
       }
     },
   });
+
+  useEffect(() => {
+    const token = window.localStorage.getItem("TOKEN")
+
+    if(token || token && redirect.pathname ==='/login' ){
+      redirect.push('/')
+    }
+  },[redirect])
+
+  const handleClose = () => setOpen(false);
 
   return (
     <div className={`px-5 mx-auto my-5 ${styles.formContainer} `}>
@@ -92,15 +96,12 @@ const LoginForm = () => {
             placeholder='Nhập mật khẩu ở đây'
           />
         </div>
-        <div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className='mx-auto my-3'>
+        
+        <div className='mx-auto my-3'>
           <button
             type='submit'
             onClick={validation.handleSubmit}
-            className='btn btn-lg border border-0 text-white px-5'
-            style={
-              hover
-                ? { backgroundColor: "#fc629f" }
-                : { backgroundColor: "#ee2d7a" }}
+            className={`btn btn-lg border border-0 text-white px-5 ${styles.modal__btn}`}
           >
             Đăng nhập
           </button>

@@ -503,3 +503,18 @@ figure.snip1278.hover .add-to-cart {
  .mg{
     margin-left: 75px;
  }
+
+ .overflow-ellipsis {
+  /* white-space: nowrap;          */
+  overflow: hidden;           
+  text-overflow: ellipsis;    
+  width: 300px;   
+  word-wrap: break-word;              
+}
+.custom{
+  white-space: nowrap;         
+  overflow: hidden;           
+  text-overflow: ellipsis;    
+  width: 150px;   
+             
+}

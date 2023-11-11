@@ -422,13 +422,18 @@ function AboutUS(props) {
                   onClick={toggleNav}
                 >
                   <div className={`${abo["about-head-ul"]} py-2`}>
-                    <h4 className={`${abo["about-head-ul"]}}`}>
+                    <h4
+                      className={`${abo["about-head-ul"]}} d-flex align-items-center`}
+                    >
                       Danh mục
                       <span
                         className={`fa fa-angle-${
                           isNavVisible ? "up" : "down"
-                        } d-lg-none`}
-                        style={{ marginLeft: "5px", fontSize: "18px" }}
+                        } d-block d-lg-none position-absolute`}
+                        style={{
+                          fontSize: "18px",
+                          right: "0",
+                        }}
                       />
                     </h4>
                   </div>

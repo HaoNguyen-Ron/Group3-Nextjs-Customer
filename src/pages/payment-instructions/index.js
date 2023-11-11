@@ -1,15 +1,44 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import pay from "@/styles/Payment.module.css";
 import Image from "next/image";
 import Social from "@/components/social";
 
 function PaymentInstructions(props) {
+  const [isCategoryOpen, setIsCategoryOpen] = useState(false);
+  const [isCategoryOpen2, setIsCategoryOpen2] = useState(false);
+  const [isMdScreen, setIsMdScreen] = useState(true);
+
+  useEffect(() => {
+    // Sử dụng window.innerWidth để xác định kích thước màn hình
+    const handleResize = () => {
+      setIsMdScreen(window.innerWidth >= 768); // Đặt breakpoint 768px cho màn hình md
+    };
+
+    // Đăng ký sự kiện resize để theo dõi thay đổi kích thước màn hình
+    window.addEventListener("resize", handleResize);
+    // Kiểm tra kích thước màn hình khi component được tạo ra
+    handleResize();
+
+    // Hủy đăng ký sự kiện khi component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const toggleCategory = () => {
+    setIsCategoryOpen(!isCategoryOpen);
+  };
+
+  const toggleCategory2 = () => {
+    setIsCategoryOpen2(!isCategoryOpen2);
+  };
+
   return (
     <>
       <div className={pay["payment-head"]}>
         <div className="container">
           <div className="row">
-            <div className={`col-md-9 col-sm-8 col-xs-12`}>
+            <div className={`col-md-9 col-sm-12 col-xs-12`}>
               <div className={`mt-4 text-muted`}>
                 <h1>HƯỚNG DẪN ĐẶT HÀNG &amp; THANH TOÁN TẠI 3NIME FIGURE</h1>
                 <div className={`${pay["article-post-meta"]}`}>
@@ -28,6 +57,7 @@ function PaymentInstructions(props) {
                     alt=""
                     layout="fill"
                     objectFit="contain"
+                    className="position-relative"
                   />
                 </p>
 
@@ -80,12 +110,13 @@ function PaymentInstructions(props) {
                   </li>
                 </ul>
 
-                <p className={`${pay["imageAbout3"]} mt-3`}>
+                <p className={`${pay["imageAbout"]} mt-3`}>
                   <Image
                     src="/assets/images/dat_hang_1_grande.jpg"
                     alt=""
-                    width={700}
-                    height={400}
+                    layout="fill"
+                    objectFit="contain"
+                    className="position-relative"
                   />
                 </p>
 
@@ -94,12 +125,13 @@ function PaymentInstructions(props) {
                   email của bạn.
                 </p>
 
-                <p className={`${pay["imageAbout3"]} mt-3`}>
+                <p className={`${pay["imageAbout"]} mt-3`}>
                   <Image
                     src="/assets/images/dat_hang_2_grande.jpg"
                     alt=""
-                    width={700}
-                    height={400}
+                    layout="fill"
+                    objectFit="contain"
+                    className="position-relative"
                   />
                 </p>
 
@@ -107,12 +139,13 @@ function PaymentInstructions(props) {
                   <strong>Bước 4.</strong> Nhập mã giảm giá (nếu có).
                 </p>
 
-                <p className={`${pay["imageAbout3"]} mt-3`}>
+                <p className={`${pay["imageAbout"]} mt-3`}>
                   <Image
                     src="/assets/images/dat_hang_3_grande.jpg"
                     alt=""
-                    width={700}
-                    height={400}
+                    layout="fill"
+                    objectFit="contain"
+                    className="position-relative"
                   />
                 </p>
 
@@ -163,12 +196,13 @@ function PaymentInstructions(props) {
                   </li>
                 </ul>
 
-                <p className={`${pay["imageAbout3"]} mt-3`}>
+                <p className={`${pay["imageAbout"]} mt-3`}>
                   <Image
                     src="/assets/images/dat_hang_4_grande.jpg"
                     alt=""
-                    width={700}
-                    height={400}
+                    layout="fill"
+                    objectFit="contain"
+                    className="position-relative"
                   />
                 </p>
 
@@ -346,12 +380,13 @@ function PaymentInstructions(props) {
                 <p>4.Nộp đủ tiền cho nhân viên.</p>
                 <p>5.Ký tên, nở nụ cười thật tươi và cầm biên nhận ra về..</p>
                 <p>6.Nhắn tin cho Japan Figure biết bạn đã gửi tiền xong</p>
-                <p className={`${pay["imageAbout3"]} mt-3`}>
+                <p className={`${pay["imageAbout"]} mt-3`}>
                   <Image
                     src="/assets/images/nop_ngan_hang.jpg"
                     alt=""
-                    width={700}
-                    height={400}
+                    layout="fill"
+                    objectFit="contain"
+                    className="position-relative"
                   />
                 </p>
                 <p style={{ textAlign: "center" }}>
@@ -514,8 +549,9 @@ function PaymentInstructions(props) {
                   <Image
                     src="/assets/images/dt_momo.jpg"
                     alt=""
-                    width={700}
-                    height={500}
+                    layout="fill"
+                    objectFit="contain"
+                    className="position-relative"
                   />
                 </p>
                 <p style={{ paddingLeft: 30 }}>
@@ -533,8 +569,9 @@ function PaymentInstructions(props) {
                   <Image
                     src="/assets/images/km_momo.jpg"
                     alt=""
-                    width={700}
-                    height={500}
+                    layout="fill"
+                    objectFit="contain"
+                    className="position-relative"
                   />
                 </p>
                 <p style={{ paddingLeft: 30 }}>
@@ -639,8 +676,9 @@ function PaymentInstructions(props) {
                                     <Image
                                       src="/assets/images/rut_momo.jpg"
                                       alt=""
-                                      width={700}
-                                      height={500}
+                                      layout="fill"
+                                      objectFit="contain"
+                                      className="position-relative"
                                     />
                                   </p>
                                   <p>&nbsp;</p>Đến cửa hàng, bạn hỏi nhân viên/
@@ -651,8 +689,9 @@ function PaymentInstructions(props) {
                                     <Image
                                       src="/assets/images/ch_momo.jpg"
                                       alt=""
-                                      width={700}
-                                      height={500}
+                                      layout="fill"
+                                      objectFit="contain"
+                                      className="position-relative"
                                     />
                                   </p>
                                 </li>
@@ -682,8 +721,9 @@ function PaymentInstructions(props) {
                           <Image
                             src="/assets/images/22_nganhang.jpg"
                             alt=""
-                            width={700}
-                            height={500}
+                            layout="fill"
+                            objectFit="contain"
+                            className="position-relative"
                           />
                         </p>
                       </div>
@@ -714,8 +754,9 @@ function PaymentInstructions(props) {
                           <Image
                             src="/assets/images/rtien_momo.jpg"
                             alt=""
-                            width={700}
-                            height={400}
+                            layout="fill"
+                            objectFit="contain"
+                            className="position-relative"
                           />
                         </p>
                         <p style={{ textAlign: "justify" }}>&nbsp;</p>
@@ -811,9 +852,307 @@ function PaymentInstructions(props) {
             </div>
 
             <div
-              className={`col-md-3 col-sm-8 col-xs-12 ${pay["article-post-meta"]}`}
+              className={`col-md-3 col-sm-12 col-xs-12 mb-5 ${pay["article-post-meta"]}`}
             >
-              sidebar
+              <aside class={pay["side"]}>
+                {/* phần bài viết mới */}
+                <div
+                  className={`${pay["group-sidebox"]} ${
+                    isMdScreen ? "active" : isCategoryOpen ? "active" : ""
+                  }`}
+                >
+                  <div
+                    className={`${pay["sidebox-title"]}`}
+                    onClick={toggleCategory}
+                  >
+                    <h3
+                      className={`${pay["htitle"]} d-flex align-items-center`}
+                    >
+                      Bài viết mới nhất
+                      <span
+                        className={`fa ${
+                          isCategoryOpen ? "fa-angle-up" : "fa-angle-down"
+                        } d-block d-md-none position-absolute`}
+                        style={{ right: "0" }}
+                      />
+                    </h3>
+                  </div>
+
+                  {/* phần content bài viết */}
+                  <div
+                    className={`${pay["sidebox-content "]} ${
+                      isMdScreen || isCategoryOpen ? "d-md-block" : "d-none"
+                    }`}
+                  >
+                    <ul
+                      className={`${pay["menuList-links"]} ${
+                        isMdScreen || isCategoryOpen ? "d-md-block" : "d-none"
+                      }`}
+                    >
+                      <BlogItem
+                        image="/assets/images/blog_1.jpg"
+                        title="Bật mí cách mình đang kiếm tiền hiện giờ"
+                        title2="Bật mí cách mình đang kiếm tiền hiện giờ"
+                        title3="Tin Tức"
+                        date=" - 17/02/2023"
+                      />
+
+                      <BlogItem
+                        image="/assets/images/blog_2.jpg"
+                        title="Cách sở hữu figure chính hãng mà không cần nỗ lực."
+                        title2="Cách sở hữu figure chính hãng mà không cần nỗ lực."
+                        title3="Tin Tức"
+                        date=" - 12/02/2022"
+                      />
+                      <BlogItem
+                        image="/assets/images/blog_3.jpg"
+                        title="Theo dõi lịch phát hành Japan Figure từ chính hãng"
+                        title2="Theo dõi lịch phát hành Japan Figure từ chính hãng"
+                        title3="Hưỡng Dẫn"
+                        date=" - 23/04/2022"
+                      />
+                      <BlogItem
+                        image="/assets/images/blog_4.jpg"
+                        title="GIỚI THIỆU FIGURE BLACK ROCK SHOOTER INEXHAUSTIBLE VER. 1/8"
+                        title2="GIỚI THIỆU FIGURE BLACK ROCK SHOOTER INEXHAUSTIBLE VER. 1/8"
+                        title3="Tin Tức"
+                        date=" - 23/04/2022"
+                      />
+                    </ul>
+                  </div>
+                </div>
+
+                {/* phần danh mục */}
+                <div className={`${pay["group-sidebox"]}`}>
+                  <div
+                    className={`${pay["sidebox-title"]}`}
+                    onClick={toggleCategory2}
+                  >
+                    <h3
+                      className={`${pay["htitle"]} d-flex align-items-center`}
+                    >
+                      Danh Mục
+                      <span
+                        className={`fa ${
+                          isCategoryOpen2 ? "fa-angle-up" : "fa-angle-down"
+                        } d-block d-md-none position-absolute`}
+                        style={{ right: "0" }}
+                      />
+                    </h3>
+                  </div>
+
+                  {/* phần content danh mục */}
+                  <div
+                    className={`${pay["sidebox-content "]} ${
+                      isMdScreen || isCategoryOpen2 ? "d-md-block" : "d-none"
+                    }`}
+                  >
+                    <ul
+                      className={`${pay["menuList-links"]} ${
+                        isMdScreen || isCategoryOpen2 ? "d-md-block" : "d-none"
+                      }`}
+                    >
+                      <li className={`${pay["item-article"]}`}>
+                        <a href="/" title="Trang chủ">
+                          <span>Trang chủ</span>
+                        </a>
+                      </li>
+                      <li className={`${pay["item-article"]}`}>
+                        <a href="/pages/about-us" title="Giới thiệu">
+                          <span>Giới thiệu</span>
+                        </a>
+                      </li>
+                      <li className={`${pay["item-article"]}`}>
+                        <a className="" href="#" title="Hướng dẫn">
+                          Hướng dẫn
+                          <i className="fa-thin fa-plus fa-xs" />
+                        </a>
+                        <ul className="submenu-links">
+                          <li>
+                            <a href="/about-us" title="Figure là gì?">
+                              Figure là gì?
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/" title="Các chủng loại figure">
+                              Các chủng loại figure
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/about-us" title="Phân biệt thật/ giả">
+                              Phân biệt thật/ giả
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/" title="Hỏi & Đáp">
+                              Hỏi &amp; Đáp
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/" title="Cách sửa chữa figure">
+                              Cách sửa chữa figure
+                            </a>
+                          </li>
+                          <li>
+                            <a href="" title="Đặt mua & Thanh toán">
+                              Đặt mua &amp; Thanh toán
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/" title="Các chính sách">
+                              Các chính sách
+                            </a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li className={`${pay["item-article"]}`}>
+                        <a href="/collections/all" title="Sản phẩm">
+                          Sản phẩm{" "}
+                          <span className="icon-plus-submenu plus-nClick1" />
+                        </a>
+                        <ul className="submenu-links">
+                          <li>
+                            <a
+                              href="/collections/hang-co-san"
+                              title="Hàng có sẵn"
+                            >
+                              Hàng có sẵn
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="/collections/hang-order"
+                              title="Hàng order"
+                            >
+                              Hàng order
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="/collections/scale-figure"
+                              title="Scale Figure"
+                            >
+                              Scale Figure
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="/collections/chibi-figure"
+                              title="Nendoroid"
+                            >
+                              Nendoroid
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="/collections/pop-up-parade"
+                              title="Pop Up Parade"
+                            >
+                              Pop Up Parade
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/collections/action-figure" title="Figma">
+                              Figma
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/collections/r18" title="R18">
+                              R18
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="/collections/cac-loai-figure-khac"
+                              title="Các loại figure khác"
+                            >
+                              Các loại figure khác
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/collections/artbook" title="Artbook">
+                              Artbook
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="/collections/fidget-spinner"
+                              title="Fidget Spinner"
+                            >
+                              Fidget Spinner
+                            </a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li className={`${pay["item-article"]}`}>
+                        <a href="/blogs/tin-tuc" title="Review">
+                          <span>Review</span>
+                        </a>
+                      </li>
+                      <li className={`${pay["item-article"]}`}>
+                        <a href="/blogs/khuyen-mai" title="Ưu đãi">
+                          <span>Ưu đãi</span>
+                        </a>
+                      </li>
+                      <li className={`${pay["item-article"]}`}>
+                        <a href="https://t.me/joinchat/" title="Kết nối">
+                          Kết nối{" "}
+                          <span className="icon-plus-submenu plus-nClick1" />
+                        </a>
+                        <ul className="submenu-links">
+                          <li>
+                            <a
+                              href="https://t.me/joinchat/"
+                              title="Japan Figure Trading"
+                            >
+                              Japan Figure Trading
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="https://www.facebook.com/"
+                              title="Facebook"
+                            >
+                              Facebook
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="https://www.instagram.com/"
+                              title="Instagram"
+                            >
+                              Instagram
+                            </a>
+                          </li>
+                          <li>
+                            <a href="https://www.youtube.com/" title="Youtube">
+                              Youtube
+                            </a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li className={`${pay["item-article"]}`}>
+                        <a href="/pages/lien-he" title="Liên hệ">
+                          Liên hệ{" "}
+                          <span className="icon-plus-submenu plus-nClick1" />
+                        </a>
+                        <ul className="submenu-links">
+                          <li>
+                            <a href="/pages/lien-he" title="Địa chỉ">
+                              Địa chỉ
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/pages/so-tai-khoan" title="Số tài khoản">
+                              Số tài khoản
+                            </a>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </aside>
             </div>
           </div>
         </div>
@@ -824,3 +1163,37 @@ function PaymentInstructions(props) {
 }
 
 export default PaymentInstructions;
+
+const BlogItem = ({ image, title, title2, title3, title4, date }) => {
+  return (
+    <>
+      <li>
+        <div className={`${pay["item-article"]} d-flex clearfix`}>
+          <div className="post-image">
+            <a href="/">
+              <img className={`${pay["lazyloaded"]}`} src={image} alt={title} />
+            </a>
+          </div>
+          <div className={`${pay["post-content"]} ms-2`}>
+            <h3 className={`${pay["fs14"]} mb-0`}>
+              <a href="/" className={pay["fs14_hover"]}>
+                {title2}
+              </a>
+            </h3>
+            <p className="mb-0">
+              <span>
+                <a href="/" className={pay["tag"]}>
+                  {title3}
+                </a>
+              </span>
+              <span>
+                <a href="/">{title4}</a>
+              </span>
+              <span className="date">{date}</span>
+            </p>
+          </div>
+        </div>
+      </li>
+    </>
+  );
+};

@@ -4,6 +4,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
 import styles from '@/styles/loginPart.module.css'
+import Link from 'next/link';
 
 export default function LoginPartTablet() {
   const [openMenu, setOpenMenu] = React.useState(null);
@@ -24,7 +25,7 @@ export default function LoginPartTablet() {
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
       >
-         <i className="fa-regular fa-user fs-4 my-auto me-2"></i>
+        <i className="fa-regular fa-user fs-4 my-auto me-2"></i>
       </Button>
       <Menu
         id="demo-positioned-menu"
@@ -41,8 +42,12 @@ export default function LoginPartTablet() {
           horizontal: 'center',
         }}
       >
-        <MenuItem onClick={handleClose}>Đăng kí</MenuItem>
-        <MenuItem onClick={handleClose}>Đăng nhập</MenuItem>
+        <MenuItem kíenuItem onClick={handleClose}>
+          <Link className={styles.loginPart__title} href={'/register'}>Đăng kí</Link>
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <Link className={styles.loginPart__title} href={'/login'}>Đăng nhập</Link>
+        </MenuItem>
       </Menu>
     </div>
   );
