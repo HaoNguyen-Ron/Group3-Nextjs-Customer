@@ -5,9 +5,15 @@ import Banner from "../Banner/Banner";
 function CardList(props) {
   return (
     <div>
-      <div className="container d-flex justify-content-space-between">
-        <Banner />
-        <Banner />
+      <div className="container d-flex justify-content-around">
+        <div className="row">
+          <div className="col-12 col-md-6 col-lg-6">
+            <Banner />
+          </div>
+          <div className="col-12 col-md-6 col-lg-6">
+            <Banner />
+          </div>
+        </div>
       </div>
 
       <div className={x["section"]}>
@@ -32,39 +38,39 @@ function CardList(props) {
           </div>
 
           <div className="col-12 col-md-12 col-lg-8">
-              <div className="d-flex row">
-                <div className="col-6 col-md-4 col-lg-3">
-                  <Card />
-                </div>
-
-                <div className="col-6 col-md-4 col-lg-3">
-                  <Card />
-                </div>
-
-                <div className="col-6 col-md-4 col-lg-3">
-                  <Card />
-                </div>
-
-                <div className="col-6 col-md-4 col-lg-3">
-                  <Card />
-                </div>
-
-                <div className="col-6 col-md-4 col-lg-3">
-                  <Card />
-                </div>
-
-                <div className="col-6 col-md-4 col-lg-3">
-                  <Card />
-                </div>
-
-                <div className="col-6 col-md-4 col-lg-3">
-                  <Card />
-                </div>
-
-                <div className="col-6 col-md-4 col-lg-3">
-                  <Card />
-                </div>
+            <div className="d-flex row">
+              <div className="col-6 col-md-4 col-lg-3">
+                <Card />
               </div>
+
+              <div className="col-6 col-md-4 col-lg-3">
+                <Card />
+              </div>
+
+              <div className="col-6 col-md-4 col-lg-3">
+                <Card />
+              </div>
+
+              <div className="col-6 col-md-4 col-lg-3">
+                <Card />
+              </div>
+
+              <div className="col-6 col-md-4 col-lg-3">
+                <Card />
+              </div>
+
+              <div className="col-6 col-md-4 col-lg-3">
+                <Card />
+              </div>
+
+              <div className="col-6 col-md-4 col-lg-3">
+                <Card />
+              </div>
+
+              <div className="col-6 col-md-4 col-lg-3">
+                <Card />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -91,39 +97,39 @@ function CardList(props) {
           </div>
 
           <div className="col-12 col-md-12 col-lg-8">
-              <div className="d-flex row">
-                <div className="col-6 col-md-4 col-lg-3">
-                  <Card />
-                </div>
-
-                <div className="col-6 col-md-4 col-lg-3">
-                  <Card />
-                </div>
-
-                <div className="col-6 col-md-4 col-lg-3">
-                  <Card />
-                </div>
-
-                <div className="col-6 col-md-4 col-lg-3">
-                  <Card />
-                </div>
-
-                <div className="col-6 col-md-4 col-lg-3">
-                  <Card />
-                </div>
-
-                <div className="col-6 col-md-4 col-lg-3">
-                  <Card />
-                </div>
-
-                <div className="col-6 col-md-4 col-lg-3">
-                  <Card />
-                </div>
-
-                <div className="col-6 col-md-4 col-lg-3">
-                  <Card />
-                </div>
+            <div className="d-flex row">
+              <div className="col-6 col-md-4 col-lg-3">
+                <Card />
               </div>
+
+              <div className="col-6 col-md-4 col-lg-3">
+                <Card />
+              </div>
+
+              <div className="col-6 col-md-4 col-lg-3">
+                <Card />
+              </div>
+
+              <div className="col-6 col-md-4 col-lg-3">
+                <Card />
+              </div>
+
+              <div className="col-6 col-md-4 col-lg-3">
+                <Card />
+              </div>
+
+              <div className="col-6 col-md-4 col-lg-3">
+                <Card />
+              </div>
+
+              <div className="col-6 col-md-4 col-lg-3">
+                <Card />
+              </div>
+
+              <div className="col-6 col-md-4 col-lg-3">
+                <Card />
+              </div>
+            </div>
           </div>
         </div>
       </div>

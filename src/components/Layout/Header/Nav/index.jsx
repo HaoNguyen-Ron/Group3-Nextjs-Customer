@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { useState } from "react";
 const TAB = {
   Home: 1,
@@ -120,7 +121,7 @@ function index(props) {
             display: flex;
             text-align: center;
             font-family: "Raleway", sans-serif;
-            font-size: 1rem;
+            font-size: 20px;
             & ul {
               margin: 0;
               padding: 0;
@@ -345,7 +346,7 @@ const TabLi = ({classDNone, title, value, activeTab,submenutab, onClick,titlemen
           value === activeTab ? "active-colors" : ""
         }`}
           aria-current="page"
-          href="#"
+          href="about-us"
           id="navbarDropdown"
           role="button"
         >
@@ -387,7 +388,7 @@ const TabLi = ({classDNone, title, value, activeTab,submenutab, onClick,titlemen
             display: flex;
             text-align: center;
             font-family: "Raleway", sans-serif;
-            font-size: 1rem;
+            font-size: 20px;
             & ul {
               margin: 0;
               padding: 0;

@@ -42,7 +42,7 @@ export default function Header() {
                             <Nav />
                         </div>
                     </div>
-                    <CardCart/>
+                    {/* <CardCart/> */}
                     
                 </div>
             </header>
