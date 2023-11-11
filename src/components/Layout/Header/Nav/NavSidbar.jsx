@@ -1,112 +1,63 @@
-import NavSidbar from "./NavSidbar";
-import React, { useState } from "react";
-
 import { useRouter } from 'next/router';
+import React from 'react';
 
-function index(props) {
-  const router = useRouter();
- 
-  const [activeTab, setActiveTab] = useState(router.pathname);
-
-  const onClickTab = () => {
-    setActiveTab(router.pathname);
-  };
-  console.log('««««« activeTab »»»»»', activeTab);
-  console.log('««««« router.pathname »»»»»', router.pathname);
-
-  return (
-    <>
-      <nav className="navbar navbar-expand-lg mx-5">
-        <div className="container-fluid">
-          <button 
-            className="navbar-toggler active-colors"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
+function NavSidbar({classDNone,activeTab, title ,submenutab, onClick,titlemenu1,titlemenu2,titlemenu3,titlemenu4,titlemenu5,titlemenu6 , a_href , a_href1}) {
+    const router = useRouter();
+    // console.log('««««« sosanh »»»»»', router.pathname === a_href);
+    return (
+        <>
+        <li
+          onClick={() => onClick(router.pathname)}
+          className={`${classDNone} nav-item  ${
+            a_href === activeTab || a_href1 === activeTab ? "active-colors" : ""
+          }`}
+        >
+          <a
+            href={a_href}
+            className={`nav-link ${
+            a_href === activeTab || a_href1 === activeTab  ? "active-colors" : ""
+          }`}
+            aria-current="page"
+            id="navbarDropdown"
+            role="button"
           >
-            <span className="fa-solid fa-bars" />
-          </button>
-          <div
-            className="collapse navbar-collapse"
-            id="navbarSupportedContent"
-          >
-            <ul className="navigation-menu navbar-nav me-auto mb-2 mb-lg-0">
-              <NavSidbar
-                title="Trang Chủ"
-                a_href="/"
-                activeTab={activeTab}
-                onClick={onClickTab}
-              />
-
-              <NavSidbar
-                title="Giới Thiệu"
-                activeTab={activeTab}
-                onClick={onClickTab}
-                a_href="/about-us"
-              />
-
-              <NavSidbar
-                title="Hướng Dẫn"
-                activeTab={activeTab}
-                onClick={onClickTab}
-                submenutab="0"
-                titlemenu1="Thanh Toán"
-                a_href="#"
-                a_href1="/payment-instructions"
-                titlemenu2="assc"
-                titlemenu3="ac"
-              />     
-
-              <NavSidbar
-                title="Sản Phẩm"
-                activeTab={activeTab}
-                onClick={onClickTab}
-                submenutab="0"
-                titlemenu1="abc"
-                titlemenu2="assc"
-                titlemenu3="ac"
-              />
-
-              <NavSidbar
-                title="Review"
-                activeTab={activeTab}
-                onClick={onClickTab}
-              />
-
-              <NavSidbar
-                title="Ưu Đãi"
-                activeTab={activeTab}
-                onClick={onClickTab}
-              />
-
-              <NavSidbar
-                title="Kết Nối"
-                activeTab={activeTab}
-                onClick={onClickTab}
-                submenutab="0"
-                titlemenu1="abc"
-                titlemenu2="assc"
-                titlemenu3="ac"
-              />
-
-              <NavSidbar
-                title="Liên Hệ"
-                activeTab={activeTab}
-                onClick={onClickTab}
-                submenutab="0"
-                titlemenu1="abc"
-                titlemenu2="assc"
-                titlemenu3="ac"
-              />
-            </ul>
-          </div>
-        </div>
-      </nav>
-      
-      <style jsx>
+            {title}
+          </a>
+          {submenutab && 
+          <ul className="nav-sub" aria-labelledby="navbarDropdown">
+            {titlemenu1 &&
+            <li className={`${
+            a_href === activeTab || a_href1 === activeTab ? "active-colors" : ""
+          }`} >
+              <a className={`${
+            a_href === activeTab || a_href1 === activeTab ? "active-colors" : ""
+          }`} 
+          href={a_href1}>{titlemenu1}</a>
+            </li>}
+  
+            {titlemenu2 &&<li>
+              <a className="" href="#">{titlemenu2}</a>
+            </li>}
+  
+            {titlemenu3 &&<li>
+              <a className="" href="#">{titlemenu3}</a>
+            </li>}
+  
+            {titlemenu4 &&<li>
+              <a className="" href="#">{titlemenu4}</a>
+            </li>}
+  
+            {titlemenu5 &&<li>
+              <a className="" href="#">{titlemenu5}</a>
+            </li>}
+  
+            {titlemenu6 &&<li>
+              <a className="" href="#">{titlemenu6}</a>
+            </li>}
+          </ul>
+          }
+        </li>
+        <style jsx>
           {`
             /* Navbar */
             nav {
@@ -318,8 +269,8 @@ function index(props) {
             }
           `}
         </style>
-    </>
-  );
+      </>
+    );
 }
 
-export default index;
+export default NavSidbar;

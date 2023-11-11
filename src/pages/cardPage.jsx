@@ -1,7 +1,7 @@
 import Card from '@/components/CardList';
 import React from 'react';
 
-function CardPage(props) {
+function CartPage(props) {
     return (
         <div>
             <Card />
@@ -9,5 +9,4 @@ function CardPage(props) {
     );
 }
 
-
-export default CardPage;
+export default CartPage;
