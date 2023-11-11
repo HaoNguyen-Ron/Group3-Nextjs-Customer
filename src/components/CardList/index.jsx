@@ -137,13 +137,7 @@ function CardList(props) {
           />
         </div>
       </div>
-
-<<<<<<< HEAD
-     
       
-    
-=======
->>>>>>> 4216bd8480221df99d619da32c351b1359c4f7f0
       <style jsx>
         {`
           img {
