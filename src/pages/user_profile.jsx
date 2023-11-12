@@ -9,7 +9,6 @@ import Link from 'next/link'
 import { axiosClient } from '@/libraries/axiosClient'
 
 export default function UserProfilePage() {
-    console.log('««««« axiosClient.defaults »»»»»', axiosClient.defaults);
     const [getDetail, setGetDetail] = useState(true)
     const [getHistory, setGetHistory] = useState(false)
     const [getPassword, setGetPassword] = useState(false)
