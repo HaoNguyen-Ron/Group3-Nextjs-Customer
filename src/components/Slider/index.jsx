@@ -1,7 +1,8 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-import x from "@/components/CardList/Card.module.css"
+import x from '@/components/Slider/Slider.module.css'
+
 function Sliders() {
   const settings = {
     infinite: true,
@@ -11,12 +12,13 @@ function Sliders() {
   };
   return (
     <div>
-       <div className={x["section"]}>
-        <div className={x["section-heading"]}>
-          <h2 className={x["hTitle"]}>
-            <a href="">Dành Cho Người Mới Bắt Đầu</a>
+      
+      <div className={` ${x["section"]}`}>
+        <div className={` ${x["section-heading"]}`}>
+          <h2 className={` ${x["hTitle"]}`}>
+            <a href="collections/scale-figure">Dành Cho Người Mới Bắt Đầu</a>
           </h2>
-          <p>Hướng Dẫn Cơ Bản</p>
+          <p>Hướng dẫn cơ bản</p>
         </div>
       </div>
       <div className='w-3/4 m-auto'>
@@ -31,10 +33,10 @@ function Sliders() {
             </div>
 
             <div className="flex flex-col items-center justify-center gap-4 p-4">
-              <h5 className={x['custom']}>{d.name}</h5>
-              <p className={x['overflow-ellipsis']}>{d.review}</p>
+              <h5 className={`${x["custom"]}`}>{d.name}</h5>
+              <p className={`${x["overflow-ellipsis"]}`}>{d.review}</p>
               <a href="https://japanfigure.vn/blogs/huong-dan/phan-biet-hang-real-va-fake-nendoroid-kirby">
-              <button type="button" class="btn btn-outline-danger">Xem Chi Tiết</button>
+              <button type="button" className="btn btn-outline-danger">Xem Chi Tiết</button>
               </a>
             </div>
           </div>
@@ -74,11 +76,7 @@ const data = [
     KHI "CÓ" THÌ SỐ LƯỢNG NHIỀU KHÔNG?"CÓ" RỒI MỚI ĐẶT LIỆU KỊP KHÔNG? Đây là những câu hỏi được
      rất nhiều bạn quan tâm.Trước tiên, Figure Nhật...`
   },
-  // {
-  //   name: `Mia Williams`,
-  //   img: `/assets/images/a3.png`,
-  //   review: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
-  // },
+  
   
 ];
 

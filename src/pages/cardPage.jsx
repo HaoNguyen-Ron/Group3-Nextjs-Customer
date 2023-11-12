@@ -1,28 +1,16 @@
-<<<<<<< HEAD
-
 import CardList from '@/components/CardList';
 import React from 'react';
 
-function CardPage(props) {
+function cardPage(props) {
     return (
         <div>
-            <CardList />
-=======
-import Card from '@/components/CardList';
-import React from 'react';
-
-function CartPage(props) {
-    return (
-        <div>
-            <Card />
->>>>>>> 4216bd8480221df99d619da32c351b1359c4f7f0
+            <CardList
+            name="Nendoroid My Hero Academia Katsuki Bakugo: U.A. School Uniform Ver"
+            price="75990"
+            size="10"
+            />
         </div>
     );
 }
 
-<<<<<<< HEAD
-
-export default CardPage;
-=======
-export default CartPage;
->>>>>>> 4216bd8480221df99d619da32c351b1359c4f7f0
+export default cardPage;
