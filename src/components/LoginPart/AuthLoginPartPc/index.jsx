@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 
 export default function AuthLoginPartPc() {
     const router = useRouter()
-    
+
     const handleLogout = () => {
         if (typeof window !== "undefined") {
             localStorage.clear()
@@ -17,10 +17,9 @@ export default function AuthLoginPartPc() {
             <div className={styles.media_pc}>
                 <div className='d-flex'>
                     <div>
-                        <button className={`btn ${styles.loginPart__item}`}>
+                        <Link href={'/cart'} className={`btn ${styles.loginPart__item}`}>
                             <i className='fa-solid fa-cart-shopping my-auto me-2 ' style={{ fontSize: '30px' }}></i>
-
-                        </button>
+                        </Link>
                     </div>
 
                     <div className='d-flex flex-column ms-1 my-auto'>

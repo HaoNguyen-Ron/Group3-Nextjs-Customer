@@ -109,9 +109,10 @@ function CardList(props) {
                    />
                 </div>
               </div>
+            </div>
           </div>
         </div>
-      </div>
+     
 
       <div className={` ${x["section"]}`}>
         <div className={` ${x["section-heading"]}`}>
@@ -200,10 +201,9 @@ function CardList(props) {
                    />
                 </div>
               </div>
+            </div>
           </div>
         </div>
-      </div>
-
       <div className={`${x["title"]}`}>
         <div className={`${x["groupbanner-hover"]}`}>
           <img
@@ -213,6 +213,7 @@ function CardList(props) {
           />
         </div>
       </div>
+    
     </div>
   );
 }

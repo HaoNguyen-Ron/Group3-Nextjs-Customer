@@ -1,16 +1,14 @@
 import CardList from '@/components/CardList';
 import React from 'react';
 
-function cardPage(props) {
+function CardPage(props) {
     return (
         <div>
-            <CardList
-            name="Nendoroid My Hero Academia Katsuki Bakugo: U.A. School Uniform Ver"
-            price="75990"
-            size="10"
-            />
+           <CardList/>
+ 
         </div>
     );
 }
 
-export default cardPage;
+export default CardPage;
+
