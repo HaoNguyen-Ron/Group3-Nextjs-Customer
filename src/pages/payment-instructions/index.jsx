@@ -2,8 +2,18 @@ import React, { useEffect, useState } from "react";
 import pay from "@/styles/Payment.module.css";
 import Image from "next/image";
 import Social from "@/components/social";
+import NavSidbar from "@/components/Layout/Header/Nav/NavSidbar";
+import { useRouter } from "next/router";
 
 function PaymentInstructions(props) {
+  const router = useRouter();
+
+  const [activeTab, setActiveTab] = useState(router.pathname);
+
+  const onClickTab = () => {
+    setActiveTab(router.pathname);
+  };
+
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
   const [isCategoryOpen2, setIsCategoryOpen2] = useState(false);
   const [isMdScreen, setIsMdScreen] = useState(true);
@@ -948,208 +958,305 @@ function PaymentInstructions(props) {
                     }`}
                   >
                     <ul
-                      className={`${pay["menuList-links"]} ${
+                      className={`navigation-menu navbar-nav me-auto mb-2 mb-lg-0 ${
+                        pay["menuList-links"]
+                      } ${
                         isMdScreen || isCategoryOpen2 ? "d-md-block" : "d-none"
                       }`}
                     >
-                      <li className={`${pay["item-article"]}`}>
-                        <a href="/" title="Trang chủ">
-                          <span>Trang chủ</span>
-                        </a>
-                      </li>
-                      <li className={`${pay["item-article"]}`}>
-                        <a href="/pages/about-us" title="Giới thiệu">
-                          <span>Giới thiệu</span>
-                        </a>
-                      </li>
-                      <li className={`${pay["item-article"]}`}>
-                        <a className="" href="#" title="Hướng dẫn">
-                          Hướng dẫn
-                          <i className="fa-thin fa-plus fa-xs" />
-                        </a>
-                        <ul className="submenu-links">
-                          <li>
-                            <a href="/about-us" title="Figure là gì?">
-                              Figure là gì?
-                            </a>
-                          </li>
-                          <li>
-                            <a href="/" title="Các chủng loại figure">
-                              Các chủng loại figure
-                            </a>
-                          </li>
-                          <li>
-                            <a href="/about-us" title="Phân biệt thật/ giả">
-                              Phân biệt thật/ giả
-                            </a>
-                          </li>
-                          <li>
-                            <a href="/" title="Hỏi & Đáp">
-                              Hỏi &amp; Đáp
-                            </a>
-                          </li>
-                          <li>
-                            <a href="/" title="Cách sửa chữa figure">
-                              Cách sửa chữa figure
-                            </a>
-                          </li>
-                          <li>
-                            <a href="" title="Đặt mua & Thanh toán">
-                              Đặt mua &amp; Thanh toán
-                            </a>
-                          </li>
-                          <li>
-                            <a href="/" title="Các chính sách">
-                              Các chính sách
-                            </a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li className={`${pay["item-article"]}`}>
-                        <a href="/collections/all" title="Sản phẩm">
-                          Sản phẩm{" "}
-                          <span className="icon-plus-submenu plus-nClick1" />
-                        </a>
-                        <ul className="submenu-links">
-                          <li>
-                            <a
-                              href="/collections/hang-co-san"
-                              title="Hàng có sẵn"
-                            >
-                              Hàng có sẵn
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="/collections/hang-order"
-                              title="Hàng order"
-                            >
-                              Hàng order
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="/collections/scale-figure"
-                              title="Scale Figure"
-                            >
-                              Scale Figure
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="/collections/chibi-figure"
-                              title="Nendoroid"
-                            >
-                              Nendoroid
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="/collections/pop-up-parade"
-                              title="Pop Up Parade"
-                            >
-                              Pop Up Parade
-                            </a>
-                          </li>
-                          <li>
-                            <a href="/collections/action-figure" title="Figma">
-                              Figma
-                            </a>
-                          </li>
-                          <li>
-                            <a href="/collections/r18" title="R18">
-                              R18
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="/collections/cac-loai-figure-khac"
-                              title="Các loại figure khác"
-                            >
-                              Các loại figure khác
-                            </a>
-                          </li>
-                          <li>
-                            <a href="/collections/artbook" title="Artbook">
-                              Artbook
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="/collections/fidget-spinner"
-                              title="Fidget Spinner"
-                            >
-                              Fidget Spinner
-                            </a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li className={`${pay["item-article"]}`}>
-                        <a href="/blogs/tin-tuc" title="Review">
-                          <span>Review</span>
-                        </a>
-                      </li>
-                      <li className={`${pay["item-article"]}`}>
-                        <a href="/blogs/khuyen-mai" title="Ưu đãi">
-                          <span>Ưu đãi</span>
-                        </a>
-                      </li>
-                      <li className={`${pay["item-article"]}`}>
-                        <a href="https://t.me/joinchat/" title="Kết nối">
-                          Kết nối{" "}
-                          <span className="icon-plus-submenu plus-nClick1" />
-                        </a>
-                        <ul className="submenu-links">
-                          <li>
-                            <a
-                              href="https://t.me/joinchat/"
-                              title="Japan Figure Trading"
-                            >
-                              Japan Figure Trading
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="https://www.facebook.com/"
-                              title="Facebook"
-                            >
-                              Facebook
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="https://www.instagram.com/"
-                              title="Instagram"
-                            >
-                              Instagram
-                            </a>
-                          </li>
-                          <li>
-                            <a href="https://www.youtube.com/" title="Youtube">
-                              Youtube
-                            </a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li className={`${pay["item-article"]}`}>
-                        <a href="/pages/lien-he" title="Liên hệ">
-                          Liên hệ{" "}
-                          <span className="icon-plus-submenu plus-nClick1" />
-                        </a>
-                        <ul className="submenu-links">
-                          <li>
-                            <a href="/pages/lien-he" title="Địa chỉ">
-                              Địa chỉ
-                            </a>
-                          </li>
-                          <li>
-                            <a href="/pages/so-tai-khoan" title="Số tài khoản">
-                              Số tài khoản
-                            </a>
-                          </li>
-                        </ul>
-                      </li>
+                      <NavSidbar
+                        title="Trang Chủ"
+                        a_href="/"
+                        activeTab={activeTab}
+                        onClick={onClickTab}
+                      />
+
+                      <NavSidbar
+                        title="Giới Thiệu"
+                        activeTab={activeTab}
+                        onClick={onClickTab}
+                        a_href="/about-us"
+                      />
+
+                      <NavSidbar
+                        title="Hướng Dẫn"
+                        activeTab={activeTab}
+                        onClick={onClickTab}
+                        submenutab="0"
+                        a_href="#"
+                        titlemenu1="Thanh Toán"
+                        a_href1="/payment-instructions"
+                        titlemenu2="assc"
+                        titlemenu3="ac"
+                      />
+
+                      <NavSidbar
+                        title="Sản Phẩm"
+                        activeTab={activeTab}
+                        onClick={onClickTab}
+                        submenutab="0"
+                        a_href="#"
+                        titlemenu1="abc"
+                        titlemenu2="assc"
+                        titlemenu3="ac"
+                      />
+
+                      <NavSidbar
+                        title="Review"
+                        a_href="#"
+                        activeTab={activeTab}
+                        onClick={onClickTab}
+                      />
+
+                      <NavSidbar
+                        title="Ưu Đãi"
+                        a_href="#"
+                        activeTab={activeTab}
+                        onClick={onClickTab}
+                      />
+
+                      <NavSidbar
+                        title="Kết Nối"
+                        activeTab={activeTab}
+                        onClick={onClickTab}
+                        submenutab="0"
+                        a_href="#"
+                        titlemenu1="abc"
+                        titlemenu2="assc"
+                        titlemenu3="ac"
+                      />
+
+                      <NavSidbar
+                        title="Liên Hệ"
+                        activeTab={activeTab}
+                        onClick={onClickTab}
+                        submenutab="0"
+                        a_href="#"
+                        titlemenu1="abc"
+                        titlemenu2="assc"
+                        titlemenu3="ac"
+                      />
                     </ul>
+                    <style jsx>
+                      {`
+                        /* Navbar */
+                        nav {
+                          display: flex;
+                          text-align: center;
+                          font-family: "Arial", sans-serif;
+                          font-size: 16px;
+                          & ul {
+                            margin: 0;
+                            padding: 0;
+                            list-style: none;
+                          }
+                        }
+
+                        .navigation-menu {
+                          vertical-align: top;
+                          background: #0000;
+                          box-shadow: 1px -1px -1px 1px #000,
+                            -1px 1px -1px 1px #fff, 0 0 6px 3px #fff;
+                          border-radius: 10px;
+                          & a {
+                            display: block;
+                            background: #fff;
+                            color: #665d5d;
+                            text-decoration: none;
+                            padding: 10px 15px;
+                            text-transform: uppercase;
+                            font-size: 80%;
+                            letter-spacing: 2px;
+                            text-shadow: 0 -1px 0 #000;
+                            position: relative;
+                          }
+                          & li {
+                            position: relative;
+                          }
+                        }
+                        .active-colors {
+                          color: rgb(221, 51, 193) !important;
+                          font-weight: bold;
+                        }
+                        .navigation-menu > li {
+                          float: left;
+                          border-bottom: 1px #fff solid;
+                          margin-right: 1px;
+                          & > a {
+                            margin-bottom: 1px;
+                            box-shadow: inset 0 1.5em 0.33em -0.3em #fcf8f8;
+                          }
+                        }
+                        /* NavMenu */
+                        .navigation-menu > li:hover,
+                        .navigation-menu > li:hover > a {
+                          border-bottom-color: rgb(221, 51, 193);
+                          transition: all 1s ease-out;
+                        }
+
+                        .navigation-menu li:hover > a {
+                          color: rgb(221, 51, 193);
+                          transition: all 1s ease-out;
+                          animation: menuPop 0.2s linear;
+                        }
+
+                        .navigation-menu > li:first-child {
+                          border-radius: 4px 0 0 4px;
+                          & > a {
+                            border-radius: 4px 0 0 0;
+                          }
+                        }
+
+                        .navigation-menu > li:last-child {
+                          border-radius: 0 0 4px 0;
+                          margin-right: 0;
+                          & > a {
+                            border-radius: 0 4px 0 0;
+                          }
+                        }
+
+                        .navigation-menu li li a {
+                          margin-top: 1px;
+                        }
+
+                        .navigation-menu
+                          li
+                          a:first-child:nth-last-child(2):before {
+                          content: "";
+                          position: absolute;
+                          height: 0;
+                          width: 0;
+                          border: 5px solid transparent;
+                          top: 50%;
+                          right: -1px;
+                          transition: all 0.25s ease-out;
+                        }
+
+                        /* NavSubmenu */
+                        .navigation-menu ul {
+                          position: absolute;
+                          white-space: nowrap;
+                          border-bottom: 1px rgb(221, 51, 193) solid;
+                          z-index: 1;
+                          left: -99999em;
+                          transition: all 0.25s ease-out;
+                        }
+                        .navigation-menu > li:focus-within > ul {
+                          display: none;
+                          left: auto;
+                          padding-top: 5px;
+                          min-width: 100%;
+                        }
+                        .navigation-menu > li:hover > ul {
+                          display: block;
+                          left: auto;
+                          padding-top: 5px;
+                          min-width: 100%;
+                        }
+                        .navigation-menu > li li ul {
+                          border-left: 1px solid #fff;
+                          margin-left: 1px;
+                          transition: all 0.25s ease-out;
+                        }
+                        .navigation-menu > li li:hover > ul {
+                          left: 100%;
+                          top: -1px;
+                        }
+
+                        /* NavCaret */
+                        .navigation-menu
+                          > li.active-colors
+                          > a:first-child:nth-last-child(2):before {
+                          border-top-color: rgb(221, 51, 193);
+                        }
+                        .navigation-menu
+                          > li
+                          > a:first-child:nth-last-child(2):before {
+                          border-top-color: #aaa;
+                        }
+                        .navigation-menu
+                          > li:hover
+                          > a:first-child:nth-last-child(2):before {
+                          border: 5px solid transparent;
+                          margin-top: -5px;
+                          border-bottom-color: rgb(221, 51, 193);
+                        }
+                        .navigation-menu
+                          li
+                          li
+                          > a:first-child:nth-last-child(2):before {
+                          border-left-color: #aaa;
+                          margin-top: -5px;
+                        }
+                        .navigation-menu
+                          li
+                          li:hover
+                          > a:first-child:nth-last-child(2):before {
+                          border: 5px solid transparent;
+                          right: 10px;
+                          border-right-color: rgb(221, 51, 193);
+                        }
+
+                        @keyframes menuPop {
+                          0% {
+                            transform: translateY(3px) rotateY(30deg);
+                            opacity: 0.5;
+                          }
+                          100% {
+                            transform: translateY(0px) rotateY(0deg);
+                            opacity: 1;
+                          }
+                        }
+
+                        @keyframes shake {
+                          0% {
+                            transform: rotate(0deg);
+                          }
+                          25% {
+                            transform: rotate(0.5deg);
+                          }
+                          50% {
+                            transform: rotate(0eg);
+                          }
+                          75% {
+                            transform: rotate(-0.5deg);
+                          }
+                          100% {
+                            transform: rotate(0deg);
+                          }
+                        }
+                        .nav-home {
+                          display: block;
+                        }
+                        /* reponsive */
+                        @media screen and (max-width: 991px) {
+                          .navigation-menu ul {
+                            display: block;
+                            position: absolute;
+                            white-space: nowrap;
+                            border-bottom: 1px rgb(221, 51, 193) solid;
+                            z-index: 1;
+                            left: -99999em;
+                            transition: all 0.25s ease-out;
+                          }
+                          .nav-home {
+                            display: none;
+                          }
+                          .navigation-menu > li:hover > ul {
+                            display: none;
+                          }
+                          .navigation-menu > li:focus-within > ul {
+                            display: block;
+                            left: auto;
+                            padding-top: 5px;
+                            min-width: 100%;
+                          }
+                        }
+
+                        @media screen and (max-width: 426px) {
+                        }
+                      `}
+                    </style>
                   </div>
                 </div>
               </aside>
