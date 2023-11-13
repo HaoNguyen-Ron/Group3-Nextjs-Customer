@@ -12,18 +12,19 @@ import LoginPartPc from '@/components/LoginPart/LoginPartPc'
 import LoginPartTablet from '@/components/LoginPart/LoginPartTablet'
 import AuthLoginPartTablet from '@/components/LoginPart/AuthLoginPartTablet'
 import AuthLoginPartPc from '@/components/LoginPart/AuthLoginPartPc'
+import { useRouter } from 'next/router'
 
 export default function Header() {
     const [isLogged, setIsLogged] = useState(false)
+    const router = useRouter();
 
     useEffect(() => {
-        const token = localStorage.getItem("TOKEN");
-
-        if (token) {
-            setIsLogged(true)
+        if (router.isReady) {
+            const token = localStorage.getItem("TOKEN");
+            if (token) setIsLogged(true)
         }
 
-    }, [isLogged]);
+    },[]);
 
     return (    
         <>
