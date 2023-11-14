@@ -9,6 +9,7 @@ import styles from '@/styles/form.module.css'
 import { useRouter } from 'next/router';
 import { axiosClient } from '@/libraries/axiosClient';
 import { Box, Modal, Typography } from '@mui/material';
+import verifyLoggin from '@/components/HOC/verifyLoggin';
 
 const LoginForm = () => {
   const [open, setOpen] = useState(false);
@@ -155,4 +156,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default verifyLoggin(LoginForm);
