@@ -42,7 +42,7 @@ export default function LoginPartTablet() {
           horizontal: 'center',
         }}
       >
-        <MenuItem kíenuItem onClick={handleClose}>
+        <MenuItem  onClick={handleClose}>
           <Link className={styles.loginPart__title} href={'/register'}>Đăng kí</Link>
         </MenuItem>
         <MenuItem onClick={handleClose}>

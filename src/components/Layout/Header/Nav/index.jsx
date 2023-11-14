@@ -11,8 +11,7 @@ function index(props) {
   const onClickTab = () => {
     setActiveTab(router.pathname);
   };
-  console.log('««««« activeTab »»»»»', activeTab);
-  console.log('««««« router.pathname »»»»»', router.pathname);
+
 
   return (
     <>
