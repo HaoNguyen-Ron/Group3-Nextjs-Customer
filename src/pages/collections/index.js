@@ -1,7 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import fil from "@/styles/Filter.module.css";
 
 function Filter(props) {
+  const [activeItem, setActiveItem] = useState(null);
+
+  const handleItemClick = (index) => {
+    setActiveItem(index);
+  };
+
+  const items = [
+    "Sản phẩm nổi bật",
+    "Giá: Tăng dần",
+    "Giá: Giảm dần",
+    "Tên: A-Z",
+    "Tên: Z-A",
+    "Cũ nhất",
+    "Mới nhất",
+    "Bán chạy nhất",
+  ];
   return (
     <>
       <div className={`${fil["collection-heading"]}`}>
@@ -19,7 +35,7 @@ function Filter(props) {
                     >
                       <p className={`${fil["title_filter"]}`}>
                         <span className={`${fil["icon-filter"]}`}>
-                          {/* <i className="fa-solid fa-caret-down" /> */}
+                          <i className="fa-solid fa-filter" />
                         </span>
                         <span className={`${fil["icon-close"]}`}>
                           <svg
@@ -61,72 +77,24 @@ function Filter(props) {
                     </div>
                   </div>
                 </div>
-                <div
-                  className="collection-sortby-option layered_filter_mobileContent"
-                  id="layered_sortby_mobile"
-                >
-                  <ul className="sort-by sort-by-content">
-                    <li className="">
-                      <span data-value="manual" data-filter="">
-                        Sản phẩm nổi bật
-                      </span>
-                    </li>
-                    <li className="active">
-                      <span
-                        data-value="price-ascending"
-                        data-filter="(price:product=asc)"
+                <div className={`${fil["collection-sortby-option"]}`}>
+                  <ul className={`${fil["sort-by"]}`}>
+                    {items.map((item, index) => (
+                      <li
+                        className={`${fil["li"]} ${
+                          activeItem === index ? fil["active"] : ""
+                        }`}
+                        onClick={() => handleItemClick(index)}
+                        key={index}
                       >
-                        Giá: Tăng dần
-                      </span>
-                    </li>
-                    <li className="">
-                      <span
-                        data-value="price-descending"
-                        data-filter="(price:product=desc)"
-                      >
-                        Giá: Giảm dần
-                      </span>
-                    </li>
-                    <li className="">
-                      <span
-                        data-value="title-ascending"
-                        data-filter="(title:product=asc)"
-                      >
-                        Tên: A-Z
-                      </span>
-                    </li>
-                    <li>
-                      <span
-                        data-value="title-descending"
-                        data-filter="(title:product=desc)"
-                      >
-                        Tên: Z-A
-                      </span>
-                    </li>
-                    <li>
-                      <span
-                        data-value="created-ascending"
-                        data-filter="(updated_at:product=asc)"
-                      >
-                        Cũ nhất
-                      </span>
-                    </li>
-                    <li>
-                      <span
-                        data-value="created-descending"
-                        data-filter="(updated_at:product=desc)"
-                      >
-                        Mới nhất
-                      </span>
-                    </li>
-                    <li>
-                      <span
-                        data-value="best-selling"
-                        data-filter="(sold_quantity:product=desc)"
-                      >
-                        Bán chạy nhất
-                      </span>
-                    </li>
+                        <span
+                          data-value={item.toLowerCase()}
+                          data-filter={item}
+                        >
+                          {item}
+                        </span>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>
