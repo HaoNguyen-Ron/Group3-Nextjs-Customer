@@ -9,6 +9,7 @@ import styles from '@/styles/form.module.css'
 import { useRouter } from 'next/router';
 import { axiosClient } from '@/libraries/axiosClient';
 import { Box, Modal, Typography } from '@mui/material';
+import verifyLoggin from '@/components/HOC/verifyLoggin';
 
 const LoginForm = () => {
   const [open, setOpen] = useState(false);
@@ -53,7 +54,10 @@ const LoginForm = () => {
         if (res.status === 200) {
           localStorage.setItem("TOKEN", res.data.token)
           localStorage.setItem("REFRESH-TOKEN", res.data.refreshToken)
-          redirect.reload()
+          if (res.data.token || res.data.token && redirect.pathname === '/login') {
+            redirect.reload()
+            
+          }
         }
 
       } catch (error) {
@@ -63,6 +67,7 @@ const LoginForm = () => {
     },
   });
 
+  
   useEffect(() => {
     const token = window.localStorage.getItem("TOKEN")
 
@@ -96,7 +101,7 @@ const LoginForm = () => {
             placeholder='Nhập mật khẩu ở đây'
           />
         </div>
-        
+
         <div className='mx-auto my-3'>
           <button
             type='submit'
@@ -151,4 +156,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default verifyLoggin(LoginForm);

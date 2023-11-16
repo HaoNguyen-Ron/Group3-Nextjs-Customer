@@ -75,7 +75,7 @@ export default function CardProduct({ title, price, date, producer, size }) {
               </a>
             </div>
             <button className={`col-12 col-md-5 col-lg-5 ${Styles.btn_add_card}`}>
-              Thêm vào giỏ hàng
+              Thêm vào giỏ hàng 
             </button>
           </div>
           <div className={`${Styles.product_deliverl}`}>

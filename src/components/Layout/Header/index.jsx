@@ -16,16 +16,15 @@ import { useRouter } from 'next/router'
 
 export default function Header() {
     const [isLogged, setIsLogged] = useState(false)
-    const router = useRouter()
+    const router = useRouter();
 
     useEffect(() => {
-        const token = localStorage.getItem("TOKEN");
-
-        if (token) {
-            setIsLogged(true)
+        if (router.isReady) {
+            const token = localStorage.getItem("TOKEN");
+            if (token) setIsLogged(true)
         }
 
-    }, [isLogged]);
+    },[]);
 
     return (    
         <>

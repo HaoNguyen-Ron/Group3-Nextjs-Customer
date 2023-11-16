@@ -1,12 +1,14 @@
-import Card from '@/components/CardList';
+import CardList from '@/components/CardList';
 import React from 'react';
 
-function CartPage(props) {
+function CardPage(props) {
     return (
         <div>
-            <Card />
+           <CardList/>
+ 
         </div>
     );
 }
 
-export default CartPage;
+export default CardPage;
+

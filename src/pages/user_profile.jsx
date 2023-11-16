@@ -5,11 +5,10 @@ import UserDetail from '@/components/UserProfile/UserDetail'
 import UserHistory from '@/components/UserProfile/UserHistory'
 import UserPassword from '@/components/UserProfile/UserPassword'
 import { useRouter } from 'next/router'
-import Link from 'next/link'
 import { axiosClient } from '@/libraries/axiosClient'
+import verifyLoggin from '@/components/HOC/verifyLoggin'
 
-export default function UserProfilePage() {
-    console.log('««««« axiosClient.defaults »»»»»', axiosClient.defaults);
+ function UserProfilePage() {
     const [getDetail, setGetDetail] = useState(true)
     const [getHistory, setGetHistory] = useState(false)
     const [getPassword, setGetPassword] = useState(false)
@@ -64,14 +63,12 @@ export default function UserProfilePage() {
         const token = window.localStorage.getItem("TOKEN");
         if (token) {
             axiosClient.defaults.headers.Authorization = `Bearer ${token}`;
-            setIsLogged(true)
             getUserDetail()
         }
     }, []);
 
     return (
-        <>
-            {isLogged ? (
+
                 <div className='container mb-5' style={{ height: '300px' }}>
                     <h1 className={`text-center ${styles.user__title}`}>Tài khoản của bạn</h1>
 
@@ -105,32 +102,7 @@ export default function UserProfilePage() {
                         </div>
                     </div>
                 </div>
-            ) : (
-                <div className='container mb-5' style={{ height: '300px' }}>
-                    <div className='d-flex justify-content-center flex-column'>
-                        <h1 className={`text-center ${styles.user__title}`}>Tài khoản của bạn</h1>
-
-                        <h1 className='text-center mt-3'>Oops !!!</h1>
-
-                        <p className='text-center mt-2'>Bạn cần đăng nhập để biết thông tin chi tiết tài khoản nha !</p>
-
-                        <div className='d-flex justify-content-center'>
-                            <div className='me-3'>
-                                <button className={`btn ${styles.user__btn}`}>
-                                    <Link className={styles.user__link} href={'/login'}>Đăng nhập</Link>
-                                </button>
-                            </div>
-
-                            <div>
-                                <button className={`btn ${styles.user__btn}`}>
-                                    <Link className={styles.user__link} href={'/register'}>Đăng ký</Link>
-                                </button>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            )}
-        </>
     )
 }
+
+export default verifyLoggin(UserProfilePage)

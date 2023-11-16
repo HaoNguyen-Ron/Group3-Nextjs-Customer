@@ -25,3 +25,7 @@
 .modal__link{
     color: white;
 }
+
+.form__height{
+   min-height: 300px;
+}

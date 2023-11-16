@@ -36,8 +36,8 @@ function Social(props) {
           <Image
             src="/assets/images/fb.png"
             alt="facebook"
-            width={35}
-            height={35}
+            width={25}
+            height={25}
           />
           Fanpage
         </a>
@@ -50,8 +50,8 @@ function Social(props) {
           <Image
             src="/assets/images/mess.png"
             alt="Messenger"
-            width={35}
-            height={35}
+            width={25}
+            height={25}
           />
           Messenger
         </a>
@@ -64,8 +64,8 @@ function Social(props) {
           <Image
             src="/assets/images/inta.png"
             alt="Instagram"
-            width={35}
-            height={35}
+            width={25}
+            height={25}
           />
           Instagram
         </a>
@@ -78,8 +78,8 @@ function Social(props) {
           <Image
             src="/assets/images/zalo.png"
             alt="Zalo"
-            width={35}
-            height={35}
+            width={25}
+            height={25}
           />
           Zalo
         </a>
@@ -92,8 +92,8 @@ function Social(props) {
           <Image
             src="/assets/images/telegram.png"
             alt="Telegram"
-            width={35}
-            height={35}
+            width={25}
+            height={25}
           />
           Telegram
         </a>
