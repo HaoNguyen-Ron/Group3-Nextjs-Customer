@@ -4,6 +4,7 @@ import Styles from "@/styles/cart.module.css";
 import Link from "next/link";
 
 function Cart(props) {
+  
   return (
     <div>
       <div className="container">
