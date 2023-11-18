@@ -1,10 +1,11 @@
-import React from "react";
+import React,  {useState} from "react";
 
 import Styles from "@/styles/cart.module.css";
 import Link from "next/link";
 import CartItem from "@/components/CartItem";
-
 function Cart(props) {
+
+
   return (
     <div>
       <div className="container">
@@ -17,12 +18,14 @@ function Cart(props) {
 
           <div className="col-4">
             <div className={`${Styles.box_cart}`}>
-              <h2 className={`${Styles.border_bottom} ${Styles.description_cart}`}>Thông tin đơn hàng</h2>
+              <h2 className={`${Styles.border_bottom} ${Styles.description_cart}`}>
+              </h2>
 
               <div
                 className={`d-flex justify-content-between ${Styles.border_bottom}`}
               >
-                <p>Tổng tiền:</p>
+                <p><ul>
+        </ul></p>
                 <span>
                   0<u>đ</u>
                 </span>

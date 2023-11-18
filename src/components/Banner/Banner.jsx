@@ -1,6 +1,6 @@
 import React from 'react';
 import x from "@/components/Banner/Banner.module.css"
-function Banner ({image, titles , caption, price}) {
+function Banner ({image, titles , caption, name}) {
     return (
         <div>
             <figure 
@@ -24,9 +24,11 @@ function Banner ({image, titles , caption, price}) {
           </div>
           <figcaption
           className={`${x["figcaption"]}`}>
-            <p className={`${x["pi"]}`}>{caption}</p>
+            <p className='text-dark' >Bộ sưu tập</p>
+            <p className={`${x["name"]}`}>{name}</p>
+            <p className={` text-dark ${x["pi"]}`}>{caption}</p>
             <div className={`${x["price"]}`}>
-            <s className={`${x["sa"]}`}>{price}</s>
+            
             </div>
           </figcaption>
           <a href="#" className={`${x["add-to-cart"]}`}>
