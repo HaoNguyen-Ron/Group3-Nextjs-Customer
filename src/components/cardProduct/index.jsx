@@ -1,20 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Styles from "@/styles/cardProduct.module.css";
 
-export default function CardProduct({ productData ,onAddToCart , _id }) {
+export default function CardProduct({ products ,addToCart , _id }) {
   const [isData, setIsData] = useState([]);
   const [count, setCount] = useState(1);
   const [showText, setShowText] = useState(false);
 
-  useEffect(() => {
-    if (productData) {
-      const checkId = _id
-      const itemWithId = productData.find(item => item._id = checkId);
-      setIsData(itemWithId);
-    }
-  }, []);
+  
 
+
+console.log('««««« isData »»»»»',isData );
   // Hàm tăng giá trị lên 1
   function increment() {
     setCount(count + 1);
@@ -35,14 +31,14 @@ export default function CardProduct({ productData ,onAddToCart , _id }) {
         <div className={`text-center col-12 col-md-12 col-lg-5 `}>
           <img
             className={`${Styles.caroshel}`}
-            src={isData.description}
-            alt={isData.name}
+            src={products.description}
+            alt={products.name}
           />
         </div>
         <div className={`${Styles.info_product} col-12 col-md-12 col-lg-7`}>
-          <h3 >{isData.name}</h3>
+          <h3 >{products.name}</h3>
           <p >
-            {isData.price}
+            {products .price}
             <u>đ</u>
           </p>
           <div className={`row justify-content-around align-items-center ${Styles.form_buy}`}>
@@ -83,7 +79,7 @@ export default function CardProduct({ productData ,onAddToCart , _id }) {
                 <span className={`${Styles.title_chat}`}>Chat Ngay</span>
               </a>
             </div>
-            <button className={`col-12 col-md-5 col-lg-5 ${Styles.btn_add_card}`}>
+            <button onClick={() => addToCart(products)} className={`col-12 col-md-5 col-lg-5 ${Styles.btn_add_card}`}>
               Thêm vào giỏ hàng 
             </button>
           </div>

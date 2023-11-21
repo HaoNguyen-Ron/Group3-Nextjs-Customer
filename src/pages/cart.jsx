@@ -1,10 +1,11 @@
-import React from "react";
+import React,  {useState} from "react";
 
 import Styles from "@/styles/cart.module.css";
 import Link from "next/link";
 import CartItem from "@/components/CartItem";
 
 function Cart() {
+
   return (
     <div>
       <div className="container">
@@ -30,7 +31,6 @@ function Cart() {
               <div
                 className={`d-flex justify-content-between ${Styles.border_bottom}`}
               >
-                <p>Tổng tiền:</p>
                 <span>
                   0<u>đ</u>
                 </span>

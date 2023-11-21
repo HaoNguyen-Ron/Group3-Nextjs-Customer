@@ -1,17 +1,18 @@
-import React from 'react'
+
 import CardProduct from '@/components/cardProduct'
 import { axiosClient } from '@/libraries/axiosClient';
+import verifyLoggin from '@/components/HOC/verifyLoggin';
 
-export default function ProductDetail(products) {
-  const [productData,setProductData] = useState([]);
+function ProductDetail(products) {
+ console.log('««««« products »»»»»', products);
 
 
   return (
     <div>
         <CardProduct
-          _id='"65588730b6e0adaf15e4f0ab"'
-          key={products._id}
-          productData={products}
+        key={products._id}
+          _id="65588730b6e0adaf15e4f0ab"
+          products={products.products}
         />
         <h2 className="text-center">Sản phẩm liên quan</h2>
     </div>
@@ -21,13 +22,14 @@ export default function ProductDetail(products) {
 export async function getStaticProps() {
   const res = await axiosClient.get('/products/all');
   const products = res.data.payload;
-  console.log('««««« products »»»»»', products);
+  
+  
 
   return {
     props: {
      products,
     },
   };
-  console.log('««««« products »»»»»', products);
 }
 
+export default verifyLoggin(ProductDetail)

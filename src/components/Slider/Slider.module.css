@@ -32,7 +32,7 @@
     white-space: nowrap;         
     overflow: hidden;           
     text-overflow: ellipsis;    
-    width: 300px;   
+    min-width: 300px;   
   }
 
   .overflow-ellipsis {

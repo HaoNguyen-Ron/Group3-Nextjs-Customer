@@ -11,7 +11,6 @@ const verifyLoggin = (CheckLogginComponent) => {
           router.push('/login')
         }
       }
-      console.log('««««« gay »»»»»');
     return <CheckLogginComponent {...props} /> 
   }
 
