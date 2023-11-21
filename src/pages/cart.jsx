@@ -4,21 +4,28 @@ import Styles from "@/styles/cart.module.css";
 import Link from "next/link";
 import CartItem from "@/components/CartItem";
 
-function Cart(props) {
-  
+function Cart() {
   return (
     <div>
       <div className="container">
-        <h1 className={`text-center ${Styles.description_cart}`}>Giỏ hàng của bạn</h1>
+        <h1 className={`text-center ${Styles.description_cart}`}>
+          Giỏ hàng của bạn
+        </h1>
       </div>
 
       <div className="container">
         <div className="row">
-          <div className="col-8"><CartItem /></div>
+          <div className="col-8">
+            <CartItem price="6800000" />
+          </div>
 
           <div className="col-4">
             <div className={`${Styles.box_cart}`}>
-              <h2 className={`${Styles.border_bottom} ${Styles.description_cart}`}>Thông tin đơn hàng</h2>
+              <h2
+                className={`${Styles.border_bottom} ${Styles.description_cart}`}
+              >
+                Thông tin đơn hàng
+              </h2>
 
               <div
                 className={`d-flex justify-content-between ${Styles.border_bottom}`}
@@ -37,12 +44,9 @@ function Cart(props) {
                 <p className={`  ${Styles.title_cart}`}>
                   Bạn cũng có thể nhập mã giảm giá ở trang thanh toán.
                 </p>
-                
-                <Link
-                className={`  ${Styles.checkout_btn}`}
-                    href=""
-                >
-                    Thanh Toán
+
+                <Link className={`  ${Styles.checkout_btn}`} href="">
+                  Thanh Toán
                 </Link>
               </div>
             </div>

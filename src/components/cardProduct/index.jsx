@@ -2,9 +2,18 @@ import React, { useState } from "react";
 
 import Styles from "@/styles/cardProduct.module.css";
 
-export default function CardProduct({ title, price, date, producer, size }) {
+export default function CardProduct({ productData ,onAddToCart , _id }) {
+  const [isData, setIsData] = useState([]);
   const [count, setCount] = useState(1);
   const [showText, setShowText] = useState(false);
+
+  useEffect(() => {
+    if (productData) {
+      const checkId = _id
+      const itemWithId = productData.find(item => item._id = checkId);
+      setIsData(itemWithId);
+    }
+  }, []);
 
   // Hàm tăng giá trị lên 1
   function increment() {
@@ -26,14 +35,14 @@ export default function CardProduct({ title, price, date, producer, size }) {
         <div className={`text-center col-12 col-md-12 col-lg-5 `}>
           <img
             className={`${Styles.caroshel}`}
-            src="//product.hstatic.net/1000160337/product/nendoroid_my_hero_academia_katsuki_bakugo_u.a._school_uniform_ver__1__1c7f9849b2174b1e8ca4edcff9dc4537_master.jpg"
-            alt=" Nendoroid My Hero Academia Katsuki Bakugo: U.A. School Uniform Ver "
+            src={isData.description}
+            alt={isData.name}
           />
         </div>
         <div className={`${Styles.info_product} col-12 col-md-12 col-lg-7`}>
-          <h3 >{title}</h3>
+          <h3 >{isData.name}</h3>
           <p >
-            {price}
+            {isData.price}
             <u>đ</u>
           </p>
           <div className={`row justify-content-around align-items-center ${Styles.form_buy}`}>
