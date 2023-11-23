@@ -1,16 +1,15 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import x from "@/components/CardList/Card.module.css";
-function Card({ price, name, image , Id }) {
- 
-    const [cart, setCart] = useState([]);
-  
-    const addToCart = () => {
-      const item = { Id, name, price ,image };
-      setCart([...cart, item]);
-      console.log('Sản phẩm đã được thêm vào giỏ hàng.');
-      // Gửi yêu cầu đến API để lưu thông tin giỏ hàng
-      // Ví dụ: callAPI('/cart', { method: 'POST', body: item });
-    };
+function Card({ price, name, image, Id, discount }) {
+  const [cart, setCart] = useState([]);
+
+  const addToCart = () => {
+    const item = { Id, name, price, image };
+    setCart([...cart, item]);
+    console.log("Sản phẩm đã được thêm vào giỏ hàng.");
+    // Gửi yêu cầu đến API để lưu thông tin giỏ hàng
+    // Ví dụ: callAPI('/cart', { method: 'POST', body: item });
+  };
 
   return (
     <div>
@@ -29,7 +28,7 @@ function Card({ price, name, image , Id }) {
                       style={{ height: 240 }}
                     >
                       <div className={` ${x["product--image__inner"]}`}>
-                        <div
+                        {/* <div
                           className={` ${x["prod-img"]}  ${x["first-image"]}`}
                         >
                           <picture className={`${x["picture"]}`}>
@@ -39,11 +38,14 @@ function Card({ price, name, image , Id }) {
                               alt=""
                             />
                           </picture>
-                        </div>
+                        </div> */}
                         <div
                           className={`hovered-img hidden-xs hidden-sm ${x["prod-img"]}  ${x["second-image"]} `}
                         >
                           <picture className={`${x["picture"]}`}>
+                            <span className={`${x["sale-span"]}`}>
+                              {discount}
+                            </span>
                             <img
                               className={` img-loop  ${x["lazyloaded"]}`}
                               alt=""
@@ -70,7 +72,7 @@ function Card({ price, name, image , Id }) {
                         className={`d-flex justify-content-center ${x["actions-primary"]}`}
                       >
                         <button
-                         onClick={addToCart}
+                          onClick={addToCart}
                           type="button"
                           className={`${x["btn_add_card"]}`}
                           style={{ border: "none" }}
