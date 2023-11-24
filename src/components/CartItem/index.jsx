@@ -1,46 +1,70 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Styles from "@/styles/cart.module.css";
 
-export default function CartItem({ quantity, price }) {
-  const [count, setCount] = useState(1);
+export default function CartItem({id}) {
 
-  // Hàm tăng giá trị lên 1
-  function increment() {
-    setCount(count + 1);
-  }
+  const [data, setData] = useState([]);
 
-  // Hàm giảm giá trị xuống 1
-  function decrement() {
-    if (count > 1) {
-      setCount(count - 1);
-    } else setCount(count);
-  }
-  const handleCountChange = (event) => {
-    const newCount = parseInt(event.target.value, 10);
-    setCount(newCount);
+  useEffect(() => {
+    const storedData = localStorage.getItem("cart");
+
+    const parsedData = storedData ? JSON.parse(storedData) : [];
+
+    setData(parsedData);
+  }, []);
+
+  const totalItemCount = data.reduce((total, item) => total + item.count, 0);
+  const totalPrice = data.reduce((total, item) => total + item.price * item.count, 0);
+
+  const decrementCount = (productId) => {
+    const updatedData = data.map((item) => {
+      if (item._id === productId) {
+        const newCount = item.count - 1;
+        return newCount >= 1 ? { ...item, count: newCount } : item;
+      }
+      return item;
+    });
+
+    // Update state and local storage with the new data
+    setData(updatedData);
+    localStorage.setItem("cart", JSON.stringify(updatedData));
   };
+
+  const incrementCount = (productId) => {
+    const updatedData = data.map((item) =>
+      item._id === productId ? { ...item, count: item.count + 1 } : item
+    );
+
+    // Update state and local storage with the new data
+    setData(updatedData);
+    localStorage.setItem("cart", JSON.stringify(updatedData));
+  };
+
+  const deleteProduct = (productId) => {
+    const updatedData = data.filter((item) => item._id !== productId);
+
+    // Update state and local storage with the new data
+    setData(updatedData);
+    localStorage.setItem("cart", JSON.stringify(updatedData));
+  };
+
 
   const calculateTotal = () => {
-    return price * count;
+    return data.price * count;
   };
+  
   return (
-    <>
-      {quantity === 0 ? (
-        <p className={`${Styles.title_number_cart}`}>
-          Giỏ hàng của bạn đang trống
-        </p>
-      ) : (
         <div className={` ${Styles.title_number_border}`}>
           <p className={`${Styles.title_number_cart}`}>
-            Bạn đang có <b> {quantity} sản phẩm </b> trong giỏ hàng
+            Bạn đang có <b> sản phẩm </b> trong giỏ hàng
           </p>
           <div className={`d-flex row ${Styles.media_line_item}`}>
             <div className={`col-2 ${Styles.media_left}`}>
               <a className={`${Styles.media_left_a}`} href="/">
                 <img
                   className={`${Styles.image_number_cart}`}
-                  src="//product.hstatic.net/1000160337/product/goddess_of_victory_nikke_emma_1__4__0e625ad282044f308e5b3a5f4fdf5bfd_medium.jpg"
-                  alt="Goddess of Victory: Nikke Emma 1/7"
+                  src={data.description}
+                  alt={data.name}
                 />
               </a>
             </div>
@@ -70,7 +94,7 @@ export default function CartItem({ quantity, price }) {
               </div>
               <p>
                 <b>
-                  {price}
+                  {data.price}
                   <u>đ</u>
                 </b>
               </p>
@@ -86,11 +110,10 @@ export default function CartItem({ quantity, price }) {
             <span>{calculateTotal()}</span>
           </div>
         </div>
-      )}
-    </>
   );
 }
-{/* <>
+{
+  /* <>
       {quantity === 0 ? (
         <p className={`${Styles.title_number_cart}`}>
           Giỏ hàng của bạn đang trống
@@ -157,4 +180,5 @@ export default function CartItem({ quantity, price }) {
           ))}
         </div>
       )}
-    </> */}
+    </> */
+}

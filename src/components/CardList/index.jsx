@@ -1,35 +1,65 @@
 import x from "@/components/CardList/Card.module.css";
 import Card from "./Card";
-import Banner from "../Banner/Banner";
+import Banner from "../Banner";
+import { useState } from "react";
 
-function CardList(props) {
+function CardList(products) {
+  const [cart, setCart] = useState([]);
+console.log('««««« products »»»»»', products.products);
+  const selectedProducts = products.products.slice(0, 8);
+console.log('««««« selectedProducts »»»»»', selectedProducts);
+
+  const handleGoToProductDetail = (productId) => {
+    // Use window.location to navigate
+    window.location.href = `/productDetail/${productId}`;
+  };
+
+  const handleAddToCart = (selectedProduct) => {
+    const updatedCart = [...cart];
+    const existingProductIndex = updatedCart.findIndex(
+      (item) => item._id === selectedProduct._id
+    );
+
+    if (existingProductIndex !== -1) {
+      // If the product is already in the cart, increment the count
+      updatedCart[existingProductIndex].count += 1;
+    } else {
+      // If the product is not in the cart, add it with count 1
+      updatedCart.push({ ...selectedProduct, count: 1 });
+    }
+
+    // Set the updated cart in state
+    setCart(updatedCart);
+
+    // Store the updated cart in local storage
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    // Optionally, you can also update the state or perform other actions if needed
+  };
+
   return (
- <div>
-     <div className="container">
-  <div className="row">
-    <div className="col-md-6 col-sm-6 col-xs-12 ">
-    <Banner
-        image = "https://theme.hstatic.net/1000160337/1000885200/14/categorybanner_1_img.jpg?v=316"
-        caption ="Dòng chibi figure được yêu thích nhất,
+    <div>
+      <div className="container">
+        <div className="row">
+          <div className="col-md-6 col-sm-6 col-xs-12 ">
+            <Banner
+              image="https://theme.hstatic.net/1000160337/1000885200/14/categorybanner_1_img.jpg?v=316"
+              caption="Dòng chibi figure được yêu thích nhất,
                   nhiều gương mặt, thoả sức tạo dáng"
-        title = "COMMING SOON" 
-        name ="Nendoroid"
-        
-        />
-    </div>
-    <div className="col-md-6 col-sm-6 col-xs-12 ">
-    <Banner
-        image = "https://theme.hstatic.net/1000160337/1000885200/14/categorybanner_1_img.jpg?v=316"
-        caption ="Dòng scale figure kích thước sinh viên,
+              title="COMMING SOON"
+              name="Nendoroid"
+            />
+          </div>
+          <div className="col-md-6 col-sm-6 col-xs-12 ">
+            <Banner
+              image="https://theme.hstatic.net/1000160337/1000885200/14/categorybanner_1_img.jpg?v=316"
+              caption="Dòng scale figure kích thước sinh viên,
                      giá tiểu học"
-        title = "COMMING SOON" 
-        name ="Pop Up Parade"
-          
-        />
-    </div>
-   </div>
-     </div>
-       
+              title="COMMING SOON"
+              name="Pop Up Parade"
+            />
+          </div>
+        </div>
+      </div>
 
       <div className={`${x["section"]}`}>
         <div className={`${x["section-heading"]}`}>
@@ -40,13 +70,12 @@ function CardList(props) {
         </div>
       </div>
 
- 
       <div className=" container wrapper">
         <div className="d-flex row justify-content-around">
           <div className="col-12 col-md-12 col-lg-4">
             <div className={`${x["groupbanner-hover"]}`}>
               <img
-                  className={`lazyloaded ls-is-cached ${x["images"]}`}
+                className={`lazyloaded ls-is-cached ${x["images"]}`}
                 src="https://theme.hstatic.net/1000160337/1000885200/14/home_collection_1_banner.jpg?v=316"
                 alt=""
               />
@@ -54,77 +83,23 @@ function CardList(props) {
           </div>
 
           <div className="col-12 col-md-12 col-lg-8">
-              <div className="d-flex row">
-
+            <div className="d-flex row">
+              {selectedProducts.map((product) => (
                 <div className="col-6 col-md-4 col-lg-3">
-                 <Card
-                   image = "https://product.hstatic.net/1000160337/product/heaven_official_s_blessing_nendoroid_doll_xie_lian__7__ce3dcd69bce34f59ac09775228a5873b_medium.jpg"
-                   price="2,850,000₫"
-                   name="Heaven Official's Blessing Nendoroid Doll Xie Lian"
-                 />
+                  <Card
+                    id={`/productDetail/${product._id}`}
+                    key={product.id}
+                    products={product}
+                    handleAddToCart={handleAddToCart}
+                    handleGoToProductDetail={handleGoToProductDetail}
+                  />
                 </div>
-
-                <div className="col-6 col-md-4 col-lg-3">
-                <Card
-                   image = "/assets/images/a2.png "
-                   price="12345"
-                   name="abc"
-                 />
-                </div>
-
-                <div className="col-6 col-md-4 col-lg-3">
-                <Card
-                   image = "/assets/images/a2.png "
-                   price="12345"
-                   name="abc"
-                 />
-                </div>
-
-                <div className="col-6 col-md-4 col-lg-3">
-                <Card
-                   image = "/assets/images/a2.png "
-                   price="12345"
-                   name="abc"
-                 />
-                </div>
-
-                <div className="col-6 col-md-4 col-lg-3">
-                <Card
-                   image = "/assets/images/a2.png "
-                   price="12345"
-                   name="abc"
-                 />
-                </div>
-
-                <div className="col-6 col-md-4 col-lg-3">
-                <Card
-                   image = "/assets/images/a2.png "
-                   price="12345"
-                   name="abc"
-                 />
-                </div>
-
-                <div className="col-6 col-md-4 col-lg-3">
-                <Card
-                   image = "/assets/images/a2.png "
-                   price="12345"
-                   name="abc"
-                 />
-                </div>
-
-                <div className="col-6 col-md-4 col-lg-3">
-                <Card
-                   image = "/assets/images/a2.png "
-                   price="12345"
-                   name="abc"
-                 />
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
+      </div>
 
-     
       <div className={` ${x["section"]}`}>
         <div className={` ${x["section-heading"]}`}>
           <h2 className={` ${x["hTitle"]}`}>
@@ -134,8 +109,6 @@ function CardList(props) {
         </div>
       </div>
 
-   
-    
       <div className=" container wrapper">
         <div className="d-flex row flex-row-reverse justify-content-around">
           <div className="col-12 col-md-12 col-lg-4">
@@ -148,89 +121,33 @@ function CardList(props) {
             </div>
           </div>
           <div className="col-12 col-md-12 col-lg-8">
-            
-              <div className="d-flex row">
-
+            <div className="d-flex row">
+              {selectedProducts.map((product) => (
                 <div className="col-6 col-md-4 col-lg-3">
-                <Card
-                   image = "/assets/images/a2.png "
-                   price="12345"
-                   name="abc"
-                 />
+                  <Card
+                    id={`/productDetail/${product._id}`}
+                    key={product.id}
+                    products={product}
+                    handleAddToCart={handleAddToCart}
+                    handleGoToProductDetail={handleGoToProductDetail}
+                  />
                 </div>
-
-                <div className="col-6 col-md-4 col-lg-3">
-                <Card
-                   image = "/assets/images/a2.png "
-                   price="12345"
-                   name="abc"
-                 />
-                </div>
-
-                <div className="col-6 col-md-4 col-lg-3">
-                <Card
-                   image = "/assets/images/a2.png "
-                   price="12345"
-                   name="abc"
-                 />
-                </div>
-
-                <div className="col-6 col-md-4 col-lg-3">
-                <Card
-                   image = "/assets/images/a2.png "
-                   price="12345"
-                   name="abc"
-                 />
-                </div>
-
-                <div className="col-6 col-md-4 col-lg-3">
-                <Card
-                   image = "/assets/images/a2.png "
-                   price="12345"
-                   name="abc"
-                 />
-                </div>
-
-                <div className="col-6 col-md-4 col-lg-3">
-                <Card
-                   image = "/assets/images/a2.png "
-                   price="12345"
-                   name="abc"
-                 />
-                </div>
-
-                <div className="col-6 col-md-4 col-lg-3">
-                <Card
-                   image = "/assets/images/a2.png "
-                   price="12345"
-                   name="abc"
-                 />
-                </div>
-
-                <div className="col-6 col-md-4 col-lg-3">
-                <Card
-                   image = "/assets/images/a2.png "
-                   price="12345"
-                   name="abc"
-                 />
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
-
+      </div>
 
       <div className={`${x["title"]}`}>
         <div className={`${x["groupbanner-hover"]}`}>
           <img
-           className={`lazyloaded ls-is-cached ${x["images"]}`}
+            className={`lazyloaded ls-is-cached ${x["images"]}`}
             src="//theme.hstatic.net/1000160337/1000885200/14/home_bannerfull.jpg?v=316"
             alt=""
           />
         </div>
       </div>
-    
-   </div>
+    </div>
   );
 }
 

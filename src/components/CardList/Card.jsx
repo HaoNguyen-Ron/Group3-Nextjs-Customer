@@ -1,16 +1,9 @@
 import React, {useState} from "react";
 import x from "@/components/CardList/Card.module.css";
-function Card({ price, name, image , Id }) {
+
+
+function Card({products, handleAddToCart, id }) {
  
-    const [cart, setCart] = useState([]);
-  
-    const addToCart = () => {
-      const item = { Id, name, price ,image };
-      setCart([...cart, item]);
-      console.log('Sản phẩm đã được thêm vào giỏ hàng.');
-      // Gửi yêu cầu đến API để lưu thông tin giỏ hàng
-      // Ví dụ: callAPI('/cart', { method: 'POST', body: item });
-    };
 
   return (
     <div>
@@ -35,8 +28,8 @@ function Card({ price, name, image , Id }) {
                           <picture className={`${x["picture"]}`}>
                             <img
                               className={` img-loop ${x["lazyloaded"]}`}
-                              src={image}
-                              alt=""
+                              src={products.description}
+                              alt={products.name}
                             />
                           </picture>
                         </div>
@@ -47,7 +40,7 @@ function Card({ price, name, image , Id }) {
                             <img
                               className={` img-loop  ${x["lazyloaded"]}`}
                               alt=""
-                              src={image}
+                              src={products.description}
                             />
                           </picture>
                         </div>
@@ -56,12 +49,14 @@ function Card({ price, name, image , Id }) {
                   </div>
                   <div className={`${x["proloop-detail"]}`}>
                     <h3 className={`${x["quickview-product"]}`}>
-                      <a href="" className={`${x["quickview-product"]}`}>
-                        {name}
+                    {/* onChange={() => handleGoToProductDetail(products.id)}  */}
+                      <a 
+                         href={id} className={`${x["quickview-product"]}`}>
+                        {products.name}
                       </a>
                     </h3>
                     <p className={`${x["proloop--price"]}`}>
-                      <span className={`${x["price"]}`}>{price}</span>
+                      <span className={`${x["price"]}`}>{products.price}</span>
                     </p>
                   </div>
                   <div className={`${x["proloop-actions"]}`}>
@@ -70,7 +65,7 @@ function Card({ price, name, image , Id }) {
                         className={`d-flex justify-content-center ${x["actions-primary"]}`}
                       >
                         <button
-                         onClick={addToCart}
+                         onClick={() => handleAddToCart(products)}
                           type="button"
                           className={`${x["btn_add_card"]}`}
                           style={{ border: "none" }}
@@ -79,7 +74,7 @@ function Card({ price, name, image , Id }) {
                         </button>
                       </div>
                       <div className={`${x["actions-secondary"]}`}>
-                        <button
+                        <button                      
                           type="button"
                           className={` ${x["button"]}  ${x["btn-proloop-checkout"]} `}
                         >

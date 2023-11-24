@@ -56,7 +56,6 @@ export default function Header() {
                         </div>
                     </div>
 
-                    <CardCart />
                 </div>
             </header>
 

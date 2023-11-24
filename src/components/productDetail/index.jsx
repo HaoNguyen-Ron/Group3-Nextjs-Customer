@@ -2,16 +2,15 @@ import React, { useEffect, useState } from "react";
 
 import Styles from "@/styles/cardProduct.module.css";
 
-export default function CardProduct({ products ,addToCart , _id }) {
-  const [isData, setIsData] = useState([]);
+export default function CardProduct({ products, handleGoToDataPage}) {
   const [count, setCount] = useState(1);
   const [showText, setShowText] = useState(false);
 
+  if (!products) {
+    return <p>No product found.</p>;
+  }
   
 
-
-console.log('««««« isData »»»»»',isData );
-  // Hàm tăng giá trị lên 1
   function increment() {
     setCount(count + 1);
   }
@@ -79,7 +78,7 @@ console.log('««««« isData »»»»»',isData );
                 <span className={`${Styles.title_chat}`}>Chat Ngay</span>
               </a>
             </div>
-            <button onClick={() => addToCart(products)} className={`col-12 col-md-5 col-lg-5 ${Styles.btn_add_card}`}>
+            <button onClick={handleGoToDataPage} className={`col-12 col-md-5 col-lg-5 ${Styles.btn_add_card}`}>
               Thêm vào giỏ hàng 
             </button>
           </div>
