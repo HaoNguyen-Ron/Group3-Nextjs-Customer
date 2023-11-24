@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect, useState } from "react";
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -8,7 +8,17 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 export default function AuthLoginPartTablet() {
-  const [openMenu, setOpenMenu] = React.useState(null);
+  const [openMenu, setOpenMenu] = useState(null);
+  const [data, setData] = React.useState([]);
+  useEffect(() => {
+    const storedData = localStorage.getItem("cart");
+
+    const parsedData = storedData ? JSON.parse(storedData) : [];
+
+    setData(parsedData);
+  }, []);
+
+  const totalItemCount = data.reduce((total, item) => total + item.count, 0);
 
   const router = useRouter()
 
@@ -32,8 +42,12 @@ export default function AuthLoginPartTablet() {
   return (
     <div className={` ${styles.media_tablet} d-flex justify-content-end`}>
       <div>
-        <button className={`btn ${styles.loginPart__item}`}>
+        <button className={`position-relative btn ${styles.loginPart__item}`}>
           <i className='fa-solid fa-cart-shopping my-auto me-2 ' style={{ fontSize: '20px' }}></i>
+          <span className=" position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            {totalItemCount}
+            <span className="visually-hidden">unread messages</span>
+          </span>
         </button>
       </div>
 

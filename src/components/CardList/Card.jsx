@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import x from "@/components/CardList/Card.module.css";
 
 
-function Card({products, handleAddToCart}) {
+function Card({products, handleAddToCart, id}) {
  
 
   return (
@@ -38,7 +38,7 @@ function Card({products, handleAddToCart}) {
                         >
                           <picture className={`${x["picture"]}`}>
                             <span className={`${x["sale-span"]}`}>
-                              {discount}
+                              {products.discount}
                             </span>
                             <img
                               className={` img-loop  ${x["lazyloaded"]}`}
