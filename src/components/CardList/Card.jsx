@@ -1,8 +1,8 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import x from "@/components/CardList/Card.module.css";
 
 
-function Card({products, handleAddToCart, id }) {
+function Card({products, handleAddToCart}) {
  
 
   return (
@@ -22,7 +22,7 @@ function Card({products, handleAddToCart, id }) {
                       style={{ height: 240 }}
                     >
                       <div className={` ${x["product--image__inner"]}`}>
-                        <div
+                        {/* <div
                           className={` ${x["prod-img"]}  ${x["first-image"]}`}
                         >
                           <picture className={`${x["picture"]}`}>
@@ -32,11 +32,14 @@ function Card({products, handleAddToCart, id }) {
                               alt={products.name}
                             />
                           </picture>
-                        </div>
+                        </div> */}
                         <div
                           className={`hovered-img hidden-xs hidden-sm ${x["prod-img"]}  ${x["second-image"]} `}
                         >
                           <picture className={`${x["picture"]}`}>
+                            <span className={`${x["sale-span"]}`}>
+                              {discount}
+                            </span>
                             <img
                               className={` img-loop  ${x["lazyloaded"]}`}
                               alt=""

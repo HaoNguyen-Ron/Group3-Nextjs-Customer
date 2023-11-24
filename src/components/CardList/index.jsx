@@ -61,7 +61,7 @@ console.log('««««« selectedProducts »»»»»', selectedProducts);
         </div>
       </div>
 
-      <div className={`${x["section"]}`}>
+      <div className={` ${x["section"]}`}>
         <div className={`${x["section-heading"]}`}>
           <h2 className={`${x["hTitle"]}`}>
             <a href="">Sản Phẩm Order</a>
@@ -120,6 +120,7 @@ console.log('««««« selectedProducts »»»»»', selectedProducts);
               />
             </div>
           </div>
+
           <div className="col-12 col-md-12 col-lg-8">
             <div className="d-flex row">
               {selectedProducts.map((product) => (
