@@ -9,7 +9,7 @@ import { useRouter } from 'next/router';
 
 export default function AuthLoginPartTablet() {
   const [openMenu, setOpenMenu] = useState(null);
-  const [data, setData] = React.useState([]);
+  const [data, setData] = useState([]);
   useEffect(() => {
     const storedData = localStorage.getItem("cart");
 
@@ -18,7 +18,7 @@ export default function AuthLoginPartTablet() {
     setData(parsedData);
   }, []);
 
-  const totalItemCount = data.reduce((total, item) => total + item.count, 0);
+  // const totalItemCount = data.reduce((total, item) => total + item.count, 0);
 
   const router = useRouter()
 
@@ -45,7 +45,7 @@ export default function AuthLoginPartTablet() {
         <button className={`position-relative btn ${styles.loginPart__item}`}>
           <i className='fa-solid fa-cart-shopping my-auto me-2 ' style={{ fontSize: '20px' }}></i>
           <span className=" position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-            {totalItemCount}
+            {/* {totalItemCount} */}
             <span className="visually-hidden">unread messages</span>
           </span>
         </button>

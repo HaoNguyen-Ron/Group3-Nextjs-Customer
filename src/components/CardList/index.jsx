@@ -5,9 +5,9 @@ import { useState } from "react";
 
 function CardList(products) {
   const [cart, setCart] = useState([]);
-console.log('««««« products »»»»»', products.products);
+  const [totalItemCount,setTotalItemCount] = useState(0) 
+
   const selectedProducts = products.products.slice(0, 8);
-console.log('««««« selectedProducts »»»»»', selectedProducts);
 
   const handleGoToProductDetail = (productId) => {
     // Use window.location to navigate
@@ -34,6 +34,9 @@ console.log('««««« selectedProducts »»»»»', selectedProducts);
     // Store the updated cart in local storage
     localStorage.setItem("cart", JSON.stringify(updatedCart));
     // Optionally, you can also update the state or perform other actions if needed
+
+    setTotalItemCount(totalItemCount+1);
+    localStorage.setItem("totalItemCount", totalItemCount+1);
   };
 
   return (

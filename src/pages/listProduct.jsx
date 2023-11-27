@@ -4,7 +4,6 @@ import { axiosClient } from "@/libraries/axiosClient";
 
 function listProduct(products) {
     const [cart, setCart] = useState([]);
-    console.log('««««« products »»»»»', products);
 
     const selectedProducts = products.products.slice(0, 8);
 
