@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import x from "@/components/CardList/Card.module.css";
 
-
-function Card({products, handleAddToCart, id}) {
- 
+function Card({ products, handleAddToCart, id }) {
+  const formattedPrice = new Intl.NumberFormat("vi-VN", {
+    style: "currency",
+    currency: "VND",
+  }).format(products.price);
 
   return (
     <div>
@@ -52,15 +54,22 @@ function Card({products, handleAddToCart, id}) {
                   </div>
                   <div className={`${x["proloop-detail"]}`}>
                     <h3 className={`${x["quickview-product"]}`}>
-                    {/* onChange={() => handleGoToProductDetail(products.id)}  */}
-                      <a 
-                         href={id} className={`${x["quickview-product"]}`}>
+                      {/* onChange={() => handleGoToProductDetail(products.id)}  */}
+                      <a href={id} className={`${x["quickview-product"]}`}>
                         {products.name}
                       </a>
                     </h3>
                     <p className={`${x["proloop--price"]}`}>
-                      <span className={`${x["price"]}`}>{products.price}</span>
+                      <span className={`${x["price"]}`}>{formattedPrice}</span>
                     </p>
+                    {/* <p className={`${x["proloop--price"]}`}>
+                      <span className={`${x["price"]}`}>
+                        {new Intl.NumberFormat("vi-VN", {
+                          style: "currency",
+                          currency: "VND",
+                        }).format(products.price)}
+                      </span>
+                    </p> */}
                   </div>
                   <div className={`${x["proloop-actions"]}`}>
                     <div className={`${x["proloop-actions__inner"]}`}>
@@ -68,7 +77,7 @@ function Card({products, handleAddToCart, id}) {
                         className={`d-flex justify-content-center ${x["actions-primary"]}`}
                       >
                         <button
-                         onClick={() => handleAddToCart(products)}
+                          onClick={() => handleAddToCart(products)}
                           type="button"
                           className={`${x["btn_add_card"]}`}
                           style={{ border: "none" }}
@@ -77,7 +86,7 @@ function Card({products, handleAddToCart, id}) {
                         </button>
                       </div>
                       <div className={`${x["actions-secondary"]}`}>
-                        <button                      
+                        <button
                           type="button"
                           className={` ${x["button"]}  ${x["btn-proloop-checkout"]} `}
                         >
