@@ -13,18 +13,29 @@ function Collection({ products }) {
     const priceRange = getPriceRangeFromOption(priceOption);
     const [minPrice, maxPrice] = priceRange;
 
-    const filtered = products.filter((product) => {
-      const productPrice = product.price;
+    let updatedFilteredProducts;
 
-      return (
-        (minPrice === undefined || productPrice >= minPrice) &&
-        (maxPrice === undefined || productPrice <= maxPrice)
-      );
-    });
+    // Check if the selected price option is already checked
+    const isSelectedOptionChecked = selectedPriceOption === priceOption;
 
-    setFilteredProducts(filtered);
-    setSelectedPriceRange(priceRange);
-    setSelectedPriceOption(priceOption);
+    if (isSelectedOptionChecked) {
+      // If the selected option is already checked, show all products
+      updatedFilteredProducts = products;
+    } else {
+      // If the selected option is not checked, filter products based on the selected option
+      updatedFilteredProducts = products.filter((product) => {
+        const productPrice = parseFloat(product.price); // Convert to number
+
+        return (
+          (minPrice === undefined || productPrice >= minPrice) &&
+          (maxPrice === undefined || productPrice <= maxPrice)
+        );
+      });
+    }
+
+    setFilteredProducts(updatedFilteredProducts);
+    setSelectedPriceRange(isSelectedOptionChecked ? [] : priceRange);
+    setSelectedPriceOption(isSelectedOptionChecked ? "" : priceOption);
   };
 
   useEffect(() => {
@@ -55,8 +66,8 @@ function Collection({ products }) {
         return [2000000, 3000000];
       case "3.000.000₫ - 4.000.000₫":
         return [3000000, 4000000];
-      case "4.000.000₫":
-        return [4000000, undefined];
+      case "Trên 4.000.000₫":
+        return [4000000, 80000000];
       default:
         return [];
     }
@@ -70,7 +81,7 @@ function Collection({ products }) {
           "1.000.000₫ - 2.000.000₫",
           "2.000.000₫ - 3.000.000₫",
           "3.000.000₫ - 4.000.000₫",
-          "4.000.000₫",
+          "Trên 4.000.000₫",
         ]}
         onCheckboxChange={handleCheckboxChange}
       />
