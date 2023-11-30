@@ -10,6 +10,9 @@ function Filter(props) {
     setActiveItem(index);
   };
 
+  const handelPrice = () => {
+    
+  }
   useEffect(() => {
     // Một số logic tải trang khác có thể ảnh hưởng đến activeItem
     setActiveItem(6); // Index của mục "Mới nhất"
@@ -157,7 +160,7 @@ function Filter(props) {
                 </div>
 
                 <FilItem
-                  onCheckboxChange={onCheckboxChange}
+                  onCheckboxChange={handelPrice}
                   type="number"
                   // value={maxPrice}
                   items={[

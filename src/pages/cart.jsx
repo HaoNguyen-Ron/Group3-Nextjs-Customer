@@ -107,7 +107,7 @@ function Cart() {
                           </a>
                         </div>
                         <div className={`col-8 ${Styles.media_right}`}>
-                          <a href={`/productDetail/${item._id}`} >Goddess of Victory: Nikke Emma 1/7</a>
+                          <a href={`/productDetail/${item._id}`} >{item.name}</a>
                           <div className="d-flex">
                             <input
                               type="button"

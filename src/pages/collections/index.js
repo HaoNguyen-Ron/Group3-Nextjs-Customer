@@ -11,7 +11,8 @@ function Collection({ products }) {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filterResult, setFilterResult] = useState(products);
-
+console.log('««««« products »»»»»', products);
+console.log('««««« products.price »»»»»', products[0].price);
   const handleCheckboxChange = (priceRange, selectedVendors, sortOption) => {
     // Lọc sản phẩm theo giá
     const filteredByPrice = products.filter((product) => {
@@ -58,41 +59,40 @@ function Collection({ products }) {
     setSortOption(option);
   };
 
-  // useEffect(() => {
-  //   const filtered = products.filter((product) => {
-  //     console.log("««««« product »»»»»", product);
-  //     const productVendor = product.supplier.name;
-  //     const productPrice = product.price;
+  useEffect(() => {
+    const filtered = products.filter((product) => {
+      const productVendor = product.supplier.name;
+      const productPrice = product.price;
+// console.log('««««« product »»»»»', productPrice);
+      product && productVendor.includes();
 
-  //     product && productVendor.includes(e.target.checked);
+      const isVendorMatch =
+        !selectedVendors ||
+        selectedVendors.length === 0 ||
+        selectedVendors.includes(productVendor);
+      const isPriceMatch =
+        // !selectedPriceRange ||
+        // selectedPriceRange.length === 0 ||
+        productPrice >= selectedPriceRange[0] &&
+        productPrice <= selectedPriceRange[1];
 
-  //     // const isVendorMatch =
-  //     //   !selectedVendors ||
-  //     //   selectedVendors.length === 0 ||
-  //     //   selectedVendors.includes(productVendor);
-  //     // const isPriceMatch =
-  //     //   // !selectedPriceRange ||
-  //     //   // selectedPriceRange.length === 0 ||
-  //     //   productPrice >= selectedPriceRange[0] &&
-  //     //   productPrice <= selectedPriceRange[1];
+      // const isNameMatch = productName.includes(searchTerm.toLowerCase());
 
-  //     // const isNameMatch = productName.includes(searchTerm.toLowerCase());
+      return isVendorMatch && isPriceMatch;
+    });
 
-  //     // return isVendorMatch && isPriceMatch && isNameMatch;
-  //   });
+    setFilteredProducts(filtered);
+  }, [selectedPriceRange, selectedVendors, products]);
 
-  //   setFilteredProducts(filtered);
-  // }, [selectedPriceRange, selectedVendors, searchTerm, products]);
+  // const display = filterResult?.map((product) => (
+  //   <Card
+  //     key={product._id}
+  //     id={`/productDetail/${product._id}`}
+  //     products={product}
+  //   />
+  // ));
 
-  const display = filterResult?.map((product) => (
-    <Card
-      key={product._id}
-      id={`/productDetail/${product._id}`}
-      products={product}
-    />
-  ));
-
-  const content = display.length ? display : <p>Không tìm thấy sản phẩm</p>;
+  // const content = display.length ? display : <p>Không tìm thấy sản phẩm</p>;
 
   const filteredAndSortedProducts = useMemo(() => {
     let sortedProducts = [...filteredProducts];
@@ -136,9 +136,9 @@ function Collection({ products }) {
       <div className="collection-listproduct">
         <div className="container">
           <div className="row">
-            {/* {filteredAndSortedProducts.length > 0 ? (
-              filteredAndSortedProducts.map((product) => (
-                <div className="col-md-3 col-sm-4 col-xs-6" key={product._id}>
+            {products.length > 0 ? (
+              products.map((product) => (
+                <div className="col-md-3 col-sm-4 col-xs-6" key={product._id}>s
                   <Card
                     id={`/productDetail/${product._id}`}
                     products={product}
@@ -149,9 +149,9 @@ function Collection({ products }) {
               ))
             ) : (
               <p>Không có sản phẩm nào</p>
-            )} */}
+            )}
 
-            {content}
+            {/* {content} */}
           </div>
         </div>
       </div>
