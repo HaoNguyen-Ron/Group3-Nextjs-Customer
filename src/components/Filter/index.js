@@ -11,6 +11,9 @@ function Filter(props) {
     setActiveItem(index);
   };
 
+  const handelPrice = () => {
+    
+  }
   useEffect(() => {
     onSortOptionChange?.("defaultOption");
     // Một số logic tải trang khác có thể ảnh hưởng đến activeItem
@@ -159,7 +162,7 @@ function Filter(props) {
                 </div>
 
                 <FilItem
-                  onCheckboxChange={onCheckboxChange}
+                  onCheckboxChange={handelPrice}
                   type="number"
                   // value={maxPrice}
                   items={itemPrice}
