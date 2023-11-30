@@ -55,7 +55,7 @@ function Collection({ products }) {
         return [2000000, 3000000];
       case "3.000.000₫ - 4.000.000₫":
         return [3000000, 4000000];
-      case "Trên 4.000.000₫":
+      case "4.000.000₫":
         return [4000000, undefined];
       default:
         return [];
@@ -70,13 +70,13 @@ function Collection({ products }) {
           "1.000.000₫ - 2.000.000₫",
           "2.000.000₫ - 3.000.000₫",
           "3.000.000₫ - 4.000.000₫",
-          "Trên 4.000.000₫",
+          "4.000.000₫",
         ]}
         onCheckboxChange={handleCheckboxChange}
       />
 
       <div className="selected-price-option">
-        <p>Tùy chọn giá đã chọn: {selectedPriceOption}</p>
+        <p>Selected Price Option: {selectedPriceOption}</p>
       </div>
 
       <div className="collection-listproduct">
