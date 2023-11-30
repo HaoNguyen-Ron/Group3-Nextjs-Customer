@@ -1,144 +1,91 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "@/components/CardList/Card";
 import Filter from "@/components/Filter";
 import Social from "@/components/social";
 import { axiosClient } from "@/libraries/axiosClient";
 
 function Collection({ products }) {
-  const [selectedVendors, setSelectedVendors] = useState([]);
-  const [selectedPriceRange, setSelectedPriceRange] = useState([]);
-  const [sortOption, setSortOption] = useState("priceAsc");
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [filterResult, setFilterResult] = useState(products);
+  const [selectedPriceRange, setSelectedPriceRange] = useState([]);
+  const [selectedPriceOption, setSelectedPriceOption] = useState("");
 
-  const handleCheckboxChange = (priceRange, selectedVendors, sortOption) => {
-    // Lọc sản phẩm theo giá
-    const filteredByPrice = products.filter((product) => {
+  const handleCheckboxChange = (priceOption) => {
+    const priceRange = getPriceRangeFromOption(priceOption);
+    const [minPrice, maxPrice] = priceRange;
+
+    const filtered = products.filter((product) => {
       const productPrice = product.price;
 
       return (
-        priceRange.length === 0 ||
-        (productPrice >= priceRange[0] && productPrice <= priceRange[1])
+        (minPrice === undefined || productPrice >= minPrice) &&
+        (maxPrice === undefined || productPrice <= maxPrice)
       );
     });
 
-    // Đặt state cho sản phẩm đã lọc
-    setFilteredProducts(filteredByPrice);
-
-    // Đặt state cho giá, nhà cung cấp và sắp xếp (nếu cần)
+    setFilteredProducts(filtered);
     setSelectedPriceRange(priceRange);
-    setSelectedVendors(selectedVendors);
-    setSortOption(sortOption);
+    setSelectedPriceOption(priceOption);
   };
 
-  // const handleVendorCheckboxChange = (vendor) => {
-  //   const isSelected = selectedVendors.includes(vendor);
-  //   setSelectedVendors(
-  //     isSelected
-  //       ? selectedVendors.filter((v) => v !== vendor)
-  //       : [...selectedVendors, vendor]
-  //   );
-  // };
+  useEffect(() => {
+    const filterProductsByPrice = () => {
+      const filtered = products.filter((product) => {
+        const productPrice = product.price;
 
-  const handleVendorCheckboxChange = (e) => {
-    const vendor = products.supplier.name;
-    if (!e.target.checked) return setSelectedVendors(products || []);
-
-    const filteredByVendor = products.filter((product) => {
-      const { name } = product.supplier;
-
-      return name.includes(e.tartget.checked);
-    });
-
-    setFilterResult(filteredByVendor);
-  };
-
-  const handleSortOptionChange = (option) => {
-    setSortOption(option);
-  };
-
-  // useEffect(() => {
-  //   const filtered = products.filter((product) => {
-  //     console.log("««««« product »»»»»", product);
-  //     const productVendor = product.supplier.name;
-  //     const productPrice = product.price;
-
-  //     product && productVendor.includes(e.target.checked);
-
-  //     // const isVendorMatch =
-  //     //   !selectedVendors ||
-  //     //   selectedVendors.length === 0 ||
-  //     //   selectedVendors.includes(productVendor);
-  //     // const isPriceMatch =
-  //     //   // !selectedPriceRange ||
-  //     //   // selectedPriceRange.length === 0 ||
-  //     //   productPrice >= selectedPriceRange[0] &&
-  //     //   productPrice <= selectedPriceRange[1];
-
-  //     // const isNameMatch = productName.includes(searchTerm.toLowerCase());
-
-  //     // return isVendorMatch && isPriceMatch && isNameMatch;
-  //   });
-
-  //   setFilteredProducts(filtered);
-  // }, [selectedPriceRange, selectedVendors, searchTerm, products]);
-
-  const display = filterResult?.map((product) => (
-    <Card
-      key={product._id}
-      id={`/productDetail/${product._id}`}
-      products={product}
-    />
-  ));
-
-  const content = display.length ? display : <p>Không tìm thấy sản phẩm</p>;
-
-  const filteredAndSortedProducts = useMemo(() => {
-    let sortedProducts = [...filteredProducts];
-
-    switch (sortOption) {
-      case "giá tăng dần":
-        sortedProducts = sortedProducts.sort((a, b) => a.price - b.price);
-        break;
-
-      case "giá giảm dần":
-        sortedProducts = sortedProducts.sort((a, b) => b.price - a.price);
-        break;
-
-      case "Tên A - Z":
-        sortedProducts = sortedProducts.sort((a, b) =>
-          a.name.localeCompare(b.name)
+        return (
+          selectedPriceRange.length === 0 ||
+          (productPrice >= selectedPriceRange[0] &&
+            productPrice <= selectedPriceRange[1])
         );
-        break;
+      });
+      setFilteredProducts(filtered);
+    };
 
-      case "Tên Z - A":
-        sortedProducts = sortedProducts.sort((a, b) =>
-          b.name.localeCompare(a.name)
-        );
-        break;
+    filterProductsByPrice();
+  }, [selectedPriceRange, products]);
 
+  // Hàm để chuyển đổi lựa chọn giá thành khoảng giá
+  const getPriceRangeFromOption = (selectedPriceOption) => {
+    switch (selectedPriceOption) {
+      case "Dưới 1.000.000₫":
+        return [undefined, 1000000];
+      case "1.000.000₫ - 2.000.000₫":
+        return [1000000, 2000000];
+      case "2.000.000₫ - 3.000.000₫":
+        return [2000000, 3000000];
+      case "3.000.000₫ - 4.000.000₫":
+        return [3000000, 4000000];
+      case "Trên 4.000.000₫":
+        return [4000000, undefined];
       default:
-        break;
+        return [];
     }
-
-    return sortedProducts;
-  }, [filteredProducts, sortOption]);
+  };
 
   return (
     <>
       <Filter
+        itemPrice={[
+          "Dưới 1.000.000₫",
+          "1.000.000₫ - 2.000.000₫",
+          "2.000.000₫ - 3.000.000₫",
+          "3.000.000₫ - 4.000.000₫",
+          "Trên 4.000.000₫",
+        ]}
         onCheckboxChange={handleCheckboxChange}
-        onVendorCheckboxChange={handleVendorCheckboxChange}
-        onSortOptionChange={handleSortOptionChange}
       />
+
+      <div className="selected-price-option">
+        <p>Tùy chọn giá đã chọn: {selectedPriceOption}</p>
+      </div>
 
       <div className="collection-listproduct">
         <div className="container">
           <div className="row">
-            {/* {filteredAndSortedProducts.length > 0 ? (
-              filteredAndSortedProducts.map((product) => (
+            {filteredProducts.length > 0 ? (
+              filteredProducts.map((product) => (
                 <div className="col-md-3 col-sm-4 col-xs-6" key={product._id}>
+                  {console.log("Dữ liệu Sản phẩm:", product)}
                   <Card
                     id={`/productDetail/${product._id}`}
                     products={product}
@@ -149,9 +96,7 @@ function Collection({ products }) {
               ))
             ) : (
               <p>Không có sản phẩm nào</p>
-            )} */}
-
-            {content}
+            )}
           </div>
         </div>
       </div>

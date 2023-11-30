@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import fil from "@/styles/Filter.module.css";
 
 function Filter(props) {
-  const { onCheckboxChange, onSortOptionChange } = props;
+  const { onCheckboxChange, onSortOptionChange, itemPrice } = props;
+  // console.log(typeof onSortOptionChange);
 
   const [activeItem, setActiveItem] = useState(null);
 
@@ -11,6 +12,7 @@ function Filter(props) {
   };
 
   useEffect(() => {
+    onSortOptionChange?.("defaultOption");
     // Một số logic tải trang khác có thể ảnh hưởng đến activeItem
     setActiveItem(6); // Index của mục "Mới nhất"
   }, []);
@@ -86,7 +88,7 @@ function Filter(props) {
                           }`}
                           onClick={() => {
                             handleItemClick(index);
-                            onSortOptionChange(item.toLowerCase());
+                            onSortOptionChange?.(item.toLowerCase());
                           }}
                           key={index}
                         >
@@ -160,16 +162,14 @@ function Filter(props) {
                   onCheckboxChange={onCheckboxChange}
                   type="number"
                   // value={maxPrice}
-                  items={[
-                    "Dưới 1.000.000₫",
+                  items={itemPrice}
+                />
+              </div>
+              {/* FilItem   "Dưới 1.000.000₫",
                     "1.000.000₫ - 2.000.000₫",
                     "2.000.000₫ - 3.000.000₫",
                     "3.000.000₫ - 4.000.000₫",
-                    "4.000.000₫",
-                  ]}
-                />
-              </div>
-              {/* FilItem */}
+                    "4.000.000₫",*/}
               <div
                 className={`${fil["filter_group-block"]} col-md-3 col-sm-12  col-xs-12`}
               >
@@ -191,9 +191,9 @@ function Filter(props) {
 export default Filter;
 
 // Filter component
-const FilItem = ({ items, onCheckboxChange }) => {
+const FilItem = ({ items, value, onCheckboxChange }) => {
   const handleCheckboxChange = (label) => {
-    console.log(`Checkbox clicked: ${label}`);
+    // console.log(`Bạn đã click: ${label}`);
     if (onCheckboxChange) {
       onCheckboxChange(label);
     }
@@ -206,6 +206,7 @@ const FilItem = ({ items, onCheckboxChange }) => {
             <li className={`${fil["li"]}`} key={index}>
               <input
                 type="checkbox"
+                value={value}
                 id={`data-brand-p-${index}`}
                 defaultValue={label}
                 name="brand-filter"

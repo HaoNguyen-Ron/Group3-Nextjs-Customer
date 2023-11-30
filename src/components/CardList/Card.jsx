@@ -62,14 +62,6 @@ function Card({ products, handleAddToCart, id }) {
                     <p className={`${x["proloop--price"]}`}>
                       <span className={`${x["price"]}`}>{formattedPrice}</span>
                     </p>
-                    {/* <p className={`${x["proloop--price"]}`}>
-                      <span className={`${x["price"]}`}>
-                        {new Intl.NumberFormat("vi-VN", {
-                          style: "currency",
-                          currency: "VND",
-                        }).format(products.price)}
-                      </span>
-                    </p> */}
                   </div>
                   <div className={`${x["proloop-actions"]}`}>
                     <div className={`${x["proloop-actions__inner"]}`}>
