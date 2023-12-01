@@ -7,17 +7,15 @@ import UserPassword from '@/components/UserProfile/UserPassword'
 import { useRouter } from 'next/router'
 import { axiosClient } from '@/libraries/axiosClient'
 import verifyLoggin from '@/components/HOC/verifyLoggin'
+import { userAgent } from 'next/server'
 
  function UserProfilePage() {
     const [getDetail, setGetDetail] = useState(true)
     const [getHistory, setGetHistory] = useState(false)
     const [getPassword, setGetPassword] = useState(false)
 
-    const [user, setUser] = useState({
-        userName: '',
-        userEmail: '',
-        userAddress: '',
-    })
+    const [user, setUser] = useState([])
+    
 
     const [isLogged, setIsLogged] = useState(false)
 
@@ -44,14 +42,11 @@ import verifyLoggin from '@/components/HOC/verifyLoggin'
     const getUserDetail = async () => {
         try {
             const res = await axiosClient.get('/auth/profile')
+            console.log('««««« res »»»»»', res);
             if (res.status === 200) {
                 const data = res.data.payload;
                 
-                setUser({
-                    userName : data.fullName,
-                    userEmail: data.email,
-                    userAddress: data.address
-                })
+                setUser(data)
             }
 
         } catch (error) {
@@ -91,14 +86,12 @@ import verifyLoggin from '@/components/HOC/verifyLoggin'
 
                         <div className="user__content flex-3 border-start border-2 px-5">
                             <UserDetail
-                                userName={user.userName}
-                                userEmail={user.userEmail}
-                                userAddress={user.userAddress}
+                                user={user}
                                 isShow={getDetail} />
 
                             <UserHistory isShow={getHistory} />
 
-                            <UserPassword isShow={getPassword} />
+                            <UserPassword user={user} isShow={getPassword} />
                         </div>
                     </div>
                 </div>

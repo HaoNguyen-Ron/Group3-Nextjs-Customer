@@ -14,6 +14,10 @@ function Cart() {
     setData(parsedData);
   }, []);
 
+  const formattedPrice = (price) => {
+    return price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+  };
+
   const totalItemCount = data.reduce((total, item) => total + item.count, 0);
   const totalPrice = data.reduce(
     (total, item) => total + item.price * item.count,
@@ -138,8 +142,7 @@ function Cart() {
                           </div>
                           <p>
                             <b>
-                              {item.price}
-                              <u>đ</u>
+                              {formattedPrice(item.price)}
                             </b>
                           </p>
                         </div>
@@ -152,9 +155,9 @@ function Cart() {
                           </button>
                         </div>
                       </div>
-                      <div>
-                        <span>Thành Tiền:</span>
-                        <span>${item.price * item.count.toFixed(2)}</span>
+                      <div className={`${Styles.title_ThanhTien}`}>
+                        <p><b>Thành Tiền:</b></p>
+                        <p className={`${Styles.input_color_1}`}><b>{formattedPrice(item.price * item.count)}</b></p>
                       </div>
                     </div>
                   </>
@@ -176,12 +179,10 @@ function Cart() {
               </h2>
 
               <div
-                className={`d-flex justify-content-between ${Styles.border_bottom}`}
+                className={`d-flex justify-content-between ${Styles.title_ThanhTien} ${Styles.border_bottom}`}
               >
-                <span>
-                  ${totalPrice}
-                  <u>đ</u>
-                </span>
+                  <p><b>Thành Tiền:</b></p>
+                  <p className={`${Styles.input_color_1}`}><b>{formattedPrice(totalPrice)}</b></p>
               </div>
 
               <div className={`  ${Styles.box_title_cart}`}>

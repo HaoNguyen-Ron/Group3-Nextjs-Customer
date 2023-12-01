@@ -196,17 +196,10 @@
               {showText && (
                 <div>
                   <p>
-                    Phát Hành: <span>{date} </span>
+                    Loại Sản Phẩm: <span>{products.category.name}</span>
                   </p>
                   <p>
-                    Giá: <span> {price}</span>đ
-                  </p>
-                  <p>{title}</p>
-                  <p>
-                    Hãng sản xuất: <span>{producer}</span>
-                  </p>
-                  <p>
-                    Kích thước: <span>{size}</span>cm
+                    Hãng sản xuất: <span>{products.supplier.name}</span>
                   </p>
                 </div>
               )}

@@ -96,3 +96,12 @@
     color: #fff;
     background-color: #ee2d7a;
 }
+
+.title_ThanhTien {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.input_color_1 {
+    color: #ee2d7a;
+}
