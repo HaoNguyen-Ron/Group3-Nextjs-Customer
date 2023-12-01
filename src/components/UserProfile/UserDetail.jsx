@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import styles from '@/styles/userPage.module.css'
 import { axiosClient } from '@/libraries/axiosClient'
 
-export default function UserDetail({ userName, userEmail, userAddress, isShow = true }) {
+export default function UserDetail({ user, isShow = true }) {
 
     return (
         <div className={isShow ? 'd-block' : 'd-none'}>
@@ -15,7 +15,7 @@ export default function UserDetail({ userName, userEmail, userAddress, isShow = 
                     </div>
 
                     <div>
-                        <b>{userName}</b>
+                        <b>{user.fullName}</b>
                     </div>
                 </div>
 
@@ -25,7 +25,17 @@ export default function UserDetail({ userName, userEmail, userAddress, isShow = 
                     </div>
 
                     <div>
-                        <b>{userEmail}</b>
+                        <b>{user.email}</b>
+                    </div>
+                </div>
+
+                <div className='userDetail_item mb-3 d-flex'>
+                    <div style={{ minWidth: '100px' }}>
+                        <em>Số điện thoại: </em>
+                    </div>
+
+                    <div>
+                        <b>{user.phoneNumber}</b>
                     </div>
                 </div>
 
@@ -35,7 +45,7 @@ export default function UserDetail({ userName, userEmail, userAddress, isShow = 
                     </div>
 
                     <div>
-                        <b>{userAddress}</b>
+                        <b>{user.address}</b>
                     </div>
                 </div>
             </div>

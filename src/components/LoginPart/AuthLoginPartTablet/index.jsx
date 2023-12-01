@@ -44,10 +44,6 @@ export default function AuthLoginPartTablet() {
       <div>
         <button className={`position-relative btn ${styles.loginPart__item}`}>
           <i className='fa-solid fa-cart-shopping my-auto me-2 ' style={{ fontSize: '20px' }}></i>
-          <span className=" position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-            {/* {totalItemCount} */}
-            <span className="visually-hidden">unread messages</span>
-          </span>
         </button>
       </div>
 
