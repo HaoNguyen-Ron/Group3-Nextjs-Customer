@@ -10,9 +10,9 @@ import * as Yup from "yup";
 
 import styles from "@/styles/form.module.css";
 import { axiosClient } from "@/libraries/axiosClient";
+import { useRouter } from "next/router";
 
 const CustomerEditForm = ({ userData }) => {
-  console.log("««««« userData »»»»»", userData);
   const [openSuccess, setOpenSuccess] = useState(false);
 
   const [openError, setOpenError] = useState(false);
@@ -21,6 +21,7 @@ const CustomerEditForm = ({ userData }) => {
     setOpenError(false);
     setOpenSuccess(false);
   };
+  const router = useRouter()
 
   const style = {
     position: "absolute",
@@ -48,7 +49,6 @@ const CustomerEditForm = ({ userData }) => {
       district: "",
       ward: "",
       street: "",
-      password:"",
     },
 
     validationSchema: Yup.object({
@@ -72,10 +72,12 @@ const CustomerEditForm = ({ userData }) => {
 
     onSubmit: async (values) => {
       try {
-        const res = await axiosClient.put(`/customers/${userData.id}`, values);
+        const res = await axiosClient.patch(`/customers/${userData.id}`, values);
 
         if (res.status === 200) {
           setOpenSuccess(true);
+          router.reload()
+
         }
       } catch (error) {
         setOpenError(true);
@@ -94,7 +96,6 @@ const CustomerEditForm = ({ userData }) => {
       district: userData.district || "",
       ward: userData.ward || "",
       street: userData.street || "",
-      password: userData.password || "",
     });
   }, [userData, validation.setValues]);
 
@@ -166,15 +167,6 @@ const CustomerEditForm = ({ userData }) => {
             </Typography>
             <hr />
             <Typography id="modal-modal-description">Successfully !</Typography>
-
-            <div className="mt-3 d-flex justify-content-center">
-              <button
-                className={`btn ${styles.modal__btn} fs-5 `}
-                onClick={handleClose}
-              >
-                Back
-              </button>
-            </div>
           </div>
         </Box>
       </Modal>

@@ -31,6 +31,16 @@ export default function UserDetail({ user, isShow = true }) {
 
                 <div className='userDetail_item mb-3 d-flex'>
                     <div style={{ minWidth: '100px' }}>
+                        <em>Số điện thoại: </em>
+                    </div>
+
+                    <div>
+                        <b>{user.phoneNumber}</b>
+                    </div>
+                </div>
+
+                <div className='userDetail_item mb-3 d-flex'>
+                    <div style={{ minWidth: '100px' }}>
                         <em>Địa chỉ: </em>
                     </div>
 

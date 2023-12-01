@@ -1,19 +1,20 @@
 import React, { useCallback, useState } from "react";
-import styles from "@/styles/userPage.module.css";
 import { Modal } from "react-bootstrap";
 import CustomerEditForm from "../Form/EditFormCustomer";
+import { axiosClient } from "@/libraries/axiosClient";
 
 export default function UserPassword({ user, isShow = true }) {
+    console.log('««««« user »»»»»', user);
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
     setShow(false)
   };
 
-  const getCustomerDetail = useCallback(async (id) => {
+  const getCustomerDetail = useCallback(async () => {
     try {
       setShow(true);
-
+     
     } catch (error) {
       console.log(error);
     }

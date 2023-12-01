@@ -7,7 +7,6 @@ import UserPassword from '@/components/UserProfile/UserPassword'
 import { useRouter } from 'next/router'
 import { axiosClient } from '@/libraries/axiosClient'
 import verifyLoggin from '@/components/HOC/verifyLoggin'
-import { userAgent } from 'next/server'
 
  function UserProfilePage() {
     const [getDetail, setGetDetail] = useState(true)
@@ -15,11 +14,11 @@ import { userAgent } from 'next/server'
     const [getPassword, setGetPassword] = useState(false)
 
     const [user, setUser] = useState([])
-    
+
 
     const [isLogged, setIsLogged] = useState(false)
 
-    const redirect = useRouter()
+    const router = useRouter()
 
     const onGetDetail = () => {
         setGetDetail(true)
@@ -43,7 +42,7 @@ import { userAgent } from 'next/server'
         try {
             const res = await axiosClient.get('/auth/profile')
             console.log('««««« res »»»»»', res);
-            if (res.status === 200) {
+            if (res.status === 200 && router.isReady === true) {
                 const data = res.data.payload;
                 
                 setUser(data)
@@ -53,7 +52,7 @@ import { userAgent } from 'next/server'
             console.log('««««« error »»»»»', error);
         }
     }
-
+    console.log('««««« user »»»»»', user);
     useEffect(() => {
         const token = window.localStorage.getItem("TOKEN");
         if (token) {
