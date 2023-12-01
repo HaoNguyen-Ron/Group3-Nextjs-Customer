@@ -3,22 +3,14 @@ import fil from "@/styles/Filter.module.css";
 
 function Filter(props) {
   const {
-    onCheckboxChange,
-    // onCheckboxSup,
+    onCheckboxChangePrice,
     onCheckboxChangeSupplier,
     onSortOptionChange,
     itemPrice,
     itemName,
     itemSuplier,
   } = props;
-  // const itemPrice = [
-  //   "Dưới 1.000.000₫",
-  //   "1.000.000₫ - 2.000.000₫",
-  //   "2.000.000₫ - 3.000.000₫",
-  //   "3.000.000₫ - 4.000.000₫",
-  //   "Trên 4.000.000₫",
-  // ];
-  // const itemSuplier = ["Nhật", "Việt Nam", "Trung Quốc", "Thái Lan", "Hoa Kỳ"];
+
   const [activeItem, setActiveItem] = useState(null);
 
   const handleItemClick = (index) => {
@@ -165,7 +157,7 @@ function Filter(props) {
                 </div>
 
                 <FilItem
-                  onCheckboxChange={onCheckboxChange}
+                  onCheckboxChange={onCheckboxChangePrice}
                   items={itemPrice}
                 />
               </div>

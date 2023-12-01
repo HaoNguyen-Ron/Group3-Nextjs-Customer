@@ -6,12 +6,12 @@ import { axiosClient } from "@/libraries/axiosClient";
 
 function Collection({ products }) {
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [selectedPriceRange, setSelectedPriceRange] = useState([]);
   const [sortedProducts, setSortedProducts] = useState([...products]);
   const [selectedPriceOption, setSelectedPriceOptions] = useState([]);
 
-  //suplier
+  const [selectedPriceRange, setSelectedPriceRange] = useState([]);
   const [selectedSuppliers, setSelectedSuppliers] = useState([]);
+  //suplier----------------------------------------------------------------
 
   function handleSuppllierChange(label) {
     // Check if the label is already in the selected suppliers list
@@ -27,67 +27,68 @@ function Collection({ products }) {
       setSelectedSuppliers(updatedSuppliers);
     }
   }
+  // price -------------------------------------------------------------------
+  const handlePriceChange = (label) => {
+    const isOptionSelected = selectedPriceRange.includes(label);
 
-  const handleCheckboxChangePrice = (priceOption) => {
-    const priceRange = getPriceRangeFromOption(priceOption);
-    const [minPrice, maxPrice] = priceRange;
+    let updatedSelectedPriceRanges;
 
-    let updatedSelectedOptions = [...selectedPriceOption];
-
-    // Kiểm tra xem tùy chọn giá đã chọn đã được chọn chưa
-    const isSelectedOptionChecked =
-      updatedSelectedOptions.includes(priceOption);
-
-    if (isSelectedOptionChecked) {
-      // Nếu tùy chọn đã chọn đã được chọn, loại bỏ nó khỏi mảng
-      const indexToRemove = updatedSelectedOptions.indexOf(priceOption);
-      updatedSelectedOptions.splice(indexToRemove, 1);
+    if (isOptionSelected) {
+      updatedSelectedPriceRanges = selectedPriceRange.filter(
+        (selectedOption) => selectedOption !== label
+      );
     } else {
-      // Nếu tùy chọn đã chọn không được chọn, thêm nó vào mảng
-      updatedSelectedOptions.push(priceOption);
+      updatedSelectedPriceRanges = [...selectedPriceRange, label];
     }
 
-    setSelectedPriceRange([]); // Reset selected price range when multiple options are selected
-    setSelectedPriceOptions(updatedSelectedOptions);
+    setSelectedPriceRange(updatedSelectedPriceRanges);
   };
 
   useEffect(() => {
     const filterProductsByPrice = () => {
-      let updatedFilteredProducts = products;
-
-      // Lọc sản phẩm dựa trên tất cả các tùy chọn đã chọn
-      if (selectedPriceOption.length > 0) {
-        updatedFilteredProducts = products.filter((product) => {
-          const productPrice = parseFloat(product.price);
-
-          return selectedPriceOption.some((selectedOption) => {
-            const range = getPriceRangeFromOption(selectedOption);
-            const [min, max] = range;
-            return (
-              (min === undefined || productPrice >= min) &&
-              (max === undefined || productPrice <= max)
-            );
-          });
-        });
+      if (selectedPriceRange.length === 0) {
+        // If no price options are selected, render all products
+        return products;
       }
 
-      setFilteredProducts(updatedFilteredProducts);
+      return products.filter((product) => {
+        const productPrice = product.price;
+
+        return selectedPriceRange.some((range) => {
+          const [minPrice, maxPrice] = getPriceRangeFromOption(range);
+
+          return (
+            (minPrice === undefined || productPrice >= minPrice) &&
+            (maxPrice === undefined || productPrice <= maxPrice)
+          );
+        });
+      });
     };
 
-    filterProductsByPrice();
+    const filterProductsBySupplier = () => {
+      if (selectedSuppliers.length === 0) {
+        // If no suppliers are selected, render all products
+        return products;
+      }
 
-    //Suplier-----------------------------
-    if (selectedSuppliers.length === 0) {
-      setFilteredProducts(products);
-    } else {
       // Filter products based on selected suppliers
-      const resultArray = products.filter((product) =>
+      return products.filter((product) =>
         selectedSuppliers.includes(product.supplier.name)
       );
-      setFilteredProducts(resultArray);
-    }
-  }, [selectedPriceOption, selectedSuppliers, products]);
+    };
+
+    // Combine results from both filters
+    const priceFilteredProducts = filterProductsByPrice();
+    const supplierFilteredProducts = filterProductsBySupplier();
+    const finalFilteredProducts = priceFilteredProducts.filter((product) =>
+      supplierFilteredProducts.includes(product)
+    );
+
+    setFilteredProducts(finalFilteredProducts);
+  }, [selectedPriceRange, selectedSuppliers, products]);
+
   // Hàm để chuyển đổi lựa chọn giá thành khoảng giá
+
   const getPriceRangeFromOption = (selectedPriceOption) => {
     switch (selectedPriceOption) {
       case "Dưới 1.000.000₫":
@@ -104,8 +105,6 @@ function Collection({ products }) {
         return [];
     }
   };
-
-  //loc theo suplier
 
   // Lặp theo Giá: Tăng dần", "Giá: Giảm dần", "Tên: A-Z", "Tên: Z-A
   // const handleSortChange = (sortOption) => {
@@ -149,7 +148,7 @@ function Collection({ products }) {
           "3.000.000₫ - 4.000.000₫",
           "Trên 4.000.000₫",
         ]}
-        onCheckboxChange={handleCheckboxChangePrice}
+        onCheckboxChangePrice={handlePriceChange}
         onCheckboxChangeSupplier={handleSuppllierChange}
       />
 
