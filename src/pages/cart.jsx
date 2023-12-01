@@ -179,7 +179,7 @@ function Cart() {
                 className={`d-flex justify-content-between ${Styles.border_bottom}`}
               >
                 <span>
-                  ${totalPrice.toFixed(2)}
+                  ${totalPrice}
                   <u>đ</u>
                 </span>
               </div>

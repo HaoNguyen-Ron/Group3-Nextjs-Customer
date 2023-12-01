@@ -5,6 +5,11 @@
   export default function CardProduct({ products}) {
     const [count, setCount] = useState(1);
     const [showText, setShowText] = useState(false);
+
+    const formattedPrice = new Intl.NumberFormat("vi-VN", {
+      style: "currency",
+      currency: "VND",
+    }).format(products.price);
  
 
     const handleAddToCart = () => {
@@ -59,8 +64,7 @@
           <div className={`${Styles.info_product} col-12 col-md-12 col-lg-7`}>
             <h3 >{products.name}</h3>
             <p >
-              {products .price}
-              <u>đ</u>
+              {formattedPrice}
             </p>
             <div className={`row justify-content-around align-items-center ${Styles.form_buy}`}>
               <div className="col-5 col-md-3 col-lg-3 row align-items-center">
