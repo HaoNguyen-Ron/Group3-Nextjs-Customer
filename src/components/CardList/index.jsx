@@ -22,10 +22,10 @@ function CardList(products) {
 
     if (existingProductIndex !== -1) {
       // If the product is already in the cart, increment the count
-      updatedCart[existingProductIndex].count += 1;
+      updatedCart[existingProductIndex].quantity += 1;
     } else {
       // If the product is not in the cart, add it with count 1
-      updatedCart.push({ ...selectedProduct, count: 1 });
+      updatedCart.push({ ...selectedProduct, quantity: 1 });
     }
 
     // Set the updated cart in state

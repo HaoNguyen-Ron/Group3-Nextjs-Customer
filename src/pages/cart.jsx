@@ -18,17 +18,17 @@ function Cart() {
     return price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
   };
 
-  const totalItemCount = data.reduce((total, item) => total + item.count, 0);
+  const totalItemCount = data.reduce((total, item) => total + item.quantity, 0);
   const totalPrice = data.reduce(
-    (total, item) => total + item.price * item.count,
+    (total, item) => total + item.price * item.quantity,
     0
   );
 
   const decrementCount = (productId) => {
     const updatedData = data.map((item) => {
       if (item._id === productId) {
-        const newCount = item.count - 1;
-        return newCount >= 1 ? { ...item, count: newCount } : item;
+        const newQuantity = item.quantity - 1;
+        return newQuantity >= 1 ? { ...item, quantity: newQuantity } : item;
       }
       return item;
     });
@@ -40,7 +40,7 @@ function Cart() {
 
   const incrementCount = (productId) => {
     const updatedData = data.map((item) =>
-      item._id === productId ? { ...item, count: item.count + 1 } : item
+      item._id === productId ? { ...item, quantity: item.quantity + 1 } : item
     );
 
     // Update state and local storage with the new data
@@ -61,7 +61,7 @@ function Cart() {
     const countToUpdate = isNaN(newCount) || newCount < 1 ? 1 : newCount;
 
     const updatedData = data.map((item) =>
-      item._id === productId ? { ...item, count: countToUpdate } : item
+      item._id === productId ? { ...item, quantity: countToUpdate } : item
     );
 
     // Update state and local storage with the new data
@@ -69,11 +69,6 @@ function Cart() {
     localStorage.setItem("cart", JSON.stringify(updatedData));
   };
 
-  const handleGoToProductDetail = (productId) => {
-        
-    // Use window.location to navigate
-    window.location.href = `/productDetail/${productId}`;
-  };
 
   console.log("««««« data »»»»»", data);
   return (
@@ -123,7 +118,7 @@ function Cart() {
                               type="text"
                               id="quantity"
                               name="quantity"
-                              value={item.count}
+                              value={item.quantity}
                               onChange={(e) =>
                                 updateCount(
                                   item._id,
@@ -157,7 +152,7 @@ function Cart() {
                       </div>
                       <div className={`${Styles.title_ThanhTien}`}>
                         <p><b>Thành Tiền:</b></p>
-                        <p className={`${Styles.input_color_1}`}><b>{formattedPrice(item.price * item.count)}</b></p>
+                        <p className={`${Styles.input_color_1}`}><b>{formattedPrice(item.price * item.quantity)}</b></p>
                       </div>
                     </div>
                   </>
@@ -193,10 +188,18 @@ function Cart() {
                 <p className={`  ${Styles.title_cart}`}>
                   Bạn cũng có thể nhập mã giảm giá ở trang thanh toán.
                 </p>
+                {data.length === 0 ? (
 
-                <Link className={`  ${Styles.checkout_btn}`} href="">
+                <Link className={`  ${Styles.checkout_btn}`} href=''>
                   Thanh Toán
                 </Link>
+                )
+                : (
+                  <Link className={`  ${Styles.checkout_btn}`} href='./order'>
+                  Thanh Toán
+                </Link>
+                )
+                }
               </div>
             </div>
           </div>

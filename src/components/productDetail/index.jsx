@@ -21,10 +21,10 @@
   
       if (existingProductIndex !== -1) {
         // Nếu sản phẩm đã tồn tại, cập nhật số lượng
-        cart[existingProductIndex].count += count;
+        cart[existingProductIndex].quantity += count;
       } else {
         // Nếu sản phẩm chưa tồn tại, thêm mới vào giỏ hàng
-        const newProduct = { ...products, count };
+        const newProduct = { ...products, quantity };
         cart.push(newProduct);
       }
   
