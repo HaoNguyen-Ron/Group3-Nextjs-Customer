@@ -6,56 +6,89 @@ import { axiosClient } from "@/libraries/axiosClient";
 
 function Collection({ products }) {
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [sortedProducts, setSortedProducts] = useState([...products]);
+  const [selectedPriceOption, setSelectedPriceOptions] = useState([]);
+
   const [selectedPriceRange, setSelectedPriceRange] = useState([]);
-  const [selectedPriceOption, setSelectedPriceOption] = useState("");
+  const [selectedSuppliers, setSelectedSuppliers] = useState([]);
+  //suplier----------------------------------------------------------------
 
-  const handleCheckboxChange = (priceOption) => {
-    const priceRange = getPriceRangeFromOption(priceOption);
-    const [minPrice, maxPrice] = priceRange;
-
-    let updatedFilteredProducts;
-
-    // Check if the selected price option is already checked
-    const isSelectedOptionChecked = selectedPriceOption === priceOption;
-
-    if (isSelectedOptionChecked) {
-      // If the selected option is already checked, show all products
-      updatedFilteredProducts = products;
+  function handleSuppllierChange(label) {
+    // Check if the label is already in the selected suppliers list
+    if (selectedSuppliers.includes(label)) {
+      // If it is, remove it
+      const updatedSuppliers = selectedSuppliers.filter(
+        (supplier) => supplier !== label
+      );
+      setSelectedSuppliers(updatedSuppliers);
     } else {
-      // If the selected option is not checked, filter products based on the selected option
-      updatedFilteredProducts = products.filter((product) => {
-        const productPrice = parseFloat(product.price); // Convert to number
+      // If it's not, add it
+      const updatedSuppliers = [...selectedSuppliers, label];
+      setSelectedSuppliers(updatedSuppliers);
+    }
+  }
+  // price -------------------------------------------------------------------
+  const handlePriceChange = (label) => {
+    const isOptionSelected = selectedPriceRange.includes(label);
 
-        return (
-          (minPrice === undefined || productPrice >= minPrice) &&
-          (maxPrice === undefined || productPrice <= maxPrice)
-        );
-      });
+    let updatedSelectedPriceRanges;
+
+    if (isOptionSelected) {
+      updatedSelectedPriceRanges = selectedPriceRange.filter(
+        (selectedOption) => selectedOption !== label
+      );
+    } else {
+      updatedSelectedPriceRanges = [...selectedPriceRange, label];
     }
 
-    setFilteredProducts(updatedFilteredProducts);
-    setSelectedPriceRange(isSelectedOptionChecked ? [] : priceRange);
-    setSelectedPriceOption(isSelectedOptionChecked ? "" : priceOption);
+    setSelectedPriceRange(updatedSelectedPriceRanges);
   };
 
   useEffect(() => {
     const filterProductsByPrice = () => {
-      const filtered = products.filter((product) => {
+      if (selectedPriceRange.length === 0) {
+        // If no price options are selected, render all products
+        return products;
+      }
+
+      return products.filter((product) => {
         const productPrice = product.price;
 
-        return (
-          selectedPriceRange.length === 0 ||
-          (productPrice >= selectedPriceRange[0] &&
-            productPrice <= selectedPriceRange[1])
-        );
+        return selectedPriceRange.some((range) => {
+          const [minPrice, maxPrice] = getPriceRangeFromOption(range);
+
+          return (
+            (minPrice === undefined || productPrice >= minPrice) &&
+            (maxPrice === undefined || productPrice <= maxPrice)
+          );
+        });
       });
-      setFilteredProducts(filtered);
     };
 
-    filterProductsByPrice();
-  }, [selectedPriceRange, products]);
+    const filterProductsBySupplier = () => {
+      if (selectedSuppliers.length === 0) {
+        // If no suppliers are selected, render all products
+        return products;
+      }
+
+      // Filter products based on selected suppliers
+      return products.filter((product) =>
+        selectedSuppliers.includes(product.supplier.name)
+      );
+    };
+
+    // Combine results from both filters
+    const priceFilteredProducts = filterProductsByPrice();
+    const supplierFilteredProducts = filterProductsBySupplier();
+    const finalFilteredProducts = priceFilteredProducts.filter((product) =>
+      supplierFilteredProducts.includes(product)
+    );
+
+    setFilteredProducts(finalFilteredProducts);
+  }, [selectedPriceRange, selectedSuppliers, products]);
 
   // Hàm để chuyển đổi lựa chọn giá thành khoảng giá
+
   const getPriceRangeFromOption = (selectedPriceOption) => {
     switch (selectedPriceOption) {
       case "Dưới 1.000.000₫":
@@ -73,9 +106,41 @@ function Collection({ products }) {
     }
   };
 
+  // Lặp theo Giá: Tăng dần", "Giá: Giảm dần", "Tên: A-Z", "Tên: Z-A
+  // const handleSortChange = (sortOption) => {
+  //   let sortedProductsCopy = [...sortedProducts];
+
+  //   switch (sortOption) {
+  //     case "Giá: Tăng dần":
+  //       sortedProductsCopy.sort((a, b) => a.price - b.price);
+  //       break;
+  //     case "Giá: Giảm dần":
+  //       sortedProductsCopy.sort((a, b) => b.price - a.price);
+  //       break;
+  //     case "Tên: A-Z":
+  //       sortedProductsCopy.sort((a, b) => a.name.localeCompare(b.name));
+  //       break;
+  //     case "Tên: Z-A":
+  //       sortedProductsCopy.sort((a, b) => b.name.localeCompare(a.name));
+  //       break;
+  //     default:
+  //       break;
+  //   }
+
+  //   setSortedProducts(sortedProductsCopy);
+  // };
+
   return (
     <>
       <Filter
+        itemName={["Giá: Tăng dần", "Giá: Giảm dần", "Tên: A-Z", "Tên: Z-A"]}
+        itemSuplier={[
+          "Nhật Bản",
+          "Việt Nam",
+          "Trung Quốc",
+          "Thái Lan",
+          "Hoa Kỳ",
+        ]}
         itemPrice={[
           "Dưới 1.000.000₫",
           "1.000.000₫ - 2.000.000₫",
@@ -83,11 +148,12 @@ function Collection({ products }) {
           "3.000.000₫ - 4.000.000₫",
           "Trên 4.000.000₫",
         ]}
-        onCheckboxChange={handleCheckboxChange}
+        onCheckboxChangePrice={handlePriceChange}
+        onCheckboxChangeSupplier={handleSuppllierChange}
       />
 
-      <div className="selected-price-option">
-        <p>Selected Price Option: {selectedPriceOption}</p>
+      <div className="mx-2">
+        <p>Tùy chọn giá đã chọn: {selectedPriceOption}</p>
       </div>
 
       <div className="collection-listproduct">
@@ -96,7 +162,7 @@ function Collection({ products }) {
             {filteredProducts.length > 0 ? (
               filteredProducts.map((product) => (
                 <div className="col-md-3 col-sm-4 col-xs-6" key={product._id}>
-                  {console.log("Dữ liệu Sản phẩm:", product)}
+                  {/* {console.log("Dữ liệu Sản phẩm:", product)} */}
                   <Card
                     id={`/productDetail/${product._id}`}
                     products={product}
