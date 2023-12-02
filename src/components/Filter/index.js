@@ -5,23 +5,42 @@ function Filter(props) {
   const {
     onCheckboxChangePrice,
     onCheckboxChangeSupplier,
+    sortByPriceAscending,
+    sortByPriceDescending,
+    sortByNameAzAsc,
+    sortByNameZaDesc,
     onSortOptionChange,
     itemPrice,
     itemName,
     itemSuplier,
   } = props;
-
   const [activeItem, setActiveItem] = useState(null);
-
   const handleItemClick = (index) => {
     setActiveItem(index);
+    // Kích hoạt sắp xếp tương ứng
+    switch (index) {
+      case 0:
+        sortByPriceAscending();
+        break;
+      case 1:
+        sortByPriceDescending();
+        break;
+      case 2:
+        sortByNameAzAsc();
+        break;
+      case 3:
+        sortByNameZaDesc();
+        break;
+      // Xử lý các trường hợp sắp xếp khác nếu cần
+      default:
+        break;
+    }
   };
-
   useEffect(() => {
-    onSortOptionChange?.("defaultOption");
-    // Một số logic tải trang khác có thể ảnh hưởng đến activeItem
-    setActiveItem(6); // Index của mục "Mới nhất"
-  }, []);
+    // Ví dụ, kích hoạt tùy chọn sắp xếp mặc định
+    const defaultSortOption = itemName[activeItem];
+    onSortOptionChange?.(defaultSortOption);
+  }, [activeItem]);
 
   return (
     <>
@@ -90,18 +109,10 @@ function Filter(props) {
                           className={`${fil["li"]} ${
                             activeItem === index ? fil["active"] : ""
                           }`}
-                          onClick={() => {
-                            handleItemClick(index);
-                            onSortOptionChange?.(item.toLowerCase());
-                          }}
+                          onClick={() => handleItemClick(index)}
                           key={index}
                         >
-                          <span
-                            data-value={item.toLowerCase()}
-                            data-filter={item}
-                          >
-                            {item}
-                          </span>
+                          {item}
                         </li>
                       ))}
                     </ul>
@@ -184,7 +195,7 @@ export default Filter;
 // FilterItem component
 const FilItem = ({ items, onCheckboxChange }) => {
   const handleCheckboxChangePrice = (label) => {
-    console.log("««««« label »»»»»", label);
+    console.log("««««« bạn đã chọn »»»»»", label);
     if (onCheckboxChange) {
       onCheckboxChange(label);
     }

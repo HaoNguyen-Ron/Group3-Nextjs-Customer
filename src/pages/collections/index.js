@@ -6,56 +6,89 @@ import { axiosClient } from "@/libraries/axiosClient";
 
 function Collection({ products }) {
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [sortedProducts, setSortedProducts] = useState([...products]);
-  const [selectedPriceOption, setSelectedPriceOptions] = useState([]);
 
-  const [selectedPriceRange, setSelectedPriceRange] = useState([]);
+  const [selectedPriceOptions, setSelectedPriceOptions] = useState([]);
   const [selectedSuppliers, setSelectedSuppliers] = useState([]);
-  //suplier----------------------------------------------------------------
+  const [slecttedProducts, setSlecttedProducts] = useState([...products]);
 
-  function handleSuppllierChange(label) {
-    // Check if the label is already in the selected suppliers list
+  //suplier----------------------------------------------------------------
+  const handleSuppllierChange = (label) => {
+    // Kiểm tra nếu nhãn đã có trong danh sách nhà cung cấp đã chọn
     if (selectedSuppliers.includes(label)) {
-      // If it is, remove it
+      // Nếu có, loại bỏ nó
       const updatedSuppliers = selectedSuppliers.filter(
         (supplier) => supplier !== label
       );
       setSelectedSuppliers(updatedSuppliers);
     } else {
-      // If it's not, add it
+      // Nếu không, thêm nó vào
       const updatedSuppliers = [...selectedSuppliers, label];
       setSelectedSuppliers(updatedSuppliers);
     }
-  }
+  };
   // price -------------------------------------------------------------------
   const handlePriceChange = (label) => {
-    const isOptionSelected = selectedPriceRange.includes(label);
+    const isOptionSelected = selectedPriceOptions.includes(label);
 
-    let updatedSelectedPriceRanges;
+    let updatedSelectedPriceOptions;
 
     if (isOptionSelected) {
-      updatedSelectedPriceRanges = selectedPriceRange.filter(
+      updatedSelectedPriceOptions = selectedPriceOptions.filter(
         (selectedOption) => selectedOption !== label
       );
     } else {
-      updatedSelectedPriceRanges = [...selectedPriceRange, label];
+      updatedSelectedPriceOptions = [...selectedPriceOptions, label];
     }
 
-    setSelectedPriceRange(updatedSelectedPriceRanges);
+    setSelectedPriceOptions(updatedSelectedPriceOptions);
+  };
+  //Xắp xếp Tăng dần
+  //Hàm để cập nhật danh sách sản phẩm khi sắp xếp
+  const updateSelectedProducts = (sortedProducts) => {
+    setFilteredProducts(sortedProducts);
+  };
+
+  // Hàm sắp xếp tăng dần theo giá
+  const handleAscPrice = () => {
+    const sortedProducts = [...slecttedProducts];
+    sortedProducts.sort((a, b) => a.price - b.price);
+    updateSelectedProducts(sortedProducts);
+    console.log("««««« Tăng Dần »»»»»", sortedProducts);
+  };
+  const handleDescPrice = () => {
+    const sortedProducts = [...slecttedProducts];
+    sortedProducts.sort((a, b) => b.price - a.price);
+    updateSelectedProducts(sortedProducts);
+    console.log("««««« Giảm dần »»»»»", sortedProducts);
+  };
+
+  const handleAscName = () => {
+    const sortedProducts = [...slecttedProducts];
+    sortedProducts.sort((a, b) => String(a.name).localeCompare(String(b.name)));
+    updateSelectedProducts(sortedProducts);
+    console.log("««««« A-Z »»»»»", sortedProducts);
+  };
+
+  const handleDescName = () => {
+    const sortedProducts = [...slecttedProducts];
+    sortedProducts.sort((a, b) => String(b.name).localeCompare(String(a.name)));
+    updateSelectedProducts(sortedProducts);
+    console.log("««««« Z-A »»»»»", sortedProducts);
   };
 
   useEffect(() => {
+    // console.log("selectedPriceOptions changed:", selectedPriceOptions);
+    // price-------------------------------------------------------------
     const filterProductsByPrice = () => {
-      if (selectedPriceRange.length === 0) {
-        // If no price options are selected, render all products
+      if (selectedPriceOptions.length === 0) {
         return products;
       }
 
       return products.filter((product) => {
         const productPrice = product.price;
 
-        return selectedPriceRange.some((range) => {
-          const [minPrice, maxPrice] = getPriceRangeFromOption(range);
+        return selectedPriceOptions.some((option) => {
+          const [minPrice, maxPrice] = getPriceRangeFromOption(option);
 
           return (
             (minPrice === undefined || productPrice >= minPrice) &&
@@ -64,20 +97,17 @@ function Collection({ products }) {
         });
       });
     };
-
+    //suplier ------------------------------------------------
     const filterProductsBySupplier = () => {
       if (selectedSuppliers.length === 0) {
-        // If no suppliers are selected, render all products
         return products;
       }
 
-      // Filter products based on selected suppliers
       return products.filter((product) =>
         selectedSuppliers.includes(product.supplier.name)
       );
     };
 
-    // Combine results from both filters
     const priceFilteredProducts = filterProductsByPrice();
     const supplierFilteredProducts = filterProductsBySupplier();
     const finalFilteredProducts = priceFilteredProducts.filter((product) =>
@@ -85,10 +115,8 @@ function Collection({ products }) {
     );
 
     setFilteredProducts(finalFilteredProducts);
-  }, [selectedPriceRange, selectedSuppliers, products]);
-
+  }, [selectedPriceOptions, selectedSuppliers, products]);
   // Hàm để chuyển đổi lựa chọn giá thành khoảng giá
-
   const getPriceRangeFromOption = (selectedPriceOption) => {
     switch (selectedPriceOption) {
       case "Dưới 1.000.000₫":
@@ -105,30 +133,6 @@ function Collection({ products }) {
         return [];
     }
   };
-
-  // Lặp theo Giá: Tăng dần", "Giá: Giảm dần", "Tên: A-Z", "Tên: Z-A
-  // const handleSortChange = (sortOption) => {
-  //   let sortedProductsCopy = [...sortedProducts];
-
-  //   switch (sortOption) {
-  //     case "Giá: Tăng dần":
-  //       sortedProductsCopy.sort((a, b) => a.price - b.price);
-  //       break;
-  //     case "Giá: Giảm dần":
-  //       sortedProductsCopy.sort((a, b) => b.price - a.price);
-  //       break;
-  //     case "Tên: A-Z":
-  //       sortedProductsCopy.sort((a, b) => a.name.localeCompare(b.name));
-  //       break;
-  //     case "Tên: Z-A":
-  //       sortedProductsCopy.sort((a, b) => b.name.localeCompare(a.name));
-  //       break;
-  //     default:
-  //       break;
-  //   }
-
-  //   setSortedProducts(sortedProductsCopy);
-  // };
 
   return (
     <>
@@ -148,12 +152,26 @@ function Collection({ products }) {
           "3.000.000₫ - 4.000.000₫",
           "Trên 4.000.000₫",
         ]}
+        sortByPriceAscending={handleAscPrice}
+        sortByPriceDescending={handleDescPrice}
+        sortByNameAzAsc={handleAscName}
+        sortByNameZaDesc={handleDescName}
         onCheckboxChangePrice={handlePriceChange}
         onCheckboxChangeSupplier={handleSuppllierChange}
       />
 
-      <div className="mx-2">
-        <p>Tùy chọn giá đã chọn: {selectedPriceOption}</p>
+      <div className="container">
+        <p className="text-danger">
+          Tùy chọn giá:
+          <span className="text-success mx-2">
+            {selectedPriceOptions.join(" , ")}
+          </span>
+          <br />
+          Tùy chọn thương hiệu:
+          <span className="text-success mx-2">
+            {selectedSuppliers.join(" , ")}
+          </span>
+        </p>
       </div>
 
       <div className="collection-listproduct">
