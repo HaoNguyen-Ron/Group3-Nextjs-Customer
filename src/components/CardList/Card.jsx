@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import x from "@/components/CardList/Card.module.css";
 
 
-function Card({products, handleAddToCart, id}) {
- 
-
+function Card({products, handleAddToCart, id ,}) {
   return (
     <div>
       <div className="owl-stage-outer">
@@ -22,17 +20,7 @@ function Card({products, handleAddToCart, id}) {
                       style={{ height: 240 }}
                     >
                       <div className={` ${x["product--image__inner"]}`}>
-                        {/* <div
-                          className={` ${x["prod-img"]}  ${x["first-image"]}`}
-                        >
-                          <picture className={`${x["picture"]}`}>
-                            <img
-                              className={` img-loop ${x["lazyloaded"]}`}
-                              src={products.description}
-                              alt={products.name}
-                            />
-                          </picture>
-                        </div> */}
+                       
                         <div
                           className={`hovered-img hidden-xs hidden-sm ${x["prod-img"]}  ${x["second-image"]} `}
                         >
@@ -59,7 +47,7 @@ function Card({products, handleAddToCart, id}) {
                       </a>
                     </h3>
                     <p className={`${x["proloop--price"]}`}>
-                      <span className={`${x["price"]}`}>{products.price}</span>
+                      <span className={`${x["price"]}`}>{products.price}đ</span>
                     </p>
                   </div>
                   <div className={`${x["proloop-actions"]}`}>

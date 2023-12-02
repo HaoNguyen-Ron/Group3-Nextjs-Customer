@@ -7,19 +7,11 @@ import x from "@/components/Slider/Slider.module.css";
 
 const data = [
   {
-    name: `Phân biệt hàng real và fake: Nendoroid Kirby`,
-    img: `https://file.hstatic.net/1000160337/article/lich_phat_hanh_figure_cb16b2f9925d4b33ab8f12185ee61f7f_large.png`,
-    review: `11/7/2017 bởi Good Smile CompanyHiện nay, 
-    các phiên bản hàng giả của Nendoroid Kirby từ Good Smile Company 
-    đang được bán trên các sàn đấu giá online và trang web...`,
-    link:`http://localhost:3000/collections`
-  },
-  {
     name: `Kakeibo phương pháp tiết kiệm, chi tiêu hợp lý`,
     img: `http://file.hstatic.net/1000160337/article/arisutan1401803956.jpeg`,
     review: `Thận nhiêu trái?Bán máu bao nhiêu cho đủ?Lại tốn tiền nữa rồi...
     Những câu hỏi quen thuộc đều nhằm vào 1 vấn đề chung: Làm sao để chi tiêu hợp lí,....`,
-    link:`http://localhost:3000/payment-instructions`
+    link:`http://localhost:3000/Blogs/Kakeibo`
   },
   {
     name: `Khi nào 1 figure "có" tại Nhật Bản?`,
@@ -27,7 +19,7 @@ const data = [
     review: `KHI NÀO 1 FIGURE "CÓ" TẠI NHẬT BẢN?
     KHI "CÓ" THÌ SỐ LƯỢNG NHIỀU KHÔNG?"CÓ" RỒI MỚI ĐẶT LIỆU KỊP KHÔNG? Đây là những câu hỏi được
      rất nhiều bạn quan tâm.Trước tiên, Figure Nhật...`,
-     link:`http://localhost:3000`
+     link:`http://localhost:3000/Blogs/appear`
   },
   {
     name: `Đây là cách giúp tui kiếm về 250K mỗi giờ`,
@@ -35,7 +27,7 @@ const data = [
     review: `Nhưng nếu kiên trì theo đúng từng hướng dẫn nhỏ, 
     thực hành trên giấy thật nhiều lần trước khi bắt đầu,
     thì việc bạn kiếm về 250K/ mỗi giờ như mình là hoàn toàn có thể.`,
-     link:`http://localhost:3000`
+     link:`http://localhost:3000/Blogs/instruct`
   },
 ];
 

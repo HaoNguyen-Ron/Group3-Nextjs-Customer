@@ -150,6 +150,4 @@ function CardPage(products) {
   );
 }
 
-
-
 export default CardPage;

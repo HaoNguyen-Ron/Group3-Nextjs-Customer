@@ -46,6 +46,7 @@ import verifyLoggin from '@/components/HOC/verifyLoggin'
             const res = await axiosClient.get('/auth/profile')
             if (res.status === 200) {
                 const data = res.data.payload;
+                console.log('««««« data »»»»»', data);
                 
                 setUser({
                     userName : data.fullName,
@@ -66,6 +67,7 @@ import verifyLoggin from '@/components/HOC/verifyLoggin'
             getUserDetail()
         }
     }, []);
+    console.log('««««« user »»»»»', user);
 
     return (
 
