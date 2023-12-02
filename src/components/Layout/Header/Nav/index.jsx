@@ -55,51 +55,15 @@ function index(props) {
                 titlemenu1="Thanh Toán"
                 a_href="#"
                 a_href1="/payment-instructions"
-                titlemenu2="assc"
-                titlemenu3="ac"
               />     
 
               <NavSidbar
                 title="Sản Phẩm"
                 activeTab={activeTab}
                 onClick={onClickTab}
-                submenutab="0"
-                titlemenu1="abc"
-                titlemenu2="assc"
-                titlemenu3="ac"
+                a_href="/collections"
               />
 
-              <NavSidbar
-                title="Review"
-                activeTab={activeTab}
-                onClick={onClickTab}
-              />
-
-              <NavSidbar
-                title="Ưu Đãi"
-                activeTab={activeTab}
-                onClick={onClickTab}
-              />
-
-              <NavSidbar
-                title="Kết Nối"
-                activeTab={activeTab}
-                onClick={onClickTab}
-                submenutab="0"
-                titlemenu1="abc"
-                titlemenu2="assc"
-                titlemenu3="ac"
-              />
-
-              <NavSidbar
-                title="Liên Hệ"
-                activeTab={activeTab}
-                onClick={onClickTab}
-                submenutab="0"
-                titlemenu1="abc"
-                titlemenu2="assc"
-                titlemenu3="ac"
-              />
             </ul>
           </div>
         </div>
