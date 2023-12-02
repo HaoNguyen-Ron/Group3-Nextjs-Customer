@@ -2,26 +2,46 @@ import React, { useEffect, useState } from "react";
 import fil from "@/styles/Filter.module.css";
 
 function Filter(props) {
+  const {
+    onCheckboxChangePrice,
+    onCheckboxChangeSupplier,
+    sortByPriceAscending,
+    sortByPriceDescending,
+    sortByNameAzAsc,
+    sortByNameZaDesc,
+    onSortOptionChange,
+    itemPrice,
+    itemName,
+    itemSuplier,
+  } = props;
   const [activeItem, setActiveItem] = useState(null);
-
   const handleItemClick = (index) => {
     setActiveItem(index);
+    // Kích hoạt sắp xếp tương ứng
+    switch (index) {
+      case 0:
+        sortByPriceAscending();
+        break;
+      case 1:
+        sortByPriceDescending();
+        break;
+      case 2:
+        sortByNameAzAsc();
+        break;
+      case 3:
+        sortByNameZaDesc();
+        break;
+      // Xử lý các trường hợp sắp xếp khác nếu cần
+      default:
+        break;
+    }
   };
-
   useEffect(() => {
-    // Một số logic tải trang khác có thể ảnh hưởng đến activeItem
-    setActiveItem(6); // Index của mục "Mới nhất"
-  }, []);
-  const items = [
-    "Sản phẩm nổi bật",
-    "Giá: Tăng dần",
-    "Giá: Giảm dần",
-    "Tên: A-Z",
-    "Tên: Z-A",
-    "Cũ nhất",
-    "Mới nhất",
-    "Bán chạy nhất",
-  ];
+    // Ví dụ, kích hoạt tùy chọn sắp xếp mặc định
+    const defaultSortOption = itemName[activeItem];
+    onSortOptionChange?.(defaultSortOption);
+  }, [activeItem]);
+
   return (
     <>
       <div className="container">
@@ -84,7 +104,7 @@ function Filter(props) {
                   </div>
                   <div className={`${fil["collection-sortby-option"]}`}>
                     <ul className={`${fil["sort-by"]}`}>
-                      {items.map((item, index) => (
+                      {itemName.map((item, index) => (
                         <li
                           className={`${fil["li"]} ${
                             activeItem === index ? fil["active"] : ""
@@ -92,12 +112,7 @@ function Filter(props) {
                           onClick={() => handleItemClick(index)}
                           key={index}
                         >
-                          <span
-                            data-value={item.toLowerCase()}
-                            data-filter={item}
-                          >
-                            {item}
-                          </span>
+                          {item}
                         </li>
                       ))}
                     </ul>
@@ -113,7 +128,6 @@ function Filter(props) {
             <div className="row px-0 d-flex justify-content-around align-items-center">
               <div
                 className={`${fil["collection-filterby"]} col-md-3 col-sm-12  col-xs-12`}
-                // style={{ width: "100%" }}
               >
                 <div
                   className={`${fil["layered_filter_title"]} ${fil["boxstyle-mb"]}`}
@@ -138,24 +152,8 @@ function Filter(props) {
                 </div>
 
                 <FilItem
-                  items={[
-                    "Banpresto",
-                    "MegaHouse",
-                    "Phat Company",
-                    "Broccoli",
-                    "furyu",
-                    "KADOKAWA",
-                    "Chara-Ani, Toy Works",
-                    "FREEing",
-                    "Hobby Stock",
-                    "Bandai",
-                    "Good Smile Company",
-                    "Aquamarine",
-                    "Aniplex",
-                    "Sega",
-                    "Orange Rouge",
-                    "Daiki kogyo",
-                  ]}
+                  onCheckboxChange={onCheckboxChangeSupplier}
+                  items={itemSuplier}
                 />
               </div>
               {/* FilItem */}
@@ -170,39 +168,19 @@ function Filter(props) {
                 </div>
 
                 <FilItem
-                  items={[
-                    "Dưới 1.000.000₫",
-                    "1.000.000₫ - 2.000.000₫",
-                    "2.000.000₫ - 3.000.000₫",
-                    "3.000.000₫ - 4.000.000₫",
-                    "4.000.000₫",
-                  ]}
+                  onCheckboxChange={onCheckboxChangePrice}
+                  items={itemPrice}
                 />
               </div>
-              {/* FilItem */}
               <div
                 className={`${fil["filter_group-block"]} col-md-3 col-sm-12  col-xs-12`}
               >
-                <div className={`${fil["filter_group-subtitle"]}`}>
+                {/* <div className={`${fil["filter_group-subtitle"]}`}>
                   <span>Tỉ Lệ</span>
                   <span className={` ${fil["icon-control"]}`}>
                     <i className="fa fa-chevron-down" aria-hidden="true" />
                   </span>
-                </div>
-
-                <FilItem
-                  items={[
-                    "1/12",
-                    "1/10",
-                    "1/8",
-                    "1/7",
-                    "1/6",
-                    "1/5",
-                    "1/4",
-                    "1/3",
-                    "non-scale",
-                  ]}
-                />
+                </div> */}
               </div>
             </div>
           </div>
@@ -214,23 +192,33 @@ function Filter(props) {
 
 export default Filter;
 
-const FilItem = ({ items }) => {
+// FilterItem component
+const FilItem = ({ items, onCheckboxChange }) => {
+  const handleCheckboxChangePrice = (label) => {
+    console.log("««««« bạn đã chọn »»»»»", label);
+    if (onCheckboxChange) {
+      onCheckboxChange(label);
+    }
+  };
+
   return (
     <>
       <div className={`${fil["filter_group-content"]}`}>
         <ul className={`${fil["checkbox-list"]}`}>
-          {items.map((label, index) => (
-            <li className={`${fil["li"]}`} key={index}>
-              <input
-                type="checkbox"
-                id={`data-brand-p-${index}`}
-                defaultValue={label}
-                name="brand-filter"
-                data-vendor="(vendor:product contains)"
-              />
-              <label htmlFor={`data-brand-p-${index}`}>{label}</label>
-            </li>
-          ))}
+          {items &&
+            items.map((label, index) => (
+              <li className={`${fil["li"]}`} key={index}>
+                <input
+                  type="checkbox"
+                  value={label}
+                  id={`data-brand-p-${label}`}
+                  name="brand-filter"
+                  data-vendor="(vendor:product contains)"
+                  onChange={() => handleCheckboxChangePrice(label)}
+                />
+                <label htmlFor={`data-brand-p-${index}`}>{label}</label>
+              </li>
+            ))}
         </ul>
       </div>
     </>

@@ -1,13 +1,15 @@
 // pages/[productId].js
 import ProductDetail from '@/components/productDetail'; // Adjust the import path
 import { axiosClient } from '@/libraries/axiosClient';
+import { useState } from 'react';
 
 const ProductDetailPage = ({ product }) => {
 
   return (
     <div>
-      <h1>Product Detail Page</h1>
-      <ProductDetail products={product} />
+      <ProductDetail
+       products={product} 
+      />
     </div>
   );
 };

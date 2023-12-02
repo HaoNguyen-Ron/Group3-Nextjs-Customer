@@ -14,17 +14,21 @@ function Cart() {
     setData(parsedData);
   }, []);
 
-  const totalItemCount = data.reduce((total, item) => total + item.count, 0);
+  const formattedPrice = (price) => {
+    return price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+  };
+
+  const totalItemCount = data.reduce((total, item) => total + item.quantity, 0);
   const totalPrice = data.reduce(
-    (total, item) => total + item.price * item.count,
+    (total, item) => total + item.price * item.quantity,
     0
   );
 
   const decrementCount = (productId) => {
     const updatedData = data.map((item) => {
       if (item._id === productId) {
-        const newCount = item.count - 1;
-        return newCount >= 1 ? { ...item, count: newCount } : item;
+        const newQuantity = item.quantity - 1;
+        return newQuantity >= 1 ? { ...item, quantity: newQuantity } : item;
       }
       return item;
     });
@@ -36,7 +40,7 @@ function Cart() {
 
   const incrementCount = (productId) => {
     const updatedData = data.map((item) =>
-      item._id === productId ? { ...item, count: item.count + 1 } : item
+      item._id === productId ? { ...item, quantity: item.quantity + 1 } : item
     );
 
     // Update state and local storage with the new data
@@ -57,7 +61,7 @@ function Cart() {
     const countToUpdate = isNaN(newCount) || newCount < 1 ? 1 : newCount;
 
     const updatedData = data.map((item) =>
-      item._id === productId ? { ...item, count: countToUpdate } : item
+      item._id === productId ? { ...item, quantity: countToUpdate } : item
     );
 
     // Update state and local storage with the new data
@@ -65,11 +69,6 @@ function Cart() {
     localStorage.setItem("cart", JSON.stringify(updatedData));
   };
 
-  const handleGoToProductDetail = (productId) => {
-        
-    // Use window.location to navigate
-    window.location.href = `/productDetail/${productId}`;
-  };
 
   console.log("««««« data »»»»»", data);
   return (
@@ -107,7 +106,7 @@ function Cart() {
                           </a>
                         </div>
                         <div className={`col-8 ${Styles.media_right}`}>
-                          <a href={`/productDetail/${item._id}`} >Goddess of Victory: Nikke Emma 1/7</a>
+                          <a href={`/productDetail/${item._id}`} >{item.name}</a>
                           <div className="d-flex">
                             <input
                               type="button"
@@ -119,7 +118,7 @@ function Cart() {
                               type="text"
                               id="quantity"
                               name="quantity"
-                              value={item.count}
+                              value={item.quantity}
                               onChange={(e) =>
                                 updateCount(
                                   item._id,
@@ -138,8 +137,7 @@ function Cart() {
                           </div>
                           <p>
                             <b>
-                              {item.price}
-                              <u>đ</u>
+                              {formattedPrice(item.price)}
                             </b>
                           </p>
                         </div>
@@ -152,9 +150,9 @@ function Cart() {
                           </button>
                         </div>
                       </div>
-                      <div>
-                        <span>Thành Tiền:</span>
-                        <span>${item.price * item.count.toFixed(2)}</span>
+                      <div className={`${Styles.title_ThanhTien}`}>
+                        <p><b>Thành Tiền:</b></p>
+                        <p className={`${Styles.input_color_1}`}><b>{formattedPrice(item.price * item.quantity)}</b></p>
                       </div>
                     </div>
                   </>
@@ -176,12 +174,10 @@ function Cart() {
               </h2>
 
               <div
-                className={`d-flex justify-content-between ${Styles.border_bottom}`}
+                className={`d-flex justify-content-between ${Styles.title_ThanhTien} ${Styles.border_bottom}`}
               >
-                <span>
-                  ${totalPrice.toFixed(2)}
-                  <u>đ</u>
-                </span>
+                  <p><b>Thành Tiền:</b></p>
+                  <p className={`${Styles.input_color_1}`}><b>{formattedPrice(totalPrice)}</b></p>
               </div>
 
               <div className={`  ${Styles.box_title_cart}`}>
@@ -192,10 +188,18 @@ function Cart() {
                 <p className={`  ${Styles.title_cart}`}>
                   Bạn cũng có thể nhập mã giảm giá ở trang thanh toán.
                 </p>
+                {data.length === 0 ? (
 
-                <Link className={`  ${Styles.checkout_btn}`} href="">
+                <Link className={`  ${Styles.checkout_btn}`} href=''>
                   Thanh Toán
                 </Link>
+                )
+                : (
+                  <Link className={`  ${Styles.checkout_btn}`} href='./order'>
+                  Thanh Toán
+                </Link>
+                )
+                }
               </div>
             </div>
           </div>

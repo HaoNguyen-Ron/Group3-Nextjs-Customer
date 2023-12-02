@@ -5,9 +5,9 @@ import { useState } from "react";
 
 function CardList(products) {
   const [cart, setCart] = useState([]);
-console.log('««««« products »»»»»', products.products);
+  const [totalItemCount,setTotalItemCount] = useState(0) 
+
   const selectedProducts = products.products.slice(0, 8);
-console.log('««««« selectedProducts »»»»»', selectedProducts);
 
   const handleGoToProductDetail = (productId) => {
     // Use window.location to navigate
@@ -22,10 +22,10 @@ console.log('««««« selectedProducts »»»»»', selectedProducts);
 
     if (existingProductIndex !== -1) {
       // If the product is already in the cart, increment the count
-      updatedCart[existingProductIndex].count += 1;
+      updatedCart[existingProductIndex].quantity += 1;
     } else {
       // If the product is not in the cart, add it with count 1
-      updatedCart.push({ ...selectedProduct, count: 1 });
+      updatedCart.push({ ...selectedProduct, quantity: 1 });
     }
 
     // Set the updated cart in state

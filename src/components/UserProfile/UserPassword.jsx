@@ -1,21 +1,46 @@
-import React from 'react'
-import styles from '@/styles/userPage.module.css'
+import React, { useCallback, useState } from "react";
+import { Modal } from "react-bootstrap";
+import CustomerEditForm from "../Form/EditFormCustomer";
+import { axiosClient } from "@/libraries/axiosClient";
+import styles from "@/styles/userPage.module.css"
 
+export default function UserPassword({ user, isShow = true }) {
+  const [show, setShow] = useState(false);
 
-export default function UserPassword({isShow = true}) {
-    return (
-        <div className={isShow ? 'd-block' : 'd-none'}>
-            <h2 className='mb-4 mt-3'>Bảo mật tài khoản :</h2>
-            <div className="userDetail_container ms-3 d-flex flex-column g-2">
-                <div className='userDetail_item'>
-                    <button className={`btn ${styles.user__btn}`}>Đặt lại mật khẩu</button>
-                </div>
+  const handleClose = () => {
+    setShow(false)
+  };
 
-                <div className='userDetail_item my-3'>
-                    <button className={`btn ${styles.user__btn}`}>Đặt lại địa chỉ mới</button>
-                </div>
-
-            </div>
+  const getCustomerDetail = useCallback(async () => {
+    try {
+      setShow(true);
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+  return (
+    <div className={isShow ? "d-block" : "d-none"}>
+      <h2 className="mb-4 mt-3">Bảo mật tài khoản :</h2>
+      <div className="userDetail_container ms-3 d-flex flex-column g-2">
+        <div className="userDetail_item">
+          <button
+            onClick={getCustomerDetail}
+            className={`btn ${styles.user__btn}`}
+          >
+            Thay đổi thông tin người dùng
+          </button>
         </div>
-    )
+
+        <Modal show={show} onHide={handleClose} size="lg">
+          <Modal.Header closeButton>
+            <Modal.Title>Editing form</Modal.Title>
+          </Modal.Header>
+
+          <Modal.Body>
+            <CustomerEditForm userData={user} />
+          </Modal.Body>
+        </Modal>
+      </div>
+    </div>
+  );
 }
