@@ -75,7 +75,7 @@ export default function CardProduct({ products }) {
             alt={products.name}
           />
           {products.discount === 0 ? (
-            <></>
+            <span></span>
           ) : (
             <span className={`${Styles["sale-span"]}`}>
               -{products.discount}%
@@ -86,7 +86,7 @@ export default function CardProduct({ products }) {
           <h3>{products.name}</h3>
           <p>
             {products.discount === 0 ? (
-              <></>
+              <span></span>
             ) : (
               <span className={`${Styles.price_text}`}>
                 {formattedPrice(products.price)}
@@ -94,7 +94,6 @@ export default function CardProduct({ products }) {
             )}
 
             <span className={`${Styles.price_text_discount}`}>
-              {" "}
               {formattedPrice(priceThenDiscount)}
             </span>
           </p>
