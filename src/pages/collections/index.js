@@ -10,6 +10,31 @@ function Collection({ products }) {
   const [selectedPriceOptions, setSelectedPriceOptions] = useState([]);
   const [selectedSuppliers, setSelectedSuppliers] = useState([]);
   const [slecttedProducts, setSlecttedProducts] = useState([...products]);
+  // const [cart,setCart] = useState([]);
+
+  //addToCart
+  const handleAddToCart = (selectedProduct) => {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const updatedCart = [...cart];
+    const existingProductIndex = updatedCart.findIndex(
+      (item) => item._id === selectedProduct._id
+    );
+
+    if (existingProductIndex !== -1) {
+      // If the product is already in the cart, increment the count
+      updatedCart[existingProductIndex].quantity += 1;
+    } else {
+      // If the product is not in the cart, add it with count 1
+      updatedCart.push({ ...selectedProduct, quantity: 1 });
+    }
+
+    // Set the updated cart in state
+    // setCart(updatedCart);
+
+    // Store the updated cart in local storage
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    // Optionally, you can also update the state or perform other actions if needed
+  };
 
   //suplier----------------------------------------------------------------
   const handleSuppllierChange = (label) => {
@@ -184,7 +209,7 @@ function Collection({ products }) {
                   <Card
                     id={`/productDetail/${product._id}`}
                     products={product}
-                    // handleAddToCart={handleAddToCart}
+                    handleAddToCart={handleAddToCart}
                     // handleGoToProductDetail={handleGoToProductDetail}
                   />
                 </div>

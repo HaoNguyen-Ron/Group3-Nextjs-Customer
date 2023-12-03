@@ -4,7 +4,6 @@ import Banner from "../Banner";
 import { useEffect, useState } from "react";
 
 function CardList(products) {
-  const [cart, setCart] = useState([]);
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [selectedProductsNotDiscount, setSelectedProductsNotDiscount] = useState([]);
 
@@ -15,6 +14,7 @@ function CardList(products) {
   };
 
   const handleAddToCart = (selectedProduct) => {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
     const updatedCart = [...cart];
     const existingProductIndex = updatedCart.findIndex(
       (item) => item._id === selectedProduct._id
@@ -29,7 +29,7 @@ function CardList(products) {
     }
 
     // Set the updated cart in state
-    setCart(updatedCart);
+    // setCart(updatedCart);
 
     // Store the updated cart in local storage
     localStorage.setItem("cart", JSON.stringify(updatedCart));

@@ -7,11 +7,9 @@ import OrderProductList from "@/components/orderProductList";
 import { axiosClient } from "@/libraries/axiosClient";
 import styles from "@/styles/userPage.module.css";
 import Style from "@/styles/Order.module.css";
-import OrderCustomer from "@/components/OrderCustomer";
 import { useRouter } from "next/router";
 import { Modal } from "react-bootstrap";
 import CustomerEditForm from "@/components/Form/EditFormCustomer";
-import PaymentMethod from "@/components/OrderCustomer/paymentMethod";
 
 function order() {
   const [listProduct, setListProduct] = useState([]);
@@ -117,7 +115,7 @@ function order() {
     <div className="container">
       <div className={`d-flex row ${Style.order_container}`}>
         <div className="col-6">
-          <a href="/">
+          <a className={`${Style.a}`} href="/">
             <h1>3nime Figure</h1>
           </a>
           <div>
