@@ -2,11 +2,14 @@ import x from "@/styles/Card.module.css";
 import Card from "./Card";
 import Banner from "../Banner";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 function CardList(products) {
   const [selectedProducts, setSelectedProducts] = useState([]);
-  const [selectedProductsNotDiscount, setSelectedProductsNotDiscount] = useState([]);
+  const [selectedProductsNotDiscount, setSelectedProductsNotDiscount] =
+    useState([]);
 
+  const router = useRouter();
 
   const handleGoToProductDetail = (productId) => {
     // Use window.location to navigate
@@ -14,26 +17,32 @@ function CardList(products) {
   };
 
   const handleAddToCart = (selectedProduct) => {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const updatedCart = [...cart];
-    const existingProductIndex = updatedCart.findIndex(
-      (item) => item._id === selectedProduct._id
-    );
+    if (router.isReady === true) {
+      const checkForToken = localStorage.getItem("TOKEN");
+      if (!checkForToken) {
+        router.push("/login");
+      } else {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const updatedCart = [...cart];
+        const existingProductIndex = updatedCart.findIndex(
+          (item) => item._id === selectedProduct._id
+        );
 
-    if (existingProductIndex !== -1) {
-      // If the product is already in the cart, increment the count
-      updatedCart[existingProductIndex].quantity += 1;
-    } else {
-      // If the product is not in the cart, add it with count 1
-      updatedCart.push({ ...selectedProduct, quantity: 1 });
+        if (existingProductIndex !== -1) {
+          // If the product is already in the cart, increment the count
+          updatedCart[existingProductIndex].quantity += 1;
+        } else {
+          // If the product is not in the cart, add it with count 1
+          updatedCart.push({ ...selectedProduct, quantity: 1 });
+        }
+
+        // Set the updated cart in state
+        // setCart(updatedCart);
+
+        // Store the updated cart in local storage
+        localStorage.setItem("cart", JSON.stringify(updatedCart));
+      }
     }
-
-    // Set the updated cart in state
-    // setCart(updatedCart);
-
-    // Store the updated cart in local storage
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
-    // Optionally, you can also update the state or perform other actions if needed
   };
   useEffect(() => {
     function shuffleArray(array) {
@@ -44,16 +53,22 @@ function CardList(products) {
       return array;
     }
     const allProducts = products.products;
-    const productsNotDiscount = allProducts.filter(product => product.discount === 0);
-    const shuffledProductsNotDiscount = productsNotDiscount.slice(0,8)
-    const shuffledProductsNotDiscountRandom = shuffleArray([...shuffledProductsNotDiscount])
+    const productsNotDiscount = allProducts.filter(
+      (product) => product.discount === 0
+    );
+    const shuffledProductsNotDiscount = productsNotDiscount.slice(0, 8);
+    const shuffledProductsNotDiscountRandom = shuffleArray([
+      ...shuffledProductsNotDiscount,
+    ]);
 
     setSelectedProductsNotDiscount(shuffledProductsNotDiscountRandom);
-    const productsWithDiscount = allProducts.filter(product => product.discount > 0);
-    const shuffledWithDiscount = productsWithDiscount.slice(0,8)
-    const shuffledWithDiscountRandom = shuffleArray([...shuffledWithDiscount])
+    const productsWithDiscount = allProducts.filter(
+      (product) => product.discount > 0
+    );
+    const shuffledWithDiscount = productsWithDiscount.slice(0, 8);
+    const shuffledWithDiscountRandom = shuffleArray([...shuffledWithDiscount]);
 
-    setSelectedProducts(shuffledWithDiscountRandom)
+    setSelectedProducts(shuffledWithDiscountRandom);
   }, []);
   return (
     <div>
