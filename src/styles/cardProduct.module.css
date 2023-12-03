@@ -94,3 +94,15 @@
 .infomation_product:focus {
     font-weight: bold;
 }
+
+.price_text {
+    font-size: 20px;
+    color: #838181;
+    text-decoration: line-through;
+}
+
+.price_text_discount {
+    font-size: 24px;
+    color: #ee2d7a;
+    font-weight: bold ;
+}

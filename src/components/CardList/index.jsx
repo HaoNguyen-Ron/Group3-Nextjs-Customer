@@ -1,11 +1,10 @@
-import x from "@/components/CardList/Card.module.css";
+import x from "@/styles/Card.module.css";
 import Card from "./Card";
 import Banner from "../Banner";
 import { useState } from "react";
 
 function CardList(products) {
   const [cart, setCart] = useState([]);
-  const [totalItemCount,setTotalItemCount] = useState(0) 
 
   const selectedProducts = products.products.slice(0, 8);
 

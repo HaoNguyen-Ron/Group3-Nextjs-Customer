@@ -32,8 +32,6 @@ function order() {
 
   const formattedDate = year + "-" + month + "-" + day;
 
-  
-
   const getCustomerDetail = useCallback(async () => {
     try {
       setShow(true);
@@ -42,10 +40,9 @@ function order() {
     }
   }, []);
 
-
   const validation = useFormik({
     initialValues: {
-      customerId: userData._id,
+      customerId:userData._id,
       employeeId: "",
       paymentType: "",
       status: "WAITING",
@@ -90,9 +87,7 @@ function order() {
     return true;
   }, [validation.errors, validation.touched]);
 
-
-    useEffect(() => {
-
+  useEffect(() => {
     const getUserDetail = async () => {
       try {
         const res = await axiosClient.get("/auth/profile");
@@ -110,14 +105,14 @@ function order() {
     if (token) {
       axiosClient.defaults.headers.Authorization = `Bearer ${token}`;
       getUserDetail();
-    } 
+    }
 
     const storedData = localStorage.getItem("cart");
 
     const parsedData = storedData ? JSON.parse(storedData) : [];
 
     setListProduct(parsedData);
-  },[]);
+  }, []);
   return (
     <div className="container">
       <div className={`d-flex row ${Style.order_container}`}>
@@ -220,7 +215,10 @@ function order() {
             <button
               className="btn btn-dark"
               type="submit"
-              onClick={validation.handleSubmit}
+              onClick={() => {
+                validation.setFieldValue("customerId", userData._id);
+                validation.handleSubmit();
+              }}
             >
               Hoàn tất đơn hàng
             </button>

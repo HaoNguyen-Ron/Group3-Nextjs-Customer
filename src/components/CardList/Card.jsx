@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import x from "@/components/CardList/Card.module.css";
+import x from "@/styles/Card.module.css";
 
 function Card({ products, handleAddToCart, id }) {
   const formattedPrice = new Intl.NumberFormat("vi-VN", {

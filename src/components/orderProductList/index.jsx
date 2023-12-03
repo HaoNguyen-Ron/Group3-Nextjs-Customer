@@ -12,7 +12,7 @@ function OrderProductList({ listProduct }) {
   };
 
   const totalPrice = listProduct.reduce(
-    (total, item) => total + item.price * item.quantity,
+    (total, item) => total + (item.price - (item.price * item.discount) / 100) * item.quantity,
     0
   );
   return (
@@ -39,7 +39,7 @@ function OrderProductList({ listProduct }) {
               </div>
               <div className={`col-2 ${Styles.title_ThanhTien}`}>
                 <p className={`${Styles.input_color_1}`}>
-                  <b>{formattedPrice(item.price * item.quantity)}</b>
+                  <b>{formattedPrice((item.price - (item.price * item.discount) / 100) * item.quantity)}</b>
                 </p>
               </div>
             </div>

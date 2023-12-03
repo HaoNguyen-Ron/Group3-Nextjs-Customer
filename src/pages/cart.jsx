@@ -6,13 +6,7 @@ import Link from "next/link";
 function Cart() {
   const [data, setData] = useState([]);
 
-  useEffect(() => {
-    const storedData = localStorage.getItem("cart");
-
-    const parsedData = storedData ? JSON.parse(storedData) : [];
-
-    setData(parsedData);
-  }, []);
+  
 
   const formattedPrice = (price) => {
     return price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
@@ -20,7 +14,7 @@ function Cart() {
 
   const totalItemCount = data.reduce((total, item) => total + item.quantity, 0);
   const totalPrice = data.reduce(
-    (total, item) => total + item.price * item.quantity,
+    (total, item) => total + (item.price-(item.price*item.discount/100)) * item.quantity,
     0
   );
 
@@ -69,8 +63,13 @@ function Cart() {
     localStorage.setItem("cart", JSON.stringify(updatedData));
   };
 
+  useEffect(() => {
+    const storedData = localStorage.getItem("cart");
 
-  console.log("««««« data »»»»»", data);
+    const parsedData = storedData ? JSON.parse(storedData) : [];
+
+    setData(parsedData);
+  }, []);
   return (
     <div>
       <div className="container">
@@ -106,7 +105,7 @@ function Cart() {
                           </a>
                         </div>
                         <div className={`col-8 ${Styles.media_right}`}>
-                          <a href={`/productDetail/${item._id}`} >{item.name}</a>
+                          <a className={`${Styles.name_Product}`} href={`/productDetail/${item._id}`} >{item.name}</a>
                           <div className="d-flex">
                             <input
                               type="button"
@@ -137,7 +136,7 @@ function Cart() {
                           </div>
                           <p>
                             <b>
-                              {formattedPrice(item.price)}
+                              {formattedPrice((item.price-(item.price*item.discount/100)))}
                             </b>
                           </p>
                         </div>
@@ -152,7 +151,7 @@ function Cart() {
                       </div>
                       <div className={`${Styles.title_ThanhTien}`}>
                         <p><b>Thành Tiền:</b></p>
-                        <p className={`${Styles.input_color_1}`}><b>{formattedPrice(item.price * item.quantity)}</b></p>
+                        <p className={`${Styles.input_color_1}`}><b>{formattedPrice((item.price-(item.price*item.discount/100)) * item.quantity)}</b></p>
                       </div>
                     </div>
                   </>
@@ -176,8 +175,8 @@ function Cart() {
               <div
                 className={`d-flex justify-content-between ${Styles.title_ThanhTien} ${Styles.border_bottom}`}
               >
-                  <p><b>Thành Tiền:</b></p>
-                  <p className={`${Styles.input_color_1}`}><b>{formattedPrice(totalPrice)}</b></p>
+                  <p className={`${Styles.input_color_2}`}><b>Tổng tiền:</b></p>
+                  <p className={`${Styles.input_color_2} ${Styles.input_color_1}`}><b>{formattedPrice(totalPrice)}</b></p>
               </div>
 
               <div className={`  ${Styles.box_title_cart}`}>
