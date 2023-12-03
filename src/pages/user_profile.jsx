@@ -71,21 +71,6 @@ function UserProfilePage() {
               </button>
             </li>
 
-<<<<<<< HEAD
-    const getUserDetail = async () => {
-        try {
-            const res = await axiosClient.get('/auth/profile')
-            if (res.status === 200) {
-                const data = res.data.payload;
-                console.log('««««« data »»»»»', data);
-                
-                setUser({
-                    userName : data.fullName,
-                    userEmail: data.email,
-                    userAddress: data.address
-                })
-            }
-=======
             <li className="nav-item">
               <button
                 className={`btn ${styles.user__item}`}
@@ -94,7 +79,6 @@ function UserProfilePage() {
                 Lịch sử mua hàng
               </button>
             </li>
->>>>>>> a33e736d8c66c28476c92b2acdcb2c15581dea47
 
             <li className="nav-item">
               <button
@@ -107,19 +91,8 @@ function UserProfilePage() {
           </ul>
         </div>
 
-<<<<<<< HEAD
-    useEffect(() => {
-        const token = window.localStorage.getItem("TOKEN");
-        if (token) {
-            axiosClient.defaults.headers.Authorization = `Bearer ${token}`;
-            getUserDetail()
-        }
-    }, []);
-    console.log('««««« user »»»»»', user);
-=======
         <div className="user__content flex-3 border-start border-2 px-5">
           <UserDetail user={user} isShow={getDetail} />
->>>>>>> a33e736d8c66c28476c92b2acdcb2c15581dea47
 
           <UserHistory isShow={getHistory} />
 
