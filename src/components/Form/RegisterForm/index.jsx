@@ -244,7 +244,7 @@ const RegisterForm = () => {
 
                         <div className='mt-4'>
                             <button className={`btn ${styles.modal__btn}`} onClick={handleClose}>
-                                <Link className={styles.modal__link} href={'/login'}>Đến trang đăng nhập</Link>
+                                <Link className={styles.modal__link} href={'/'}>Đến trang đăng nhập</Link>
                             </button>
                         </div>
                     </div>

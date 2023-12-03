@@ -156,4 +156,4 @@ const LoginForm = () => {
   );
 };
 
-export default verifyLoggin(LoginForm);
+export default LoginForm;

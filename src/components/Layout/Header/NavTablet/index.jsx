@@ -41,8 +41,8 @@ function NavTablet() {
           />
         </div>
         <div className="offcanvas-body">
-          <ul className="navigation-menu navbar-nav me-auto mb-2 mb-lg-0">
-          <NavSidbar
+        <ul className="navigation-menu navbar-nav me-auto mb-2 mb-lg-0">
+              <NavSidbar
                 title="Trang Chủ"
                 a_href="/"
                 activeTab={activeTab}
@@ -62,59 +62,22 @@ function NavTablet() {
                 onClick={onClickTab}
                 submenutab="0"
                 a_href="#"
-                titlemenu1="Thanh Toán"
+                titlemenu1="Đặt mua & Thanh Toán"
                 a_href1="/payment-instructions"
-                titlemenu2="assc"
-                titlemenu3="ac"
+                titlemenu2="Kiếm 250k / h"
+                a_href2="/Blogs/instruct"
+                titlemenu3="Tiết kiệm tiêu dùng"
+                a_href3="/Blogs/Kakeibo"
               />     
 
               <NavSidbar
                 title="Sản Phẩm"
                 activeTab={activeTab}
                 onClick={onClickTab}
-                submenutab="0"
-                a_href="#"
-                titlemenu1="abc"
-                titlemenu2="assc"
-                titlemenu3="ac"
+                a_href="/collections"
               />
 
-              <NavSidbar
-                title="Review"
-                a_href="#"
-                activeTab={activeTab}
-                onClick={onClickTab}
-              />
-
-              <NavSidbar
-                title="Ưu Đãi"
-                a_href="#"
-                activeTab={activeTab}
-                onClick={onClickTab}
-              />
-
-              <NavSidbar
-                title="Kết Nối"
-                activeTab={activeTab}
-                onClick={onClickTab}
-                submenutab="0"
-                a_href="#"
-                titlemenu1="abc"
-                titlemenu2="assc"
-                titlemenu3="ac"
-              />
-
-              <NavSidbar
-                title="Liên Hệ"
-                activeTab={activeTab}
-                onClick={onClickTab}
-                submenutab="0"
-                a_href="#"
-                titlemenu1="abc"
-                titlemenu2="assc"
-                titlemenu3="ac"
-              />
-          </ul>
+            </ul>
         </div>
       </div>
       <style jsx>
