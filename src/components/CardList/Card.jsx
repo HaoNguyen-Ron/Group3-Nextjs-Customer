@@ -24,14 +24,18 @@ function Card({ products, handleAddToCart, id }) {
                       style={{ height: 240 }}
                     >
                       <div className={` ${x["product--image__inner"]}`}>
-                       
                         <div
                           className={`hovered-img hidden-xs hidden-sm ${x["prod-img"]}  ${x["second-image"]} `}
                         >
                           <picture className={`${x["picture"]}`}>
-                            <span className={`${x["sale-span"]}`}>
-                              {products.discount}
-                            </span>
+                            {products.discount === 0 ? (
+                              <></>
+                            ) : (
+                              <span className={`${x["sale-span"]}`}>
+                                -{products.discount}%
+                              </span>
+                            )}
+
                             <img
                               className={` img-loop  ${x["lazyloaded"]}`}
                               alt=""
