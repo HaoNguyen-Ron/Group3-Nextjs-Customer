@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 
 import Styles from "@/styles/cardProduct.module.css";
+import { useRouter } from "next/router";
 
 export default function CardProduct({ products }) {
   const [count, setCount] = useState(1);
   const [showText, setShowText] = useState(false);
+
+  const router = useRouter();
 
   const formattedPrice = (price) => {
     return price.toLocaleString("vi-VN", {
@@ -16,25 +19,30 @@ export default function CardProduct({ products }) {
   const priceThenDiscount =
     products.price - (products.price * products.discount) / 100;
   const handleAddToCart = () => {
-    const { products: omitProducts, ...rest } = products;
+    if (router.isReady === true) {
+      const checkForToken = localStorage.getItem("TOKEN");
+      if (!checkForToken) {
+        router.push("/login");
+      } else {
+        const { products: omitProducts, ...rest } = products;
 
-    // Create a new object without circular references
-    const productWithoutCircularRefs = { ...rest };
+        const productWithoutCircularRefs = { ...rest };
 
-    // Continue with the rest of your logic
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const existingProductIndex = cart.findIndex(
-      (item) => item._id === products._id
-    );
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const existingProductIndex = cart.findIndex(
+          (item) => item._id === products._id
+        );
 
-    if (existingProductIndex !== -1) {
-      cart[existingProductIndex].quantity += count;
-    } else {
-      const newProduct = { ...productWithoutCircularRefs, quantity: count };
-      cart.push(newProduct);
+        if (existingProductIndex !== -1) {
+          cart[existingProductIndex].quantity += count;
+        } else {
+          const newProduct = { ...productWithoutCircularRefs, quantity: count };
+          cart.push(newProduct);
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+      }
     }
-
-    localStorage.setItem("cart", JSON.stringify(cart));
   };
 
   if (!products) {
@@ -67,7 +75,7 @@ export default function CardProduct({ products }) {
             alt={products.name}
           />
           {products.discount === 0 ? (
-            <></>
+            <span></span>
           ) : (
             <span className={`${Styles["sale-span"]}`}>
               -{products.discount}%
@@ -78,7 +86,7 @@ export default function CardProduct({ products }) {
           <h3>{products.name}</h3>
           <p>
             {products.discount === 0 ? (
-              <></>
+              <span></span>
             ) : (
               <span className={`${Styles.price_text}`}>
                 {formattedPrice(products.price)}
@@ -86,7 +94,6 @@ export default function CardProduct({ products }) {
             )}
 
             <span className={`${Styles.price_text_discount}`}>
-              {" "}
               {formattedPrice(priceThenDiscount)}
             </span>
           </p>

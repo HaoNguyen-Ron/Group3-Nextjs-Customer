@@ -40,7 +40,7 @@ function order() {
 
   const validation = useFormik({
     initialValues: {
-      customerId:userData._id,
+      customerId: userData._id,
       employeeId: "",
       paymentType: "",
       status: "WAITING",
@@ -115,24 +115,35 @@ function order() {
     <div className="container">
       <div className={`d-flex row ${Style.order_container}`}>
         <div className="col-6">
-          <a className={`${Style.a}`} href="/">
+          <a className={`${Style.title_home}`} href="/">
             <h1>3nime Figure</h1>
           </a>
-          <div>
-            <a href="./cart">
+          <div className={`${Style.row_cart}`}>
+            <a className={`${Style.span_cart_a}`} href="./cart">
               <span>Giỏ hàng </span>
             </a>
-            <span> $ </span>
-            <span>Thông tin giao hàng</span>
+            <span className={`${Style.span_cart}`}> &gt; </span>
+            <span className={`${Style.span_cart}`}>Thông tin giao hàng</span>
           </div>
-          <p>Thông tin giao hàng</p>
-          <div>
+          <p className={`${Style.row_cart} ${Style.span_cart}`}>
+            <b>Thông tin giao hàng</b>
+          </p>
+          {/* <div>
             <label htmlFor="Mã khách hàng">Mã khách hàng:</label>
             <input type="text" value={userData._id} disabled />
-          </div>
+          </div> */}
 
-          <p>aaa: {userData.fullName}</p>
-          <p>{userData.phoneNumber}</p>
+          <div className={`${Style.row_cart}`}>
+            <span className={`${Style.span_cart_chil}`}>
+              Tên khách hàng: {userData.fullName}
+            </span>
+          </div>
+          <div className={`${Style.row_cart}`}>
+            <span className={`${Style.span_cart_chil}`}>
+              Số điện thoại khách hàng: {userData.phoneNumber}
+            </span>
+          </div>
+          <p></p>
           <p>{userData.address}</p>
 
           <div className="userDetail_container ms-3 d-flex flex-column g-2">
