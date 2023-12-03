@@ -1,12 +1,13 @@
 import x from "@/styles/Card.module.css";
 import Card from "./Card";
 import Banner from "../Banner";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function CardList(products) {
   const [cart, setCart] = useState([]);
+  const [selectedProducts, setSelectedProducts] = useState([]);
+  const [selectedProductsNotDiscount, setSelectedProductsNotDiscount] = useState([]);
 
-  const selectedProducts = products.products.slice(0, 8);
 
   const handleGoToProductDetail = (productId) => {
     // Use window.location to navigate
@@ -34,7 +35,26 @@ function CardList(products) {
     localStorage.setItem("cart", JSON.stringify(updatedCart));
     // Optionally, you can also update the state or perform other actions if needed
   };
+  useEffect(() => {
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+    const allProducts = products.products;
+    const productsNotDiscount = allProducts.filter(product => product.discount === 0);
+    const shuffledProductsNotDiscount = productsNotDiscount.slice(0,8)
+    const shuffledProductsNotDiscountRandom = shuffleArray([...shuffledProductsNotDiscount])
 
+    setSelectedProductsNotDiscount(shuffledProductsNotDiscountRandom);
+    const productsWithDiscount = allProducts.filter(product => product.discount > 0);
+    const shuffledWithDiscount = productsWithDiscount.slice(0,8)
+    const shuffledWithDiscountRandom = shuffleArray([...shuffledWithDiscount])
+
+    setSelectedProducts(shuffledWithDiscountRandom)
+  }, []);
   return (
     <div>
       <div className="container">
@@ -63,7 +83,7 @@ function CardList(products) {
       <div className={` ${x["section"]}`}>
         <div className={`${x["section-heading"]}`}>
           <h2 className={`${x["hTitle"]}`}>
-            <a href="">Sản Phẩm Order</a>
+            <a href="">Sản Phẩm Nổi Bật</a>
           </h2>
           <p>Những sản phẩm đã hoặc sắp phát hành & cần đặt trước</p>
         </div>
@@ -83,7 +103,7 @@ function CardList(products) {
 
           <div className="col-12 col-md-12 col-lg-8">
             <div className="d-flex row">
-              {selectedProducts.map((product) => (
+              {selectedProductsNotDiscount.map((product) => (
                 <div className="col-6 col-md-4 col-lg-3">
                   <Card
                     id={`/productDetail/${product._id}`}
@@ -102,7 +122,7 @@ function CardList(products) {
       <div className={` ${x["section"]}`}>
         <div className={` ${x["section-heading"]}`}>
           <h2 className={` ${x["hTitle"]}`}>
-            <a href="collections/scale-figure">Sản Phẩm Có Sẵn</a>
+            <a href="collections/scale-figure">Sản Phẩm Đang Giảm Giá</a>
           </h2>
           <p>Sản phẩm đang có sẵn, bạn có thể mua ngay</p>
         </div>

@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import x from "@/styles/Card.module.css";
 
 function Card({ products, handleAddToCart, id }) {
-  const formattedPrice = new Intl.NumberFormat("vi-VN", {
-    style: "currency",
-    currency: "VND",
-  }).format(products.price);
-
+  const formattedPrice = (price) => {
+    return price.toLocaleString("vi-VN", {
+      style: "currency",
+      currency: "VND",
+    });
+  };
   return (
     <div>
       <div className="owl-stage-outer">
@@ -28,6 +29,11 @@ function Card({ products, handleAddToCart, id }) {
                           className={`hovered-img hidden-xs hidden-sm ${x["prod-img"]}  ${x["second-image"]} `}
                         >
                           <picture className={`${x["picture"]}`}>
+                            <img
+                              className={` img-loop  ${x["lazyloaded"]}`}
+                              alt=""
+                              src={products.description}
+                            />
                             {products.discount === 0 ? (
                               <></>
                             ) : (
@@ -35,12 +41,6 @@ function Card({ products, handleAddToCart, id }) {
                                 -{products.discount}%
                               </span>
                             )}
-
-                            <img
-                              className={` img-loop  ${x["lazyloaded"]}`}
-                              alt=""
-                              src={products.description}
-                            />
                           </picture>
                         </div>
                       </div>
@@ -54,7 +54,19 @@ function Card({ products, handleAddToCart, id }) {
                       </a>
                     </h3>
                     <p className={`${x["proloop--price"]}`}>
-                      <span className={`${x["price"]}`}>{formattedPrice}</span>
+                      {products.discount === 0 ? (
+                        <></>
+                      ) : (
+                        <span className={`${x["price"]}`}>
+                          {formattedPrice(products.price)}
+                        </span>
+                      )}
+                      <span className={`${x["price-discount"]}`}>
+                        {formattedPrice(
+                          products.price -
+                            (products.price * products.discount) / 100
+                        )}
+                      </span>
                     </p>
                   </div>
                   <div className={`${x["proloop-actions"]}`}>

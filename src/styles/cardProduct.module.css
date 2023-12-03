@@ -5,6 +5,7 @@
     border-bottom: 1px solid #d4d1d2;
 }
 .caroshel {
+    position: relative;
     width: 100%;
 }
 .info_product {
@@ -106,3 +107,18 @@
     color: #ee2d7a;
     font-weight: bold ;
 }
+.img_product {
+    position: relative;
+}
+
+.sale-span {
+    position: absolute;
+    top: 10px; /* Điều chỉnh vị trí từ phía trên */
+    right: 20px; /* Điều chỉnh vị trí từ phía bên trái */
+    background-color: red;
+    color: #eff2ff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    z-index: 1;
+  }

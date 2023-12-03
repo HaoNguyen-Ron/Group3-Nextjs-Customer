@@ -58,12 +58,21 @@ export default function CardProduct({ products }) {
   return (
     <div className={`container d-block `}>
       <div className={`row justify-content-around  ${Styles.card_Product} `}>
-        <div className={`text-center col-12 col-md-12 col-lg-5 `}>
+        <div
+          className={`text-center col-12 col-md-12 col-lg-5 ${Styles.img_product} `}
+        >
           <img
             className={`${Styles.caroshel}`}
             src={products.description}
             alt={products.name}
           />
+          {products.discount === 0 ? (
+            <></>
+          ) : (
+            <span className={`${Styles["sale-span"]}`}>
+              -{products.discount}%
+            </span>
+          )}
         </div>
         <div className={`${Styles.info_product} col-12 col-md-12 col-lg-7`}>
           <h3>{products.name}</h3>

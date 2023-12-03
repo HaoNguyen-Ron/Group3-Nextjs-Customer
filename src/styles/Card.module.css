@@ -651,3 +651,12 @@
   font-size: 12px;
   z-index: 1;
 }
+.price {
+  color: #838181;
+  text-decoration: line-through;
+  margin-right: 5px;
+}
+.price-discount {
+  color: #ee2d7a;
+  font-weight: bold;
+}

@@ -52,9 +52,13 @@ function index(props) {
                 activeTab={activeTab}
                 onClick={onClickTab}
                 submenutab="0"
-                titlemenu1="Thanh Toán"
                 a_href="#"
+                titlemenu1="Đặt mua & Thanh Toán"
                 a_href1="/payment-instructions"
+                titlemenu2="Kiếm 250k / h"
+                a_href2="/Blogs/instruct"
+                titlemenu3="Tiết kiệm tiêu dùng"
+                a_href3="/Blogs/Kakeibo"
               />     
 
               <NavSidbar

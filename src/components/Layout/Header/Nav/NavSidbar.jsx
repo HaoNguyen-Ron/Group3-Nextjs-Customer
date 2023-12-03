@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import React from 'react';
 
-function NavSidbar({classDNone,activeTab, title ,submenutab, onClick,titlemenu1,titlemenu2,titlemenu3,titlemenu4,titlemenu5,titlemenu6 , a_href , a_href1}) {
+function NavSidbar({classDNone,activeTab, title ,submenutab, onClick,titlemenu1,titlemenu2,titlemenu3,titlemenu4,titlemenu5,titlemenu6 , a_href , a_href1,a_href2,a_href3,a_href4}) {
     const router = useRouter();
     // console.log('««««« sosanh »»»»»', router.pathname === a_href);
     return (
@@ -36,15 +36,15 @@ function NavSidbar({classDNone,activeTab, title ,submenutab, onClick,titlemenu1,
             </li>}
   
             {titlemenu2 &&<li>
-              <a className="" href="#">{titlemenu2}</a>
+              <a className="" href={a_href2}>{titlemenu2}</a>
             </li>}
   
             {titlemenu3 &&<li>
-              <a className="" href="#">{titlemenu3}</a>
+              <a className="" href={a_href3}>{titlemenu3}</a>
             </li>}
   
             {titlemenu4 &&<li>
-              <a className="" href="#">{titlemenu4}</a>
+              <a className="" href={a_href4}>{titlemenu4}</a>
             </li>}
   
             {titlemenu5 &&<li>
