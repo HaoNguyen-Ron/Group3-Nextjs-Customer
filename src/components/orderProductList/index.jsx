@@ -19,7 +19,7 @@ function OrderProductList({ listProduct }) {
     <div>
       <div>
         {listProduct.map((item) => (
-          <div key={item.id} className={`${Style.title_number_border}`}>
+          <div key={item._id} className={`${Style.title_number_border}`}>
             <div
               className={`d-flex row align-items-center justify-content-between ${Styles.media_line_item}`}
             >
@@ -29,14 +29,18 @@ function OrderProductList({ listProduct }) {
                   src={item.description}
                   alt={item.name}
                 />
-                <span class="position-absolute translate-middle badge rounded-pill bg-secondary">
+
+                <span className="position-absolute translate-middle badge rounded-pill bg-secondary">
                   {item.quantity}
-                  <span class="visually-hidden">unread messages</span>
+
+                  <span className="visually-hidden">unread messages</span>
                 </span>
               </div>
+
               <div className={`col-7 ${Styles.media_right}`}>
                 <p>{item.name}</p>
               </div>
+
               <div className={`col-2 ${Styles.title_ThanhTien}`}>
                 <p className={`${Styles.input_color_1}`}>
                   <b>{formattedPrice((item.price - (item.price * item.discount) / 100) * item.quantity)}</b>
@@ -46,9 +50,10 @@ function OrderProductList({ listProduct }) {
           </div>
         ))}
       </div>
+      
       <div className="d-flex justify-content-between align-items-center">
-          <p className={`${Style.input_size}`}>Tổng tiền:</p>
-          <p className={` ${Style.input_size} ${Styles.input_color_1}`}><b>{formattedPrice(totalPrice)}</b></p>
+        <p className={`${Style.input_size}`}>Tổng tiền:</p>
+        <p className={` ${Style.input_size} ${Styles.input_color_1}`}><b>{formattedPrice(totalPrice)}</b></p>
       </div>
     </div>
   );

@@ -8,19 +8,39 @@ import { axiosClient } from "@/libraries/axiosClient";
 import styles from "@/styles/userPage.module.css";
 import Style from "@/styles/Order.module.css";
 import { useRouter } from "next/router";
-import { Modal } from "react-bootstrap";
 import CustomerEditForm from "@/components/Form/EditFormCustomer";
+import Link from "next/link";
+import { Box, Modal, Typography } from "@mui/material";
 
-function order() {
+function Order() {
   const [listProduct, setListProduct] = useState([]);
   const [userData, setUserData] = useState([]);
-  const [show, setShow] = useState(false);
 
-  const router = useRouter();
+  const [openSuccess, setOpenSuccess] = useState(false);
+  const [openEdit, setOpenEdit] = useState(false);
+  const [openError, setOpenError] = useState(false);
+
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 800,
+    bgcolor: 'background.paper',
+    border: '2px solid var(--main-color)',
+    boxShadow: 24,
+    p: 4,
+    borderRadius: '16px'
+  };
 
   const handleClose = () => {
-    setShow(false);
-  };
+    setOpenError(false)
+    setOpenSuccess(false)
+    setOpenEdit(false)
+
+  }
+
+  const router = useRouter();
 
   const currentDate = new Date(Date.now());
 
@@ -30,27 +50,20 @@ function order() {
 
   const formattedDate = year + "-" + month + "-" + day;
 
-  const getCustomerDetail = useCallback(async () => {
-    try {
-      setShow(true);
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
+  const orderDetails = listProduct.map(product => ({
+    productId: product._id,
+    quantity: product.quantity,
+    price: product.price,
+    discount: product.discount,
+  }));
 
   const validation = useFormik({
     initialValues: {
-      customerId: userData._id,
-      employeeId: "",
+      customerId: "",
       paymentType: "",
       status: "WAITING",
       createdDate: formattedDate,
-      orderDetails: listProduct.map((product) => ({
-        productId: product._id,
-        quantity: product.quantity,
-        price: product.price,
-        discount: product.discount,
-      })),
+      orderDetails: orderDetails,
       isDeleted: false,
     },
 
@@ -63,15 +76,19 @@ function order() {
     }),
 
     onSubmit: async (values) => {
+      console.log('««««« values »»»»»', values);
       try {
-        // Include orderDetails in the values to be sent to the server
-        const payload = { ...values, orderDetails: values.orderDetails };
+        const res = await axiosClient.post("/orders/", values);
 
-        // Perform your submission logic here
-        const response = await axiosClient.post("/orders/", payload);
+        if (res.status === 200) {
+          setOpenSuccess(true)
+          setTimeout(() => {
+            router.push('/')
+          }, 2000);
+        }
 
-        console.log("Submitted values:", response.data);
       } catch (error) {
+        setOpenError(true)
         console.error("Submission error:", error);
       }
     },
@@ -85,24 +102,22 @@ function order() {
     return true;
   }, [validation.errors, validation.touched]);
 
-  useEffect(() => {
-    const getUserDetail = async () => {
-      try {
-        const res = await axiosClient.get("/auth/profile");
-        console.log("««««« res »»»»»", res);
-        if (res.status === 200 && router.isReady === true) {
-          const data = res.data.payload;
-          setUserData(data);
-        }
-      } catch (error) {
-        console.log("««««« error »»»»»", error);
-      }
-    };
+  const getUserDetail = async () => {
+    try {
+      return await axiosClient.get("/auth/profile");
 
+    } catch (error) {
+      console.log("««««« error »»»»»", error);
+    }
+  };
+
+  useEffect(() => {
     const token = window.localStorage.getItem("TOKEN");
-    if (token) {
+    if (token && router.isReady === true) {
       axiosClient.defaults.headers.Authorization = `Bearer ${token}`;
-      getUserDetail();
+      getUserDetail().then(res => {
+        setUserData(res.data.payload)
+      });
     }
 
     const storedData = localStorage.getItem("cart");
@@ -111,61 +126,86 @@ function order() {
 
     setListProduct(parsedData);
   }, []);
+  
+  console.log('««««« listProduct »»»»»', listProduct);
+
+  console.log('««««« userData._id »»»»»', userData._id);
+
   return (
     <div className="container">
       <div className={`d-flex row ${Style.order_container}`}>
         <div className="col-6">
-          <a className={`${Style.title_home}`} href="/">
+          <Link className={`${Style.title_home}`} href="/">
             <h1>3nime Figure</h1>
-          </a>
+          </Link>
           <div className={`${Style.row_cart}`}>
             <a className={`${Style.span_cart_a}`} href="./cart">
               <span>Giỏ hàng </span>
             </a>
             <span className={`${Style.span_cart}`}> &gt; </span>
+
             <span className={`${Style.span_cart}`}>Thông tin giao hàng</span>
           </div>
+
           <p className={`${Style.row_cart} ${Style.span_cart}`}>
             <b>Thông tin giao hàng</b>
           </p>
-          {/* <div>
-            <label htmlFor="Mã khách hàng">Mã khách hàng:</label>
-            <input type="text" value={userData._id} disabled />
-          </div> */}
 
           <div className={`${Style.row_cart}`}>
             <span className={`${Style.span_cart_chil}`}>
               Tên khách hàng: {userData.fullName}
             </span>
           </div>
+
           <div className={`${Style.row_cart}`}>
             <span className={`${Style.span_cart_chil}`}>
               Số điện thoại khách hàng: {userData.phoneNumber}
             </span>
           </div>
-          <p></p>
-          <p>{userData.address}</p>
+
+          <div className={`${Style.row_cart}`}>
+            <span className={`${Style.span_cart_chil}`}>
+              Địa chỉ: {userData.address}
+            </span>
+          </div>
 
           <div className="userDetail_container ms-3 d-flex flex-column g-2">
             <div className="userDetail_item">
               <button
-                onClick={getCustomerDetail}
+                onClick={() => setOpenEdit(true)}
                 className={`btn ${styles.user__btn}`}
               >
                 Thay đổi thông tin giao hàng
               </button>
             </div>
 
-            <Modal show={show} onHide={handleClose} size="lg">
-              <Modal.Header closeButton>
-                <Modal.Title>Editing form</Modal.Title>
-              </Modal.Header>
+            <Modal
+              open={openEdit}
+              onClose={handleClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+            >
+              <Box sx={style}>
+                <div className='d-flex flex-column'>
+                  <Typography className={`${styles.form__item} d-flex justify-content-between align-items-center`} id="modal-modal-title" variant="h6" component="h2">
+                    Biểu mẫu thay đổi thông tin người dùng
 
-              <Modal.Body>
-                <CustomerEditForm userData={userData} />
-              </Modal.Body>
+                    <span>
+                      <button className={`btn ${styles.modal__btn}`} onClick={handleClose}>
+                        <i className="fa-solid fa-x"></i>
+                      </button>
+                    </span>
+                  </Typography>
+
+                  <hr />
+
+                  <CustomerEditForm userData={userData} />
+                </div>
+
+              </Box>
             </Modal>
           </div>
+
           <div>
             <p>
               <b>Phương thức vận chuyển</b>
@@ -196,6 +236,8 @@ function order() {
               </div>
             </>
           </div>
+
+          {/*------------------------------------------------------------- Payment ---------------------------------------------------*/}
           <div>
             <div>
               <b>Phương thức thanh toán</b>
@@ -221,24 +263,78 @@ function order() {
             <a href="./cart">
               <span>Giỏ hàng </span>
             </a>
+
             <button
               className="btn btn-dark"
               type="submit"
               onClick={() => {
-                validation.setFieldValue("customerId", userData._id);
                 validation.handleSubmit();
+                validation.setFieldValue("customerId", userData._id);
               }}
             >
               Hoàn tất đơn hàng
             </button>
           </div>
         </div>
+
         <div className={`col-6 ${Style.product_list_color}`}>
           <OrderProductList listProduct={listProduct} />
         </div>
       </div>
+
+
+      {/*------------------------------------------------------------- Modal Area ---------------------------------------------------*/}
+      <Modal
+        open={openSuccess}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <div className='d-flex flex-column'>
+            <Typography className={styles.form__item} id="modal-modal-title" variant="h6" component="h2">
+              Tình trạng đăng ký
+            </Typography>
+
+            <hr />
+
+            <Typography id="modal-modal-description">
+              Bạn đã giao dịch thành công !
+            </Typography>
+
+            <div className='mt-3'>
+              <button className={`btn ${styles.modal__btn}`} onClick={handleClose}>Quay lại</button>
+            </div>
+          </div>
+
+        </Box>
+      </Modal>
+
+      <Modal
+        open={openError}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <div className='d-flex flex-column'>
+            <Typography className={styles.form__item} id="modal-modal-title" variant="h6" component="h2">
+              Tình trạng đăng ký
+            </Typography>
+            <hr />
+            <Typography id="modal-modal-description">
+              Giao dịch thất bại
+            </Typography>
+
+            <div className='mt-3'>
+              <button className={`btn ${styles.modal__btn}`} onClick={handleClose}>Quay lại</button>
+            </div>
+          </div>
+
+        </Box>
+      </Modal>
     </div>
   );
 }
 
-export default verifyLoggin(order);
+export default verifyLoggin(Order);

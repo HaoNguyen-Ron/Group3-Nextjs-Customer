@@ -165,7 +165,7 @@ const CustomerEditForm = ({ userData }) => {
               Register status
             </Typography>
             <hr />
-            <Typography id="modal-modal-description">Successfully !</Typography>
+            <Typography id="modal-modal-description">Successfully!</Typography>
           </div>
         </Box>
       </Modal>
