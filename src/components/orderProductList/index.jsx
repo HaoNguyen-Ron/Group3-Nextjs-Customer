@@ -16,7 +16,7 @@ function OrderProductList({ listProduct }) {
     0
   );
   return (
-    <div>
+    <div className="d-flex flex-column px-3">
       <div>
         {listProduct.map((item) => (
           <div key={item._id} className={`${Style.title_number_border}`}>

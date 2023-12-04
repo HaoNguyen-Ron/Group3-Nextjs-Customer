@@ -1,16 +1,19 @@
-import { useFormik } from "formik";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
-import * as yup from "yup";
-
-import verifyLoggin from "@/components/HOC/verifyLoggin";
-import OrderProductList from "@/components/orderProductList";
-import { axiosClient } from "@/libraries/axiosClient";
-import styles from "@/styles/userPage.module.css";
-import Style from "@/styles/Order.module.css";
-import { useRouter } from "next/router";
-import CustomerEditForm from "@/components/Form/EditFormCustomer";
 import Link from "next/link";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { useFormik } from "formik";
+
+import CustomerEditForm from "@/components/Form/EditFormCustomer";
+import OrderProductList from "@/components/orderProductList";
+import verifyLoggin from "@/components/HOC/verifyLoggin";
+
+import * as yup from "yup";
 import { Box, Modal, Typography } from "@mui/material";
+import { axiosClient } from "@/libraries/axiosClient";
+import { useRouter } from "next/router";
+
+import Style from "@/styles/Order.module.css";
+import styles from "@/styles/userPage.module.css";
+
 
 function Order() {
   const [listProduct, setListProduct] = useState([]);
@@ -60,10 +63,11 @@ function Order() {
   const validation = useFormik({
     initialValues: {
       customerId: "",
+      employeeId: "",
       paymentType: "",
       status: "WAITING",
       createdDate: formattedDate,
-      orderDetails: orderDetails,
+      orderDetails: [],
       isDeleted: false,
     },
 
@@ -81,7 +85,10 @@ function Order() {
         const res = await axiosClient.post("/orders/", values);
 
         if (res.status === 200) {
+          localStorage.removeItem("cart");
+
           setOpenSuccess(true)
+
           setTimeout(() => {
             router.push('/')
           }, 2000);
@@ -126,18 +133,15 @@ function Order() {
 
     setListProduct(parsedData);
   }, []);
-  
-  console.log('««««« listProduct »»»»»', listProduct);
-
-  console.log('««««« userData._id »»»»»', userData._id);
 
   return (
-    <div className="container">
+    <div className="container p-5">
       <div className={`d-flex row ${Style.order_container}`}>
-        <div className="col-6">
+        <div className="col-12 col-md-6">
           <Link className={`${Style.title_home}`} href="/">
             <h1>3nime Figure</h1>
           </Link>
+          
           <div className={`${Style.row_cart}`}>
             <a className={`${Style.span_cart_a}`} href="./cart">
               <span>Giỏ hàng </span>
@@ -170,7 +174,7 @@ function Order() {
           </div>
 
           <div className="userDetail_container ms-3 d-flex flex-column g-2">
-            <div className="userDetail_item">
+            <div className="userDetail_item text-center">
               <button
                 onClick={() => setOpenEdit(true)}
                 className={`btn ${styles.user__btn}`}
@@ -206,50 +210,22 @@ function Order() {
             </Modal>
           </div>
 
-          <div>
-            <p>
-              <b>Phương thức vận chuyển</b>
-            </p>
-            <>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault1"
-                />
-                <label className="form-check-label" htmlFor="flexRadioDefault1">
-                  Nhận hàng trực tiếp tại Japan Figure
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault2"
-                  defaultChecked=""
-                />
-                <label className="form-check-label" htmlFor="flexRadioDefault2">
-                  Giao hàng tận nơi
-                </label>
-              </div>
-            </>
-          </div>
-
           {/*------------------------------------------------------------- Payment ---------------------------------------------------*/}
-          <div>
-            <div>
+          <div className="mb-4">
+            <p className={`${Style.row_cart} ${Style.span_cart}`}>
               <b>Phương thức thanh toán</b>
+            </p>
+
+            <div>
               <select
                 name="paymentType"
                 onChange={validation.handleChange}
-                className={` ${isValid ? "" : "is-invalid"}`}
+                className={` ${isValid ? "" : "is-invalid"} form-select w-50`}
                 value={validation.values.paymentType}
               >
                 <option defaultValue></option>
-                <option value="CASH">tiền mặt</option>
-                <option value="CREDIT_CARD">thẻ</option>
+                <option value="CASH">Bằng tiền mặt tại cửa hàng</option>
+                <option value="CREDIT_CARD">Bằng thẻ tín dụng</option>
               </select>
 
               {!isValid && (
@@ -259,17 +235,20 @@ function Order() {
               )}
             </div>
           </div>
-          <div>
-            <a href="./cart">
-              <span>Giỏ hàng </span>
-            </a>
+
+          <div className="d-flex justify-content-around align-items-center my-5">
+            <button className={` btn`} >
+              <Link href={'/cart'} className={styles.user__title}>Quay về giỏ hàng</Link>
+            </button>
 
             <button
-              className="btn btn-dark"
+              className={`${styles.user__btn} btn`}
               type="submit"
               onClick={() => {
                 validation.handleSubmit();
                 validation.setFieldValue("customerId", userData._id);
+                validation.setFieldValue("employeeId", "656ca0f0aeb0edbf0fd7dfc6");
+                validation.setFieldValue("orderDetails", orderDetails);
               }}
             >
               Hoàn tất đơn hàng
@@ -277,7 +256,7 @@ function Order() {
           </div>
         </div>
 
-        <div className={`col-6 ${Style.product_list_color}`}>
+        <div className={`col-12 col-md-6 ${styles.user__border}`}>
           <OrderProductList listProduct={listProduct} />
         </div>
       </div>

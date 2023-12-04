@@ -101,7 +101,7 @@ export default function InputAddress({
                     onChange={onChangeCity}
                     className={` ${isValid ? '' : 'is-invalid'} form-select`}
                 >
-                    <option defaultValue>Default: {userData?.city || ''}</option>
+                    <option defaultValue>{userData?.city || ''}</option>
                     {
                         cityList && cityList.map((city) =>
                             <option key={city.Id} value={city.Name}>{city.Name}</option>
@@ -127,7 +127,7 @@ export default function InputAddress({
                     onChange={onChangeDistrict}
                     className={` ${isValid ? '' : 'is-invalid'} form-select`}
                 >
-                    <option defaultValue>Default: {userData?.district}</option>
+                    <option defaultValue>{userData?.district}</option>
                     {
                         getCurrentDistrictList() && getCurrentDistrictList().map((district) =>
                             <option key={district.Id} value={district.Name}>{district.Name}</option>)
@@ -151,7 +151,7 @@ export default function InputAddress({
                     onChange={onChangeWard}
                     className={` ${isValid ? '' : 'is-invalid'} form-select`}
                 >
-                    <option defaultValue>Default: {userData?.ward}</option>
+                    <option defaultValue>{userData?.ward}</option>
                     {
                         getCurrentWardList().map((ward) =>
                             <option key={ward.Id} value={ward.Name}>{ward.Name}</option>)

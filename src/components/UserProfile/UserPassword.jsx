@@ -20,9 +20,9 @@ export default function UserPassword({ user, isShow = true }) {
   }, []);
   return (
     <div className={isShow ? "d-block" : "d-none"}>
-      <h2 className="mb-4 mt-3">Bảo mật tài khoản :</h2>
-      <div className="userDetail_container ms-3 d-flex flex-column g-2">
-        <div className="userDetail_item">
+      <h2 className="mb-4 mt-3 text-center text-lg-start">Bảo mật tài khoản :</h2>
+      <div className="userDetail_container ms-3">
+        <div className="userDetail_item text-center text-lg-start">
           <button
             onClick={getCustomerDetail}
             className={`btn ${styles.user__btn}`}
