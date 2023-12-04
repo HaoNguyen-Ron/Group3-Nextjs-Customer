@@ -856,7 +856,7 @@ const BlogItem = ({ image, title, title2, title3, title4, date, href }) => {
         <div className={`${pay["item-article"]} d-flex clearfix`}>
           <div className="post-image">
             <a href={href}>
-              <img className={`${pay["lazyloaded"]}`} src={image} alt={title} />
+              <Image className={`${pay["lazyloaded"]}`} href={image} alt={title} />
             </a>
           </div>
           <div className={`${pay["post-content"]} ms-2`}>
