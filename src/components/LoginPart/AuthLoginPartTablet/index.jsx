@@ -42,9 +42,9 @@ export default function AuthLoginPartTablet() {
   return (
     <div className={` ${styles.media_tablet} d-flex justify-content-end`}>
       <div>
-        <button className={`position-relative btn ${styles.loginPart__item}`}>
+        <Link href={'/cart'} className={`position-relative btn ${styles.loginPart__item}`}>
           <i className='fa-solid fa-cart-shopping my-auto me-2 ' style={{ fontSize: '20px' }}></i>
-        </button>
+        </Link>
       </div>
 
       <div>

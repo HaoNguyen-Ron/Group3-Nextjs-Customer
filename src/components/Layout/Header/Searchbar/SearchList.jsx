@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 
 import styles from "@/styles/searchbar.module.css";
 
 export default function SearchList({ searchList, index }) {
+  const updatedUrl = `/productDetail/${searchList._id}`;;
+
   return (
     <>
       <li
@@ -11,7 +13,8 @@ export default function SearchList({ searchList, index }) {
       >
         <a
           className={`d-flex justify-content-between align-items-center ${styles["searchbar__input-li-a"]}`}
-          href={`productDetail/${searchList._id}`}>
+          href={updatedUrl}
+        >
           <div>
             <p>{searchList.name}</p>
             <p className={styles["searchbar__input-p"]}>{searchList.price}</p>

@@ -68,6 +68,13 @@ function index(props) {
                 a_href="/collections"
               />
 
+              <NavSidbar
+                title="Hỏi đáp"
+                activeTab={activeTab}
+                onClick={onClickTab}
+                a_href="/answer"
+              />
+
             </ul>
           </div>
         </div>
