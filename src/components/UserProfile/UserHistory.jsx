@@ -68,7 +68,8 @@ export default function UserHistory({ isShow = true, user }) {
                             <span>Hủy đơn hàng (  •̀ - •́  )</span>
                         </button>
 
-                    )
+                    ),
+                    statusToVn: "Đang xử lý đơn."
                 });
             case 'COMPLETED':
                 return ({
@@ -78,7 +79,8 @@ export default function UserHistory({ isShow = true, user }) {
                             <span>Cảm ơn~ ⸜(｡˃ ᵕ ˂ )⸝♡</span>
                         </button>
 
-                    )
+                    ),
+                    statusToVn: "Đã hoàn thành."
                 });
             case 'CANCELED':
                 return ({
@@ -88,7 +90,8 @@ export default function UserHistory({ isShow = true, user }) {
                             <span>Hẹn gặp lại lần sau! (╥﹏╥)</span>
                         </button>
 
-                    )
+                    ),
+                    statusToVn: "Đơn đã bị hủy."
                 });
             default:
                 break;
@@ -142,7 +145,7 @@ export default function UserHistory({ isShow = true, user }) {
                                         <span
                                             className={checkStatusType(order.status).class}
                                         >
-                                            {order.status}
+                                            <b>{checkStatusType(order.status).statusToVn}</b>
                                         </span>
                                     </div>
                                 </div>

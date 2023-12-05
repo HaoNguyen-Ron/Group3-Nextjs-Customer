@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import Styles from "@/styles/cart.module.css";
 import Link from "next/link";
+import VerifyLoggin from "@/components/HOC/verifyLoggin";
 
 function Cart() {
   const [data, setData] = useState([]);
@@ -71,7 +72,7 @@ function Cart() {
     setData(parsedData);
   }, []);
   return (
-    <div>
+    <div className="mb-5">
       <div className="container">
         <h1 className={`text-center ${Styles.description_cart}`}>
           Giỏ hàng của bạn
@@ -208,4 +209,4 @@ function Cart() {
   );
 }
 
-export default Cart;
+export default VerifyLoggin(Cart);

@@ -137,7 +137,7 @@ function Order() {
   return (
     <div className="container p-5">
       <div className={`d-flex row ${Style.order_container}`}>
-        <div className="col-12 col-md-6">
+        <div className="col-12 col-md-12 col-lg-6">
           <Link className={`${Style.title_home}`} href="/">
             <h1>3nime Figure</h1>
           </Link>
@@ -256,8 +256,8 @@ function Order() {
           </div>
         </div>
 
-        <div className={`col-12 col-md-6 ${styles.user__border}`}>
-          <OrderProductList listProduct={listProduct} />
+        <div className={`col-12 col-md-12 col-lg-6 ${styles.user__border}`}>
+          <OrderProductList  uctList listProduct={listProduct} />
         </div>
       </div>
 

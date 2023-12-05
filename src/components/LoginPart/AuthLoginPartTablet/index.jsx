@@ -34,7 +34,7 @@ export default function AuthLoginPartTablet() {
 
   const handleLogout = () => {
     if (typeof window !== "undefined") {
-      localStorage.clear()
+      localStorage.clear("TOKEN","REFRESH-TOKEN")
       router.reload()
     }
   }

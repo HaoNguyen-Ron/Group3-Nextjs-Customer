@@ -9,11 +9,10 @@ import styles from '@/styles/form.module.css'
 import { useRouter } from 'next/router';
 import { axiosClient } from '@/libraries/axiosClient';
 import { Box, Modal, Typography } from '@mui/material';
-import verifyLoggin from '@/components/HOC/verifyLoggin';
 
 const LoginForm = () => {
   const [open, setOpen] = useState(false);
-
+  const [loading, setLoading] = useState(false);
   const redirect = useRouter();
 
   const style = {
@@ -49,20 +48,23 @@ const LoginForm = () => {
 
     onSubmit: async (values) => {
       try {
+        setLoading(true);
         const res = await axiosClient.post('/auth/login', values);
 
         if (res.status === 200) {
           localStorage.setItem("TOKEN", res.data.token)
           localStorage.setItem("REFRESH-TOKEN", res.data.refreshToken)
           if (res.data.token || res.data.token && redirect.pathname === '/login') {
-            redirect.reload()
-            
+            redirect.reload()       
           }
         }
 
       } catch (error) {
         setOpen(true)
         console.log('««««« error »»»»»', error);
+     
+      } finally {
+        setLoading(false);
       }
     },
   });
@@ -107,6 +109,7 @@ const LoginForm = () => {
             type='submit'
             onClick={validation.handleSubmit}
             className={`btn btn-lg border border-0 text-white px-5 ${styles.modal__btn}`}
+            disabled={loading}
           >
             Đăng nhập
           </button>
