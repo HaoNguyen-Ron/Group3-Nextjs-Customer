@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Logo from './Logo/Logo'
-import SearchBar from './Searchbar/Searchbar'
+import SearchBar from './Searchbar'
 import Nav from './Nav'
 import NavTablet from './NavTablet'
-
-import CardCart from './cardCart'
 
 import styles from '@/styles/header.module.css'
 

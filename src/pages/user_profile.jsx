@@ -39,7 +39,7 @@ function UserProfilePage() {
   const getUserDetail = async () => {
     try {
       const res = await axiosClient.get("/auth/profile");
-      console.log("««««« res »»»»»", res);
+
       if (res.status === 200 && router.isReady === true) {
         const data = res.data.payload;
         setUser(data);
@@ -56,13 +56,13 @@ function UserProfilePage() {
     }
   }, []);
   return (
-    <div className="container mb-5" style={{ height: "300px" }}>
+    <div className="container mb-5" style={{ height: "100%", minHeight:'300px' }}>
       <h1 className={`text-center ${styles.user__title}`}>Tài khoản của bạn</h1>
 
-      <div className="user-wrapper d-flex">
-        <div className="user__nav flex-1 me-3">
-          <ul className="nav flex-column">
-            <li className="nav-item">
+      <div className="user-wrapper d-block d-lg-flex row">
+        <div className="user__nav me-3 col-12 col-lg-2">
+          <ul className="nav row ">
+            <li className="nav-item col-12 col-sm-4 col-lg-12 text-center">
               <button
                 className={`btn ${styles.user__item}`}
                 onClick={onGetDetail}
@@ -71,7 +71,7 @@ function UserProfilePage() {
               </button>
             </li>
 
-            <li className="nav-item">
+            <li className="nav-item col-12 col-sm-4 col-lg-12 text-center">
               <button
                 className={`btn ${styles.user__item}`}
                 onClick={onGetHistory}
@@ -80,7 +80,7 @@ function UserProfilePage() {
               </button>
             </li>
 
-            <li className="nav-item">
+            <li className="nav-item col-12 col-sm-4 col-lg-12 text-center">
               <button
                 className={`btn  ${styles.user__item}`}
                 onClick={onGetPassword}
@@ -91,10 +91,12 @@ function UserProfilePage() {
           </ul>
         </div>
 
-        <div className="user__content flex-3 border-start border-2 px-5">
+        <hr className="d-block d-lg-none my-3" />
+
+        <div className="user__content px-5 col-12 col-lg-8">
           <UserDetail user={user} isShow={getDetail} />
 
-          <UserHistory isShow={getHistory} />
+          <UserHistory isShow={getHistory} user={user} />
 
           <UserPassword user={user} isShow={getPassword} />
         </div>

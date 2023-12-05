@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import Card from "@/components/CardList/Card";
 import Banner from "@/components/Banner";
-import x from "@/components/CardList/Card.module.css";
+
 
 function CardPage(products) {
   const [cart, setCart] = useState([]);

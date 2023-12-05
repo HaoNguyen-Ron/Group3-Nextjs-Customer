@@ -5,7 +5,6 @@ function InputGroup({
     type = 'text',
     name,
     validation,
-    isDisable,
 }) {
 
     const isValid = useMemo(() => {
@@ -21,7 +20,6 @@ function InputGroup({
         <label htmlFor="exampleInputEmail1" className="form-label">{label}</label>
 
         <input 
-            isDisable
             label={label}
             type={type}
             name={name}
