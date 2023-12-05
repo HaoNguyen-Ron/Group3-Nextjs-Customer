@@ -143,8 +143,11 @@ function order() {
               Số điện thoại khách hàng: {userData.phoneNumber}
             </span>
           </div>
-          <p></p>
-          <p>{userData.address}</p>
+          <div className={`${Style.row_cart}`}>
+            <span className={`${Style.span_cart_chil}`}>
+              Địa chỉ giao hàng: {userData.address}
+            </span>
+          </div>
 
           <div className="userDetail_container ms-3 d-flex flex-column g-2">
             <div className="userDetail_item">
