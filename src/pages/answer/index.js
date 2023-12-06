@@ -75,10 +75,16 @@ function Answer(props) {
                   <Image
                     src="/assets/images/hoi_dap.jpg"
                     alt="facebook"
-                    // objectFit="contain"
-                    priority
+                    layout="responsive"
                     width={500}
                     height={500}
+                    priority
+                    srcSet={{
+                      base: "/assets/images/hoi_dap.jpg",
+                      500: "/assets/images/hoi_dap.jpg 500w",
+                      300: "/assets/images/hoi_dap.jpg 300w",
+                    }}
+                    sizes="(max-width: 767px) 300px, 500px"
                   />
                 </p>
 
@@ -732,11 +738,12 @@ function Answer(props) {
                     </ul>
                   </div>
                 </div>
-                <div className="group-sidebox-banner">
+                <div className={`${abo["group-sidebox-banner"]}`}>
                   <figure className="mb-0 mt-4">
                     <a className={`${abo["about-head-a"]}`} href="#">
                       <Image
                         className="position-static"
+                        style={{ width: "100%" }}
                         src="/assets/images/about_sibar.jpg"
                         alt="about-side"
                         // objectFit="cover"

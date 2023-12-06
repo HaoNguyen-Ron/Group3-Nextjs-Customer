@@ -75,11 +75,10 @@ function AboutUS(props) {
                   <Image
                     src="/assets/images/banner-about.png"
                     alt="facebook"
-                    // layout="fill"
-                    // objectFit="cover"
                     priority
                     width={715}
                     height={250}
+                    layout="responsive"
                   />
                 </p>
 
@@ -105,10 +104,10 @@ function AboutUS(props) {
 
                 <p className="text-center">&nbsp;</p>
 
-                <div className="text-center">
+                <div className={`${abo["video-container"]}`}>
                   <iframe
                     width="100%"
-                    height={360}
+                    height="100%"
                     src="https://www.youtube.com/embed/j6-p9L9b3WA?si=NiZ78XNOlx3y80_H"
                     title="YouTube video player"
                     frameBorder={0}
@@ -126,11 +125,10 @@ function AboutUS(props) {
                   <Image
                     src="/assets/images/about_img-1.png"
                     alt="facebook"
-                    // layout="fill"
-                    // objectFit="contain"
                     priority
                     width={515}
                     height={350}
+                    layout="responsive"
                   />
                 </p>
 
@@ -166,7 +164,7 @@ function AboutUS(props) {
                   <Image
                     src="/assets/images/about_img-2.png"
                     alt="facebook"
-                    // layout="fill"
+                    layout="responsive"
                     // objectFit="contain"
                     priority
                     width={515}
@@ -180,7 +178,7 @@ function AboutUS(props) {
                   <Image
                     src="/assets/images/about_img-3.png"
                     alt="facebook"
-                    // layout="fill"
+                    layout="responsive"
                     // objectFit="contain"
                     priority
                     width={515}
@@ -193,7 +191,7 @@ function AboutUS(props) {
                   <Image
                     src="/assets/images/about_img-4.png"
                     alt="facebook"
-                    // layout="fill"
+                    layout="responsive"
                     // objectFit="contain"
                     priority
                     width={515}
@@ -260,7 +258,7 @@ function AboutUS(props) {
                   <Image
                     src="/assets/images/about_img-5.png"
                     alt="facebook"
-                    // layout="fill"
+                    layout="responsive"
                     // objectFit="contain"
                     priority
                     width={515}
@@ -278,7 +276,7 @@ function AboutUS(props) {
                   <Image
                     src="/assets/images/about_img-6.png"
                     alt="facebook"
-                    // layout="fill"
+                    layout="responsive"
                     // objectFit="contain"
                     priority
                     width={515}
@@ -353,7 +351,7 @@ function AboutUS(props) {
                   <Image
                     src="/assets/images/about_img-7.png"
                     alt="facebook"
-                    // layout="fill"
+                    layout="responsive"
                     // objectFit="contain"
                     priority
                     width={515}
@@ -460,7 +458,7 @@ function AboutUS(props) {
                   <Image
                     src="/assets/images/about_img-8.png"
                     alt="facebook"
-                    // layout="fill"
+                    layout="responsive"
                     // objectFit="cover"
                     priority
                     width={515}
@@ -529,9 +527,9 @@ function AboutUS(props) {
                     <a className={`${abo["about-head-a"]}`} href="#">
                       <Image
                         className="position-static"
+                        style={{ width: "100%" }}
                         src="/assets/images/about_sibar.jpg"
                         alt="about-side"
-                        // layout="fill"
                         // objectFit="cover"
                         priority
                         width={215}
