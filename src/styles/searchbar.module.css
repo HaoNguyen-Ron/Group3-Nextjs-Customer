@@ -26,11 +26,25 @@
     max-height: 450px;
     padding: 10px;
 }
+.searchbar__input-ul-none{
+    max-height: 450px;
+    padding: 10px;
+    color: var(--main-color);
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+}
 
 .searchbar__input-li{
     max-height: 20vh;
     border-bottom: 1px solid var(--main-color);
     padding: 10px;
+}
+.searchbar__input-li-a{
+    max-height: 20vh;
+    width: 100%;
+    padding: 10px;
+    color: black;
 }
 .searchbar__input-li:last-child{
     max-height: 20vh;

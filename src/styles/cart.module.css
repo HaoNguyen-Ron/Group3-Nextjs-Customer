@@ -1,6 +1,7 @@
 .box_cart {
     border: 1px solid #dfe0e1;
     padding: 15px;
+    border-radius: 10px;
 }
 .border_bottom {
     border-bottom: 1px dashed #dfe0e1;
