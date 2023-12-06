@@ -119,10 +119,9 @@ function CardList(products) {
           <div className="col-12 col-md-12 col-lg-8">
             <div className="d-flex row">
               {selectedProductsNotDiscount.map((product) => (
-                <div className="col-6 col-md-4 col-lg-3">
+                <div className="col-6 col-md-4 col-lg-3" key={product._id}>
                   <Card
                     id={`/productDetail/${product._id}`}
-                    key={product.id}
                     products={product}
                     handleAddToCart={handleAddToCart}
                     handleGoToProductDetail={handleGoToProductDetail}
@@ -158,10 +157,9 @@ function CardList(products) {
           <div className="col-12 col-md-12 col-lg-8">
             <div className="d-flex row">
               {selectedProducts.map((product) => (
-                <div className="col-6 col-md-4 col-lg-3">
+                <div className="col-6 col-md-4 col-lg-3" key={product._id}>
                   <Card
                     id={`/productDetail/${product._id}`}
-                    key={product.id}
                     products={product}
                     handleAddToCart={handleAddToCart}
                     handleGoToProductDetail={handleGoToProductDetail}
