@@ -75,8 +75,11 @@ function AboutUS(props) {
                   <Image
                     src="/assets/images/banner-about.png"
                     alt="facebook"
-                    layout="fill"
-                    objectFit="cover"
+                    // layout="fill"
+                    // objectFit="cover"
+                    priority
+                    width={715}
+                    height={250}
                   />
                 </p>
 
@@ -123,8 +126,11 @@ function AboutUS(props) {
                   <Image
                     src="/assets/images/about_img-1.png"
                     alt="facebook"
-                    layout="fill"
-                    objectFit="contain"
+                    // layout="fill"
+                    // objectFit="contain"
+                    priority
+                    width={515}
+                    height={350}
                   />
                 </p>
 
@@ -160,8 +166,11 @@ function AboutUS(props) {
                   <Image
                     src="/assets/images/about_img-2.png"
                     alt="facebook"
-                    layout="fill"
-                    objectFit="contain"
+                    // layout="fill"
+                    // objectFit="contain"
+                    priority
+                    width={515}
+                    height={350}
                   />
                 </p>
 
@@ -171,8 +180,11 @@ function AboutUS(props) {
                   <Image
                     src="/assets/images/about_img-3.png"
                     alt="facebook"
-                    layout="fill"
-                    objectFit="contain"
+                    // layout="fill"
+                    // objectFit="contain"
+                    priority
+                    width={515}
+                    height={350}
                   />
                 </p>
                 <p className="text-center">&nbsp;</p>
@@ -181,8 +193,11 @@ function AboutUS(props) {
                   <Image
                     src="/assets/images/about_img-4.png"
                     alt="facebook"
-                    layout="fill"
-                    objectFit="contain"
+                    // layout="fill"
+                    // objectFit="contain"
+                    priority
+                    width={515}
+                    height={350}
                   />
                 </p>
                 <p style={{ textAlign: "center" }}>
@@ -245,8 +260,11 @@ function AboutUS(props) {
                   <Image
                     src="/assets/images/about_img-5.png"
                     alt="facebook"
-                    layout="fill"
-                    objectFit="contain"
+                    // layout="fill"
+                    // objectFit="contain"
+                    priority
+                    width={515}
+                    height={350}
                   />
                 </p>
 
@@ -260,8 +278,11 @@ function AboutUS(props) {
                   <Image
                     src="/assets/images/about_img-6.png"
                     alt="facebook"
-                    layout="fill"
-                    objectFit="contain"
+                    // layout="fill"
+                    // objectFit="contain"
+                    priority
+                    width={515}
+                    height={350}
                   />
                 </p>
 
@@ -332,8 +353,11 @@ function AboutUS(props) {
                   <Image
                     src="/assets/images/about_img-7.png"
                     alt="facebook"
-                    layout="fill"
-                    objectFit="contain"
+                    // layout="fill"
+                    // objectFit="contain"
+                    priority
+                    width={515}
+                    height={350}
                   />
                 </p>
 
@@ -436,8 +460,11 @@ function AboutUS(props) {
                   <Image
                     src="/assets/images/about_img-8.png"
                     alt="facebook"
-                    layout="fill"
-                    objectFit="cover"
+                    // layout="fill"
+                    // objectFit="cover"
+                    priority
+                    width={515}
+                    height={350}
                   />
                 </p>
 
@@ -504,14 +531,17 @@ function AboutUS(props) {
                         className="position-static"
                         src="/assets/images/about_sibar.jpg"
                         alt="about-side"
-                        layout="fill"
-                        objectFit="cover"
+                        // layout="fill"
+                        // objectFit="cover"
+                        priority
+                        width={215}
+                        height={150}
                       />
                     </a>
                   </figure>
                 </div>
               </aside>
-              <aside class={pay["side"]}>
+              <aside className={pay["side"]}>
                 {/* phần bài viết mới */}
                 <div
                   className={`${pay["group-sidebox"]} ${
@@ -547,7 +577,7 @@ function AboutUS(props) {
                       }`}
                     >
                       <BlogItem
-                        image="https://file.hstatic.net/1000160337/article/vi_sao_nen_dat_hang_som_tai_japanfigure.jpg"
+                        image="/assets/images/blog_1.jpg"
                         title="Figure Nhật Bản là những sản phẩm sản xuất HÀNG LOẠT là đúng!"
                         title2="Figure Nhật Bản là những sản phẩm sản xuất HÀNG LOẠT là đúng!"
                         title3="Tin Tức"
@@ -630,7 +660,13 @@ const BlogItem = ({ image, title, title2, title3, title4, date, href }) => {
         <div className={`${pay["item-article"]} d-flex clearfix`}>
           <div className="post-image">
             <a href={href}>
-              <img className={`${pay["lazyloaded"]}`} src={image} alt={title} />
+              <Image
+                className={`${pay["lazyloaded"]}`}
+                src={image}
+                alt={title}
+                width={70}
+                height={70}
+              />
             </a>
           </div>
           <div className={`${pay["post-content"]} ms-2`}>
