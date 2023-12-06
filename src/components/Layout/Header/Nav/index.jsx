@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 import { useRouter } from 'next/router';
 
-function index(props) {
+function Navbar(props) {
   const router = useRouter();
  
   const [activeTab, setActiveTab] = useState(router.pathname);
@@ -296,4 +296,4 @@ function index(props) {
   );
 }
 
-export default index;
+export default Navbar;

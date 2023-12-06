@@ -119,9 +119,9 @@ function Answer(props) {
                   nhất của figure đó.]
                   <br />
                   <br />
-                  Khi gặp 1 figure 1/8 bạn sẽ hiểu là: "Ah figure này cao bằng
+                  Khi gặp 1 figure 1/8 bạn sẽ hiểu là: &ldquo;Ah figure này cao bằng
                   1/8 nguyên bản nhân vật trong phim/ truyện /game với đúng tư
-                  thế đó".
+                  thế đó&rdquo;.
                   <br />
                   Vd: Binh trưởng Levi cao 160cm&nbsp;(theo lời tác giả Hajime
                   Isayama)---&gt;figure 1/8 của anh cao 20cm. Đơn giản vậy thôi
@@ -404,12 +404,9 @@ function Answer(props) {
                       <strong>Đáp:</strong>
                     </span>
                     <span>
-                      &nbsp;Từ 3 tháng, 6 tháng tới 1 năm tùy sản phẩm và tùy
-                      vào nhu cầu của bạn. Các nhà phát hành 3NIME Figure đều mở
-                      Pre-order/ đặt mua trước 'ngày phát hành' 1 khoảng thời
-                      gian dài. Mục đích là để bạn có thể kịp chuẩn bị $, mặt
-                      khác là để họ thăm dò thị trường, nhắm xem sản xuất số
-                      lượng bao nhiêu là đủ.&nbsp;
+                      &nbsp;Từ 3 tháng, 6 tháng tới 1 năm tùy sản phẩm và tùy vào nhu cầu của bạn. Các nhà phát hành 3NIME Figure đều mở
+                      Pre-order/ đặt mua trước &lsquo;ngày phát hành&rsquo; 1 khoảng thời gian dài. Mục đích là để bạn có thể kịp chuẩn bị $, mặt
+                      khác là để họ thăm dò thị trường, nhắm xem sản xuất số lượng bao nhiêu là đủ.&nbsp;
                     </span>
                   </span>
                   <span>
@@ -444,10 +441,10 @@ function Answer(props) {
                         được ra mắt trong triễn lãm, trong các kỳ lễ hội hay
                         trong các bài blog giới thiệu sản phẩm mới. Khi nhận
                         thấy figure này được quan tâm nhiều, thì sau đó mới tiến
-                        hành tô vẽ, sản xuất hàng loạt ròi tiến tới phát hành.
+                        hành tô vẽ, sản xuất hàng loạt rồi tiến tới phát hành.
                         <br />
-                        Cũng với lý do trên, rất nhiều figure đã 'ra mắt' nhưng
-                        không được 'phát hành'.
+                        Cũng với lý do trên, rất nhiều figure đã &lsquo;ra mắt&rsquo; nhưng
+                        không được &lsquo;phát hành&rsquo;.
                       </span>
                     </span>
                   </span>
@@ -549,8 +546,9 @@ function Answer(props) {
                     <span style={{ color: "rgb(255, 0, 0)" }}>
                       <strong>Đáp:</strong>
                     </span>{" "}
+                    {" "}
                     Không được. Figure Nhật Bản&nbsp;là những mặt hàng cao cấp
-                    và có giá trị không nhỏ, khi đặt trước bằng 'lời nói' thì ko
+                    và có giá trị không nhỏ, khi đặt trước bằng &lsquo;lời nói&rsquo; thì ko
                     có gì chắc chắn bạn sẽ mua khi hàng được nhập về xong
                     cả.&nbsp;3NIME Figure chỉ đặt về sau khi nhận được khoản cọc
                     từ bạn.
@@ -689,9 +687,8 @@ function Answer(props) {
                     >
                       Danh mục
                       <span
-                        className={`fa fa-angle-${
-                          isNavVisible ? "up" : "down"
-                        } d-block d-lg-none position-absolute`}
+                        className={`fa fa-angle-${isNavVisible ? "up" : "down"
+                          } d-block d-lg-none position-absolute`}
                         style={{
                           fontSize: "18px",
                           right: "0",
@@ -703,9 +700,8 @@ function Answer(props) {
                     className={`d-lg-block ${isNavVisible ? "block" : "none"}`}
                   >
                     <ul
-                      className={`${abo["about-head-ul"]} ${
-                        isNavVisible ? "d-none" : "d-lg-block"
-                      }`}
+                      className={`${abo["about-head-ul"]} ${isNavVisible ? "d-none" : "d-lg-block"
+                        }`}
                     >
                       <li className={`${abo["about-head-li"]} border-top py-2`}>
                         <Link
@@ -747,9 +743,8 @@ function Answer(props) {
               <aside class={pay["side"]}>
                 {/* phần bài viết mới */}
                 <div
-                  className={`${pay["group-sidebox"]} ${
-                    isMdScreen ? "active" : isCategoryOpen ? "active" : ""
-                  }`}
+                  className={`${pay["group-sidebox"]} ${isMdScreen ? "active" : isCategoryOpen ? "active" : ""
+                    }`}
                 >
                   <div
                     className={`${pay["sidebox-title"]}`}
@@ -760,9 +755,8 @@ function Answer(props) {
                     >
                       Bài viết mới nhất
                       <span
-                        className={`fa ${
-                          isCategoryOpen ? "fa-angle-up" : "fa-angle-down"
-                        } d-block d-md-none position-absolute`}
+                        className={`fa ${isCategoryOpen ? "fa-angle-up" : "fa-angle-down"
+                          } d-block d-md-none position-absolute`}
                         style={{ right: "0" }}
                       />
                     </h3>
@@ -770,14 +764,12 @@ function Answer(props) {
 
                   {/* phần content bài viết */}
                   <div
-                    className={`${pay["sidebox-content "]} ${
-                      isMdScreen || isCategoryOpen ? "d-md-block" : "d-none"
-                    }`}
+                    className={`${pay["sidebox-content "]} ${isMdScreen || isCategoryOpen ? "d-md-block" : "d-none"
+                      }`}
                   >
                     <ul
-                      className={`${pay["menuList-links"]} ${
-                        isMdScreen || isCategoryOpen ? "d-md-block" : "d-none"
-                      }`}
+                      className={`${pay["menuList-links"]} ${isMdScreen || isCategoryOpen ? "d-md-block" : "d-none"
+                        }`}
                     >
                       <BlogItem
                         image="https://file.hstatic.net/1000160337/article/vi_sao_nen_dat_hang_som_tai_japanfigure.jpg"
@@ -864,7 +856,7 @@ const BlogItem = ({ image, title, title2, title3, title4, date, href }) => {
         <div className={`${pay["item-article"]} d-flex clearfix`}>
           <div className="post-image">
             <a href={href}>
-              <img className={`${pay["lazyloaded"]}`} src={image} alt={title} />
+              <Image className={`${pay["lazyloaded"]}`} href={image} alt={title} />
             </a>
           </div>
           <div className={`${pay["post-content"]} ms-2`}>

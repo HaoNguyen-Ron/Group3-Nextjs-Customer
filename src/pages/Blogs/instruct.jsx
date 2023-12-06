@@ -128,14 +128,13 @@ function Instruct(props) {
                 </p>
 
                 <p className="text-justify" style={{ fontSize: "18px" }}>
-                  <i>"Tôi muốn có được Luffy 1 triệu 4 trong vòng 7 ngày!"</i>{" "}
+                  <i>&ldquo;Tôi muốn có được Luffy 1 triệu 4 trong vòng 7 ngày!&rdquo;</i>{" "}
                   <br />
                   Ok vậy 1 ngày chỉ cần kiếm 200K là đủ <br />
-                  <i>
-                    "Tôi muốn có được Miku 5 triệu 5 trong vòng 30 ngày!"
-                  </i>{" "}
+                  <i>&ldquo;Tôi muốn có được Miku 5 triệu 5 trong vòng 30 ngày!&rdquo;</i>{" "}
                   <br />
                   Ok vậy 1 ngày chỉ cần kiếm 183K là đủ
+
                 </p>
                 <div className="text-center">
                   <iframe
@@ -210,7 +209,7 @@ function Instruct(props) {
                 </p>
 
                 <p className="text-justify" style={{ fontSize: "18px" }}>
-                  <b> Nếu cảm thấy "không làm được",</b> <br />
+                  <b> Nếu cảm thấy &ldquo;không làm được&rdquo;,</b> <br />
                   thì vui vẻ đóng tab này đi cho đỡ tốn thời gian của bạn.{" "}
                   <br />
                   Miễn bạn hài lòng với công việc hiện tại, cứ tiếp tục. <br />
@@ -293,9 +292,8 @@ function Instruct(props) {
                     >
                       Danh mục
                       <span
-                        className={`fa fa-angle-${
-                          isNavVisible ? "up" : "down"
-                        } d-block d-lg-none position-absolute`}
+                        className={`fa fa-angle-${isNavVisible ? "up" : "down"
+                          } d-block d-lg-none position-absolute`}
                         style={{
                           fontSize: "18px",
                           right: "0",
@@ -307,9 +305,8 @@ function Instruct(props) {
                     className={`d-lg-block ${isNavVisible ? "block" : "none"}`}
                   >
                     <ul
-                      className={`${abo["about-head-ul"]} ${
-                        isNavVisible ? "d-none" : "d-lg-block"
-                      }`}
+                      className={`${abo["about-head-ul"]} ${isNavVisible ? "d-none" : "d-lg-block"
+                        }`}
                     >
                       <li className={`${abo["about-head-li"]} border-top py-2`}>
                         <Link
@@ -351,9 +348,8 @@ function Instruct(props) {
               <aside class={pay["side"]}>
                 {/* phần bài viết mới */}
                 <div
-                  className={`${pay["group-sidebox"]} ${
-                    isMdScreen ? "active" : isCategoryOpen ? "active" : ""
-                  }`}
+                  className={`${pay["group-sidebox"]} ${isMdScreen ? "active" : isCategoryOpen ? "active" : ""
+                    }`}
                 >
                   <div
                     className={`${pay["sidebox-title"]}`}
@@ -364,9 +360,8 @@ function Instruct(props) {
                     >
                       Bài viết mới nhất
                       <span
-                        className={`fa ${
-                          isCategoryOpen ? "fa-angle-up" : "fa-angle-down"
-                        } d-block d-md-none position-absolute`}
+                        className={`fa ${isCategoryOpen ? "fa-angle-up" : "fa-angle-down"
+                          } d-block d-md-none position-absolute`}
                         style={{ right: "0" }}
                       />
                     </h3>
@@ -374,14 +369,12 @@ function Instruct(props) {
 
                   {/* phần content bài viết */}
                   <div
-                    className={`${pay["sidebox-content "]} ${
-                      isMdScreen || isCategoryOpen ? "d-md-block" : "d-none"
-                    }`}
+                    className={`${pay["sidebox-content "]} ${isMdScreen || isCategoryOpen ? "d-md-block" : "d-none"
+                      }`}
                   >
                     <ul
-                      className={`${pay["menuList-links"]} ${
-                        isMdScreen || isCategoryOpen ? "d-md-block" : "d-none"
-                      }`}
+                      className={`${pay["menuList-links"]} ${isMdScreen || isCategoryOpen ? "d-md-block" : "d-none"
+                        }`}
                     >
                       <BlogItem
                         image="https://file.hstatic.net/1000160337/article/vi_sao_nen_dat_hang_som_tai_japanfigure.jpg"

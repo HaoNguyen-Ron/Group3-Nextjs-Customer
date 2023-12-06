@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Styles from "@/styles/cart.module.css";
+import Link from "next/link";
 
 export default function CartItem({id}) {
 
@@ -60,16 +61,16 @@ export default function CartItem({id}) {
           </p>
           <div className={`d-flex row ${Styles.media_line_item}`}>
             <div className={`col-2 ${Styles.media_left}`}>
-              <a className={`${Styles.media_left_a}`} href="/">
+              <Link className={`${Styles.media_left_a}`} href="/">
                 <img
                   className={`${Styles.image_number_cart}`}
                   src={data.description}
                   alt={data.name}
                 />
-              </a>
+              </Link>
             </div>
             <div className={`col-8 ${Styles.media_right}`}>
-              <a href="/">Goddess of Victory: Nikke Emma 1/7</a>
+              <Link href="/">Goddess of Victory: Nikke Emma 1/7</Link>
               <div className="d-flex">
                 <input
                   type="button"
@@ -100,9 +101,9 @@ export default function CartItem({id}) {
               </p>
             </div>
             <div className={`col-2`}>
-              <a href="/cart/change?line=1&quantity=0" className="cart">
+              <Link href="/cart/change?line=1&quantity=0" className="cart">
                 <img src="//theme.hstatic.net/1000160337/1000885200/14/delete-cart.png?v=316" />
-              </a>
+              </Link>
             </div>
           </div>
           <div>

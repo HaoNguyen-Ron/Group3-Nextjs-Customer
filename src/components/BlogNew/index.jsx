@@ -1,5 +1,6 @@
 import React from 'react';
 import blog from '@/components/BlogNew/blognew.module.css'
+import Link from 'next/link';
 
 function BlogNew(props) {
     return (
@@ -24,27 +25,26 @@ const BlogItem = ({ image, title, title2, title3, title4, date }) => {
         <>
             <div className={`${blog["item-article"]} clearfix`}>
                 <div className="post-image">
-                    <a href="/">
+                    <Link href="/">
                         <img
                             className=" lazyloaded"
                             src={image}
                             alt={title}
                         />
-                    </a>
+                    </Link>
                 </div>
                 <div className="post-content">
                     <h3>
-                        <a href="/">
-                            {/* Bật mí cách mình đang kiếm tiền hiện giờ */}
+                        <Link href="/">
                             {title2}
-                        </a>
+                        </Link>
                     </h3>
                     <p className="post-meta">
                         <span className="cate">
-                            <a href="/">{title3}</a>
+                            <Link href="/">{title3}</Link>
                         </span>
                         <span className="author hidden">
-                            <a href="/">{title4}</a>
+                            <Link href="/">{title4}</Link>
                         </span>
                         <span className="date">{date}</span>
                     </p>

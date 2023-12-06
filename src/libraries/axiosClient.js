@@ -1,6 +1,6 @@
 import axios from "axios";
 
 export const axiosClient = axios.create({
-  baseURL: 'http://localhost:8000',
+  baseURL: 'https://group3-3nime-nodejs-customer.onrender.com',
   headers: { "Content-Type": "application/json" },
 });
