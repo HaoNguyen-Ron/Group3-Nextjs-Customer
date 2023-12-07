@@ -79,13 +79,22 @@ const LoginForm = () => {
       }
     },
   });
-
+  const handleEnterKey = (e) => {
+    if (e.keyCode === 13) {
+      e.preventDefault(); // Prevent default behavior (e.g., form submission)
+      validation.handleSubmit();
+    }
+  };
   useEffect(() => {
     const token = window.localStorage.getItem("TOKEN");
 
     if (token || (token && redirect.pathname === "/login")) {
       redirect.push("/");
     }
+    document.addEventListener("keydown", handleEnterKey);
+    return () => {
+      document.removeEventListener("keydown", handleEnterKey);
+    };
   }, [redirect]);
 
   const handleClose = () => setOpen(false);
@@ -133,6 +142,7 @@ const LoginForm = () => {
             onClick={validation.handleSubmit}
             className={`btn btn-lg border border-0 text-white px-5 ${styles.modal__btn}`}
             disabled={loading}
+            onKeyDown={handleEnterKey}
           >
             Đăng nhập
           </button>
