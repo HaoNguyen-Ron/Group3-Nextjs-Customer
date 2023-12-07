@@ -16,6 +16,34 @@ function CardList(products) {
     window.location.href = `/productDetail/${productId}`;
   };
 
+  // const handleAddToCart = (selectedProduct) => {
+  //   if (router.isReady === true) {
+  //     const checkForToken = localStorage.getItem("TOKEN");
+  //     if (!checkForToken) {
+  //       router.push("/login");
+  //     } else {
+  //       const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  //       const updatedCart = [...cart];
+  //       const existingProductIndex = updatedCart.findIndex(
+  //         (item) => item._id === selectedProduct._id
+  //       );
+
+  //       if (existingProductIndex !== -1) {
+  //         // If the product is already in the cart, increment the count
+  //         updatedCart[existingProductIndex].quantity += 1;
+  //       } else {
+  //         // If the product is not in the cart, add it with count 1
+  //         updatedCart.push({ ...selectedProduct, quantity: 1 });
+  //       }
+
+  //       // Set the updated cart in state
+  //       // setCart(updatedCart);
+
+  //       // Store the updated cart in local storage
+  //       localStorage.setItem("cart", JSON.stringify(updatedCart));
+  //     }
+  //   }
+  // };
   const handleAddToCart = (selectedProduct) => {
     if (router.isReady === true) {
       const checkForToken = localStorage.getItem("TOKEN");
@@ -29,17 +57,17 @@ function CardList(products) {
         );
 
         if (existingProductIndex !== -1) {
-          // If the product is already in the cart, increment the count
-          updatedCart[existingProductIndex].quantity += 1;
+          if (
+            updatedCart[existingProductIndex].quantity < selectedProduct.stock
+          ) {
+            updatedCart[existingProductIndex].quantity += 1;
+          } else {
+            alert(" đã hết sản phẩm.");
+            return;
+          }
         } else {
-          // If the product is not in the cart, add it with count 1
           updatedCart.push({ ...selectedProduct, quantity: 1 });
         }
-
-        // Set the updated cart in state
-        // setCart(updatedCart);
-
-        // Store the updated cart in local storage
         localStorage.setItem("cart", JSON.stringify(updatedCart));
       }
     }
@@ -118,16 +146,18 @@ function CardList(products) {
 
           <div className="col-12 col-md-12 col-lg-8">
             <div className="d-flex row">
-              {selectedProductsNotDiscount.map((product) => (
-                <div className="col-6 col-md-4 col-lg-3" key={product._id}>
-                  <Card
-                    id={`/productDetail/${product._id}`}
-                    products={product}
-                    handleAddToCart={handleAddToCart}
-                    handleGoToProductDetail={handleGoToProductDetail}
-                  />
-                </div>
-              ))}
+              {selectedProductsNotDiscount.map((product) =>
+                product.stock > 0 ? (
+                  <div className="col-6 col-md-4 col-lg-3" key={product._id}>
+                    <Card
+                      id={`/productDetail/${product._id}`}
+                      products={product}
+                      handleAddToCart={handleAddToCart}
+                      handleGoToProductDetail={handleGoToProductDetail}
+                    />
+                  </div>
+                ) : null
+              )}
             </div>
           </div>
         </div>
@@ -156,16 +186,18 @@ function CardList(products) {
 
           <div className="col-12 col-md-12 col-lg-8">
             <div className="d-flex row">
-              {selectedProducts.map((product) => (
-                <div className="col-6 col-md-4 col-lg-3" key={product._id}>
-                  <Card
-                    id={`/productDetail/${product._id}`}
-                    products={product}
-                    handleAddToCart={handleAddToCart}
-                    handleGoToProductDetail={handleGoToProductDetail}
-                  />
-                </div>
-              ))}
+              {selectedProducts.map((product) =>
+                product.stock > 0 ? (
+                  <div className="col-6 col-md-4 col-lg-3" key={product._id}>
+                    <Card
+                      id={`/productDetail/${product._id}`}
+                      products={product}
+                      handleAddToCart={handleAddToCart}
+                      handleGoToProductDetail={handleGoToProductDetail}
+                    />
+                  </div>
+                ) : null
+              )}
             </div>
           </div>
         </div>
