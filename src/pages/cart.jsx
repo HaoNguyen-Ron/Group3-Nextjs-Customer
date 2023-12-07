@@ -34,11 +34,14 @@ function Cart() {
   };
 
   const incrementCount = (productId) => {
-    const updatedData = data.map((item) =>
-      item._id === productId ? { ...item, quantity: item.quantity + 1 } : item
-    );
-
-    // Update state and local storage with the new data
+    const updatedData = data.map((item) => {
+      if (item._id === productId) {
+        const newQuantity = item.quantity + 1;
+        const maxQuantity = Math.min(newQuantity, item.stock);
+        return { ...item, quantity: maxQuantity };
+      }
+      return item;
+    });
     setData(updatedData);
     localStorage.setItem("cart", JSON.stringify(updatedData));
   };
@@ -52,14 +55,16 @@ function Cart() {
   };
 
   const updateCount = (productId, newCount) => {
-    // If newCount is not a number or is less than 1, set it to 1
     const countToUpdate = isNaN(newCount) || newCount < 1 ? 1 : newCount;
-
-    const updatedData = data.map((item) =>
-      item._id === productId ? { ...item, quantity: countToUpdate } : item
-    );
-
-    // Update state and local storage with the new data
+  
+    const updatedData = data.map((item) => {
+      if (item._id === productId) {
+        const updatedQuantity = Math.min(Math.max(countToUpdate, 1), item.stock);
+        return { ...item, quantity: updatedQuantity };
+      }
+      return item;
+    });
+  
     setData(updatedData);
     localStorage.setItem("cart", JSON.stringify(updatedData));
   };
