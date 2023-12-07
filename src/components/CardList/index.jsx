@@ -105,8 +105,7 @@ function CardList(products) {
           <div className="col-md-6 col-sm-6 col-xs-12 ">
             <Banner
               image="https://theme.hstatic.net/1000160337/1000885200/14/categorybanner_1_img.jpg?v=316"
-              caption="Dòng chibi figure được yêu thích nhất,
-                  nhiều gương mặt, thoả sức tạo dáng"
+              caption="Dòng chibi figure "
               title="COMMING SOON"
               name="Nendoroid"
             />
@@ -114,8 +113,7 @@ function CardList(products) {
           <div className="col-md-6 col-sm-6 col-xs-12 ">
             <Banner
               image="https://theme.hstatic.net/1000160337/1000885200/14/categorybanner_2_img.jpg?v=341"
-              caption="Dòng scale figure kích thước sinh viên,
-                     giá tiểu học"
+              caption="Dòng scale figure "
               title="COMMING SOON"
               name="Pop Up Parade"
             />
