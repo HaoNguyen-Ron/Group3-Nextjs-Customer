@@ -179,7 +179,7 @@ function Cart() {
               </h2>
 
               <div
-                className={`d-flex justify-content-between ${Styles.title_ThanhTien} ${Styles.border_bottom}`}
+                className={`d-flex d-md-block d-lg-flex justify-content-between ${Styles.title_ThanhTien} ${Styles.border_bottom}`}
               >
                   <p className={`${Styles.input_color_2}`}><b>Tổng tiền:</b></p>
                   <p className={`${Styles.input_color_2} ${Styles.input_color_1}`}><b>{formattedPrice(totalPrice)}</b></p>
