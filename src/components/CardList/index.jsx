@@ -16,34 +16,6 @@ function CardList(products) {
     window.location.href = `/productDetail/${productId}`;
   };
 
-  // const handleAddToCart = (selectedProduct) => {
-  //   if (router.isReady === true) {
-  //     const checkForToken = localStorage.getItem("TOKEN");
-  //     if (!checkForToken) {
-  //       router.push("/login");
-  //     } else {
-  //       const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  //       const updatedCart = [...cart];
-  //       const existingProductIndex = updatedCart.findIndex(
-  //         (item) => item._id === selectedProduct._id
-  //       );
-
-  //       if (existingProductIndex !== -1) {
-  //         // If the product is already in the cart, increment the count
-  //         updatedCart[existingProductIndex].quantity += 1;
-  //       } else {
-  //         // If the product is not in the cart, add it with count 1
-  //         updatedCart.push({ ...selectedProduct, quantity: 1 });
-  //       }
-
-  //       // Set the updated cart in state
-  //       // setCart(updatedCart);
-
-  //       // Store the updated cart in local storage
-  //       localStorage.setItem("cart", JSON.stringify(updatedCart));
-  //     }
-  //   }
-  // };
   const handleAddToCart = (selectedProduct) => {
     if (router.isReady === true) {
       const checkForToken = localStorage.getItem("TOKEN");
@@ -51,6 +23,7 @@ function CardList(products) {
         router.push("/login");
       } else {
         const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        console.log('««««« cart »»»»»', cart);
         const updatedCart = [...cart];
         const existingProductIndex = updatedCart.findIndex(
           (item) => item._id === selectedProduct._id
@@ -60,6 +33,7 @@ function CardList(products) {
           if (
             updatedCart[existingProductIndex].quantity < selectedProduct.stock
           ) {
+            alert(" đã thêm sản phẩm vào giỏ hàng.");
             updatedCart[existingProductIndex].quantity += 1;
           } else {
             alert(" đã hết sản phẩm.");
@@ -67,6 +41,7 @@ function CardList(products) {
           }
         } else {
           updatedCart.push({ ...selectedProduct, quantity: 1 });
+          alert(" đã thêm sản phẩm vào giỏ hàng.");
         }
         localStorage.setItem("cart", JSON.stringify(updatedCart));
       }

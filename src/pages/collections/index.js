@@ -23,6 +23,7 @@ function Collection({ products }) {
         router.push("/login");
       } else {
         const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        console.log('««««« cart »»»»»', cart);
         const updatedCart = [...cart];
         const existingProductIndex = updatedCart.findIndex(
           (item) => item._id === selectedProduct._id
@@ -32,6 +33,7 @@ function Collection({ products }) {
           if (
             updatedCart[existingProductIndex].quantity < selectedProduct.stock
           ) {
+            alert(" đã thêm sản phẩm vào giỏ hàng.");
             updatedCart[existingProductIndex].quantity += 1;
           } else {
             alert(" đã hết sản phẩm.");
@@ -39,6 +41,7 @@ function Collection({ products }) {
           }
         } else {
           updatedCart.push({ ...selectedProduct, quantity: 1 });
+          alert(" đã thêm sản phẩm vào giỏ hàng.");
         }
         localStorage.setItem("cart", JSON.stringify(updatedCart));
       }

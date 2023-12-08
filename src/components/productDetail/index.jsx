@@ -37,19 +37,19 @@ export default function CardProduct({ products }) {
           const totalQuantity = cart[existingProductIndex].quantity + count;
           if (totalQuantity > products.stock) {
             alert(" đã hết sản phẩm.");
-            return;
+          }else {
+            cart[existingProductIndex].quantity = totalQuantity;
+            alert(" đã thêm sản phẩm vào giỏ hàng.");
           }
-  
-          cart[existingProductIndex].quantity = totalQuantity;
         } else {
           if (count > products.stock) {
-            // Show an error message or take appropriate action
-            alert("Out of stock. Cannot add more items.");
-            return;
+            alert(" đã thêm sản phẩm vào giỏ hàng.");
           }
-  
           const newProduct = { ...productWithoutCircularRefs, quantity: count };
           cart.push(newProduct);
+          alert(" đã thêm sản phẩm vào giỏ hàng.");
+  
+
         }
   
         localStorage.setItem("cart", JSON.stringify(cart));
