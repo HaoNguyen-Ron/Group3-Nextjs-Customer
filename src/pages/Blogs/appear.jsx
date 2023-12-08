@@ -37,19 +37,15 @@ function Appper(props) {
     setIsCategoryOpen(!isCategoryOpen);
   };
 
-  const toggleCategory2 = () => {
-    setIsCategoryOpen2(!isCategoryOpen2);
-  };
-
   return (
     <div>
       <div className="container">
         <div className="row">
-          <div className=" text-center">
-            <img
+          <div>
+            <img 
               src="https://theme.hstatic.net/1000160337/1000885200/14/blogs_banner_paralax.jpg?v=341"
               alt=""
-              style={{ maxWidth: "100%", width: "100%", height: "auto" }}
+              className={`${x["image_width"]} text-center`}
             />
           </div>
           <div className="col-lg-9 col-sm-12 col-xs-12">
@@ -57,7 +53,7 @@ function Appper(props) {
               <h1>Khi nào 1 figure &ldquo;CÓ&rdquo; tại Nhật Bản?</h1>
             </div>
             <div className="contentAboutusDetail">
-              <div className={`${x["imageAbout"]} text-center`}>
+              <div className={` ${x["image_width"]}`}>
                 <img
                   src="http://file.hstatic.net/1000160337/article/vi_sao_nen_dat_hang_som_tai_japanfigure.jpg"
                   alt=""
@@ -184,6 +180,7 @@ function Appper(props) {
                   <img
                     src="//file.hstatic.net/1000160337/file/quy_trinh_dat_hang-01-01.jpg"
                     alt=""
+                    className={`${x["image_width"]} text-center`}
                   />
                 </p>
 
