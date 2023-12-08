@@ -86,7 +86,7 @@ function Cart() {
 
       <div className="container">
         <div className="row">
-          <div className="col-8">
+          <div className="col-12 col-md-8 col-lg-8">
             {data.length > 0 ? (
               <>
                 <p className={`${Styles.title_number_cart}`}>
@@ -170,7 +170,7 @@ function Cart() {
             )}
           </div>
 
-          <div className="col-4">
+          <div className="col-12 col-md-4 col-lg-4">
             <div className={`${Styles.box_cart}`}>
               <h2
                 className={`${Styles.border_bottom} ${Styles.description_cart}`}
