@@ -4,6 +4,7 @@ import CardList from "@/components/CardList/index";
 import Sliders from "@/components/Slider";
 import { axiosClient } from "@/libraries/axiosClient";
 import Social from "@/components/social";
+import Carousel from "@/components/Carousel";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,6 +12,7 @@ export default function Home(products) {
   // console.log('««««« products »»»»»', products);c
   return (
     <>
+      <Carousel/>
       <CardList products={products.products} />
       <Services />
       <Sliders />
