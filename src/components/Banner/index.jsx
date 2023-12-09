@@ -19,7 +19,7 @@ function Banner({ image, titles, caption, name }) {
           <div className={`${x["price"]}`}>
             <a href="/collections" className={`${x["add-to-cart"]}`}>
               Xem Thêm
-              <i classNames="fa fa-angle-right" aria-hidden="true"></i>
+              <i className="fa fa-angle-right" aria-hidden="true"></i>
             </a>
           </div>
         </figcaption>
