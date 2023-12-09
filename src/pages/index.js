@@ -9,8 +9,7 @@ import Carousel from "@/components/Carousel";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home(products) {
-  // console.log('««««« products »»»»»', products);c
-  return (
+    return (
     <>
       <Carousel/>
       <CardList products={products.products} />

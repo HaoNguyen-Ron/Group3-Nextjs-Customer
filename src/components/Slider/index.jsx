@@ -64,7 +64,7 @@ function Sliders() {
     ],
   };
   return (
-    <div style={{ marginBottom: "50px" }}>
+    <div className="container" style={{ marginBottom: "50px" }}>
       <div className={` ${x["section"]}`}>
         <div className={` ${x["section-heading"]}`}>
           <h2 className={` ${x["hTitle"]}`}>
