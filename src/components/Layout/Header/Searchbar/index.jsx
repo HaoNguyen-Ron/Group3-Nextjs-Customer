@@ -45,7 +45,7 @@ export default function SearchBar() {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+  }, [route.isReady]);
   return (
     <>
       <div className={styles.searchbar__input} ref={searchbarRef}>

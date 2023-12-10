@@ -22,7 +22,7 @@ export default function Header() {
             if (token) setIsLogged(true)
         }
 
-    },[]);
+    },[router.isReady]);
 
     return (    
         <>

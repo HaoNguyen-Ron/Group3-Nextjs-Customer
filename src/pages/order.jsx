@@ -137,7 +137,7 @@ function Order() {
     const parsedData = storedData ? JSON.parse(storedData) : [];
 
     setListProduct(parsedData);
-  }, []);
+  }, [router.isReady]);
 
   return (
     <div className="container p-5">
