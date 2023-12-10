@@ -1,5 +1,6 @@
 import React from "react";
 import x from "@/components/Banner/Banner.module.css";
+import Link from "next/link";
 function Banner({ image, titles, caption, name }) {
   return (
     <div>
@@ -17,10 +18,10 @@ function Banner({ image, titles, caption, name }) {
           <p className={`${x["name"]}`}>{name}</p>
           <p className={` text-dark ${x["pi"]}`}>{caption}</p>
           <div className={`${x["price"]}`}>
-            <a href="/collections" className={`${x["add-to-cart"]}`}>
+            <Link href="/collections" className={`${x["add-to-cart"]}`}>
               Xem Thêm
               <i className="fa fa-angle-right" aria-hidden="true"></i>
-            </a>
+            </Link>
           </div>
         </figcaption>
       </figure>

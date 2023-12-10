@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 function Carousel(props) {
   return (
     <>
@@ -10,22 +11,22 @@ function Carousel(props) {
       >
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <a href="/Blogs/instruct">
+            <Link href="/Blogs/instruct">
               <img
                 src="https://theme.hstatic.net/1000160337/1000885200/14/slide_1_img.jpg?v=341"
                 className="d-block w-100"
                 alt="..."
               />
-            </a>
+            </Link>
           </div>
           <div className="carousel-item">
-            <a href="/about-us">
+            <Link href="/about-us">
               <img
                 src="https://theme.hstatic.net/1000160337/1000885200/14/slide_3_img.jpg?v=341"
                 className="d-block w-100"
                 alt="..."
               />
-            </a>
+            </Link>
           </div>
           <div className="carousel-item">
             <a href="Blogs/appear">
