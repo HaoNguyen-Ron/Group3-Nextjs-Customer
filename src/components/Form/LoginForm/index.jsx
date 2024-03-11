@@ -11,8 +11,13 @@ import { axiosClient } from "@/libraries/axiosClient";
 import { Box, Modal, Typography } from "@mui/material";
 
 const LoginForm = () => {
-  const [password, setPassword] = useState("");
+  const [, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [openWelcome, setOpenWelcome] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const redirect = useRouter();
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
@@ -21,10 +26,6 @@ const LoginForm = () => {
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
   };
-
-  const [open, setOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const redirect = useRouter();
 
   const style = {
     position: "absolute",
@@ -68,36 +69,46 @@ const LoginForm = () => {
             res.data.token ||
             (res.data.token && redirect.pathname === "/login")
           ) {
-            redirect.reload();
+            setOpenWelcome(true)
+            setTimeout(() => redirect.reload(), 3000)
           }
         }
       } catch (error) {
         setOpen(true);
-        console.log("««««« error »»»»»", error);
+        setLoading(false);
+
       } finally {
         setLoading(false);
       }
     },
   });
+
   const handleEnterKey = (e) => {
     if (e.keyCode === 13) {
-      e.preventDefault(); // Prevent default behavior (e.g., form submission)
+      e.preventDefault();
       validation.handleSubmit();
     }
   };
+
+  const handleClose = () => setOpen(false);
+
+  const handleContinue = () => {
+    redirect.push("/");
+  }
+
   useEffect(() => {
     const token = window.localStorage.getItem("TOKEN");
 
     if (token || (token && redirect.pathname === "/login")) {
       redirect.push("/");
     }
+
     document.addEventListener("keydown", handleEnterKey);
+
     return () => {
       document.removeEventListener("keydown", handleEnterKey);
     };
   }, [redirect]);
-
-  const handleClose = () => setOpen(false);
 
   return (
     <div className={`px-5 mx-auto my-5 ${styles.formContainer} `}>
@@ -176,6 +187,41 @@ const LoginForm = () => {
                 onClick={handleClose}
               >
                 Quay lại
+              </button>
+            </div>
+          </div>
+        </Box>
+      </Modal>
+
+      <Modal
+        open={openWelcome}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <div className="d-flex flex-column">
+            <Typography
+              className={styles.form__item}
+              id="modal-modal-title"
+              variant="h6"
+              component="h2"
+            >
+              Chào mừng bạn đến với 3nime
+            </Typography>
+
+            <hr />
+
+            <Typography id="modal-modal-description">
+              Đây chỉ là trang web giả lập thôi nha!
+            </Typography>
+
+            <div className="mt-3">
+              <button
+                className={`btn ${styles.modal__btn}`}
+                onClick={handleContinue}
+              >
+                Tham quan 3nime
               </button>
             </div>
           </div>
