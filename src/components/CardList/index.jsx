@@ -119,7 +119,7 @@ function CardList(products) {
             </div>
           </div>
 
-          <div className="col-12 col-md-12 col-lg-8">
+          <div className="col-12 col-md-12 col-lg-8 mt-3">
             <div className="d-flex row">
               {selectedProductsNotDiscount.map((product) =>
                 product.stock > 0 ? (
@@ -159,7 +159,7 @@ function CardList(products) {
             </div>
           </div>
 
-          <div className="col-12 col-md-12 col-lg-8">
+          <div className="col-12 col-md-12 col-lg-8 mt-3">
             <div className="d-flex row">
               {selectedProducts.map((product) =>
                 product.stock > 0 ? (
