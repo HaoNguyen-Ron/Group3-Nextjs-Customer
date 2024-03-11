@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 
 function NavTablet() {
   const router = useRouter();
- 
+
   const [activeTab, setActiveTab] = useState(router.pathname);
 
   const onClickTab = () => {
@@ -15,7 +15,7 @@ function NavTablet() {
   };
 
   return (
-    <>
+    <div className="d-flex justify-content-start">
       <a
         className="btn active-colors"
         data-bs-toggle="offcanvas"
@@ -25,6 +25,7 @@ function NavTablet() {
       >
         <span className="active-colors fa-solid fa-bars" />
       </a>
+
       <div
         className="offcanvas offcanvas-start"
         tabIndex={-1}
@@ -41,53 +42,54 @@ function NavTablet() {
           />
         </div>
         <div className="offcanvas-body">
-        <ul className="navigation-menu navbar-nav me-auto mb-2 mb-lg-0">
-              <NavSidbar
-                title="Trang Chủ"
-                a_href="/"
-                activeTab={activeTab}
-                onClick={onClickTab}
-              />
+          <ul className="navigation-menu navbar-nav me-auto mb-2 mb-lg-0">
+            <NavSidbar
+              title="Trang Chủ"
+              a_href="/"
+              activeTab={activeTab}
+              onClick={onClickTab}
+            />
 
-              <NavSidbar
-                title="Giới Thiệu"
-                activeTab={activeTab}
-                onClick={onClickTab}
-                a_href="/about-us"
-              />
+            <NavSidbar
+              title="Giới Thiệu"
+              activeTab={activeTab}
+              onClick={onClickTab}
+              a_href="/about-us"
+            />
 
-              <NavSidbar
-                title="Hướng Dẫn"
-                activeTab={activeTab}
-                onClick={onClickTab}
-                submenutab="0"
-                a_href="#"
-                titlemenu1="Đặt mua & Thanh Toán"
-                a_href1="/payment-instructions"
-                titlemenu2="Kiếm 250k / h"
-                a_href2="/Blogs/instruct"
-                titlemenu3="Tiết kiệm tiêu dùng"
-                a_href3="/Blogs/Kakeibo"
-              />     
+            <NavSidbar
+              title="Hướng Dẫn"
+              activeTab={activeTab}
+              onClick={onClickTab}
+              submenutab="0"
+              a_href="#"
+              titlemenu1="Đặt mua & Thanh Toán"
+              a_href1="/payment-instructions"
+              titlemenu2="Kiếm 250k / h"
+              a_href2="/Blogs/instruct"
+              titlemenu3="Tiết kiệm tiêu dùng"
+              a_href3="/Blogs/Kakeibo"
+            />
 
-              <NavSidbar
-                title="Sản Phẩm"
-                activeTab={activeTab}
-                onClick={onClickTab}
-                a_href="/collections"
-              />
+            <NavSidbar
+              title="Sản Phẩm"
+              activeTab={activeTab}
+              onClick={onClickTab}
+              a_href="/collections"
+            />
 
-              <NavSidbar
-                title="Hỏi đáp"
-                activeTab={activeTab}
-                onClick={onClickTab}
-                a_href="/answer"
-              />
-            </ul>
+            <NavSidbar
+              title="Hỏi đáp"
+              activeTab={activeTab}
+              onClick={onClickTab}
+              a_href="/answer"
+            />
+          </ul>
         </div>
       </div>
+
       <style jsx>
-          {`
+        {`
             /* Navbar */
             nav {
               display: flex;
@@ -297,8 +299,8 @@ function NavTablet() {
             @media screen and (max-width: 426px) {
             }
           `}
-        </style>
-    </>
+      </style>
+    </div>
   );
 }
 
@@ -322,9 +324,8 @@ const TabLi = ({
     <>
       <li
         onClick={() => onClick(value)}
-        className={`${classDNone} nav-item ${
-          value === activeTab ? "active-colors" : ""
-        }`}
+        className={`${classDNone} nav-item ${value === activeTab ? "active-colors" : ""
+          }`}
       >
         <a
           className={`nav-link ${value === activeTab ? "active-colors" : ""}`}
@@ -388,7 +389,7 @@ const TabLi = ({
         )}
       </li>
       <style jsx>
-          {`
+        {`
             /* Navbar */
             nav {
               display: flex;

@@ -17,7 +17,7 @@ export default function LoginPartTablet() {
   };
 
   return (
-    <div className={` ${styles.media_tablet} d-flex justify-content-end`}>
+    <div className={` ${styles.media_tablet} d-flex justify-content-center`}>
       <Button
         id="demo-positioned-button"
         aria-controls={open ? 'demo-positioned-menu' : undefined}

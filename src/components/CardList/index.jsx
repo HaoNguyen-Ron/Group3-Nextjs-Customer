@@ -47,6 +47,7 @@ function CardList(products) {
       }
     }
   };
+
   useEffect(() => {
     function shuffleArray(array) {
       for (let i = array.length - 1; i > 0; i--) {
@@ -73,11 +74,12 @@ function CardList(products) {
 
     setSelectedProducts(shuffledWithDiscountRandom);
   }, []);
+
   return (
     <div>
       <div className="container">
         <div className="row">
-          <div className="col-md-6 col-sm-6 col-xs-12 ">
+          <div className="col-12 col-sm-12 col-md-6">
             <Banner
               image="https://theme.hstatic.net/1000160337/1000885200/14/categorybanner_1_img.jpg?v=316"
               caption="Dòng chibi figure "
@@ -85,7 +87,7 @@ function CardList(products) {
               name="Nendoroid"
             />
           </div>
-          <div className="col-md-6 col-sm-6 col-xs-12 ">
+          <div className="col-12 col-sm-12 col-md-6">
             <Banner
               image="https://theme.hstatic.net/1000160337/1000885200/14/categorybanner_2_img.jpg?v=341"
               caption="Dòng scale figure "

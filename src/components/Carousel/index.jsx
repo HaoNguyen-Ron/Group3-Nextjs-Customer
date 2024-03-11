@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 function Carousel(props) {
   return (
-    <>
+    <div className="mt-5">
       <div
         id="carouselExampleControls"
         className="carousel slide"
@@ -65,7 +65,7 @@ function Carousel(props) {
           <span className="visually-hidden">Next</span>
         </button>
       </div>
-    </>
+    </div>
   );
 }
 export default Carousel;
