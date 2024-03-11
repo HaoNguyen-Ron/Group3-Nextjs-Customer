@@ -29,29 +29,19 @@ export default function Header() {
             <header>
                 <div className="container-fluid">
                     <div className={`d-flex justify-content-center align-items-center align-self-center row`}>
-                        <div className={`col-12 col-sm-2  d-none d-md-block d-lg-none ${styles.media_tablet}`}>
-                            <NavTablet />
-                        </div>
-
-                        <div className='col-xs-12 col-6 col-md-8 col-lg-2'>
+                        <div className='col-12 col-md-12 col-lg-2'>
                             <Logo />
                         </div>
 
-                        <div className={`col-12 col-sm-2  d-none d-md-block d-lg-none ${styles.media_tablet}`}>
+                        <div className={`col-6 d-block d-lg-none`}>
+                            <NavTablet />
+                        </div>
+
+                        <div className={`col-6 d-block d-lg-none`}>
                             {isLogged ? <AuthLoginPartTablet /> : <LoginPartTablet />}
                         </div>
 
-                        <div className='d-flex d-md-none col-12 col-sm-12 justify-content-between '>
-                            <div className={`d-block d-md-none`}>
-                                <NavTablet />
-                            </div>
-
-                            <div className={`${styles.media_tablet}`}>
-                                {isLogged ? <AuthLoginPartTablet /> : <LoginPartTablet />}
-                            </div>
-                        </div>
-
-                        <div className='col-xs-12 col-sm-12 col-md-12 col-lg-7 d-flex justify-content-center align-items-center'>
+                        <div className='col-12 col-sm-12 col-md-12 col-lg-7 d-flex justify-content-center align-items-center'>
                             <SearchBar />
                         </div>
 
