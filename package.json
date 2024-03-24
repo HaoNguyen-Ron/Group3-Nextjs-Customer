@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint --ext js,jsx,ts,tsx,scr/",
+    "lint:fix": "eslint --fix --ext js,jsx,ts,tsx,scr/",
+    "prettier": "prettier --check \"src/**/(*.jsx|*.js|*.tsx|*.ts|*.css|*.scss)\"",
+    "prettier:fix": "prettier --write \"src/**/(*.jsx|*.js|*.tsx|*.ts|*.css|*.scss)\""
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -21,6 +24,7 @@
     "dynamic": "^4.2.2",
     "formik": "^2.4.5",
     "next": "^14.0.3",
+    "next-auth": "^4.24.7",
     "owl.carousel": "^2.3.4",
     "react": "^18",
     "react-bootstrap": "^2.9.1",
@@ -34,6 +38,9 @@
   },
   "devDependencies": {
     "eslint": "^8",
-    "eslint-config-next": "13.5.6"
+    "eslint-config-next": "13.5.6",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "prettier": "^3.2.5"
   }
 }

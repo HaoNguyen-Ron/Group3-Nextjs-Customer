@@ -1,40 +1,40 @@
-import React, { useEffect, useState } from "react";
-import Button from '@mui/material/Button';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
+import React, { useEffect, useState } from 'react'
+import Button from '@mui/material/Button'
+import Menu from '@mui/material/Menu'
+import MenuItem from '@mui/material/MenuItem'
 
 import styles from '@/styles/loginPart.module.css'
-import Link from 'next/link';
-import { useRouter } from 'next/router';
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 export default function AuthLoginPartTablet() {
-  const [openMenu, setOpenMenu] = useState(null);
-  const [data, setData] = useState([]);
+  const [openMenu, setOpenMenu] = useState(null)
+  const [data, setData] = useState([])
   useEffect(() => {
-    const storedData = localStorage.getItem("cart");
+    const storedData = localStorage.getItem('cart')
 
-    const parsedData = storedData ? JSON.parse(storedData) : [];
+    const parsedData = storedData ? JSON.parse(storedData) : []
 
-    setData(parsedData);
-  }, []);
+    setData(parsedData)
+  }, [])
 
   // const totalItemCount = data.reduce((total, item) => total + item.count, 0);
 
   const router = useRouter()
 
-  const open = Boolean(openMenu);
+  const open = Boolean(openMenu)
 
   const handleClick = (event) => {
-    setOpenMenu(event.currentTarget);
-  };
+    setOpenMenu(event.currentTarget)
+  }
 
   const handleClose = () => {
-    setOpenMenu(null);
-  };
+    setOpenMenu(null)
+  }
 
   const handleLogout = () => {
-    if (typeof window !== "undefined") {
-      localStorage.clear("TOKEN", "REFRESH-TOKEN")
+    if (typeof window !== 'undefined') {
+      localStorage.clear('TOKEN', 'REFRESH-TOKEN')
       router.reload()
     }
   }
@@ -49,39 +49,43 @@ export default function AuthLoginPartTablet() {
 
       <div>
         <Button
-          id="demo-positioned-button"
+          id='demo-positioned-button'
           aria-controls={open ? 'demo-positioned-menu' : undefined}
-          aria-haspopup="true"
+          aria-haspopup='true'
           aria-expanded={open ? 'true' : undefined}
           onClick={handleClick}
         >
-          <i className="fa-regular fa-user fs-4 my-auto me-2"></i>
+          <i className='fa-regular fa-user fs-4 my-auto me-2'></i>
         </Button>
 
         <Menu
-          id="demo-positioned-menu"
-          aria-labelledby="demo-positioned-button"
+          id='demo-positioned-menu'
+          aria-labelledby='demo-positioned-button'
           anchorEl={openMenu}
           open={open}
           onClose={handleClose}
           anchorOrigin={{
             vertical: 'bottom',
-            horizontal: 'left',
+            horizontal: 'left'
           }}
           transformOrigin={{
             vertical: 'top',
-            horizontal: 'center',
+            horizontal: 'center'
           }}
         >
           <MenuItem onClick={handleClose}>
-            <Link className={styles.loginPart__title} href='/user_profile'>Tài khoản của bạn</Link>
+            <Link className={styles.loginPart__title} href='/user_profile'>
+              Tài khoản của bạn
+            </Link>
           </MenuItem>
 
           <MenuItem onClick={handleClose}>
-            <button className={`btn ${styles.loginPart__btn}`} onClick={handleLogout}>Đăng xuất</button>
+            <button className={`btn ${styles.loginPart__btn}`} onClick={handleLogout}>
+              Đăng xuất
+            </button>
           </MenuItem>
         </Menu>
       </div>
     </div>
-  );
+  )
 }

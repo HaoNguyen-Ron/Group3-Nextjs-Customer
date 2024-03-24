@@ -24,7 +24,7 @@
 }
 .figure.snip1278 .image:after {
   position: absolute;
-  content: "";
+  content: '';
   top: 0;
   left: 0;
   bottom: 0;
@@ -117,9 +117,12 @@
   outline: none;
   border-radius: 2px;
   text-transform: uppercase;
-  -webkit-transition: color 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86),
+  -webkit-transition:
+    color 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86),
     border 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
-  transition: color 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86), border 0.45s;
+  transition:
+    color 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86),
+    border 0.45s;
 }
 
 .figure.snip1278:hover .images,
@@ -151,10 +154,14 @@
 }
 
 .groupbanner-hover .images:not(.lazyload) {
-  transition: opacity 0.3s, transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  -webkit-transition: opacity 0.3s,
+  transition:
+    opacity 0.3s,
     transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  -ms-transition: opacity 0.3s,
+  -webkit-transition:
+    opacity 0.3s,
+    transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -ms-transition:
+    opacity 0.3s,
     transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .lazyloaded {
@@ -172,18 +179,13 @@
   color: black;
 }
 .add-to-cart::after {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   top: 0;
   height: 100%;
   width: 100%;
-  background-image: linear-gradient(
-    to right,
-    #fbc2eb 0%,
-    #a6c1ee 51%,
-    #fbc2eb 100%
-  );
+  background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
   z-index: -1;
   transition: 0.3s ease all;
   transform: scale(0, 1);

@@ -1,7 +1,7 @@
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import x from "@/components/Slider/Slider.module.css";
+import Slider from 'react-slick'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+import x from '@/components/Slider/Slider.module.css'
 
 const data = [
   {
@@ -12,14 +12,14 @@ const data = [
      figure giả. Nhiều trường hợp các figure giả vẫn có logo chính hãng của Good Smile Company
       hoặc các công ty phát hành, tuy nhiên những logo này được sử dụng trái phép. 
       Hãy luôn cẩn thận khi mua hàng online.`,
-    link: `/payment-instructions`,
+    link: `/payment-instructions`
   },
   {
     name: `Kakeibo phương pháp tiết kiệm, chi tiêu hợp lý`,
     img: `http://file.hstatic.net/1000160337/article/arisutan1401803956.jpeg`,
     review: `Thận nhiêu trái?Bán máu bao nhiêu cho đủ?Lại tốn tiền nữa rồi...
     Những câu hỏi quen thuộc đều nhằm vào 1 vấn đề chung: Làm sao để chi tiêu hợp lí,....`,
-    link: `/Blogs/Kakeibo`,
+    link: `/Blogs/Kakeibo`
   },
   {
     name: `Khi nào 1 figure "có" tại Nhật Bản?`,
@@ -27,7 +27,7 @@ const data = [
     review: `KHI NÀO 1 FIGURE "CÓ" TẠI NHẬT BẢN?
     KHI "CÓ" THÌ SỐ LƯỢNG NHIỀU KHÔNG?"CÓ" RỒI MỚI ĐẶT LIỆU KỊP KHÔNG? Đây là những câu hỏi được
      rất nhiều bạn quan tâm.Trước tiên, Figure Nhật...`,
-    link: `/Blogs/appear`,
+    link: `/Blogs/appear`
   },
   {
     name: `Đây là cách giúp tui kiếm về 250K mỗi giờ`,
@@ -35,9 +35,9 @@ const data = [
     review: `Nhưng nếu kiên trì theo đúng từng hướng dẫn nhỏ, 
     thực hành trên giấy thật nhiều lần trước khi bắt đầu,
     thì việc bạn kiếm về 250K/ mỗi giờ như mình là hoàn toàn có thể.`,
-    link: `/Blogs/instruct`,
-  },
-];
+    link: `/Blogs/instruct`
+  }
+]
 
 function Sliders() {
   const settings = {
@@ -51,60 +51,46 @@ function Sliders() {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
-          infinite: true,
-        },
+          infinite: true
+        }
       },
       {
         breakpoint: 768,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
+          slidesToScroll: 1
+        }
+      }
+    ]
+  }
   return (
-    <div className="container" style={{ marginBottom: "50px" }}>
-      <div className={` ${x["section"]}`}>
-        <div className={` ${x["section-heading"]}`}>
-          <h2 className={` ${x["hTitle"]}`}>
-            <a href="collections/scale-figure">Dành Cho Người Mới Bắt Đầu</a>
+    <div className='container' style={{ marginBottom: '50px' }}>
+      <div className={` ${x['section']}`}>
+        <div className={` ${x['section-heading']}`}>
+          <h2 className={` ${x['hTitle']}`}>
+            <a href='collections/scale-figure'>Dành Cho Người Mới Bắt Đầu</a>
           </h2>
           <p>Hướng dẫn cơ bản</p>
         </div>
       </div>
-      <div className="w-full m-auto">
-        <div className="mt-20">
+      <div className='w-full m-auto'>
+        <div className='mt-20'>
           <Slider {...settings}>
             {data.map((d) => (
-              <div
-                key={d.name}
-                className="bg-white h-[450px] text-black rounded-xl"
-              >
-                <div className="h-56 bg-indigo-500 flex justify-center items-center rounded-t-xl">
-                  <div
-                    className={x["groupbanner-hover"]}
-                    style={{ height: "300px" }}
-                  >
-                    <img
-                      src={d.img}
-                      alt=""
-                      className="h-44 w-44 rounded-full"
-                      style={{ maxWidth: "100%" }}
-                    />
+              <div key={d.name} className='bg-white h-[450px] text-black rounded-xl'>
+                <div className='h-56 bg-indigo-500 flex justify-center items-center rounded-t-xl'>
+                  <div className={x['groupbanner-hover']} style={{ height: '300px' }}>
+                    <img src={d.img} alt='' className='h-44 w-44 rounded-full' style={{ maxWidth: '100%' }} />
                   </div>
                 </div>
 
-                <div className="flex flex-col items-center justify-center gap-4 p-4">
-                  <h6 className={`${x["custom"]}`}>{d.name}</h6>
-                  <p
-                    className={`${x["overflow-ellipsis"]}`}
-                    style={{ height: "150px" }}
-                  >
+                <div className='flex flex-col items-center justify-center gap-4 p-4'>
+                  <h6 className={`${x['custom']}`}>{d.name}</h6>
+                  <p className={`${x['overflow-ellipsis']}`} style={{ height: '150px' }}>
                     {d.review}
                   </p>
                   <a href={d.link}>
-                    <button type="button" className="btn btn-outline-danger">
+                    <button type='button' className='btn btn-outline-danger'>
                       Xem Chi Tiết
                     </button>
                   </a>
@@ -115,7 +101,7 @@ function Sliders() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Sliders;
+export default Sliders

@@ -3,6 +3,8 @@ import React from 'react'
 
 export default function register() {
   return (
-    <div><RegisterForm /></div>
+    <div>
+      <RegisterForm />
+    </div>
   )
 }

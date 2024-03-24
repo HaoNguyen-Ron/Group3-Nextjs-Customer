@@ -1,39 +1,33 @@
-import React from "react";
+import React from 'react'
 
-import Styles from "@/styles/cart.module.css";
+import Styles from '@/styles/cart.module.css'
 import Style from '@/styles/Order.module.css'
 
 function OrderProductList({ listProduct }) {
   const formattedPrice = (price) => {
-    return price.toLocaleString("vi-VN", {
-      style: "currency",
-      currency: "VND",
-    });
-  };
+    return price.toLocaleString('vi-VN', {
+      style: 'currency',
+      currency: 'VND'
+    })
+  }
 
   const totalPrice = listProduct.reduce(
     (total, item) => total + (item.price - (item.price * item.discount) / 100) * item.quantity,
     0
-  );
+  )
   return (
-    <div className="d-flex flex-column px-3">
+    <div className='d-flex flex-column px-3'>
       <div>
         {listProduct.map((item) => (
           <div key={item._id} className={`${Style.title_number_border}`}>
-            <div
-              className={`d-flex row align-items-center justify-content-between ${Styles.media_line_item}`}
-            >
+            <div className={`d-flex row align-items-center justify-content-between ${Styles.media_line_item}`}>
               <div className={`col-3 position-relative ${Styles.media_left}`}>
-                <img
-                  className={`${Styles.image_number_cart}`}
-                  src={item.description}
-                  alt={item.name}
-                />
+                <img className={`${Styles.image_number_cart}`} src={item.description} alt={item.name} />
 
-                <span className="position-absolute translate-middle badge rounded-pill bg-secondary">
+                <span className='position-absolute translate-middle badge rounded-pill bg-secondary'>
                   {item.quantity}
 
-                  <span className="visually-hidden">unread messages</span>
+                  <span className='visually-hidden'>unread messages</span>
                 </span>
               </div>
 
@@ -50,13 +44,15 @@ function OrderProductList({ listProduct }) {
           </div>
         ))}
       </div>
-      
-      <div className="d-flex justify-content-between align-items-center">
+
+      <div className='d-flex justify-content-between align-items-center'>
         <p className={`${Style.input_size}`}>Tổng tiền:</p>
-        <p className={` ${Style.input_size} ${Styles.input_color_1}`}><b>{formattedPrice(totalPrice)}</b></p>
+        <p className={` ${Style.input_size} ${Styles.input_color_1}`}>
+          <b>{formattedPrice(totalPrice)}</b>
+        </p>
       </div>
     </div>
-  );
+  )
 }
 
-export default OrderProductList;
+export default OrderProductList

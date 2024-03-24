@@ -1,5 +1,5 @@
 export const fuzzySearch = (text) => {
-    const regex = text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+  const regex = text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&')
 
-    return new RegExp(regex, 'gi');
-};
+  return new RegExp(regex, 'gi')
+}

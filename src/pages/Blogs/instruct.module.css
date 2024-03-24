@@ -6,19 +6,15 @@
   position: relative;
   padding-left: 0;
   margin-bottom: 0;
-
 }
 
 .about-head-li {
   list-style: none;
 }
 
-
-
 .about-head-a,
 .about-head-span {
   color: black;
-
 }
 
 .about-head-a:hover,
@@ -43,7 +39,8 @@
 }
 
 /* aside  */
-.sidebar-page {}
+.sidebar-page {
+}
 
 .group-sidebox {
   margin: 0 0 30px;
@@ -55,7 +52,6 @@
 .sidebox {
   border: 1px solid #c0bdbd;
   padding: 0 15px;
-
 }
 
 .sidebox-content-togged {
