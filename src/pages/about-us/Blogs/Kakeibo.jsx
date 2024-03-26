@@ -52,7 +52,7 @@ function Kakeibo(props) {
               style={{ maxWidth: '100%' }}
             />
           </div>
-          
+
           <div className='col-lg-9 col-sm-12 col-xs-12'>
             <div className='my-4 text-muted'>
               <h1>Kakeibo phương pháp tiết kiệm, chi tiêu hợp lý</h1>
@@ -222,7 +222,7 @@ function Kakeibo(props) {
                       title2='Figure Nhật Bản là những sản phẩm sản xuất HÀNG LOẠT là đúng!'
                       title3='Tin Tức'
                       date=' - 17/02/2023'
-                      href='/Blogs/appear'
+                      href='Appear'
                     />
 
                     <BlogItem
@@ -231,7 +231,7 @@ function Kakeibo(props) {
                       title2='Cách Tôi Kiếm Được 250k Mỗi Giờ'
                       title3='Tin Tức'
                       date=' - 12/02/2022'
-                      href='/Blogs/instruct'
+                      href='Instruction'
                     />
                     <BlogItem
                       image='/assets/images/blog_3.jpg'
@@ -239,7 +239,7 @@ function Kakeibo(props) {
                       title2='Kakeibo phương pháp tiết kiệm, chi tiêu hợp lý'
                       title3='Hưỡng Dẫn'
                       date=' - 23/04/2022'
-                      href='/Blogs/Kakeibo'
+                      href='Kakeibo'
                     />
                     <BlogItem
                       image='/assets/images/blog_4.jpg'
@@ -247,7 +247,7 @@ function Kakeibo(props) {
                       title2='Hỏi Và Đáp'
                       title3='Tin Tức'
                       date=' - 23/04/2022'
-                      href='/answer'
+                      href='answer'
                     />
                   </ul>
                 </div>
