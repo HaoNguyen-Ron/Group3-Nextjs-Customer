@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import x from '@/pages/Blogs/instruct.module.css'
-import abo from '@/styles/AboutUs.module.css'
-import pay from '@/styles/Payment.module.css'
-import Link from 'next/link'
-import Social from '@/components/social'
 import Image from 'next/image'
+import Link from 'next/link'
 
-function Appper(props) {
+import Social from '@/components/social'
+
+import instructStyles from '@/styles/instruct.module.css'
+import aboutStyles from '@/styles/aboutUs.module.css'
+import paymentStyles from '@/styles/payment.module.css'
+
+function Apppear(props) {
   const [isNavVisible, setNavVisible] = useState(false)
 
   const toggleNav = () => {
@@ -45,7 +47,7 @@ function Appper(props) {
             <img
               src='https://theme.hstatic.net/1000160337/1000885200/14/blogs_banner_paralax.jpg?v=341'
               alt=''
-              className={`${x['image_width']} text-center`}
+              className={`${instructStyles['image_width']} text-center`}
             />
           </div>
           <div className='col-lg-9 col-sm-12 col-xs-12'>
@@ -53,7 +55,7 @@ function Appper(props) {
               <h1>Khi nào 1 figure &ldquo;CÓ&rdquo; tại Nhật Bản?</h1>
             </div>
             <div className='contentAboutusDetail'>
-              <div className={` ${x['image_width']}`}>
+              <div className={` ${instructStyles['image_width']}`}>
                 <img
                   src='http://file.hstatic.net/1000160337/article/vi_sao_nen_dat_hang_som_tai_japanfigure.jpg'
                   alt=''
@@ -142,7 +144,7 @@ function Appper(props) {
                   <img
                     src='//file.hstatic.net/1000160337/file/quy_trinh_dat_hang-01-01.jpg'
                     alt=''
-                    className={`${x['image_width']} text-center`}
+                    className={`${instructStyles['image_width']} text-center`}
                   />
                 </p>
 
@@ -152,9 +154,9 @@ function Appper(props) {
           </div>
           <div className='col-lg-3 col-sm-12 col-xs-12'>
             <aside className='sidebar-page'>
-              <div className={`${abo['sidebox']} mt-4 mobile-dropdown`} onClick={toggleNav}>
-                <div className={`${abo['about-head-ul']} py-2`}>
-                  <h4 className={`${abo['about-head-ul']}} d-flex align-items-center`}>
+              <div className={`${aboutStyles['sidebox']} mt-4 mobile-dropdown`} onClick={toggleNav}>
+                <div className={`${aboutStyles['about-head-ul']} py-2`}>
+                  <h4 className={`${aboutStyles['about-head-ul']}} d-flex align-items-center`}>
                     Danh mục
                     <span
                       className={`fa fa-angle-${isNavVisible ? 'up' : 'down'} d-block d-lg-none position-absolute`}
@@ -166,14 +168,15 @@ function Appper(props) {
                   </h4>
                 </div>
                 <div className={`d-lg-block ${isNavVisible ? 'block' : 'none'}`}>
-                  <ul className={`${abo['about-head-ul']} ${isNavVisible ? 'd-none' : 'd-lg-block'}`}>
-                    <li className={`${abo['about-head-li']} border-top py-2`}>
-                      <Link href='/' title='Tìm kiếm' className={`${abo['about-head-a']}`}>
+                  <ul className={`${aboutStyles['about-head-ul']} ${isNavVisible ? 'd-none' : 'd-lg-block'}`}>
+                    <li className={`${aboutStyles['about-head-li']} border-top py-2`}>
+                      <Link href='/' title='Tìm kiếm' className={`${aboutStyles['about-head-a']}`}>
                         <span>Tìm kiếm</span>
                       </Link>
                     </li>
-                    <li className={`${abo['about-head-li']} nav-item border-top py-2`}>
-                      <Link className={`${abo['about-head-a']}`} href='/about-us' title='Giới thiệu'>
+
+                    <li className={`${aboutStyles['about-head-li']} nav-item border-top py-2`}>
+                      <Link className={`${aboutStyles['about-head-a']}`} href='/about-us' title='Giới thiệu'>
                         <span>Giới thiệu</span>
                       </Link>
                     </li>
@@ -182,13 +185,12 @@ function Appper(props) {
               </div>
               <div className='group-sidebox-banner'>
                 <figure className='mb-0 mt-4'>
-                  <a className={`${abo['about-head-a']}`} href='#'>
+                  <a className={`${aboutStyles['about-head-a']}`} href='#'>
                     <Image
                       className='position-static text-center'
                       style={{ width: '100%' }}
                       src='/assets/images/about_sibar.jpg'
                       alt='about-side'
-                      // objectFit="cover"
                       priority
                       width={215}
                       height={150}
@@ -197,12 +199,13 @@ function Appper(props) {
                 </figure>
               </div>
             </aside>
-            <aside className={pay['side']}>
+            <aside className={paymentStyles['side']}>
               {/* phần bài viết mới */}
-              <div className={`${pay['group-sidebox']} ${isMdScreen ? 'active' : isCategoryOpen ? 'active' : ''}`}>
-                <div className={`${pay['sidebox-title']}`} onClick={toggleCategory}>
-                  <h3 className={`${pay['htitle']} d-flex align-items-center`}>
+              <div className={`${paymentStyles['group-sidebox']} ${isMdScreen ? 'active' : isCategoryOpen ? 'active' : ''}`}>
+                <div className={`${paymentStyles['sidebox-title']}`} onClick={toggleCategory}>
+                  <h3 className={`${paymentStyles['htitle']} d-flex align-items-center`}>
                     Bài viết mới nhất
+                    
                     <span
                       className={`fa ${
                         isCategoryOpen ? 'fa-angle-up' : 'fa-angle-down'
@@ -213,15 +216,15 @@ function Appper(props) {
                 </div>
 
                 {/* phần content bài viết */}
-                <div className={`${pay['sidebox-content ']} ${isMdScreen || isCategoryOpen ? 'd-md-block' : 'd-none'}`}>
-                  <ul className={`${pay['menuList-links']} ${isMdScreen || isCategoryOpen ? 'd-md-block' : 'd-none'}`}>
+                <div className={`${paymentStyles['sidebox-content ']} ${isMdScreen || isCategoryOpen ? 'd-md-block' : 'd-none'}`}>
+                  <ul className={`${paymentStyles['menuList-links']} ${isMdScreen || isCategoryOpen ? 'd-md-block' : 'd-none'}`}>
                     <BlogItem
                       image='https://file.hstatic.net/1000160337/article/vi_sao_nen_dat_hang_som_tai_japanfigure.jpg'
                       title='Figure Nhật Bản là những sản phẩm sản xuất HÀNG LOẠT là đúng!'
                       title2='Figure Nhật Bản là những sản phẩm sản xuất HÀNG LOẠT là đúng!'
                       title3='Tin Tức'
                       date=' - 17/02/2023'
-                      href='/Blogs/appear'
+                      href='appear'
                     />
 
                     <BlogItem
@@ -230,7 +233,7 @@ function Appper(props) {
                       title2='Cách Tôi Kiếm Được 250k Mỗi Giờ'
                       title3='Tin Tức'
                       date=' - 12/02/2022'
-                      href='/Blogs/instruct'
+                      href='instruct'
                     />
                     <BlogItem
                       image='/assets/images/blog_3.jpg'
@@ -238,7 +241,7 @@ function Appper(props) {
                       title2='Kakeibo phương pháp tiết kiệm, chi tiêu hợp lý'
                       title3='Hưỡng Dẫn'
                       date=' - 23/04/2022'
-                      href='/Blogs/Kakeibo'
+                      href='Kakeibo'
                     />
                     <BlogItem
                       image='/assets/images/blog_4.jpg'
@@ -246,41 +249,11 @@ function Appper(props) {
                       title2='Hỏi Và Đáp'
                       title3='Tin Tức'
                       date=' - 23/04/2022'
-                      href='/answer'
+                      href='answer'
                     />
                   </ul>
                 </div>
               </div>
-
-              {/* phần danh mục */}
-              {/* <div className={`${pay["group-sidebox"]}`}>
-                  <div
-                    className={`${pay["sidebox-title"]}`}
-                    onClick={toggleCategory2}
-                  >
-                    <h3
-                      className={`${pay["htitle"]} d-flex align-items-center`}
-                    >
-                      Danh Mục
-                      <span
-                        className={`fa ${
-                          isCategoryOpen2 ? "fa-angle-up" : "fa-angle-down"
-                        } d-block d-md-none position-absolute`}
-                        style={{ right: "0" }}
-                      />
-                    </h3>
-                  </div>
-
-            
-                  <div
-                    className={`${pay["sidebox-content "]} ${
-                      isMdScreen || isCategoryOpen2 ? "d-md-block" : "d-none"
-                    }`}
-                  >
-                  
-                    
-                  </div>
-                </div> */}
             </aside>
           </div>
         </div>
@@ -290,26 +263,27 @@ function Appper(props) {
   )
 }
 
-export default Appper
+export default Apppear
+
 const BlogItem = ({ image, title, title2, title3, title4, date, href }) => {
   return (
     <>
       <li>
-        <div className={`${pay['item-article']} d-flex clearfix`}>
+        <div className={`${paymentStyles['item-article']} d-flex clearfix`}>
           <div className='post-image'>
             <a href={href}>
-              <img className={`${pay['lazyloaded']}`} src={image} alt={title} />
+              <img className={`${paymentStyles['lazyloaded']}`} src={image} alt={title} />
             </a>
           </div>
-          <div className={`${pay['post-content']} ms-2`}>
-            <h3 className={`${pay['fs14']} mb-0`}>
-              <a href={href} className={pay['fs14_hover']}>
+          <div className={`${paymentStyles['post-content']} ms-2`}>
+            <h3 className={`${paymentStyles['fs14']} mb-0`}>
+              <a href={href} className={paymentStyles['fs14_hover']}>
                 {title2}
               </a>
             </h3>
             <p className='mb-0'>
               <span>
-                <a href={href} className={pay['tag']}>
+                <a href={href} className={paymentStyles['tag']}>
                   {title3}
                 </a>
               </span>

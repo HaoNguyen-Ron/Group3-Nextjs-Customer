@@ -1,6 +1,7 @@
 import React from 'react'
-import blog from '@/components/BlogNew/blognew.module.css'
 import Link from 'next/link'
+
+import blog from '@/styles/blognew.module.css'
 
 function BlogNew(props) {
   return (
@@ -28,17 +29,21 @@ const BlogItem = ({ image, title, title2, title3, title4, date }) => {
             <img className=' lazyloaded' src={image} alt={title} />
           </Link>
         </div>
+
         <div className='post-content'>
           <h3>
             <Link href='/'>{title2}</Link>
           </h3>
+
           <p className='post-meta'>
             <span className='cate'>
               <Link href='/'>{title3}</Link>
             </span>
+
             <span className='author hidden'>
               <Link href='/'>{title4}</Link>
             </span>
+            
             <span className='date'>{date}</span>
           </p>
         </div>

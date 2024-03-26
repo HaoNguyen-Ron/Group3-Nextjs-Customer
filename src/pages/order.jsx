@@ -11,7 +11,7 @@ import { Box, Modal, Typography } from '@mui/material'
 import { axiosClient } from '@/libraries/axiosClient'
 import { useRouter } from 'next/router'
 
-import Style from '@/styles/Order.module.css'
+import Style from '@/styles/order.module.css'
 import styles from '@/styles/userPage.module.css'
 
 function Order() {

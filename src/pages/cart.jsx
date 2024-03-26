@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import Link from 'next/link'
+
+import VerifyLoggin from '@/components/HOC/verifyLoggin'
 
 import Styles from '@/styles/cart.module.css'
-import Link from 'next/link'
-import VerifyLoggin from '@/components/HOC/verifyLoggin'
 
 function Cart() {
   const [data, setData] = useState([])

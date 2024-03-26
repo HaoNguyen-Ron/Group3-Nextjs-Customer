@@ -1,8 +1,10 @@
-import x from '@/styles/Card.module.css'
-import Card from './Card'
-import Banner from '../Banner'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+
+import Card from './Card'
+import Banner from '../Banner'
+
+import styles from '@/styles/card.module.css'
 
 function CardList(products) {
   const [selectedProducts, setSelectedProducts] = useState([])
@@ -11,33 +13,38 @@ function CardList(products) {
   const router = useRouter()
 
   const handleGoToProductDetail = (productId) => {
-    // Use window.location to navigate
     window.location.href = `/productDetail/${productId}`
   }
 
   const handleAddToCart = (selectedProduct) => {
     if (router.isReady === true) {
       const checkForToken = localStorage.getItem('TOKEN')
+
       if (!checkForToken) {
         router.push('/login')
       } else {
         const cart = JSON.parse(localStorage.getItem('cart')) || []
-        console.log('««««« cart »»»»»', cart)
+
         const updatedCart = [...cart]
+
         const existingProductIndex = updatedCart.findIndex((item) => item._id === selectedProduct._id)
 
         if (existingProductIndex !== -1) {
           if (updatedCart[existingProductIndex].quantity < selectedProduct.stock) {
             alert(' đã thêm sản phẩm vào giỏ hàng.')
+
             updatedCart[existingProductIndex].quantity += 1
           } else {
             alert(' đã hết sản phẩm.')
+
             return
           }
         } else {
           updatedCart.push({ ...selectedProduct, quantity: 1 })
+
           alert(' đã thêm sản phẩm vào giỏ hàng.')
         }
+
         localStorage.setItem('cart', JSON.stringify(updatedCart))
       }
     }
@@ -51,6 +58,7 @@ function CardList(products) {
       }
       return array
     }
+
     const allProducts = products.products
     const productsNotDiscount = allProducts.filter((product) => product.discount === 0)
     const shuffledProductsNotDiscount = productsNotDiscount.slice(0, 8)
@@ -76,6 +84,7 @@ function CardList(products) {
               name='Nendoroid'
             />
           </div>
+
           <div className='col-12 col-sm-12 col-md-6'>
             <Banner
               image='https://theme.hstatic.net/1000160337/1000885200/14/categorybanner_2_img.jpg?v=341'
@@ -87,11 +96,12 @@ function CardList(products) {
         </div>
       </div>
 
-      <div className={` ${x['section']}`}>
-        <div className={`${x['section-heading']}`}>
-          <h2 className={`${x['hTitle']}`}>
+      <div className={` ${styles['section']}`}>
+        <div className={`${styles['section-heading']}`}>
+          <h2 className={`${styles['hTitle']}`}>
             <a href=''>Sản Phẩm Nổi Bật</a>
           </h2>
+
           <p>Những sản phẩm đã hoặc sắp phát hành & cần đặt trước</p>
         </div>
       </div>
@@ -99,9 +109,9 @@ function CardList(products) {
       <div className=' container wrapper'>
         <div className='d-flex row justify-content-around'>
           <div className='col-12 col-md-12 col-lg-4'>
-            <div className={`${x['groupbanner-hover']}`}>
+            <div className={`${styles['groupbanner-hover']}`}>
               <img
-                className={`lazyloaded ls-is-cached ${x['images']}`}
+                className={`lazyloaded ls-is-cached ${styles['images']}`}
                 src='https://theme.hstatic.net/1000160337/1000885200/14/home_collection_1_banner.jpg?v=316'
                 alt=''
               />
@@ -127,11 +137,12 @@ function CardList(products) {
         </div>
       </div>
 
-      <div className={` ${x['section']}`}>
-        <div className={` ${x['section-heading']}`}>
-          <h2 className={` ${x['hTitle']}`}>
+      <div className={` ${styles['section']}`}>
+        <div className={` ${styles['section-heading']}`}>
+          <h2 className={` ${styles['hTitle']}`}>
             <a href='collections/scale-figure'>Sản Phẩm Đang Giảm Giá</a>
           </h2>
+
           <p>Sản phẩm đang có sẵn, bạn có thể mua ngay</p>
         </div>
       </div>
@@ -139,9 +150,9 @@ function CardList(products) {
       <div className=' container wrapper'>
         <div className='d-flex row flex-row-reverse justify-content-around'>
           <div className='col-12 col-md-12 col-lg-4'>
-            <div className={`${x['groupbanner-hover']}`}>
+            <div className={`${styles['groupbanner-hover']}`}>
               <img
-                className={`lazyloaded ls-is-cached ${x['images']}`}
+                className={`lazyloaded ls-is-cached ${styles['images']}`}
                 src='https://theme.hstatic.net/1000160337/1000885200/14/home_collection_1_banner.jpg?v=316'
                 alt=''
               />
@@ -167,10 +178,10 @@ function CardList(products) {
         </div>
       </div>
 
-      <div className={`${x['title']}`}>
-        <div className={`${x['groupbanner-hover']}`}>
+      <div className={`${styles['title']}`}>
+        <div className={`${styles['groupbanner-hover']}`}>
           <img
-            className={`lazyloaded ls-is-cached ${x['images']}`}
+            className={`lazyloaded ls-is-cached ${styles['images']}`}
             src='//theme.hstatic.net/1000160337/1000885200/14/home_bannerfull.jpg?v=316'
             alt=''
           />

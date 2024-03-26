@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import Social from '@/components/social'
-import abo from '@/styles/AboutUs.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
-import pay from '@/styles/Payment.module.css'
+
+import Social from '@/components/social'
+
+import paymentStyles from '@/styles/payment.module.css'
+import aboutStyles from '@/styles/aboutUs.module.css'
 
 function Answer(props) {
   const [isNavVisible, setNavVisible] = useState(false)
@@ -36,21 +38,19 @@ function Answer(props) {
     setIsCategoryOpen(!isCategoryOpen)
   }
 
-  const toggleCategory2 = () => {
-    setIsCategoryOpen2(!isCategoryOpen2)
-  }
   return (
     <>
       <div>
-        <div className={abo['about-head']}>
+        <div className={aboutStyles['about-head']}>
           <div className='container'>
             <div className='navbar navbar-expand-lg'>
               <ul className='navbar-nav mr-auto mt-2 mt-lg-0'>
                 <li className='nav-item'>
                   <Link className='nav-link' href='/' target='_self'>
-                    <span className={abo['about-head-span']}>Trang chủ</span>
+                    <span className={aboutStyles['about-head-span']}>Trang chủ</span>
                   </Link>
                 </li>
+
                 <li className='nav-item'>
                   <Link className='nav-link disabled' href='/aboutUs' target='_self'>
                     <span>Hỏi và Đáp</span>
@@ -66,12 +66,12 @@ function Answer(props) {
               <div className='my-4 text-muted'>
                 <h1>Hỏi và Đáp</h1>
               </div>
+
               <div className='contentAboutusDetail'>
-                <p className={`${abo['imageAbout']} text-center`}>
+                <p className={`${aboutStyles['imageAbout']} text-center`}>
                   <Image
                     src='/assets/images/hoi_dap.jpg'
                     alt='facebook'
-                    layout='responsive'
                     width={500}
                     height={500}
                     priority
@@ -603,9 +603,9 @@ function Answer(props) {
             </div>
             <div className='col-lg-3 col-sm-12 col-xs-12'>
               <aside className='sidebar-page'>
-                <div className={`${abo['sidebox']} mt-4 mobile-dropdown`} onClick={toggleNav}>
-                  <div className={`${abo['about-head-ul']} py-2`}>
-                    <h4 className={`${abo['about-head-ul']}} d-flex align-items-center`}>
+                <div className={`${aboutStyles['sidebox']} mt-4 mobile-dropdown`} onClick={toggleNav}>
+                  <div className={`${aboutStyles['about-head-ul']} py-2`}>
+                    <h4 className={`${aboutStyles['about-head-ul']}} d-flex align-items-center`}>
                       Danh mục
                       <span
                         className={`fa fa-angle-${isNavVisible ? 'up' : 'down'} d-block d-lg-none position-absolute`}
@@ -617,29 +617,28 @@ function Answer(props) {
                     </h4>
                   </div>
                   <div className={`d-lg-block ${isNavVisible ? 'block' : 'none'}`}>
-                    <ul className={`${abo['about-head-ul']} ${isNavVisible ? 'd-none' : 'd-lg-block'}`}>
-                      <li className={`${abo['about-head-li']} border-top py-2`}>
-                        <Link href='/' title='Tìm kiếm' className={`${abo['about-head-a']}`}>
+                    <ul className={`${aboutStyles['about-head-ul']} ${isNavVisible ? 'd-none' : 'd-lg-block'}`}>
+                      <li className={`${aboutStyles['about-head-li']} border-top py-2`}>
+                        <Link href='/' title='Tìm kiếm' className={`${aboutStyles['about-head-a']}`}>
                           <span>Tìm kiếm</span>
                         </Link>
                       </li>
-                      <li className={`${abo['about-head-li']} nav-item border-top py-2`}>
-                        <Link className={`${abo['about-head-a']}`} href='/about-us' title='Giới thiệu'>
+                      <li className={`${aboutStyles['about-head-li']} nav-item border-top py-2`}>
+                        <Link className={`${aboutStyles['about-head-a']}`} href='/about-us' title='Giới thiệu'>
                           <span>Giới thiệu</span>
                         </Link>
                       </li>
                     </ul>
                   </div>
                 </div>
-                <div className={`${abo['group-sidebox-banner']}`}>
+                <div className={`${aboutStyles['group-sidebox-banner']}`}>
                   <figure className='mb-0 mt-4'>
-                    <a className={`${abo['about-head-a']}`} href='#'>
+                    <a className={`${aboutStyles['about-head-a']}`} href='#'>
                       <Image
                         className='position-static'
                         style={{ width: '100%' }}
                         src='/assets/images/about_sibar.jpg'
                         alt='about-side'
-                        // objectFit="cover"
                         priority
                         width={215}
                         height={150}
@@ -648,11 +647,11 @@ function Answer(props) {
                   </figure>
                 </div>
               </aside>
-              <aside className={pay['side']}>
+              <aside className={paymentStyles['side']}>
                 {/* phần bài viết mới */}
-                <div className={`${pay['group-sidebox']} ${isMdScreen ? 'active' : isCategoryOpen ? 'active' : ''}`}>
-                  <div className={`${pay['sidebox-title']}`} onClick={toggleCategory}>
-                    <h3 className={`${pay['htitle']} d-flex align-items-center`}>
+                <div className={`${paymentStyles['group-sidebox']} ${isMdScreen ? 'active' : isCategoryOpen ? 'active' : ''}`}>
+                  <div className={`${paymentStyles['sidebox-title']}`} onClick={toggleCategory}>
+                    <h3 className={`${paymentStyles['htitle']} d-flex align-items-center`}>
                       Bài viết mới nhất
                       <span
                         className={`fa ${
@@ -665,10 +664,10 @@ function Answer(props) {
 
                   {/* phần content bài viết */}
                   <div
-                    className={`${pay['sidebox-content ']} ${isMdScreen || isCategoryOpen ? 'd-md-block' : 'd-none'}`}
+                    className={`${paymentStyles['sidebox-content ']} ${isMdScreen || isCategoryOpen ? 'd-md-block' : 'd-none'}`}
                   >
                     <ul
-                      className={`${pay['menuList-links']} ${isMdScreen || isCategoryOpen ? 'd-md-block' : 'd-none'}`}
+                      className={`${paymentStyles['menuList-links']} ${isMdScreen || isCategoryOpen ? 'd-md-block' : 'd-none'}`}
                     >
                       <BlogItem
                         image='/assets/images/blog_1.jpg'
@@ -708,13 +707,13 @@ function Answer(props) {
                 </div>
 
                 {/* phần danh mục */}
-                {/* <div className={`${pay["group-sidebox"]}`}>
+                {/* <div className={`${paymentStyles["group-sidebox"]}`}>
                   <div
-                    className={`${pay["sidebox-title"]}`}
+                    className={`${paymentStyles["sidebox-title"]}`}
                     onClick={toggleCategory2}
                   >
                     <h3
-                      className={`${pay["htitle"]} d-flex align-items-center`}
+                      className={`${paymentStyles["htitle"]} d-flex align-items-center`}
                     >
                       Danh Mục
                       <span
@@ -728,7 +727,7 @@ function Answer(props) {
 
             
                   <div
-                    className={`${pay["sidebox-content "]} ${
+                    className={`${paymentStyles["sidebox-content "]} ${
                       isMdScreen || isCategoryOpen2 ? "d-md-block" : "d-none"
                     }`}
                   >
@@ -752,21 +751,21 @@ const BlogItem = ({ image, title, title2, title3, title4, date, href }) => {
   return (
     <>
       <li>
-        <div className={`${pay['item-article']} d-flex clearfix`}>
+        <div className={`${paymentStyles['item-article']} d-flex clearfix`}>
           <div className='post-image'>
             <a href={href}>
-              <Image className={`${pay['lazyloaded']}`} src={image} alt={title} width={70} height={70} />
+              <Image className={`${paymentStyles['lazyloaded']}`} src={image} alt={title} width={70} height={70} />
             </a>
           </div>
-          <div className={`${pay['post-content']} ms-2`}>
-            <h3 className={`${pay['fs14']} mb-0`}>
-              <a href={href} className={pay['fs14_hover']}>
+          <div className={`${paymentStyles['post-content']} ms-2`}>
+            <h3 className={`${paymentStyles['fs14']} mb-0`}>
+              <a href={href} className={paymentStyles['fs14_hover']}>
                 {title2}
               </a>
             </h3>
             <p className='mb-0'>
               <span>
-                <a href={href} className={pay['tag']}>
+                <a href={href} className={paymentStyles['tag']}>
                   {title3}
                 </a>
               </span>

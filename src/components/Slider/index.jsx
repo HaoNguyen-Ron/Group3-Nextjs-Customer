@@ -1,7 +1,7 @@
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import x from '@/components/Slider/Slider.module.css'
+import x from '@/styles/slider.module.css'
 
 const data = [
   {
@@ -63,6 +63,7 @@ function Sliders() {
       }
     ]
   }
+
   return (
     <div className='container' style={{ marginBottom: '50px' }}>
       <div className={` ${x['section']}`}>

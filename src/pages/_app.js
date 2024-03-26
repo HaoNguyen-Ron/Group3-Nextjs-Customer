@@ -14,10 +14,7 @@ const theme = createTheme({
   }
 })
 
-export default function App({
-  Component,
-  pageProps
-}) {
+export default function App({ Component, pageProps }) {
   return (
     <>
       <Head>

@@ -49,7 +49,7 @@ function Navbar(props) {
 
               <NavSidbar title='Sản Phẩm' activeTab={activeTab} onClick={onClickTab} a_href='/collections' />
 
-              <NavSidbar title='Hỏi đáp' activeTab={activeTab} onClick={onClickTab} a_href='/answer' />
+              <NavSidbar title='Hỏi đáp' activeTab={activeTab} onClick={onClickTab} a_href='about-us/answer' />
             </ul>
           </div>
         </div>

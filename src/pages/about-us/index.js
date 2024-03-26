@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import Social from '@/components/social'
-import abo from '@/styles/AboutUs.module.css'
-import pay from '@/styles/Payment.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
 
-function AboutUS(props) {
+import Social from '@/components/social'
+
+import aboutStyles from '@/styles/aboutUs.module.css'
+import paymentStyles from '@/styles/payment.module.css'
+
+function AboutUs(props) {
   const [isNavVisible, setNavVisible] = useState(false)
 
   const toggleNav = () => {
     setNavVisible(!isNavVisible)
   }
   const [isCategoryOpen, setIsCategoryOpen] = useState(false)
-  const [isCategoryOpen2, setIsCategoryOpen2] = useState(false)
   const [isMdScreen, setIsMdScreen] = useState(true)
 
   useEffect(() => {
@@ -36,21 +37,19 @@ function AboutUS(props) {
     setIsCategoryOpen(!isCategoryOpen)
   }
 
-  const toggleCategory2 = () => {
-    setIsCategoryOpen2(!isCategoryOpen2)
-  }
   return (
     <>
       <div>
-        <div className={abo['about-head']}>
+        <div className={aboutStyles['about-head']}>
           <div className='container'>
             <div className='navbar navbar-expand-lg'>
               <ul className='navbar-nav mr-auto mt-2 mt-lg-0'>
                 <li className='nav-item'>
                   <Link className='nav-link' href='/' target='_self'>
-                    <span className={abo['about-head-span']}>Trang chủ</span>
+                    <span className={aboutStyles['about-head-span']}>Trang chủ</span>
                   </Link>
                 </li>
+
                 <li className='nav-item'>
                   <Link className='nav-link disabled' href='/aboutUs' target='_self'>
                     <span>Giới thiệu về Japan Figure</span>
@@ -66,8 +65,9 @@ function AboutUS(props) {
               <div className='my-4 text-muted'>
                 <h1>Giới thiệu về Japan Figure</h1>
               </div>
+
               <div className='contentAboutusDetail'>
-                <p className={`${abo['imageAbout']} text-center`}>
+                <p className={`${aboutStyles['imageAbout']} text-center`}>
                   <Image
                     src='/assets/images/banner-about.png'
                     alt='facebook'
@@ -97,24 +97,24 @@ function AboutUS(props) {
 
                 <p className='text-center'>&nbsp;</p>
 
-                <div className={`${abo['video-container']}`}>
+                <div className={`${aboutStyles['video-container']}`}>
                   <iframe
                     width='100%'
                     height='100%'
                     src='https://www.youtube.com/embed/j6-p9L9b3WA?si=NiZ78XNOlx3y80_H'
                     title='YouTube video player'
-                    frameBorder={0}
                     allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
                     allowFullScreen=''
                   />
                 </div>
+
                 <p style={{ textAlign: 'center' }}>
                   <em>Game Prize Figure và những điều cần biết</em>
                 </p>
 
                 <p className='text-center'>&nbsp;</p>
 
-                <p className={`${abo.imageAbout1} text-center`}>
+                <p className={`${aboutStyles.imageAbout1} text-center`}>
                   <Image
                     src='/assets/images/about_img-1.png'
                     alt='facebook'
@@ -138,10 +138,12 @@ function AboutUS(props) {
                     Là những figure được các họa sĩ Nhật Bản sáng tạo, vẽ minh họa, điêu khắc&nbsp;và hoàn thiện thiết
                     kế&nbsp;đầu tiên - prototype tại Nhật Bản.&nbsp;
                   </li>
+
                   <li style={{ textAlign: 'justify' }}>
                     Sau đó phần lớn thiết kế này được gửi đi&nbsp;sản xuất hàng loạt tại Trung Quốc.&nbsp;Nên sản phẩm
                     cuối cùng bạn cầm trên tay có chữ “Made in China” là chuyện rất bình thường.
                   </li>
+
                   <li style={{ textAlign: 'justify' }}>
                     Vì xuất xứ từ Nhật nên hiển nhiên Japan figure mang đậm văn hóa Nhật&nbsp;từ Anime, Manga, Game,
                     Light novel, J-pop cho đến ca sĩ ảo, streamer ảo&nbsp;v…v…
@@ -150,12 +152,11 @@ function AboutUS(props) {
 
                 <p className='text-center'>&nbsp;</p>
 
-                <p className={`${abo.imageAbout1} text-center`}>
+                <p className={`${aboutStyles.imageAbout1} text-center`}>
                   <Image
                     src='/assets/images/about_img-2.png'
                     alt='facebook'
                     layout='responsive'
-                    // objectFit="contain"
                     priority
                     width={515}
                     height={350}
@@ -164,12 +165,11 @@ function AboutUS(props) {
 
                 <p className='text-center'>&nbsp;</p>
 
-                <p className={`${abo.imageAbout1} text-center`}>
+                <p className={`${aboutStyles.imageAbout1} text-center`}>
                   <Image
                     src='/assets/images/about_img-3.png'
                     alt='facebook'
                     layout='responsive'
-                    // objectFit="contain"
                     priority
                     width={515}
                     height={350}
@@ -177,17 +177,17 @@ function AboutUS(props) {
                 </p>
                 <p className='text-center'>&nbsp;</p>
 
-                <p className={`${abo.imageAbout1} text-center`}>
+                <p className={`${aboutStyles.imageAbout1} text-center`}>
                   <Image
                     src='/assets/images/about_img-4.png'
                     alt='facebook'
                     layout='responsive'
-                    // objectFit="contain"
                     priority
                     width={515}
                     height={350}
                   />
                 </p>
+
                 <p style={{ textAlign: 'center' }}>
                   <em>Cách chơi figure với sa bàn. Ảnh của tác giả : Exkurogane</em>
                 </p>
@@ -205,7 +205,9 @@ function AboutUS(props) {
                   <em>
                     <code>Tới đây hẳn bạn đang thắc mắc:</code>
                   </em>
+                  
                   <br />
+
                   <em>
                     <code>Làm thế nào để phân biệt được hàng Nhật và hàng nhái từ Trung Quốc?</code>
                   </em>
@@ -213,7 +215,9 @@ function AboutUS(props) {
 
                 <p style={{ textAlign: 'justify' }}>
                   <span>Yên tâm nhé Japan Figure đã chuẩn bị sẵn cho bạn 1 số mẹo phân biệt cực ký hữu ích.</span>
+
                   <br />
+
                   <span style={{ fontSize: 14 }}>
                     <strong>
                       <a
@@ -228,7 +232,7 @@ function AboutUS(props) {
 
                 <p className='text-center'>&nbsp;</p>
 
-                <p className={`${abo.imageAbout1} text-center`}>
+                <p className={`${aboutStyles.imageAbout1} text-center`}>
                   <Image
                     src='/assets/images/about_img-5.png'
                     alt='facebook'
@@ -246,12 +250,11 @@ function AboutUS(props) {
 
                 <p className='text-center'>&nbsp;</p>
 
-                <p className={`${abo.imageAbout1} text-center`}>
+                <p className={`${aboutStyles.imageAbout1} text-center`}>
                   <Image
                     src='/assets/images/about_img-6.png'
                     alt='facebook'
                     layout='responsive'
-                    // objectFit="contain"
                     priority
                     width={515}
                     height={350}
@@ -275,21 +278,25 @@ function AboutUS(props) {
                   Japan Figure là thiên đường&nbsp;với những bạn quan tâm, theo đuổi vẻ đẹp toàn vẹn, đam mê figure cao
                   cấp và&nbsp;đây mê hoặc của Nhật Bản.
                 </p>
+
                 <p style={{ textAlign: 'justify' }}>
                   <br />
                   Nếu nhu cầu&nbsp;của bạn chỉ dừng lại ở&nbsp;figure&nbsp;chất lượng thấp, hàng nhái, giả, không có bản
                   quyền… thì rất tiếc Japan Figure không phải là nơi phù hợp dành cho bạn.
                 </p>
+
                 <p style={{ textAlign: 'justify' }}>
                   <span>
                     Từ tháng 8/2012, sau 11 năm phục vụ, Japan Figure rất vui nhận được sự ủng hộ đông đảo từ người sưu
                     tầm&nbsp;trên khắp VN.
                   </span>
                 </p>
+
                 <p style={{ textAlign: 'justify' }}>
                   <br />
                   <span>Tại Japan Figure chúng tôi:</span>
                 </p>
+
                 <ul>
                   <li style={{ textAlign: 'justify' }}>Chuyên cung cấp figure chất lượng cao của Nhật Bản</li>
                   <li style={{ textAlign: 'justify' }}>Cập nhật thông tin sản phẩm mới mỗi ngày.</li>
@@ -300,6 +307,7 @@ function AboutUS(props) {
                     <span>Săn tìm figure từ hiếm cho đến cực hiếm</span>
                   </li>
                 </ul>
+
                 <p style={{ textAlign: 'justify' }}>
                   <span style={{ color: '#993366' }}>
                     <strong>
@@ -308,7 +316,7 @@ function AboutUS(props) {
                   </span>
                 </p>
 
-                <p className={`${abo.imageAbout1} text-center`}>
+                <p className={`${aboutStyles.imageAbout1} text-center`}>
                   <Image
                     src='/assets/images/about_img-7.png'
                     alt='facebook'
@@ -321,29 +329,39 @@ function AboutUS(props) {
                 </p>
 
                 <p style={{ textAlign: 'justify' }}>Bạn thích chơi figure đơn lẻ hay đi cùng 1 series với nhau?</p>
+
                 <p style={{ textAlign: 'justify' }}>Bạn thích figure tự sơn hay sơn sẵn?</p>
+
                 <p style={{ textAlign: 'justify' }}>
                   Bạn thích kích cỡ lớn hay nhỏ, có cần thay đổi gương mặt không? Giữ yên 1 tư thé (tĩnh) hay đổi tư thế
                   thường xuyên (động)?
                 </p>
+
                 <p style={{ textAlign: 'justify' }}>
                   Bạn muốn trưng bày tất cả figure ngay trước mặt để tăng cảm hứng làm việc, hay tạo không gian riêng
                   cho từng bé để tăng tính nghệ thuật?
                 </p>
+
                 <p style={{ textAlign: 'justify' }}>Hãy chọn cho mình một figure yêu thích và cách chơi phù hợp nhé.</p>
+
                 <p style={{ textAlign: 'justify' }}>&nbsp;</p>
+
                 <p style={{ textAlign: 'justify' }}>
                   <strong>
                     <span style={{ textDecoration: 'underline' }}>Có thể bạn quan tâm:</span>
                   </strong>
+
                   <br />
+
                   <br />
+
                   <strong>
                     <a href='http://japanfigure.vn/collections/hang-co-san'>
                       <span style={{ color: '#3333ff' }}>#Hàng có sẵn</span>
                     </a>
                   </strong>
                 </p>
+
                 <p style={{ textAlign: 'justify' }}>
                   <strong>
                     <span style={{ color: '#3333ff' }}>#</span>
@@ -352,6 +370,7 @@ function AboutUS(props) {
                     </a>
                   </strong>
                 </p>
+
                 <p style={{ textAlign: 'justify' }}>
                   <strong>
                     <span style={{ color: '#3333ff' }}>#</span>
@@ -363,6 +382,7 @@ function AboutUS(props) {
                     </a>
                   </strong>
                 </p>
+
                 <p style={{ textAlign: 'justify' }}>
                   <strong>
                     <span style={{ color: '#3333ff' }}>#</span>
@@ -371,6 +391,7 @@ function AboutUS(props) {
                     </a>
                   </strong>
                 </p>
+
                 <p style={{ textAlign: 'justify' }}>
                   <strong>
                     <span style={{ color: '#3333ff' }}>#</span>
@@ -379,6 +400,7 @@ function AboutUS(props) {
                     </a>
                   </strong>
                 </p>
+
                 <p style={{ textAlign: 'justify' }}>
                   <strong>
                     <span style={{ color: '#3333ff' }}>#</span>
@@ -387,6 +409,7 @@ function AboutUS(props) {
                     </a>
                   </strong>
                 </p>
+
                 <p style={{ textAlign: 'justify' }}>
                   <strong>
                     <span style={{ color: '#3333ff' }}>#</span>
@@ -396,7 +419,7 @@ function AboutUS(props) {
                   </strong>
                 </p>
 
-                <p className={`${abo.imageAbout1} text-center`}>
+                <p className={`${aboutStyles.imageAbout1} text-center`}>
                   <Image
                     src='/assets/images/about_img-8.png'
                     alt='facebook'
@@ -413,10 +436,11 @@ function AboutUS(props) {
             </div>
             <div className='col-lg-3 col-sm-12 col-xs-12'>
               <aside className='sidebar-page'>
-                <div className={`${abo['sidebox']} mt-4 mobile-dropdown`} onClick={toggleNav}>
-                  <div className={`${abo['about-head-ul']} py-2`}>
-                    <h4 className={`${abo['about-head-ul']}} d-flex align-items-center`}>
+                <div className={`${aboutStyles['sidebox']} mt-4 mobile-dropdown`} onClick={toggleNav}>
+                  <div className={`${aboutStyles['about-head-ul']} py-2`}>
+                    <h4 className={`${aboutStyles['about-head-ul']}} d-flex align-items-center`}>
                       Danh mục
+
                       <span
                         className={`fa fa-angle-${isNavVisible ? 'up' : 'down'} d-block d-lg-none position-absolute`}
                         style={{
@@ -426,24 +450,27 @@ function AboutUS(props) {
                       />
                     </h4>
                   </div>
+
                   <div className={`d-lg-block ${isNavVisible ? 'block' : 'none'}`}>
-                    <ul className={`${abo['about-head-ul']} ${isNavVisible ? 'd-none' : 'd-lg-block'}`}>
-                      <li className={`${abo['about-head-li']} border-top py-2`}>
-                        <Link href='/' title='Tìm kiếm' className={`${abo['about-head-a']}`}>
+                    <ul className={`${aboutStyles['about-head-ul']} ${isNavVisible ? 'd-none' : 'd-lg-block'}`}>
+                      <li className={`${aboutStyles['about-head-li']} border-top py-2`}>
+                        <Link href='/' title='Tìm kiếm' className={`${aboutStyles['about-head-a']}`}>
                           <span>Tìm kiếm</span>
                         </Link>
                       </li>
-                      <li className={`${abo['about-head-li']} nav-item border-top py-2`}>
-                        <Link className={`${abo['about-head-a']}`} href='/about-us' title='Giới thiệu'>
+
+                      <li className={`${aboutStyles['about-head-li']} nav-item border-top py-2`}>
+                        <Link className={`${aboutStyles['about-head-a']}`} href='/about-us' title='Giới thiệu'>
                           <span>Giới thiệu</span>
                         </Link>
                       </li>
                     </ul>
                   </div>
                 </div>
+
                 <div className='group-sidebox-banner'>
                   <figure className='mb-0 mt-4'>
-                    <a className={`${abo['about-head-a']}`} href='#'>
+                    <a className={`${aboutStyles['about-head-a']}`} href='#'>
                       <Image
                         className='position-static'
                         style={{ width: '100%' }}
@@ -458,11 +485,12 @@ function AboutUS(props) {
                   </figure>
                 </div>
               </aside>
-              <aside className={pay['side']}>
+
+              <aside className={paymentStyles['side']}>
                 {/* phần bài viết mới */}
-                <div className={`${pay['group-sidebox']} ${isMdScreen ? 'active' : isCategoryOpen ? 'active' : ''}`}>
-                  <div className={`${pay['sidebox-title']}`} onClick={toggleCategory}>
-                    <h3 className={`${pay['htitle']} d-flex align-items-center`}>
+                <div className={`${paymentStyles['group-sidebox']} ${isMdScreen ? 'active' : isCategoryOpen ? 'active' : ''}`}>
+                  <div className={`${paymentStyles['sidebox-title']}`} onClick={toggleCategory}>
+                    <h3 className={`${paymentStyles['htitle']} d-flex align-items-center`}>
                       Bài viết mới nhất
                       <span
                         className={`fa ${
@@ -475,10 +503,10 @@ function AboutUS(props) {
 
                   {/* phần content bài viết */}
                   <div
-                    className={`${pay['sidebox-content ']} ${isMdScreen || isCategoryOpen ? 'd-md-block' : 'd-none'}`}
+                    className={`${paymentStyles['sidebox-content ']} ${isMdScreen || isCategoryOpen ? 'd-md-block' : 'd-none'}`}
                   >
                     <ul
-                      className={`${pay['menuList-links']} ${isMdScreen || isCategoryOpen ? 'd-md-block' : 'd-none'}`}
+                      className={`${paymentStyles['menuList-links']} ${isMdScreen || isCategoryOpen ? 'd-md-block' : 'd-none'}`}
                     >
                       <BlogItem
                         image='/assets/images/blog_1.jpg'
@@ -486,7 +514,7 @@ function AboutUS(props) {
                         title2='Figure Nhật Bản là những sản phẩm sản xuất HÀNG LOẠT là đúng!'
                         title3='Tin Tức'
                         date=' - 17/02/2023'
-                        href='/Blogs/appear'
+                        href='about-us/Blogs/appear'
                       />
 
                       <BlogItem
@@ -495,90 +523,67 @@ function AboutUS(props) {
                         title2='Cách Tôi Kiếm Được 250k Mỗi Giờ'
                         title3='Tin Tức'
                         date=' - 12/02/2022'
-                        href='/Blogs/instruct'
+                        href='about-us/Blogs/instruct'
                       />
+
                       <BlogItem
                         image='/assets/images/blog_3.jpg'
                         title='Kakeibo phương pháp tiết kiệm, chi tiêu hợp lý'
                         title2='Kakeibo phương pháp tiết kiệm, chi tiêu hợp lý'
                         title3='Hưỡng Dẫn'
                         date=' - 23/04/2022'
-                        href='/Blogs/Kakeibo'
+                        href='about-us/Blogs/Kakeibo'
                       />
+
                       <BlogItem
                         image='/assets/images/blog_4.jpg'
                         title='Hỏi Và Đáp'
                         title2='Hỏi Và Đáp'
                         title3='Tin Tức'
                         date=' - 23/04/2022'
-                        href='/answer'
+                        href='about-us/answer'
                       />
                     </ul>
                   </div>
                 </div>
-
-                {/* phần danh mục */}
-                {/* <div className={`${pay["group-sidebox"]}`}>
-                  <div
-                    className={`${pay["sidebox-title"]}`}
-                    onClick={toggleCategory2}
-                  >
-                    <h3
-                      className={`${pay["htitle"]} d-flex align-items-center`}
-                    >
-                      Danh Mục
-                      <span
-                        className={`fa ${
-                          isCategoryOpen2 ? "fa-angle-up" : "fa-angle-down"
-                        } d-block d-md-none position-absolute`}
-                        style={{ right: "0" }}
-                      />
-                    </h3>
-                  </div>
-
-            
-                  <div
-                    className={`${pay["sidebox-content "]} ${
-                      isMdScreen || isCategoryOpen2 ? "d-md-block" : "d-none"
-                    }`}
-                  >
-                  
-                    
-                  </div>
-                </div> */}
               </aside>
             </div>
           </div>
         </div>
       </div>
+
       <Social />
     </>
   )
 }
 
-export default AboutUS
+export default AboutUs
+
 const BlogItem = ({ image, title, title2, title3, title4, date, href }) => {
   return (
     <>
       <li>
-        <div className={`${pay['item-article']} d-flex clearfix`}>
+        <div className={`${paymentStyles['item-article']} d-flex clearfix`}>
           <div className='post-image'>
             <a href={href}>
-              <Image className={`${pay['lazyloaded']}`} src={image} alt={title} width={70} height={70} />
+              <Image className={`${paymentStyles['lazyloaded']}`} src={image} alt={title} width={70} height={70} />
             </a>
           </div>
-          <div className={`${pay['post-content']} ms-2`}>
-            <h3 className={`${pay['fs14']} mb-0`}>
-              <a href={href} className={pay['fs14_hover']}>
+
+          <div className={`${paymentStyles['post-content']} ms-2`}>
+            <h3 className={`${paymentStyles['fs14']} mb-0`}>
+              <a href={href} className={paymentStyles['fs14_hover']}>
                 {title2}
               </a>
             </h3>
+
             <p className='mb-0'>
               <span>
-                <a href={href} className={pay['tag']}>
+                <a href={href} className={paymentStyles['tag']}>
                   {title3}
                 </a>
               </span>
+
               <span>
                 <a href={href}>{title4}</a>
               </span>

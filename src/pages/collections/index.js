@@ -13,30 +13,33 @@ function Collection({ products }) {
   const [slecttedProducts, setSlecttedProducts] = useState([...products])
 
   const router = useRouter()
-  // const [cart,setCart] = useState([]);
-
   //addToCart
   const handleAddToCart = (selectedProduct) => {
     if (router.isReady === true) {
       const checkForToken = localStorage.getItem('TOKEN')
+
       if (!checkForToken) {
         router.push('/login')
       } else {
         const cart = JSON.parse(localStorage.getItem('cart')) || []
-        console.log('««««« cart »»»»»', cart)
+
         const updatedCart = [...cart]
+        
         const existingProductIndex = updatedCart.findIndex((item) => item._id === selectedProduct._id)
 
         if (existingProductIndex !== -1) {
           if (updatedCart[existingProductIndex].quantity < selectedProduct.stock) {
             alert(' đã thêm sản phẩm vào giỏ hàng.')
+
             updatedCart[existingProductIndex].quantity += 1
           } else {
             alert(' đã hết sản phẩm.')
+
             return
           }
         } else {
           updatedCart.push({ ...selectedProduct, quantity: 1 })
+
           alert(' đã thêm sản phẩm vào giỏ hàng.')
         }
         localStorage.setItem('cart', JSON.stringify(updatedCart))
@@ -50,13 +53,16 @@ function Collection({ products }) {
     if (selectedSuppliers.includes(label)) {
       // Nếu có, loại bỏ nó
       const updatedSuppliers = selectedSuppliers.filter((supplier) => supplier !== label)
+
       setSelectedSuppliers(updatedSuppliers)
     } else {
       // Nếu không, thêm nó vào
       const updatedSuppliers = [...selectedSuppliers, label]
+      
       setSelectedSuppliers(updatedSuppliers)
     }
   }
+
   // price -------------------------------------------------------------------
   const handlePriceChange = (label) => {
     const isOptionSelected = selectedPriceOptions.includes(label)
@@ -71,6 +77,7 @@ function Collection({ products }) {
 
     setSelectedPriceOptions(updatedSelectedPriceOptions)
   }
+
   //Xắp xếp Tăng dần
   //Hàm để cập nhật danh sách sản phẩm khi sắp xếp
   const updateSelectedProducts = (sortedProducts) => {
@@ -82,32 +89,27 @@ function Collection({ products }) {
     const sortedProducts = [...slecttedProducts]
     sortedProducts.sort((a, b) => a.price - b.price)
     updateSelectedProducts(sortedProducts)
-    console.log('««««« Tăng Dần »»»»»', sortedProducts)
   }
+
   const handleDescPrice = () => {
     const sortedProducts = [...slecttedProducts]
     sortedProducts.sort((a, b) => b.price - a.price)
     updateSelectedProducts(sortedProducts)
-    console.log('««««« Giảm dần »»»»»', sortedProducts)
   }
 
   const handleAscName = () => {
     const sortedProducts = [...slecttedProducts]
     sortedProducts.sort((a, b) => String(a.name).localeCompare(String(b.name)))
     updateSelectedProducts(sortedProducts)
-    console.log('««««« A-Z »»»»»', sortedProducts)
   }
 
   const handleDescName = () => {
     const sortedProducts = [...slecttedProducts]
     sortedProducts.sort((a, b) => String(b.name).localeCompare(String(a.name)))
     updateSelectedProducts(sortedProducts)
-    console.log('««««« Z-A »»»»»', sortedProducts)
   }
 
   useEffect(() => {
-    // console.log("selectedPriceOptions changed:", selectedPriceOptions);
-    // price-------------------------------------------------------------
     const filterProductsByPrice = () => {
       if (selectedPriceOptions.length === 0) {
         return products
@@ -125,6 +127,7 @@ function Collection({ products }) {
         })
       })
     }
+
     //suplier ------------------------------------------------
     const filterProductsBySupplier = () => {
       if (selectedSuppliers.length === 0) {
@@ -140,6 +143,7 @@ function Collection({ products }) {
 
     setFilteredProducts(finalFilteredProducts)
   }, [selectedPriceOptions, selectedSuppliers, products])
+
   // Hàm để chuyển đổi lựa chọn giá thành khoảng giá
   const getPriceRangeFromOption = (selectedPriceOption) => {
     switch (selectedPriceOption) {

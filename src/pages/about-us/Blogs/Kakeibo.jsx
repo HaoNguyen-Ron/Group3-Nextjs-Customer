@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import abo from '@/pages/Blogs/instruct.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
+
 import Social from '@/components/social'
-import pay from '@/styles/Payment.module.css'
+
+import paymentStyles from '@/styles/payment.module.css'
+import instructStyles from '@/pages/Blogs/instruct.module.css'
 
 function Kakeibo(props) {
   const [isNavVisible, setNavVisible] = useState(false)
@@ -56,7 +58,7 @@ function Kakeibo(props) {
             </div>
             <p className='text-center '>&nbsp;</p>
             <div className='contentAboutusDetail'>
-              <p className={`${abo['imageAbout']} text-center`}>
+              <p className={`${instructStyles['imageAbout']} text-center`}>
                 <Image src='/assets/images/abc.png' alt='facebook' layout='fill' objectFit='cover' />
               </p>
               <p className='text-justify' style={{ fontSize: '18px' }}>
@@ -73,7 +75,7 @@ function Kakeibo(props) {
                   kiệm tiền cực kì đơn giản có tên gọi là Kakeibo chắc chắn sẽ giúp bạn chi tiêu hợp lý hơn.
                 </b>
               </p>
-              <p className={`${abo['imageAbout']} text-center`}>
+              <p className={`${instructStyles['imageAbout']} text-center`}>
                 <Image src='/assets/images/abc.png' alt='facebook' layout='fill' objectFit='cover' />
               </p>
               <p className='text-justify'>
@@ -110,7 +112,7 @@ function Kakeibo(props) {
                 <b> 3.giải trí </b>(sách, truyện, nhạc, phim, Japan figure) <br />
                 <b> 4.phát sinh </b>(sửa xe, sửa máy tính, quỹ lớp).
               </p>
-              <p className={`${abo['imageAbout']} text-center`}>
+              <p className={`${instructStyles['imageAbout']} text-center`}>
                 <Image src='/assets/images/abcd.png' alt='facebook' layout='fill' objectFit='cover' />
               </p>
 
@@ -151,9 +153,9 @@ function Kakeibo(props) {
           </div>
           <div className='col-lg-3 col-sm-12 col-xs-12'>
             <aside className='sidebar-page'>
-              <div className={`${abo['sidebox']} mt-4 mobile-dropdown`} onClick={toggleNav}>
-                <div className={`${abo['about-head-ul']} py-2`}>
-                  <h4 className={`${abo['about-head-ul']}} d-flex align-items-center`}>
+              <div className={`${instructStyles['sidebox']} mt-4 mobile-dropdown`} onClick={toggleNav}>
+                <div className={`${instructStyles['about-head-ul']} py-2`}>
+                  <h4 className={`${instructStyles['about-head-ul']}} d-flex align-items-center`}>
                     Danh mục
                     <span
                       className={`fa fa-angle-${isNavVisible ? 'up' : 'down'} d-block d-lg-none position-absolute`}
@@ -165,14 +167,14 @@ function Kakeibo(props) {
                   </h4>
                 </div>
                 <div className={`d-lg-block ${isNavVisible ? 'block' : 'none'}`}>
-                  <ul className={`${abo['about-head-ul']} ${isNavVisible ? 'd-none' : 'd-lg-block'}`}>
-                    <li className={`${abo['about-head-li']} border-top py-2`}>
-                      <Link href='/' title='Tìm kiếm' className={`${abo['about-head-a']}`}>
+                  <ul className={`${instructStyles['about-head-ul']} ${isNavVisible ? 'd-none' : 'd-lg-block'}`}>
+                    <li className={`${instructStyles['about-head-li']} border-top py-2`}>
+                      <Link href='/' title='Tìm kiếm' className={`${instructStyles['about-head-a']}`}>
                         <span>Tìm kiếm</span>
                       </Link>
                     </li>
-                    <li className={`${abo['about-head-li']} nav-item border-top py-2`}>
-                      <Link className={`${abo['about-head-a']}`} href='/about-us' title='Giới thiệu'>
+                    <li className={`${instructStyles['about-head-li']} nav-item border-top py-2`}>
+                      <Link className={`${instructStyles['about-head-a']}`} href='/about-us' title='Giới thiệu'>
                         <span>Giới thiệu</span>
                       </Link>
                     </li>
@@ -181,23 +183,25 @@ function Kakeibo(props) {
               </div>
               <div className='group-sidebox-banner'>
                 <figure className='mb-0 mt-4'>
-                  <a className={`${abo['about-head-a']}`} href='#'>
+                  <a className={`${instructStyles['about-head-a']}`} href='#'>
                     <Image
                       className='position-static'
                       src='/assets/images/about_sibar.jpg'
                       alt='about-side'
                       layout='fill'
                       objectFit='cover'
+                      width={215}
+                      height={150}
                     />
                   </a>
                 </figure>
               </div>
             </aside>
-            <aside className={pay['side']}>
+            <aside className={paymentStyles['side']}>
               {/* phần bài viết mới */}
-              <div className={`${pay['group-sidebox']} ${isMdScreen ? 'active' : isCategoryOpen ? 'active' : ''}`}>
-                <div className={`${pay['sidebox-title']}`} onClick={toggleCategory}>
-                  <h3 className={`${pay['htitle']} d-flex align-items-center`}>
+              <div className={`${paymentStyles['group-sidebox']} ${isMdScreen ? 'active' : isCategoryOpen ? 'active' : ''}`}>
+                <div className={`${paymentStyles['sidebox-title']}`} onClick={toggleCategory}>
+                  <h3 className={`${paymentStyles['htitle']} d-flex align-items-center`}>
                     Bài viết mới nhất
                     <span
                       className={`fa ${
@@ -209,8 +213,8 @@ function Kakeibo(props) {
                 </div>
 
                 {/* phần content bài viết */}
-                <div className={`${pay['sidebox-content ']} ${isMdScreen || isCategoryOpen ? 'd-md-block' : 'd-none'}`}>
-                  <ul className={`${pay['menuList-links']} ${isMdScreen || isCategoryOpen ? 'd-md-block' : 'd-none'}`}>
+                <div className={`${paymentStyles['sidebox-content ']} ${isMdScreen || isCategoryOpen ? 'd-md-block' : 'd-none'}`}>
+                  <ul className={`${paymentStyles['menuList-links']} ${isMdScreen || isCategoryOpen ? 'd-md-block' : 'd-none'}`}>
                     <BlogItem
                       image='https://file.hstatic.net/1000160337/article/vi_sao_nen_dat_hang_som_tai_japanfigure.jpg'
                       title='Figure Nhật Bản là những sản phẩm sản xuất HÀNG LOẠT là đúng!'
@@ -249,13 +253,13 @@ function Kakeibo(props) {
               </div>
 
               {/* phần danh mục */}
-              {/* <div className={`${pay["group-sidebox"]}`}>
+              {/* <div className={`${paymentStyles["group-sidebox"]}`}>
                   <div
-                    className={`${pay["sidebox-title"]}`}
+                    className={`${paymentStyles["sidebox-title"]}`}
                     onClick={toggleCategory2}
                   >
                     <h3
-                      className={`${pay["htitle"]} d-flex align-items-center`}
+                      className={`${paymentStyles["htitle"]} d-flex align-items-center`}
                     >
                       Danh Mục
                       <span
@@ -269,7 +273,7 @@ function Kakeibo(props) {
 
             
                   <div
-                    className={`${pay["sidebox-content "]} ${
+                    className={`${paymentStyles["sidebox-content "]} ${
                       isMdScreen || isCategoryOpen2 ? "d-md-block" : "d-none"
                     }`}
                   >
@@ -291,21 +295,21 @@ const BlogItem = ({ image, title, title2, title3, title4, date, href }) => {
   return (
     <>
       <li>
-        <div className={`${pay['item-article']} d-flex clearfix`}>
+        <div className={`${paymentStyles['item-article']} d-flex clearfix`}>
           <div className='post-image'>
             <a href={href}>
-              <img className={`${pay['lazyloaded']}`} src={image} alt={title} />
+              <img className={`${paymentStyles['lazyloaded']}`} src={image} alt={title} />
             </a>
           </div>
-          <div className={`${pay['post-content']} ms-2`}>
-            <h3 className={`${pay['fs14']} mb-0`}>
-              <a href={href} className={pay['fs14_hover']}>
+          <div className={`${paymentStyles['post-content']} ms-2`}>
+            <h3 className={`${paymentStyles['fs14']} mb-0`}>
+              <a href={href} className={paymentStyles['fs14_hover']}>
                 {title2}
               </a>
             </h3>
             <p className='mb-0'>
               <span>
-                <a href={href} className={pay['tag']}>
+                <a href={href} className={paymentStyles['tag']}>
                   {title3}
                 </a>
               </span>

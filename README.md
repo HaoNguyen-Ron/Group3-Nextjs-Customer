@@ -1,40 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Các lỗi code convention được phát hiện 
+1) Tên component: dùng Pascal case nhưng tên file CSS phải là Camel case: 
+    Slider.module.css -> slider.module.css
+    Banner.module.css -> banner.module.css
+    ....
 
-## Getting Started
+2) Nhiều file css tạo ra nhưng trống
 
-First, run the development server:
+3) Cách đặt tên biến cho module css không có ý nghĩa: import x from '@/styles/card.module.css' x làm người đọc khó hiểu lẫn nhìn trong code bị rối
+    file đã sửa: Card.jsx, CardList.jsx,...
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+4) Các tag cùng cấp nên cách 1 dòng đễ dễ đọc
+    file đã sửa: Card.jsx, CardList.jsx, BlogNew.jsx, Collection.js
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5) Phát hiện còn console.log hay comment sai trong production: 
+    file đã sửa:CardList.jsx, filter.js, collection.js
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+6) Cách sắp xếp cái import theo thứ tự: file hệ thống, lib, framework > component,.. > CSS
+    file đã sửa:CardList.jsx,...
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+7) aboutUs.js : 
+    + function AboutUS đặt sai tên => AboutUs; function Appeer => Appear
+    + Không chia Module hoặc tách Component dẫn đến 1 file quá nhiều dòng code 
+    + Nhiều attribute đã bị cảnh báo lỗi thời nhưng vẫn không xóa hay đổi (layout='responsive')
+    + Nhiều hàm khai báo nhưng không dùng đến
+    + const BlogItem = ({ image, title, title2, title3, title4, date, href }): đặt tên props gây khó hiểu cho người đọc 
+    + file import đến 3 module css dẫn đến khó sửa sau này cho người khác
+    + aboutUs có đến 3 pages liên quan nhưng lại để ở ngoài folder about-us
+    + Nhiều hàm khai báo nhưng không sử dụng

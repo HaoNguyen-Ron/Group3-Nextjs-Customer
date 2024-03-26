@@ -1,6 +1,7 @@
 import React from 'react'
-import styles from '@/components/Banner/Banner.module.css'
 import Link from 'next/link'
+
+import styles from '@/styles/banner.module.css'
 
 function Banner({ image, titles, caption, name }) {
   return (
