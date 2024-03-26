@@ -52,6 +52,7 @@ function Kakeibo(props) {
               style={{ maxWidth: '100%' }}
             />
           </div>
+          
           <div className='col-lg-9 col-sm-12 col-xs-12'>
             <div className='my-4 text-muted'>
               <h1>Kakeibo phương pháp tiết kiệm, chi tiêu hợp lý</h1>
@@ -252,39 +253,11 @@ function Kakeibo(props) {
                 </div>
               </div>
 
-              {/* phần danh mục */}
-              {/* <div className={`${paymentStyles["group-sidebox"]}`}>
-                  <div
-                    className={`${paymentStyles["sidebox-title"]}`}
-                    onClick={toggleCategory2}
-                  >
-                    <h3
-                      className={`${paymentStyles["htitle"]} d-flex align-items-center`}
-                    >
-                      Danh Mục
-                      <span
-                        className={`fa ${
-                          isCategoryOpen2 ? "fa-angle-up" : "fa-angle-down"
-                        } d-block d-md-none position-absolute`}
-                        style={{ right: "0" }}
-                      />
-                    </h3>
-                  </div>
-
-            
-                  <div
-                    className={`${paymentStyles["sidebox-content "]} ${
-                      isMdScreen || isCategoryOpen2 ? "d-md-block" : "d-none"
-                    }`}
-                  >
-                  
-                    
-                  </div>
-                </div> */}
             </aside>
           </div>
         </div>
       </div>
+
       <Social />
     </>
   )

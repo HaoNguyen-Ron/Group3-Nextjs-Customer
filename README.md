@@ -27,3 +27,4 @@ Các lỗi code convention được phát hiện
     + file import đến 3 module css dẫn đến khó sửa sau này cho người khác
     + aboutUs có đến 3 pages liên quan nhưng lại để ở ngoài folder about-us
     + Nhiều hàm khai báo nhưng không sử dụng
+    + Đặt tên component là một động từ thay vì 1 danh từ lẫn ý nghĩa không liên quan gì đến các trang about us gây khó hiểu (Kakeibo, appear, instruct)

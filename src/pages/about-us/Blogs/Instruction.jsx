@@ -8,7 +8,7 @@ import paymentStyles from '@/styles/payment.module.css'
 import aboutStyles from '@/styles/instruct.module.css'
 
 
-function Instruct(props) {
+function Instruction(props) {
   const [isNavVisible, setNavVisible] = useState(false)
 
   const toggleNav = () => {
@@ -327,6 +327,7 @@ function Instruct(props) {
                         date=' - 12/02/2022'
                         href='/Blogs/instruct'
                       />
+                      
                       <BlogItem
                         image='/assets/images/blog_3.jpg'
                         title='Kakeibo phương pháp tiết kiệm, chi tiêu hợp lý'
@@ -346,36 +347,6 @@ function Instruct(props) {
                     </ul>
                   </div>
                 </div>
-
-                {/* phần danh mục */}
-                {/* <div className={`${paymentStyles["group-sidebox"]}`}>
-                  <div
-                    className={`${paymentStyles["sidebox-title"]}`}
-                    onClick={toggleCategory2}
-                  >
-                    <h3
-                      className={`${paymentStyles["htitle"]} d-flex align-items-center`}
-                    >
-                      Danh Mục
-                      <span
-                        className={`fa ${
-                          isCategoryOpen2 ? "fa-angle-up" : "fa-angle-down"
-                        } d-block d-md-none position-absolute`}
-                        style={{ right: "0" }}
-                      />
-                    </h3>
-                  </div>
-
-            
-                  <div
-                    className={`${paymentStyles["sidebox-content "]} ${
-                      isMdScreen || isCategoryOpen2 ? "d-md-block" : "d-none"
-                    }`}
-                  >
-                  
-                    
-                  </div>
-                </div> */}
               </aside>
             </div>
           </div>
@@ -386,7 +357,8 @@ function Instruct(props) {
   )
 }
 
-export default Instruct
+export default Instruction
+
 const BlogItem = ({ image, title, title2, title3, title4, date, href }) => {
   return (
     <>

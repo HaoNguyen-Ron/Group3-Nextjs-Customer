@@ -15,7 +15,6 @@ function Apppear(props) {
     setNavVisible(!isNavVisible)
   }
   const [isCategoryOpen, setIsCategoryOpen] = useState(false)
-  const [isCategoryOpen2, setIsCategoryOpen2] = useState(false)
   const [isMdScreen, setIsMdScreen] = useState(true)
 
   useEffect(() => {
@@ -50,10 +49,12 @@ function Apppear(props) {
               className={`${instructStyles['image_width']} text-center`}
             />
           </div>
+          
           <div className='col-lg-9 col-sm-12 col-xs-12'>
             <div className='my-4 text-muted'>
               <h1>Khi nào 1 figure &ldquo;CÓ&rdquo; tại Nhật Bản?</h1>
             </div>
+
             <div className='contentAboutusDetail'>
               <div className={` ${instructStyles['image_width']}`}>
                 <img
@@ -224,7 +225,7 @@ function Apppear(props) {
                       title2='Figure Nhật Bản là những sản phẩm sản xuất HÀNG LOẠT là đúng!'
                       title3='Tin Tức'
                       date=' - 17/02/2023'
-                      href='appear'
+                      href='Appear'
                     />
 
                     <BlogItem
@@ -233,8 +234,9 @@ function Apppear(props) {
                       title2='Cách Tôi Kiếm Được 250k Mỗi Giờ'
                       title3='Tin Tức'
                       date=' - 12/02/2022'
-                      href='instruct'
+                      href='Instruction'
                     />
+
                     <BlogItem
                       image='/assets/images/blog_3.jpg'
                       title='Kakeibo phương pháp tiết kiệm, chi tiêu hợp lý'
@@ -243,6 +245,7 @@ function Apppear(props) {
                       date=' - 23/04/2022'
                       href='Kakeibo'
                     />
+
                     <BlogItem
                       image='/assets/images/blog_4.jpg'
                       title='Hỏi Và Đáp'
