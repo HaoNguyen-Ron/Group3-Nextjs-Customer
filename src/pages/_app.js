@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import Script from 'next/script'
 
-import { SessionProvider } from 'next-auth/react'
 import { ThemeProvider, createTheme } from '@mui/material'
 
 import '@/styles/globals.css'
@@ -17,7 +16,7 @@ const theme = createTheme({
 
 export default function App({
   Component,
-  pageProps: { session, ...pageProps }
+  pageProps
 }) {
   return (
     <>
@@ -32,11 +31,9 @@ export default function App({
       />
 
       <ThemeProvider theme={theme}>
-        <SessionProvider session={session}>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </SessionProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </ThemeProvider>
     </>
   )
