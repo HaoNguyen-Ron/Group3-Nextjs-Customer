@@ -1,6 +1,6 @@
 import React from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
+
 function Carousel(props) {
   return (
     <div className='mt-5'>
@@ -15,6 +15,7 @@ function Carousel(props) {
               />
             </Link>
           </div>
+
           <div className='carousel-item'>
             <Link href='/about-us'>
               <img
@@ -24,6 +25,7 @@ function Carousel(props) {
               />
             </Link>
           </div>
+
           <div className='carousel-item'>
             <a href='Blogs/appear'>
               <img
@@ -33,6 +35,7 @@ function Carousel(props) {
               />
             </a>
           </div>
+
           <div className='carousel-item'>
             <a href='Blogs/Kakeibo'></a>
             <img
@@ -42,6 +45,7 @@ function Carousel(props) {
             />
           </div>
         </div>
+
         <button
           className='carousel-control-prev'
           type='button'
@@ -49,8 +53,10 @@ function Carousel(props) {
           data-bs-slide='prev'
         >
           <span className='carousel-control-prev-icon' aria-hidden='true' />
+
           <span className='visually-hidden'>Previous</span>
         </button>
+
         <button
           className='carousel-control-next'
           type='button'
@@ -58,6 +64,7 @@ function Carousel(props) {
           data-bs-slide='next'
         >
           <span className='carousel-control-next-icon' aria-hidden='true' />
+          
           <span className='visually-hidden'>Next</span>
         </button>
       </div>

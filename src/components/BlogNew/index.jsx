@@ -26,7 +26,7 @@ const BlogItem = ({ image, title, title2, title3, title4, date }) => {
       <div className={`${blog['item-article']} clearfix`}>
         <div className='post-image'>
           <Link href='/'>
-            <img className=' lazyloaded' src={image} alt={title} />
+            <img className='lazyloaded' src={image} alt={title} />
           </Link>
         </div>
 

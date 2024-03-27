@@ -1,20 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import pay from '@/styles/Payment.module.css'
 import Image from 'next/image'
-import Social from '@/components/social'
 import { useRouter } from 'next/router'
+
+import Social from '@/components/social'
+
+import pay from '@/styles/Payment.module.css'
 
 function PaymentInstructions(props) {
   const router = useRouter()
 
   const [activeTab, setActiveTab] = useState(router.pathname)
 
-  const onClickTab = () => {
-    setActiveTab(router.pathname)
-  }
-
   const [isCategoryOpen, setIsCategoryOpen] = useState(false)
-  const [isCategoryOpen2, setIsCategoryOpen2] = useState(false)
   const [isMdScreen, setIsMdScreen] = useState(true)
 
   useEffect(() => {
@@ -36,10 +33,6 @@ function PaymentInstructions(props) {
 
   const toggleCategory = () => {
     setIsCategoryOpen(!isCategoryOpen)
-  }
-
-  const toggleCategory2 = () => {
-    setIsCategoryOpen2(!isCategoryOpen2)
   }
 
   return (

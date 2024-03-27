@@ -40,11 +40,11 @@ function Navbar(props) {
                 submenutab='0'
                 a_href='#'
                 titlemenu1='Đặt mua & Thanh Toán'
-                a_href1='/payment-instructions'
+                a_href1='about-us/Blogs/Instruction'
                 titlemenu2='Kiếm 250k / h'
-                a_href2='/Blogs/instruct'
+                a_href2='about-us/Blogs/instruct'
                 titlemenu3='Tiết kiệm tiêu dùng'
-                a_href3='/Blogs/Kakeibo'
+                a_href3='about-us/Blogs/Kakeibo'
               />
 
               <NavSidbar title='Sản Phẩm' activeTab={activeTab} onClick={onClickTab} a_href='/collections' />

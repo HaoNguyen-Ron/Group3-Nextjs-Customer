@@ -21,13 +21,16 @@ export default function CardProduct({ products }) {
   const handleAddToCart = () => {
     if (router.isReady === true) {
       const checkForToken = localStorage.getItem('TOKEN')
+
       if (!checkForToken) {
         router.push('/login')
       } else {
         const { products: omitProducts, ...rest } = products
+
         const productWithoutCircularRefs = { ...rest }
 
         const cart = JSON.parse(localStorage.getItem('cart')) || []
+
         const existingProductIndex = cart.findIndex((item) => item._id === products._id)
 
         if (existingProductIndex !== -1) {
@@ -42,8 +45,11 @@ export default function CardProduct({ products }) {
           if (count > products.stock) {
             alert(' đã thêm sản phẩm vào giỏ hàng.')
           }
+
           const newProduct = { ...productWithoutCircularRefs, quantity: count }
+
           cart.push(newProduct)
+
           alert(' đã thêm sản phẩm vào giỏ hàng.')
         }
 
@@ -63,12 +69,13 @@ export default function CardProduct({ products }) {
       setCount(count)
     }
   }
-  // Hàm giảm giá trị xuống 1
+
   function decrement() {
     if (count > 1) {
       setCount(count - 1)
     } else setCount(count)
   }
+
   const handleChange = (e) => {
     let value = Number(e.target.value)
     if (isNaN(value)) {
@@ -77,6 +84,7 @@ export default function CardProduct({ products }) {
     value = Math.max(1, Math.min(value, products.stock))
     setCount(value)
   }
+
   return (
     <div className={`container d-block `}>
       <div className={`row justify-content-around  ${Styles.card_Product} `}>
@@ -88,8 +96,10 @@ export default function CardProduct({ products }) {
             <span className={`${Styles['sale-span']}`}>-{products.discount}%</span>
           )}
         </div>
+
         <div className={`${Styles.info_product} col-12 col-md-12 col-lg-7`}>
           <h3>{products.name}</h3>
+
           <p>
             {products.discount === 0 ? (
               <span></span>
@@ -99,6 +109,7 @@ export default function CardProduct({ products }) {
 
             <span className={`${Styles.price_text_discount}`}>{formattedPrice(priceThenDiscount)}</span>
           </p>
+
           <div className={`row justify-content-around align-items-center ${Styles.form_buy}`}>
             <div className='col-5 col-md-3 col-lg-3 row align-items-center'>
               <input
@@ -107,6 +118,7 @@ export default function CardProduct({ products }) {
                 onClick={decrement}
                 className={`col-3 btn btn-light ${Styles.input_color}`}
               />
+
               <input
                 type='text'
                 id='quantity'
@@ -116,6 +128,7 @@ export default function CardProduct({ products }) {
                 onChange={handleChange}
                 className={`col-3 form-control ${Styles.input_quantity}`}
               />
+
               <input
                 type='button'
                 value='+'
@@ -132,9 +145,11 @@ export default function CardProduct({ products }) {
                   src='//theme.hstatic.net/1000160337/1000885200/14/icon_chat_desktop.png?v=316'
                   alt='chat'
                 />
+
                 <span className={`${Styles.title_chat}`}>Chat Ngay</span>
               </a>
             </div>
+
             <button onClick={handleAddToCart} className={`col-12 col-md-5 col-lg-5 ${Styles.btn_add_card}`}>
               Thêm vào giỏ hàng
             </button>
@@ -150,10 +165,13 @@ export default function CardProduct({ products }) {
                     alt='Sản phẩm chính hãng từ Nhật Bản.'
                   />
                 </span>
+
                 <div>
                   <i className='fa fa-check' />
                   <strong> Sản phẩm chính hãng từ Nhật Bản.</strong>
+
                   <br />
+
                   <i className='fa fa-check' />
                   <strong> Trước khi bạn đặt mua:</strong> vui lòng check lại giá hiện tại với admin, vì khả năng giá đã
                   thay đổi so với lần cập nhật gần nhất, hoặc hết hàng, hết suất order. Do giới hạn số lượng, figure
@@ -174,7 +192,9 @@ export default function CardProduct({ products }) {
                   <i className='fa fa-check' />
                   <span> Với sản phẩm</span>
                   <strong> CÓ SẴN, bạn sẽ được giao ngay.</strong>
+
                   <br />
+
                   <i className='fa fa-check' />
                   <span> Với sản phẩm</span>
                   <strong> ĐẶT TRƯỚC, bạn cần cọc 50% giá trị sản phẩm.</strong>
@@ -213,11 +233,13 @@ export default function CardProduct({ products }) {
             <p className={`${Styles.infomation_product}`} onClick={() => setShowText(!showText)}>
               Thông tin sản phẩm
             </p>
+
             {showText && (
               <div>
                 <p>
                   Loại Sản Phẩm: <span>{products.category.name}</span>
                 </p>
+                
                 <p>
                   Hãng sản xuất: <span>{products.supplier.name}</span>
                 </p>

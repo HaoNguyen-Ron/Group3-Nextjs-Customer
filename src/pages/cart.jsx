@@ -98,6 +98,7 @@ function Cart() {
                             <img className={`${Styles.image_number_cart}`} src={item.description} alt={item.name} />
                           </a>
                         </div>
+
                         <div className={`col-8 ${Styles.media_right}`}>
                           <a className={`${Styles.name_Product}`} href={`/productDetail/${item._id}`}>
                             {item.name}
@@ -109,6 +110,7 @@ function Cart() {
                               onClick={() => decrementCount(item._id)}
                               className={` btn btn-light ${Styles.input_color}`}
                             />
+
                             <input
                               type='text'
                               id='quantity'
@@ -118,6 +120,7 @@ function Cart() {
                               min='1'
                               className={`form-control ${Styles.input_quantity}`}
                             />
+
                             <input
                               type='button'
                               value='+'
@@ -125,16 +128,19 @@ function Cart() {
                               className={`btn btn-light ${Styles.input_color}`}
                             />
                           </div>
+
                           <p>
                             <b>{formattedPrice(item.price - (item.price * item.discount) / 100)}</b>
                           </p>
                         </div>
+
                         <div className={`col-2`}>
                           <button onClick={() => deleteProduct(item._id)} className={`btn btn-light `}>
                             <img src='//theme.hstatic.net/1000160337/1000885200/14/delete-cart.png?v=316' />
                           </button>
                         </div>
                       </div>
+
                       <div className={`${Styles.title_ThanhTien}`}>
                         <p>
                           <b>Thành Tiền:</b>
@@ -162,6 +168,7 @@ function Cart() {
                 <p className={`${Styles.input_color_2}`}>
                   <b>Tổng tiền:</b>
                 </p>
+                
                 <p className={`${Styles.input_color_2} ${Styles.input_color_1}`}>
                   <b>{formattedPrice(totalPrice)}</b>
                 </p>

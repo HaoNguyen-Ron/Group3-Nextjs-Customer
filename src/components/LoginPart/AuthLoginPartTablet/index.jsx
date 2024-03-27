@@ -18,8 +18,6 @@ export default function AuthLoginPartTablet() {
     setData(parsedData)
   }, [])
 
-  // const totalItemCount = data.reduce((total, item) => total + item.count, 0);
-
   const router = useRouter()
 
   const open = Boolean(openMenu)

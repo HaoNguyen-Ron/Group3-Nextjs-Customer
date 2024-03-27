@@ -1,5 +1,6 @@
-import styles from '@/styles/footer.module.css'
 import Link from 'next/link'
+
+import styles from '@/styles/footer.module.css'
 
 function Footer() {
   return (
@@ -13,6 +14,7 @@ function Footer() {
               target='_blank'
               rel='noreferrer'
             >
+
               <img
                 className={` ${styles.lazyloaded}`}
                 data-src='//theme.hstatic.net/1000160337/1000885200/14/gallery_item_1_img.jpg?v=316'
@@ -111,20 +113,22 @@ function Footer() {
               <h3 className={styles.footer_title}>
                 <span className={styles.color_3nime}>3NIME </span> Figure
               </h3>
+
               <p>
-                <span className={styles.color_3nime}>3NIME </span>Figure shop tại Đà Nẵng chuyên bán các sản phẩm mô
-                hình figure anime chính hãng Nhật Bản như gameprize, nendoroid, mô hình scale..
+                <span className={styles.color_3nime}>3NIME </span>Figure shop tại Đà Nẵng chuyên bán các sản phẩm mô hình figure anime chính hãng Nhật Bản như gameprize, nendoroid, mô hình scale..
               </p>
             </div>
+
             <div className='col col-12 col-md-6 col-lg-3'>
               <p>
                 <bold>Địa chỉ:</bold> Hòa xuân, Cẩm Lệ, Đà Nẵng
               </p>
+
               <p>
-                <span className={styles.color_3nime}>3NIME </span> Figure chưa có không gian trưng bày, bạn vui lòng hẹn
-                trước khi đến
+                <span className={styles.color_3nime}>3NIME </span> Figure chưa có không gian trưng bày, bạn vui lòng hẹn trước khi đến
               </p>
               <p>Điện thoại: +84 985655221</p>
+
               <p>Email: support@japanfigure.vn</p>
             </div>
             <div className='col col-12 col-md-6 col-lg-3'>
@@ -133,6 +137,7 @@ function Footer() {
                 <li>
                   <Link href='/aboutUs'>Tìm kiếm</Link>
                 </li>
+
                 <li>
                   <Link href='/'>Giới thiệu</Link>
                 </li>
@@ -140,15 +145,19 @@ function Footer() {
             </div>
             <div className='col col-12 col-md-6 col-lg-3'>
               <h3>Chăm sóc khách hàng</h3>
+
               <div className='d-flex align-items-center gap-2'>
                 <div>
                   <i className={`fa-solid fa-phone ${styles.phone_bigsize}`}></i>
                 </div>
+
                 <div>
                   <div>0965 587 662</div>
+
                   <div>support@3nimefigure.vn</div>
                 </div>
               </div>
+              
               <h3>Follow Japan Figure</h3>
 
               <div className={`${styles.logo_icon} d-flex`}>

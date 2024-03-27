@@ -14,6 +14,7 @@ function Filter(props) {
     itemName,
     itemSuplier
   } = props
+  
   const [activeItem, setActiveItem] = useState(null)
   const handleItemClick = (index) => {
     setActiveItem(index)

@@ -67,12 +67,12 @@
   box-sizing: border-box;
 }
 
-.media_left {
+.media-left {
   padding-right: 10px;
   max-width: 100%;
   box-sizing: border-box;
 }
-.media_left_a {
+.media-left_a {
   max-width: 100%;
   box-sizing: border-box;
 }
@@ -84,7 +84,7 @@
   max-width: 100%;
   box-sizing: border-box;
 }
-.media_right {
+.media-right {
   padding-left: 16px;
 }
 .input_quantity {

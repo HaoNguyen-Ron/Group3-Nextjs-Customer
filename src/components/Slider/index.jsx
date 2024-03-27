@@ -1,7 +1,8 @@
 import Slider from 'react-slick'
+
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import x from '@/styles/slider.module.css'
+import styles from '@/styles/slider.module.css'
 
 const data = [
   {
@@ -66,9 +67,9 @@ function Sliders() {
 
   return (
     <div className='container' style={{ marginBottom: '50px' }}>
-      <div className={` ${x['section']}`}>
-        <div className={` ${x['section-heading']}`}>
-          <h2 className={` ${x['hTitle']}`}>
+      <div className={` ${styles['section']}`}>
+        <div className={` ${styles['section-heading']}`}>
+          <h2 className={` ${styles['hTitle']}`}>
             <a href='collections/scale-figure'>Dành Cho Người Mới Bắt Đầu</a>
           </h2>
           <p>Hướng dẫn cơ bản</p>
@@ -80,14 +81,14 @@ function Sliders() {
             {data.map((d) => (
               <div key={d.name} className='bg-white h-[450px] text-black rounded-xl'>
                 <div className='h-56 bg-indigo-500 flex justify-center items-center rounded-t-xl'>
-                  <div className={x['groupbanner-hover']} style={{ height: '300px' }}>
+                  <div className={styles['groupbanner-hover']} style={{ height: '300px' }}>
                     <img src={d.img} alt='' className='h-44 w-44 rounded-full' style={{ maxWidth: '100%' }} />
                   </div>
                 </div>
 
                 <div className='flex flex-col items-center justify-center gap-4 p-4'>
-                  <h6 className={`${x['custom']}`}>{d.name}</h6>
-                  <p className={`${x['overflow-ellipsis']}`} style={{ height: '150px' }}>
+                  <h6 className={`${styles['custom']}`}>{d.name}</h6>
+                  <p className={`${styles['overflow-ellipsis']}`} style={{ height: '150px' }}>
                     {d.review}
                   </p>
                   <a href={d.link}>

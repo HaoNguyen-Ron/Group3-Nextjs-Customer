@@ -1,12 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { axiosClient } from '@/libraries/axiosClient'
+import { useRouter } from 'next/router'
 
 import SearchBarInput from './SearchBarInput'
 import SearchBarDisplay from './SearchBarDisplay'
 
-import { axiosClient } from '@/libraries/axiosClient'
-
 import styles from '@/styles/searchbar.module.css'
-import { useRouter } from 'next/router'
 
 export default function SearchBar() {
   const [searchList, setSearchList] = useState([])
@@ -46,6 +45,7 @@ export default function SearchBar() {
       document.removeEventListener('mousedown', handleClickOutside)
     }
   }, [route.isReady])
+  
   return (
     <>
       <div className={styles.searchbar__input} ref={searchbarRef}>

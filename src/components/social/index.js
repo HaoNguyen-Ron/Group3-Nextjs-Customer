@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import soci from '@/styles/Social.module.css'
 import Image from 'next/image'
+
+import soci from '@/styles/Social.module.css'
 
 function Social(props) {
   const [isActive, setIsActive] = useState(false)

@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 
 export default function AuthLoginPartPc() {
   const router = useRouter()
-  const [data, setData] = useState([])
+  const [, setData] = useState([])
 
   useEffect(() => {
     const storedData = localStorage.getItem('cart')

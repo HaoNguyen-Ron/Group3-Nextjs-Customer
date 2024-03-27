@@ -4,7 +4,7 @@ Các lỗi code convention được phát hiện
     Banner.module.css -> banner.module.css
     ....
 
-2) Nhiều file css tạo ra nhưng trống
+2) Nhiều folder hay file tạo ra nhưng trống
 
 3) Cách đặt tên biến cho module css không có ý nghĩa: import x from '@/styles/card.module.css' x làm người đọc khó hiểu lẫn nhìn trong code bị rối
     file đã sửa: Card.jsx, CardList.jsx,...
@@ -13,7 +13,7 @@ Các lỗi code convention được phát hiện
     file đã sửa: Card.jsx, CardList.jsx, BlogNew.jsx, Collection.js
 
 5) Phát hiện còn console.log hay comment sai trong production: 
-    file đã sửa:CardList.jsx, filter.js, collection.js
+    file đã sửa:CardList.jsx, filter.js, collection.js, order.jsx
 
 6) Cách sắp xếp cái import theo thứ tự: file hệ thống, lib, framework > component,.. > CSS
     file đã sửa:CardList.jsx,...
@@ -28,3 +28,8 @@ Các lỗi code convention được phát hiện
     + aboutUs có đến 3 pages liên quan nhưng lại để ở ngoài folder about-us
     + Nhiều hàm khai báo nhưng không sử dụng
     + Đặt tên component là một động từ thay vì 1 danh từ lẫn ý nghĩa không liên quan gì đến các trang about us gây khó hiểu (Kakeibo, appear, instruct)
+
+8) CartItem:
+    + Nhiều hàm khai báo nhưng không dùng đến
+    + Tên class 'media_right' nếu theo BEM thì sai vì 'right' là Modify nên phải chỉnh thành 'media-right'
+    + Tên Jsx là CartItem nhưng tên CSS lại là cart.module.css gây nhầm lẫn cho reader

@@ -49,7 +49,6 @@ function Order() {
   const year = currentDate.getFullYear().toString()
   const month = (currentDate.getMonth() + 1).toString().padStart(2, '0')
   const day = currentDate.getDate().toString().padStart(2, '0')
-
   const formattedDate = year + '-' + month + '-' + day
 
   const orderDetails = listProduct.map((product) => ({
@@ -79,7 +78,6 @@ function Order() {
     }),
 
     onSubmit: async (values) => {
-      console.log('««««« values »»»»»', values)
       try {
         setLoading(true)
         const res = await axiosClient.post('/orders/', values)
@@ -95,6 +93,7 @@ function Order() {
         }
       } catch (error) {
         setOpenError(true)
+
         console.error('Submission error:', error)
       } finally {
         setLoading(false)
@@ -120,15 +119,16 @@ function Order() {
 
   useEffect(() => {
     const token = window.localStorage.getItem('TOKEN')
+
     if (token && router.isReady === true) {
       axiosClient.defaults.headers.Authorization = `Bearer ${token}`
+
       getUserDetail().then((res) => {
         setUserData(res.data.payload)
       })
     }
 
     const storedData = localStorage.getItem('cart')
-
     const parsedData = storedData ? JSON.parse(storedData) : []
 
     setListProduct(parsedData)

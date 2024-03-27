@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Social from '@/components/social'
 
 import paymentStyles from '@/styles/payment.module.css'
-import instructStyles from '@/pages/Blogs/instruct.module.css'
+import instructStyles from '@/styles/instruct.module.css'
 
 function Kakeibo(props) {
   const [isNavVisible, setNavVisible] = useState(false)
@@ -189,8 +189,6 @@ function Kakeibo(props) {
                       className='position-static'
                       src='/assets/images/about_sibar.jpg'
                       alt='about-side'
-                      layout='fill'
-                      objectFit='cover'
                       width={215}
                       height={150}
                     />

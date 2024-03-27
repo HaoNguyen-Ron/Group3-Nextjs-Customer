@@ -78,7 +78,7 @@ function Instruction(props) {
               </div>
               <div className='contentAboutusDetail'>
                 <p className={`${aboutStyles['imageAbout']} text-center`}>
-                  <Image src='/assets/images/imges.png' alt='facebook' layout='fill' objectFit='cover' />
+                  <Image src='/assets/images/imges.png' alt='facebook' fill  />
                 </p>
 
                 <div className='text-center'>
@@ -87,7 +87,6 @@ function Instruction(props) {
                     height={360}
                     src='https://www.youtube.com/embed/agph5NgEfBw?si=TW6daacMJ1wbWWG'
                     title='YouTube video player'
-                    frameBorder={0}
                     allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
                     allowFullScreen=''
                   />
@@ -131,7 +130,6 @@ function Instruction(props) {
                     height={360}
                     src='https://www.youtube.com/embed/TxJLmmSLYfE?si=ZTW28blsTeuHEFqf'
                     title='YouTube video player'
-                    frameBorder={0}
                     allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
                     allowFullScreen=''
                   />
@@ -162,10 +160,10 @@ function Instruction(props) {
                 </p>
 
                 <p className={`${aboutStyles.imageAbout1} text-center`}>
-                  <Image src='/assets/images/instruc2.png' alt='facebook' layout='fill' objectFit='contain' />
+                  <Image src='/assets/images/instruc2.png' alt='facebook' width={500} height={300} />
                 </p>
                 <p className={`${aboutStyles.imageAbout1} text-center`}>
-                  <Image src='/assets/images/instruc2.png' alt='facebook' layout='fill' objectFit='contain' />
+                  <Image src='/assets/images/instruc2.png' alt='facebook' width={500} height={300}/>
                 </p>
 
                 <p className='text-justify' style={{ fontSize: '18px' }}>
@@ -205,12 +203,12 @@ function Instruction(props) {
                 </div>
 
                 <p className={`${aboutStyles.imageAbout1} text-center`}>
-                  <Image src='/assets/images/instruc3.png' alt='facebook' layout='fill' objectFit='contain' />
+                  <img src='/assets/images/instruc3.png' alt='facebook' />
                 </p>
 
                 <p className='text-center'>&nbsp;</p>
                 <p className={`${aboutStyles.imageAbout1} text-center`}>
-                  <Image src='/assets/images/instruc4.png' alt='facebook' layout='fill' objectFit='contain' />
+                  <img src='/assets/images/instruc4.png' alt='facebook' />
                 </p>
                 <p className='text-center'>&nbsp;</p>
 
@@ -279,8 +277,6 @@ function Instruction(props) {
                         className='position-static'
                         src='/assets/images/about_sibar.jpg'
                         alt='about-side'
-                        layout='fill'
-                        objectFit='cover'
                         width={215}
                         height={150}
                       />
