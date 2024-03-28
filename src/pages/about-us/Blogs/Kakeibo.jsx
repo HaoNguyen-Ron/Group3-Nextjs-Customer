@@ -220,7 +220,7 @@ function Kakeibo(props) {
                       title2='Figure Nhật Bản là những sản phẩm sản xuất HÀNG LOẠT là đúng!'
                       title3='Tin Tức'
                       date=' - 17/02/2023'
-                      href='Appear'
+                      href='/about-us/blogs/figure-product'
                     />
 
                     <BlogItem
@@ -229,23 +229,25 @@ function Kakeibo(props) {
                       title2='Cách Tôi Kiếm Được 250k Mỗi Giờ'
                       title3='Tin Tức'
                       date=' - 12/02/2022'
-                      href='Instruction'
+                      href='/about-us/blogs/instruction'
                     />
+
                     <BlogItem
                       image='/assets/images/blog_3.jpg'
                       title='Kakeibo phương pháp tiết kiệm, chi tiêu hợp lý'
                       title2='Kakeibo phương pháp tiết kiệm, chi tiêu hợp lý'
                       title3='Hưỡng Dẫn'
                       date=' - 23/04/2022'
-                      href='Kakeibo'
+                      href='/about-us/blogs/Kakeibo'
                     />
+
                     <BlogItem
                       image='/assets/images/blog_4.jpg'
                       title='Hỏi Và Đáp'
                       title2='Hỏi Và Đáp'
                       title3='Tin Tức'
                       date=' - 23/04/2022'
-                      href='answer'
+                      href='/about-us/answer'
                     />
                   </ul>
                 </div>

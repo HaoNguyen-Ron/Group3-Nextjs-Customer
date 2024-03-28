@@ -51,9 +51,9 @@ function NavTablet() {
               titlemenu1='Đặt mua & Thanh Toán'
               a_href1='/payment-instructions'
               titlemenu2='Kiếm 250k / h'
-              a_href2='/Blogs/instruct'
+              a_href2='/blogs/instruction'
               titlemenu3='Tiết kiệm tiêu dùng'
-              a_href3='/Blogs/Kakeibo'
+              a_href3='/blogs/Kakeibo'
             />
 
             <NavSidbar title='Sản Phẩm' activeTab={activeTab} onClick={onClickTab} a_href='/collections' />

@@ -40,16 +40,16 @@ function Navbar(props) {
                 submenutab='0'
                 a_href='#'
                 titlemenu1='Đặt mua & Thanh Toán'
-                a_href1='about-us/Blogs/Instruction'
+                a_href1='/payment-instructions'
                 titlemenu2='Kiếm 250k / h'
-                a_href2='about-us/Blogs/instruct'
+                a_href2='/about-us/blogs/instruction'
                 titlemenu3='Tiết kiệm tiêu dùng'
-                a_href3='about-us/Blogs/Kakeibo'
+                a_href3='/about-us/blogs/Kakeibo'
               />
 
               <NavSidbar title='Sản Phẩm' activeTab={activeTab} onClick={onClickTab} a_href='/collections' />
 
-              <NavSidbar title='Hỏi đáp' activeTab={activeTab} onClick={onClickTab} a_href='about-us/answer' />
+              <NavSidbar title='Hỏi đáp' activeTab={activeTab} onClick={onClickTab} a_href='/about-us/answer' />
             </ul>
           </div>
         </div>
