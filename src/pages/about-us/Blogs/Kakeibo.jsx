@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Social from '@/components/Social'
 
 import paymentStyles from '@/styles/payment.module.css'
-import instructStyles from '@/styles/instruct.module.css'
+import instructStyles from '@/styles/instruction.module.css'
 
 function Kakeibo(props) {
   const [isNavVisible, setNavVisible] = useState(false)

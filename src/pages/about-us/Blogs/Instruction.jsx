@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Social from '@/components/Social'
 
 import paymentStyles from '@/styles/payment.module.css'
-import aboutStyles from '@/styles/instruct.module.css'
+import aboutStyles from '@/styles/instruction.module.css'
 
 
 function Instruction(props) {

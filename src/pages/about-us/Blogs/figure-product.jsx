@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 import Social from '@/components/Social'
 
-import instructStyles from '@/styles/instruct.module.css'
+import instructStyles from '@/styles/instruction.module.css'
 import aboutStyles from '@/styles/aboutUs.module.css'
 import paymentStyles from '@/styles/payment.module.css'
 
@@ -45,7 +45,7 @@ function Apppear(props) {
               className={`${instructStyles['image_width']} text-center`}
             />
           </div>
-          
+
           <div className='col-lg-9 col-sm-12 col-xs-12'>
             <div className='my-4 text-muted'>
               <h1>Khi nào 1 figure &ldquo;CÓ&rdquo; tại Nhật Bản?</h1>
@@ -202,11 +202,10 @@ function Apppear(props) {
                 <div className={`${paymentStyles['sidebox-title']}`} onClick={toggleCategory}>
                   <h3 className={`${paymentStyles['htitle']} d-flex align-items-center`}>
                     Bài viết mới nhất
-                    
+
                     <span
-                      className={`fa ${
-                        isCategoryOpen ? 'fa-angle-up' : 'fa-angle-down'
-                      } d-block d-md-none position-absolute`}
+                      className={`fa ${isCategoryOpen ? 'fa-angle-up' : 'fa-angle-down'
+                        } d-block d-md-none position-absolute`}
                       style={{ right: '0' }}
                     />
                   </h3>

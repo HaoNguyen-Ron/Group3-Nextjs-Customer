@@ -1,35 +1,29 @@
-Các lỗi code convention được phát hiện 
-1) Tên component: dùng Pascal case nhưng tên file CSS phải là Camel case: 
-    Slider.module.css -> slider.module.css
-    Banner.module.css -> banner.module.css
-    ....
+- Tên component:
 
-2) Nhiều folder hay file tạo ra nhưng trống
+  - Component aboutUS đặt sai tên => AboutUs; function Appeer => Appear
+  - Component tên là CartItem nhưng tên CSS lại là cart.module.css gây nhầm lẫn cho reader
+  - tên component là một động từ thay vì 1 danh từ, ý nghĩa không liên quan gì đến các trang about us gây khó hiểu (Kakeibo, appear, instruct)
+  - dùng Pascal case nhưng tên file CSS phải là Camel case:
 
-3) Cách đặt tên biến cho module css không có ý nghĩa: import x from '@/styles/card.module.css' x làm người đọc khó hiểu lẫn nhìn trong code bị rối
-    file đã sửa: Card.jsx, CardList.jsx,...
+- Cách đặt tên biến cho module css không có ý nghĩa: import x from '@/styles/card.module.css' x làm người đọc khó hiểu lẫn nhìn trong code bị rối
 
-4) Các tag cùng cấp nên cách 1 dòng đễ dễ đọc
-    file đã sửa: Card.jsx, CardList.jsx, BlogNew.jsx, Collection.js
+- file import đến 3 module css dẫn đến khó sửa sau này cho người khác (about-us/\*\* \*/)
 
-5) Phát hiện còn console.log hay comment sai trong production: 
-    file đã sửa:CardList.jsx, filter.js, collection.js, order.jsx
+- Nhiều folder hay file và hàm tạo ra nhưng không sử dụng
 
-6) Cách sắp xếp cái import theo thứ tự: file hệ thống, lib, framework > component,.. > CSS
-    file đã sửa:CardList.jsx,...
+- Phát hiện còn console.log hay comment sai trong production:
 
-7) about-us.js : 
-    + function AboutUS đặt sai tên => AboutUs; function Appeer => Appear
-    + Không chia Module hoặc tách Component dẫn đến 1 file quá nhiều dòng code 
-    + Nhiều attribute đã bị cảnh báo lỗi thời nhưng vẫn không xóa hay đổi (layout='responsive')
-    + Nhiều hàm khai báo nhưng không dùng đến
-    + const BlogItem = ({ image, title, title2, title3, title4, date, href }): đặt tên props gây khó hiểu cho người đọc 
-    + file import đến 3 module css dẫn đến khó sửa sau này cho người khác
-    + aboutUs có đến 3 pages liên quan nhưng lại để ở ngoài folder about-us
-    + Nhiều hàm khai báo nhưng không sử dụng
-    + Đặt tên component là một động từ thay vì 1 danh từ lẫn ý nghĩa không liên quan gì đến các trang about us gây khó hiểu (Kakeibo, appear, instruct)
+- Cách sắp xếp cái import theo thứ tự
+  file hệ thống, lib, framework > component,.. > CSS
 
-8) CartItem:
-    + Nhiều hàm khai báo nhưng không dùng đến
-    + Tên class 'media_right' nếu theo BEM thì sai vì 'right' là Modify nên phải chỉnh thành 'media-right'
-    + Tên Jsx là CartItem nhưng tên CSS lại là cart.module.css gây nhầm lẫn cho reader
+- Không chia Module hoặc tách Component dẫn đến 1 file quá nhiều dòng code
+
+- Nhiều attribute đã bị cảnh báo lỗi thời nhưng vẫn không xóa hay đổi
+
+- const BlogItem = ({ image, title, title2, title3, title4, date, href }): đặt tên props gây khó hiểu
+
+- aboutUs có đến 3 pages liên quan nhưng lại để ở ngoài folder about-us
+
+- Nhiều hàm khai báo nhưng không sử dụng
+
+- Xắp xếp lại folder

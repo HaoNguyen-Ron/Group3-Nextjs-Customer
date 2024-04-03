@@ -157,10 +157,6 @@
   /* margin-right: 10px; */
 }
 
-.filter_group-block:last-child {
-  /* margin-right: 10px; */
-}
-
 .filter_group-subtitle:hover {
   background-color: var(--main-color);
   color: #fff;
