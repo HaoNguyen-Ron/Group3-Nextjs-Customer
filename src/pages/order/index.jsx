@@ -1,17 +1,16 @@
+import * as yup from 'yup'
 import Link from 'next/link'
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
+import { Box, Modal, Typography } from '@mui/material'
 import { useFormik } from 'formik'
+import { useRouter } from 'next/router'
 
 import EditForm from '@/components/Form/EditForm'
 import OrderProductList from '@/components/OrderProductList'
 import verifyLoggin from '@/components/HOC/verifyLoggin'
-
-import * as yup from 'yup'
-import { Box, Modal, Typography } from '@mui/material'
 import { axiosClient } from '@/libraries/axiosClient'
-import { useRouter } from 'next/router'
 
-import Style from '@/styles/order.module.css'
+import userStyles from '@/styles/order.module.css'
 import styles from '@/styles/userPage.module.css'
 
 function Order() {
@@ -21,6 +20,7 @@ function Order() {
   const [openSuccess, setOpenSuccess] = useState(false)
   const [openEdit, setOpenEdit] = useState(false)
   const [openError, setOpenError] = useState(false)
+
   const [loading, setLoading] = useState(false)
 
   const style = {
@@ -136,35 +136,35 @@ function Order() {
 
   return (
     <div className='container p-5'>
-      <div className={`d-flex row ${Style.order_container}`}>
+      <div className={`d-flex row ${userStyles.order_container}`}>
         <div className='col-12 col-md-12 col-lg-6'>
-          <Link className={`${Style.title_home}`} href='/'>
+          <Link className={`${userStyles.title_home}`} href='/'>
             <h1>3nime Figure</h1>
           </Link>
 
-          <div className={`${Style.row_cart}`}>
-            <a className={`${Style.span_cart_a}`} href='./cart'>
+          <div className={`${userStyles.row_cart}`}>
+            <a className={`${userStyles.span_cart_a}`} href='./cart'>
               <span>Giỏ hàng </span>
             </a>
-            <span className={`${Style.span_cart}`}> &gt; </span>
+            <span className={`${userStyles.span_cart}`}> &gt; </span>
 
-            <span className={`${Style.span_cart}`}>Thông tin giao hàng</span>
+            <span className={`${userStyles.span_cart}`}>Thông tin giao hàng</span>
           </div>
 
-          <p className={`${Style.row_cart} ${Style.span_cart}`}>
+          <p className={`${userStyles.row_cart} ${userStyles.span_cart}`}>
             <b>Thông tin giao hàng</b>
           </p>
 
-          <div className={`${Style.row_cart}`}>
-            <span className={`${Style.span_cart_chil}`}>Tên khách hàng: {userData.fullName}</span>
+          <div className={`${userStyles.row_cart}`}>
+            <span className={`${userStyles.span_cart_chil}`}>Tên khách hàng: {userData.fullName}</span>
           </div>
 
-          <div className={`${Style.row_cart}`}>
-            <span className={`${Style.span_cart_chil}`}>Số điện thoại khách hàng: {userData.phoneNumber}</span>
+          <div className={`${userStyles.row_cart}`}>
+            <span className={`${userStyles.span_cart_chil}`}>Số điện thoại khách hàng: {userData.phoneNumber}</span>
           </div>
 
-          <div className={`${Style.row_cart}`}>
-            <span className={`${Style.span_cart_chil}`}>Địa chỉ: {userData.address}</span>
+          <div className={`${userStyles.row_cart}`}>
+            <span className={`${userStyles.span_cart_chil}`}>Địa chỉ: {userData.address}</span>
           </div>
 
           <div className='userDetail_container ms-3 d-flex flex-column g-2'>
@@ -206,7 +206,7 @@ function Order() {
 
           {/*------------------------------------------------------------- Payment ---------------------------------------------------*/}
           <div className='mb-4'>
-            <p className={`${Style.row_cart} ${Style.span_cart}`}>
+            <p className={`${userStyles.row_cart} ${userStyles.span_cart}`}>
               <b>Phương thức thanh toán</b>
             </p>
 

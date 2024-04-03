@@ -18,17 +18,13 @@ function Apppear(props) {
   const [isMdScreen, setIsMdScreen] = useState(true)
 
   useEffect(() => {
-    // Sử dụng window.innerWidth để xác định kích thước màn hình
     const handleResize = () => {
-      setIsMdScreen(window.innerWidth >= 768) // Đặt breakpoint 768px cho màn hình md
+      setIsMdScreen(window.innerWidth >= 768)
     }
 
-    // Đăng ký sự kiện resize để theo dõi thay đổi kích thước màn hình
     window.addEventListener('resize', handleResize)
-    // Kiểm tra kích thước màn hình khi component được tạo ra
     handleResize()
 
-    // Hủy đăng ký sự kiện khi component unmount
     return () => {
       window.removeEventListener('resize', handleResize)
     }
