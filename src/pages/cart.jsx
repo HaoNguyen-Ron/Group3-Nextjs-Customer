@@ -75,6 +75,7 @@ function Cart() {
 
     setData(parsedData)
   }, [])
+  
   return (
     <div className='mb-5'>
       <div className='container'>

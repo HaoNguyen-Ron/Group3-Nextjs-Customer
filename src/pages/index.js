@@ -1,9 +1,9 @@
-import Services from '@/components/services'
-import CardList from '@/components/CardList/index'
-import Sliders from '@/components/Slider'
-import { axiosClient } from '@/libraries/axiosClient'
-import Social from '@/components/social'
+import CardList from '@/components/Card/CardList/index'
 import Carousel from '@/components/Carousel'
+import Services from '@/components/Services'
+import Sliders from '@/components/Slider'
+import Social from '@/components/Social'
+import { axiosClient } from '@/libraries/axiosClient'
 
 export default function Home(products) {
   return (

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import Social from '@/components/social'
+import Social from '@/components/Social'
 
 import aboutStyles from '@/styles/aboutUs.module.css'
 import paymentStyles from '@/styles/payment.module.css'
@@ -532,7 +532,7 @@ function AboutUs(props) {
                         title2='Kakeibo phương pháp tiết kiệm, chi tiêu hợp lý'
                         title3='Hưỡng Dẫn'
                         date=' - 23/04/2022'
-                        href='/about-us/blogs/Kakeibo'
+                        href='/about-us/blogs/kakeibo'
                       />
 
                       <BlogItem
@@ -541,7 +541,7 @@ function AboutUs(props) {
                         title2='Hỏi Và Đáp'
                         title3='Tin Tức'
                         date=' - 23/04/2022'
-                        href='/about-us/answer'
+                        href='/about-us/questions'
                       />
                     </ul>
                   </div>

@@ -13,14 +13,14 @@ const data = [
      figure giả. Nhiều trường hợp các figure giả vẫn có logo chính hãng của Good Smile Company
       hoặc các công ty phát hành, tuy nhiên những logo này được sử dụng trái phép. 
       Hãy luôn cẩn thận khi mua hàng online.`,
-    link: `/payment-instructions`
+    link: `/about-us/blogs/payment-instructions`
   },
   {
     name: `Kakeibo phương pháp tiết kiệm, chi tiêu hợp lý`,
     img: `http://file.hstatic.net/1000160337/article/arisutan1401803956.jpeg`,
     review: `Thận nhiêu trái?Bán máu bao nhiêu cho đủ?Lại tốn tiền nữa rồi...
     Những câu hỏi quen thuộc đều nhằm vào 1 vấn đề chung: Làm sao để chi tiêu hợp lí,....`,
-    link: `/Blogs/Kakeibo`
+    link: `/about-us/blogs/kakeibo`
   },
   {
     name: `Khi nào 1 figure "có" tại Nhật Bản?`,
@@ -28,7 +28,7 @@ const data = [
     review: `KHI NÀO 1 FIGURE "CÓ" TẠI NHẬT BẢN?
     KHI "CÓ" THÌ SỐ LƯỢNG NHIỀU KHÔNG?"CÓ" RỒI MỚI ĐẶT LIỆU KỊP KHÔNG? Đây là những câu hỏi được
      rất nhiều bạn quan tâm.Trước tiên, Figure Nhật...`,
-    link: `/Blogs/appear`
+    link: `about-us/blogs/figure-product`
   },
   {
     name: `Đây là cách giúp tui kiếm về 250K mỗi giờ`,
@@ -36,7 +36,7 @@ const data = [
     review: `Nhưng nếu kiên trì theo đúng từng hướng dẫn nhỏ, 
     thực hành trên giấy thật nhiều lần trước khi bắt đầu,
     thì việc bạn kiếm về 250K/ mỗi giờ như mình là hoàn toàn có thể.`,
-    link: `/Blogs/instruct`
+    link: `about-us/blogs/instruct`
   }
 ]
 

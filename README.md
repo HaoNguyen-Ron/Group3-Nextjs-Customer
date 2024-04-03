@@ -18,7 +18,7 @@ Các lỗi code convention được phát hiện
 6) Cách sắp xếp cái import theo thứ tự: file hệ thống, lib, framework > component,.. > CSS
     file đã sửa:CardList.jsx,...
 
-7) aboutUs.js : 
+7) about-us.js : 
     + function AboutUS đặt sai tên => AboutUs; function Appeer => Appear
     + Không chia Module hoặc tách Component dẫn đến 1 file quá nhiều dòng code 
     + Nhiều attribute đã bị cảnh báo lỗi thời nhưng vẫn không xóa hay đổi (layout='responsive')

@@ -7,7 +7,7 @@ function Carousel(props) {
       <div id='carouselExampleControls' className='carousel slide' data-bs-ride='carousel'>
         <div className='carousel-inner'>
           <div className='carousel-item active'>
-            <Link href='/Blogs/instruct'>
+            <Link href='about-us/blogs/instruction'>
               <img
                 src='https://theme.hstatic.net/1000160337/1000885200/14/slide_1_img.jpg?v=341'
                 className='d-block w-100'
@@ -27,7 +27,7 @@ function Carousel(props) {
           </div>
 
           <div className='carousel-item'>
-            <a href='Blogs/appear'>
+            <a href='about-us/blogs/figure-product'>
               <img
                 src='https://theme.hstatic.net/1000160337/1000885200/14/slide_4_img.jpg?v=341'
                 className='d-block w-100'
@@ -37,7 +37,7 @@ function Carousel(props) {
           </div>
 
           <div className='carousel-item'>
-            <a href='Blogs/Kakeibo'></a>
+            <a href='/about-us/blogs/kakeibo'></a>
             <img
               src='https://theme.hstatic.net/1000160337/1000885200/14/slide_2_img.jpg?v=341'
               className='d-block w-100'

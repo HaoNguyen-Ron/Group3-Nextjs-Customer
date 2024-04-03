@@ -2,8 +2,8 @@ import Link from 'next/link'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { useFormik } from 'formik'
 
-import CustomerEditForm from '@/components/Form/EditFormCustomer'
-import OrderProductList from '@/components/orderProductList'
+import EditForm from '@/components/Form/EditForm'
+import OrderProductList from '@/components/OrderProductList'
 import verifyLoggin from '@/components/HOC/verifyLoggin'
 
 import * as yup from 'yup'
@@ -198,7 +198,7 @@ function Order() {
 
                   <hr />
 
-                  <CustomerEditForm userData={userData} />
+                  <EditForm userData={userData} />
                 </div>
               </Box>
             </Modal>

@@ -12,7 +12,7 @@ import * as Yup from 'yup'
 
 import styles from '@/styles/form.module.css'
 
-const CustomerEditForm = ({ userData }) => {
+const EditForm = ({ userData }) => {
   const [openSuccess, setOpenSuccess] = useState(false)
 
   const [openError, setOpenError] = useState(false)
@@ -179,4 +179,4 @@ const CustomerEditForm = ({ userData }) => {
   )
 }
 
-export default CustomerEditForm
+export default EditForm

@@ -33,7 +33,7 @@ export default function AuthLoginPartPc() {
 
           <div className='d-flex flex-column ms-1 my-auto'>
             <div className={styles.loginPart}>
-              <Link href='/user_profile'>
+              <Link href='/user-profile'>
                 <p className={styles.loginPart__item}>Tài khoản</p>
               </Link>
             </div>

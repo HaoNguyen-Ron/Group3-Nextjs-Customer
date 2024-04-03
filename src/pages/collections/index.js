@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import Card from '@/components/CardList/Card'
-import Filter from '@/components/Filter'
-import Social from '@/components/social'
-import { axiosClient } from '@/libraries/axiosClient'
 import { useRouter } from 'next/router'
+
+import Card from '@/components/Card/CardList/Card'
+import Filter from '@/components/Card/CardProductFilter'
+import Social from '@/components/Social'
+import { axiosClient } from '@/libraries/axiosClient'
 
 function Collection({ products }) {
   const [filteredProducts, setFilteredProducts] = useState([])
@@ -49,14 +50,11 @@ function Collection({ products }) {
 
   //suplier----------------------------------------------------------------
   const handleSuppllierChange = (label) => {
-    // Kiểm tra nếu nhãn đã có trong danh sách nhà cung cấp đã chọn
     if (selectedSuppliers.includes(label)) {
-      // Nếu có, loại bỏ nó
       const updatedSuppliers = selectedSuppliers.filter((supplier) => supplier !== label)
 
       setSelectedSuppliers(updatedSuppliers)
     } else {
-      // Nếu không, thêm nó vào
       const updatedSuppliers = [...selectedSuppliers, label]
       
       setSelectedSuppliers(updatedSuppliers)

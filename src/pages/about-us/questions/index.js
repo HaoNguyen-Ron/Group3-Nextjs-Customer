@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import Social from '@/components/social'
+import Social from '@/components/Social'
 
 import paymentStyles from '@/styles/payment.module.css'
 import aboutStyles from '@/styles/aboutUs.module.css'
@@ -692,7 +692,7 @@ function Answer(props) {
                         title2='Kakeibo phương pháp tiết kiệm, chi tiêu hợp lý'
                         title3='Hưỡng Dẫn'
                         date=' - 23/04/2022'
-                        href='/about-us/blogs/Kakeibo'
+                        href='/about-us/blogs/kakeibo'
                       />
                       <BlogItem
                         image='/assets/images/blog_4.jpg'
@@ -700,41 +700,11 @@ function Answer(props) {
                         title2='Hỏi Và Đáp'
                         title3='Tin Tức'
                         date=' - 23/04/2022'
-                        href='/about-us/answer'
+                        href='/about-us/questions'
                       />
                     </ul>
                   </div>
                 </div>
-
-                {/* phần danh mục */}
-                {/* <div className={`${paymentStyles["group-sidebox"]}`}>
-                  <div
-                    className={`${paymentStyles["sidebox-title"]}`}
-                    onClick={toggleCategory2}
-                  >
-                    <h3
-                      className={`${paymentStyles["htitle"]} d-flex align-items-center`}
-                    >
-                      Danh Mục
-                      <span
-                        className={`fa ${
-                          isCategoryOpen2 ? "fa-angle-up" : "fa-angle-down"
-                        } d-block d-md-none position-absolute`}
-                        style={{ right: "0" }}
-                      />
-                    </h3>
-                  </div>
-
-            
-                  <div
-                    className={`${paymentStyles["sidebox-content "]} ${
-                      isMdScreen || isCategoryOpen2 ? "d-md-block" : "d-none"
-                    }`}
-                  >
-                  
-                    
-                  </div>
-                </div> */}
               </aside>
             </div>
           </div>

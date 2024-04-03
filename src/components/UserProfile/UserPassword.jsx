@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react'
 import { Modal } from 'react-bootstrap'
-import CustomerEditForm from '../Form/EditFormCustomer'
+import EditForm from '../Form/EditForm'
 import { axiosClient } from '@/libraries/axiosClient'
 import styles from '@/styles/userPage.module.css'
 
@@ -34,7 +34,7 @@ export default function UserPassword({ user, isShow = true }) {
           </Modal.Header>
 
           <Modal.Body>
-            <CustomerEditForm userData={user} />
+            <EditForm userData={user} />
           </Modal.Body>
         </Modal>
       </div>

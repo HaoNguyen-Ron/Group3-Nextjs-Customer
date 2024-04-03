@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
 import Card from './Card'
-import Banner from '../Banner'
+import Banner from '../../Banner'
 
 import styles from '@/styles/card.module.css'
 

@@ -1,9 +1,9 @@
 import React from 'react'
-import dv from '@/styles/services.module.css'
+import styles from '@/styles/services.module.css'
 
 function Services(props) {
   return (
-    <div className={`${dv.services}`}>
+    <div className={`${styles.services}`}>
       <div className='container'>
         <div className='row'>
           <ServicesItem
@@ -13,7 +13,7 @@ function Services(props) {
               desc: 'Nhập khẩu trực tiếp từ Nhật Bản'
             }}
             link_url={
-              <a className={dv['txt-link']} href='about-us'>
+              <a className={styles['txt-link']} href='about-us'>
                 Xem chi tiết
               </a>
             }
@@ -25,7 +25,7 @@ function Services(props) {
               desc: 'Chuyển khoản hoặc COD'
             }}
             link_url={
-              <a className={dv['txt-link']} href='payment-instructions'>
+              <a className={styles['txt-link']} href='payment-instructions'>
                 Xem chi tiết
               </a>
             }
@@ -37,7 +37,7 @@ function Services(props) {
               desc: 'Miễn phí với đơn hàng>1000K'
             }}
             link_url={
-              <a className={dv['txt-link']} href='collections'>
+              <a className={styles['txt-link']} href='collections'>
                 Xem chi tiết
               </a>
             }
@@ -55,8 +55,8 @@ const ServicesItem = ({ info, icon, link_url, onClick }) => {
 
   return (
     <>
-      <div className={`col-md-4 col-sm-12 col-xs-12 text-center px-2 py-4 my-4 ${dv.borderEnd}`}>
-        <div className={dv.services_icon}>{icon}</div>
+      <div className={`col-md-4 col-sm-12 col-xs-12 text-center px-2 py-4 my-4 ${styles.borderEnd}`}>
+        <div className={styles.services_icon}>{icon}</div>
         <div className='services-name'>
           <h4>{name}</h4>
           <p className='txt-desc'>{desc}</p>

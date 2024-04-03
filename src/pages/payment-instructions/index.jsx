@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 
-import Social from '@/components/social'
+import Social from '@/components/Social'
 
 import pay from '@/styles/Payment.module.css'
 
@@ -757,7 +757,7 @@ function PaymentInstructions(props) {
                         title2='Figure Nhật Bản là những sản phẩm sản xuất HÀNG LOẠT là đúng!'
                         title3='Tin Tức'
                         date=' - 17/02/2023'
-                        href='/Blogs/appear'
+                        href='about-us/blogs/figure-product'
                       />
 
                       <BlogItem
@@ -766,7 +766,7 @@ function PaymentInstructions(props) {
                         title2='Cách Tôi Kiếm Được 250k Mỗi Giờ'
                         title3='Tin Tức'
                         date=' - 12/02/2022'
-                        href='/Blogs/instruct'
+                        href='/about-us/blogs/instruction'
                       />
                       <BlogItem
                         image='/assets/images/blog_3.jpg'
@@ -774,7 +774,7 @@ function PaymentInstructions(props) {
                         title2='Kakeibo phương pháp tiết kiệm, chi tiêu hợp lý'
                         title3='Hưỡng Dẫn'
                         date=' - 23/04/2022'
-                        href='/Blogs/Kakeibo'
+                        href='/about-us/blogs/kakeibo'
                       />
                       <BlogItem
                         image='/assets/images/blog_4.jpg'
@@ -782,7 +782,7 @@ function PaymentInstructions(props) {
                         title2='Hỏi Và Đáp'
                         title3='Tin Tức'
                         date=' - 23/04/2022'
-                        href='/answer'
+                        href='/about-us/questions'
                       />
                     </ul>
                   </div>

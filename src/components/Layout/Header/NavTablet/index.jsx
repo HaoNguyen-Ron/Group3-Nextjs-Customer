@@ -49,16 +49,16 @@ function NavTablet() {
               submenutab='0'
               a_href='#'
               titlemenu1='Đặt mua & Thanh Toán'
-              a_href1='/payment-instructions'
+              a_href1='/about-us/payment-instructions'
               titlemenu2='Kiếm 250k / h'
-              a_href2='/blogs/instruction'
+              a_href2='/about-us/blogs/instruction'
               titlemenu3='Tiết kiệm tiêu dùng'
-              a_href3='/blogs/Kakeibo'
+              a_href3='/about-us/blogs/kakeibo'
             />
 
             <NavSidbar title='Sản Phẩm' activeTab={activeTab} onClick={onClickTab} a_href='/collections' />
 
-            <NavSidbar title='Hỏi đáp' activeTab={activeTab} onClick={onClickTab} a_href='/answer' />
+            <NavSidbar title='Hỏi đáp' activeTab={activeTab} onClick={onClickTab} a_href='/about-us/questions' />
           </ul>
         </div>
       </div>

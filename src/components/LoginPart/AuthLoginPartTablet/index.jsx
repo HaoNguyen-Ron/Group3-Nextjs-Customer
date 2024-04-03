@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+
 import Button from '@mui/material/Button'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 
 import styles from '@/styles/loginPart.module.css'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
 
 export default function AuthLoginPartTablet() {
   const [openMenu, setOpenMenu] = useState(null)
@@ -72,7 +73,7 @@ export default function AuthLoginPartTablet() {
           }}
         >
           <MenuItem onClick={handleClose}>
-            <Link className={styles.loginPart__title} href='/user_profile'>
+            <Link className={styles.loginPart__title} href='/user-profile'>
               Tài khoản của bạn
             </Link>
           </MenuItem>

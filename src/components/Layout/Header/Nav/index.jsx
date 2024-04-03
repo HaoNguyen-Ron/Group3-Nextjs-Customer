@@ -44,12 +44,12 @@ function Navbar(props) {
                 titlemenu2='Kiếm 250k / h'
                 a_href2='/about-us/blogs/instruction'
                 titlemenu3='Tiết kiệm tiêu dùng'
-                a_href3='/about-us/blogs/Kakeibo'
+                a_href3='/about-us/blogs/kakeibo'
               />
 
               <NavSidbar title='Sản Phẩm' activeTab={activeTab} onClick={onClickTab} a_href='/collections' />
 
-              <NavSidbar title='Hỏi đáp' activeTab={activeTab} onClick={onClickTab} a_href='/about-us/answer' />
+              <NavSidbar title='Hỏi đáp' activeTab={activeTab} onClick={onClickTab} a_href='/about-us/questions' />
             </ul>
           </div>
         </div>
